@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>Charge X — จัดการบัตร</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#C42D00}a:hover{color:#9E2400}
+[data-theme="dark"]{color-scheme:dark}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFFFFF"]{background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F4F4F4"],[style*="background: #F6F6F6"],[style*="background: #F0F0F0"],[style*="background: rgb(244, 244, 244)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FFF1EB"],[style*="background: #FFE4DA"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF7F3"]{background-color:rgba(252,57,1,.1)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #E7F6EE"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #1F1F1F"],[style*="color: #2B2B2B"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #3A3A3A"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #C42D00"],[style*="color: rgb(196, 45, 0)"]){color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #146C3E"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"]){border-color:#35353B!important}
+[data-theme="dark"] [stroke="#1F1F1F"]{stroke:#F3F3F4}
+[data-theme="dark"][data-theme][style]{background-color:#000000!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="margin-top: -24px; background: #FFFFFF"]{background-color:#000000!important}
+[data-theme="dark"][data-theme][style]{color:#F3F3F4!important}
+[data-theme="dark"] :is(button,input,textarea,select,legend,label){color:inherit}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(31, 31, 31)"],[style*="color: rgb(43, 43, 43)"],[style*="color: rgb(0, 0, 0)"],[style*="color: #000"],[style*="color: black"],[style*="color: #1f1f1f"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(58, 58, 58)"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(92, 92, 92)"],[style*="color: rgb(107, 107, 107)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(196, 45, 0)"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(20, 108, 62)"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 255, 255)"],[style*="background-color: rgb(255, 255, 255)"]){background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(244, 244, 244)"],[style*="background: rgb(246, 246, 246)"],[style*="background: rgb(240, 240, 240)"],[style*="background-color: rgb(244, 244, 244)"],[style*="background-color: rgb(246, 246, 246)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(31, 31, 31)"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 241, 235)"],[style*="background: rgb(255, 228, 218)"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(255, 247, 243)"]{background-color:rgba(252,57,1,.12)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(231, 246, 238)"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(230, 230, 230)"],[style*="background: rgb(237, 237, 237)"],[style*="background: rgb(239, 239, 239)"],[style*="background: rgb(217, 217, 217)"],[style*="background: rgb(218, 218, 218)"]){background-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(51, 51, 51)"]{background-color:#3A3A40!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(189, 189, 189)"]{background-color:#55555C!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="linear-gradient(rgb(255, 255, 255)"]{background:linear-gradient(#000000 72%,rgba(0,0,0,0))!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="repeating-linear-gradient(90deg, rgb(218, 218, 218)"]{background:repeating-linear-gradient(90deg,#3A3A40 0 6px,transparent 6px 12px)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(158, 36, 0)"]{color:#FF8A66!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"],[style*="solid rgb(237, 237, 237)"],[style*="solid rgb(239, 239, 239)"],[style*="solid rgb(212, 212, 212)"],[style*="solid rgb(226, 226, 226)"],[style*="solid rgb(253, 211, 195)"]){border-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="margin-top: -24px; background: rgb(255, 255, 255)"]{background-color:#000000!important}
+.cx-scroll{scrollbar-width:none}.cx-scroll>*{flex-shrink:0}.cx-scroll::-webkit-scrollbar{display:none}
+@keyframes cxSheet{from{transform:translateY(100%)}to{transform:none}}
+.cx-sheet{animation:cxSheet .35s cubic-bezier(.2,.9,.3,1) both}
+@keyframes cxFade{from{opacity:0}to{opacity:1}}
+.cx-fade{animation:cxFade .3s ease-out both}
+@keyframes cxSpin{to{transform:rotate(360deg)}}
+.cx-spin{animation:cxSpin .8s linear infinite;transform-origin:center}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #B86A00"],[style*="color: rgb(184, 106, 0)"]){color:#F0A84A!important}
+@media (prefers-reduced-motion: reduce){.cx-sheet,.cx-fade,.cx-spin{animation:none}}
+
+[data-theme="dark"] [style*="background: #FFF4E0"],[data-theme="dark"] [style*="background: rgb(255, 244, 224)"]{background-color:rgba(240,160,48,.16)!important}
+@keyframes cxPlug{0%,100%{opacity:.35}50%{opacity:1}}
+.cx-plugdot{animation:cxPlug 1.2s ease-in-out infinite}
+
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F; color: #FFFFFF"]{background-color:#1C1C1E!important}
+[data-theme="dark"] .cx-qr{background:#FFFFFF!important;border-color:#FFFFFF!important}
+[data-theme="dark"] .cx-qr span[style*="color: #6B6B6B"]{color:#6B6B6B!important}
+[data-theme="dark"] .cx-ring{box-shadow:0 0 0 10px rgba(46,180,110,.2)!important}
+@keyframes cxPop{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.cx-pop{animation:cxPop .55s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes cxRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.cx-rise{animation:cxRise .5s cubic-bezier(.2,.8,.3,1) .2s both}
+@media (prefers-reduced-motion: reduce){.cx-pop,.cx-rise{animation:none}}
+[data-theme="dark"] .cx-pv{box-shadow:0 14px 30px rgba(0,0,0,.6)!important}
+.cx-in2{width:100%;height:52px;box-sizing:border-box;border-radius:14px;border:1.5px solid #E0E0E0;background:#FFFFFF;padding:0 14px;font-family:inherit;font-size:16px;color:#1F1F1F;outline:none}
+.cx-in2:focus{border-color:#FC3901}
+[data-theme="dark"] .cx-in2{background:#1C1C1E;border-color:#35353B;color:#F3F3F4}
+[data-theme="dark"] .cx-in2:focus{border-color:#FC3901}
+.cx-in2::placeholder{color:#9A9A9A}
+@keyframes cxShake{0%,100%{transform:none}20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+.cx-shake{animation:cxShake .45s ease-in-out both}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FDECEC"]){background-color:rgba(229,62,62,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #B42318"]{color:#FF8A80!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF4E0"]{background-color:rgba(240,160,48,.16)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="dashed #D4D4D4"]{border-color:#45454C!important}
+</style>
+</helmet>
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F6F6F6; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; display: flex; flex-direction: column">
+<div style="padding: 56px 20px 12px; display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; align-items: center; gap: 8px">
+<a href="{{backHref}}" aria-label="ย้อนกลับ" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 14px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a>
+<h1 style="margin: 0; text-align: center; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 19px">จัดการบัตร</h1>
+<span></span>
+</div>
+
+<div class="cx-scroll" style="flex: 1; min-height: 0; overflow-y: auto; padding: 4px 16px 24px; display: flex; flex-direction: column; gap: 12px">
+<sc-if value="{{hasCards}}" hint-placeholder-val="{{ true }}">
+<span style="padding: 0 4px; font-size: 13px; color: #6B6B6B">บัตรที่ผูกไว้ ({{count}})</span>
+<sc-for list="{{cards}}" as="c" hint-placeholder-count="2">
+<div style="background: #FFFFFF; border-radius: 20px; padding: 12px; display: flex; flex-direction: column; gap: 10px; border: {{c.border}}">
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="width: 52px; height: 36px; flex: none; border-radius: 8px; background: {{c.bg}}; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-size: 11px; font-weight: 800; letter-spacing: 0.3px; font-style: italic">{{c.brand}}</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 700; color: #1F1F1F">{{c.brandName}} •••• {{c.last}}</span><span style="font-size: 12.5px; color: #6B6B6B">หมดอายุ {{c.exp}} · {{c.type}}</span></span>
+<button type="button" onClick="{{c.ask}}" aria-label="ลบบัตร {{c.last}}" style="width: 38px; height: 38px; flex: none; border-radius: 12px; border: 0; background: #F4F4F4; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5C5C5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg></button>
+</div>
+<sc-if value="{{c.isDefault}}" hint-placeholder-val="{{ true }}"><span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: #FFF1EB; color: #C42D00; font-size: 12px; font-weight: 700">✓ บัตรหลัก · ใช้ชาร์จและเติมเงินอัตโนมัติ</span></sc-if>
+<sc-if value="{{c.notDefault}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{c.makeDefault}}" style="align-self: flex-start; height: 32px; padding: 0 12px; border-radius: 10px; border: 1px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 600; color: #3A3A3A; cursor: pointer">ตั้งเป็นบัตรหลัก</button></sc-if>
+</div>
+</sc-for>
+</sc-if>
+<sc-if value="{{noCards}}" hint-placeholder-val="{{ false }}">
+<div style="background: #FFFFFF; border-radius: 22px; padding: 28px 20px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center">
+<span style="width: 64px; height: 64px; border-radius: 20px; background: #FFF1EB; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3zM3 10h18M7 15h3"></path></svg></span>
+<span style="font-size: 16px; font-weight: 700; color: #1F1F1F">ยังไม่มีบัตรที่ผูกไว้</span>
+<span style="font-size: 13px; line-height: 1.55; color: #6B6B6B">เพิ่มบัตรเครดิต/เดบิต เพื่อชาร์จและเติมเงินได้ในแตะเดียว</span>
+</div>
+</sc-if>
+<button type="button" onClick="{{openAdd}}" style="height: 56px; border-radius: 18px; border: 1.5px dashed #D4D4D4; background: transparent; font-family: inherit; font-size: 15px; font-weight: 600; color: #C42D00; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C42D00" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>เพิ่มบัตรใหม่</button>
+<div style="display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 16px; background: #FFFFFF">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#146C3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 1px"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6zM9 12l2 2 4-4"></path></svg>
+<span style="font-size: 12.5px; line-height: 1.55; color: #5C5C5C">ข้อมูลบัตรเข้ารหัสตามมาตรฐาน PCI DSS โดยผู้ให้บริการรับชำระเงิน [ชื่อผู้ให้บริการ] · Charge X ไม่เก็บเลข CVV</span>
+</div>
+</div>
+
+<sc-if value="{{showToast}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" role="status" style="position: absolute; left: 16px; right: 16px; bottom: 30px; z-index: 30; padding: 12px 14px; border-radius: 16px; background: #1F1F1F; color: #FFFFFF; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 24px rgba(0,0,0,0.25)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5AD49B" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg>{{toast}}</div>
+</sc-if>
+
+<sc-if value="{{showDel}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 40; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: flex-end">
+<button type="button" aria-label="ปิด" onClick="{{cancelDel}}" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
+<div class="cx-sheet" role="alertdialog" aria-label="ยืนยันการลบบัตร" style="background: #FFFFFF; border-radius: 26px 26px 0 0; padding: 10px 20px 30px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<span style="width: 40px; height: 4px; border-radius: 2px; background: #DADADA"></span>
+<span style="margin-top: 6px; width: 56px; height: 56px; border-radius: 50%; background: #FDECEC; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg></span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; color: #1F1F1F">ลบบัตร {{delName}}?</span>
+<span style="font-size: 13.5px; line-height: 1.55; color: #6B6B6B">{{delHint}}</span>
+<div style="align-self: stretch; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 6px">
+<button type="button" onClick="{{cancelDel}}" style="height: 50px; border-radius: 14px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; color: #1F1F1F; cursor: pointer">ยกเลิก</button>
+<button type="button" onClick="{{doDel}}" style="height: 50px; border-radius: 14px; border: 0; background: #E5484D; font-family: inherit; font-size: 15px; font-weight: 600; color: #FFFFFF; cursor: pointer">ลบบัตร</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{showAdd}}" hint-placeholder-val="{{ false }}">
+<div class="cx-sheet" style="position: absolute; inset: 0; z-index: 45; background: #F6F6F6; display: flex; flex-direction: column">
+<div style="padding: 56px 20px 8px; display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; align-items: center; gap: 8px">
+<button type="button" onClick="{{closeAdd}}" aria-label="ปิด" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 14px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+<h2 style="margin: 0; text-align: center; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 19px">เพิ่มบัตรใหม่</h2>
+<span></span>
+</div>
+<div class="cx-scroll" style="flex: 1; min-height: 0; overflow-y: auto; padding: 8px 16px 16px; display: flex; flex-direction: column; gap: 12px">
+<div class="cx-pv" style="height: 196px; box-sizing: border-box; border-radius: 22px; padding: 18px 20px; background: linear-gradient(135deg, #2B2B2F 0%, #111113 60%, #3A2A0E 100%); color: #FFFFFF; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 14px 30px rgba(0,0,0,0.25)">
+<svg aria-hidden="true" width="220" height="220" viewBox="0 0 220 220" style="position: absolute; right: -70px; top: -70px"><circle cx="110" cy="110" r="88" fill="none" stroke="#D4AF37" stroke-width="10" opacity="0.6"></circle><path d="M40 190 190 30" stroke="#FC3901" stroke-width="12" stroke-linecap="round" opacity="0.8"></path></svg>
+<div style="display: flex; justify-content: space-between; align-items: center; position: relative"><span style="width: 40px; height: 30px; border-radius: 6px; background: linear-gradient(135deg, #E9CF7A, #B8932F)"></span><span style="font-size: 18px; font-weight: 800; font-style: italic; letter-spacing: 0.5px">{{pvBrand}}</span></div>
+<span style="position: relative; font-family: 'Courier New', monospace; font-size: 21px; font-weight: 700; letter-spacing: 2px">{{pvNum}}</span>
+<div style="display: flex; justify-content: space-between; position: relative; font-size: 11px; opacity: 0.85"><span style="display: flex; flex-direction: column; gap: 2px">ชื่อบนบัตร<span style="font-size: 14px; font-weight: 600; opacity: 1; text-transform: uppercase">{{pvName}}</span></span><span style="display: flex; flex-direction: column; gap: 2px; text-align: right">หมดอายุ<span style="font-size: 14px; font-weight: 600">{{pvExp}}</span></span></div>
+</div>
+<div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">หมายเลขบัตร<input class="cx-in2" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" value="{{num}}" onInput="{{onNum}}"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">ชื่อบนบัตร<input class="cx-in2" autocomplete="cc-name" placeholder="ชื่อ-นามสกุล (ภาษาอังกฤษ)" value="{{name}}" onInput="{{onName}}"></label>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-items: end">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">วันหมดอายุ<input class="cx-in2" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/YY" value="{{exp}}" onInput="{{onExp}}"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">CVV<input class="cx-in2" inputmode="numeric" autocomplete="cc-csc" type="password" placeholder="•••" value="{{cvv}}" onInput="{{onCvv}}"></label>
+</div>
+<sc-if value="{{hasErr}}" hint-placeholder-val="{{ false }}"><span style="font-size: 12.5px; font-weight: 600; color: #B42318">{{err}}</span></sc-if>
+<button type="button" role="checkbox" aria-checked="{{defStr}}" onClick="{{toggleDef}}" style="display: flex; align-items: center; gap: 10px; border: 0; background: transparent; padding: 4px 0; font-family: inherit; text-align: left; cursor: pointer">
+<span style="width: 22px; height: 22px; flex: none; box-sizing: border-box; border-radius: 7px; border: 2px solid {{defBorder}}; background: {{defBg}}; display: flex; align-items: center; justify-content: center"><sc-if value="{{setDef}}" hint-placeholder-val="{{ true }}"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg></sc-if></span>
+<span style="font-size: 14px; color: #3A3A3A">ตั้งเป็นบัตรหลัก</span>
+</button>
+</div>
+<button type="button" onClick="{{fillDemo}}" style="align-self: center; border: 0; background: transparent; font-family: inherit; font-size: 13px; font-weight: 600; color: #6B6B6B; text-decoration: underline; cursor: pointer; padding: 6px">กรอกข้อมูลตัวอย่าง (สำหรับทดสอบ)</button>
+</div>
+<div style="padding: 12px 16px 32px; background: #FFFFFF; border-top: 1px solid #EDEDED; display: flex; flex-direction: column; gap: 8px">
+<span style="text-align: center; font-size: 12px; color: #6B6B6B">อาจมีการกันวงเงิน ฿1 เพื่อตรวจสอบบัตร และจะคืนอัตโนมัติ</span>
+<button type="button" onClick="{{submit}}" aria-disabled="{{notValidStr}}" style="height: 56px; border-radius: 16px; border: 0; background: {{goBg}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; cursor: pointer; pointer-events: {{goPe}}">เพิ่มบัตร</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{showOtp}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 50; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: flex-end">
+<div class="cx-sheet" role="dialog" aria-label="ยืนยันตัวตนกับธนาคาร" style="background: #FFFFFF; border-radius: 26px 26px 0 0; padding: 10px 20px 30px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<span style="width: 40px; height: 4px; border-radius: 2px; background: #DADADA"></span>
+<span style="margin-top: 4px; height: 26px; padding: 0 12px; border-radius: 8px; background: #F4F4F4; font-size: 12px; font-weight: 700; color: #3A3A3A; display: flex; align-items: center; gap: 6px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#146C3E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"></path></svg>{{pvBrand}} Secure · 3-D Secure</span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 19px; color: #1F1F1F">ยืนยันตัวตนกับธนาคาร</span>
+<span style="font-size: 13.5px; line-height: 1.55; color: #6B6B6B">กรอกรหัส OTP ที่ธนาคารส่งไปยังเบอร์ ***-***-[0000]<br>สำหรับบัตร •••• {{pvLast}}</span>
+<div class="{{otpShake}}" style="display: flex; gap: 8px; margin: 6px 0">
+<sc-for list="{{boxes}}" as="b" hint-placeholder-count="6"><span style="width: 44px; height: 52px; box-sizing: border-box; border-radius: 12px; border: 2px solid {{b.bd}}; background: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; color: #1F1F1F">{{b.v}}</span></sc-for>
+</div>
+<sc-if value="{{otpErr}}" hint-placeholder-val="{{ false }}"><span style="font-size: 12.5px; font-weight: 600; color: #B42318">รหัสไม่ถูกต้อง กรุณาลองอีกครั้ง</span></sc-if>
+<div style="display: grid; grid-template-columns: repeat(3, 72px); gap: 8px">
+<sc-for list="{{keys}}" as="k" hint-placeholder-count="12"><button type="button" onClick="{{k.press}}" aria-label="{{k.aria}}" style="height: 46px; border-radius: 12px; border: 0; background: {{k.bg}}; font-family: inherit; font-size: 20px; font-weight: 600; color: #1F1F1F; cursor: pointer">{{k.label}}</button></sc-for>
+</div>
+<button type="button" onClick="{{autoOtp}}" style="border: 0; background: transparent; font-family: inherit; font-size: 13px; font-weight: 600; color: #C42D00; cursor: pointer; padding: 4px">วางรหัสจาก SMS (ตัวอย่าง 123456)</button>
+<button type="button" onClick="{{cancelOtp}}" style="border: 0; background: transparent; font-family: inherit; font-size: 13.5px; font-weight: 600; color: #6B6B6B; cursor: pointer; padding: 4px">ยกเลิก</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{showBusy}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" role="status" style="position: absolute; inset: 0; z-index: 55; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center">
+<div style="width: 240px; padding: 22px; border-radius: 22px; background: #FFFFFF; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center"><svg class="cx-spin" aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2.4" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"></path></svg><span style="font-size: 15px; font-weight: 700; color: #1F1F1F">กำลังตรวจสอบบัตร…</span><span style="font-size: 12.5px; color: #6B6B6B">กรุณาอย่าปิดหน้านี้</span></div>
+</div>
+</sc-if>
+
+<sc-if value="{{showResult}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 60; background: #F6F6F6; display: flex; flex-direction: column; align-items: center; padding: 140px 20px 32px; box-sizing: border-box; text-align: center">
+<sc-if value="{{resOk}}" hint-placeholder-val="{{ true }}">
+<span class="cx-pop cx-ring" style="width: 84px; height: 84px; border-radius: 50%; background: #1E9E5A; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 10px #E7F6EE"><svg aria-hidden="true" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg></span>
+<h2 class="cx-rise" style="margin: 26px 0 6px; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 25px; color: #1F1F1F">เพิ่มบัตรสำเร็จ</h2>
+<span class="cx-rise" style="font-size: 15px; color: #5C5C5C">{{pvBrandName}} •••• {{pvLast}}{{defNote}}</span>
+</sc-if>
+<sc-if value="{{resFail}}" hint-placeholder-val="{{ false }}">
+<span class="cx-pop" style="width: 84px; height: 84px; border-radius: 50%; background: #E5484D; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 10px #FDECEC"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></span>
+<h2 class="cx-rise" style="margin: 26px 0 6px; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 25px; color: #1F1F1F">เพิ่มบัตรไม่สำเร็จ</h2>
+<span class="cx-rise" style="font-size: 14.5px; line-height: 1.6; color: #5C5C5C">ธนาคารปฏิเสธการผูกบัตร •••• {{pvLast}}<br>กรุณาตรวจสอบข้อมูลบัตร หรือติดต่อธนาคารผู้ออกบัตร</span>
+</sc-if>
+<div style="flex: 1"></div>
+<div style="align-self: stretch; display: flex; flex-direction: column; gap: 10px">
+<sc-if value="{{resOkBack}}" hint-placeholder-val="{{ false }}"><a href="{{backHref}}" style="width: 100%; height: 56px; border-radius: 16px; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; text-decoration: none; display: flex; align-items: center; justify-content: center">กลับไปชำระเงิน</a></sc-if>
+<sc-if value="{{resOkList}}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{backToList}}" style="width: 100%; height: 56px; border-radius: 16px; border: 0; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; cursor: pointer">เสร็จสิ้น</button></sc-if>
+<sc-if value="{{resFail}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{retry}}" style="width: 100%; height: 56px; border-radius: 16px; border: 0; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; cursor: pointer">แก้ไขข้อมูลบัตร</button>
+<button type="button" onClick="{{backToList}}" style="width: 100%; height: 50px; margin-top: 10px; border-radius: 16px; border: 1.5px solid #E0E0E0; background: #FFFFFF; color: #1F1F1F; font-family: inherit; font-weight: 600; font-size: 16px; cursor: pointer">กลับไปหน้าจัดการบัตร</button></sc-if>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"screen":{"editor":"enum","options":["รายการบัตร","เพิ่มบัตร","ยืนยัน OTP","สำเร็จ","ไม่สำเร็จ"],"default":"รายการบัตร"},"cards":{"editor":"enum","options":["มีบัตร","ยังไม่มีบัตร"],"default":"มีบัตร"},"result":{"editor":"enum","options":["สำเร็จ","ถูกปฏิเสธ"],"default":"สำเร็จ"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+static {
+const P = this.prototype;
+const TR = {"หรือ": "or", "และ": " and ", "ย้อนกลับ": "Back", "แก้ไข": "Edit", "ยืนยัน": "Confirm", "ลบ": "Delete", "แล้ว": "", "ชื่อ": "First name", "นามสกุล": "Last name", "เติมเงิน": "Top up", "ระบบ": "System", "ว่าง": "Available", "ยกเลิก": "Cancel", "ปิด": "Closed", "จัดการบัตร": "Manage cards", "เพิ่ม": "Increase", "เสร็จสิ้น": "Done", "เพิ่มบัตรใหม่": "Add new card", "เติมเงินอัตโนมัติ": "Auto top-up", "ลองอีกครั้ง": "Try again", "สำเร็จ": "Successful", "ไม่สำเร็จ": "Failed", "✓ บัตรหลัก · ใช้ชาร์จและเติมเงินอัตโนมัติ": "✓ Main card · used for charging and auto top-up", "ตั้งเป็นบัตรหลัก": "Set as main card", "ยังไม่มีบัตรที่ผูกไว้": "No cards linked yet", "เพิ่มบัตรเครดิต/เดบิต เพื่อชาร์จและเติมเงินได้ในแตะเดียว": "Add a credit/debit card to charge and top up in one tap.", "ข้อมูลบัตรเข้ารหัสตามมาตรฐาน PCI DSS โดยผู้ให้บริการรับชำระเงิน [ชื่อผู้ให้บริการ] · Charge X ไม่เก็บเลข CVV": "Card data is encrypted to PCI DSS by our payment provider [provider name] · Charge X never stores your CVV", "ลบบัตร": "Remove card", "ชื่อบนบัตร": "Name on card", "หมดอายุ": "Expires", "หมายเลขบัตร": "Card number", "วันหมดอายุ": "Expiry date", "กรอกข้อมูลตัวอย่าง (สำหรับทดสอบ)": "Fill sample data (for testing)", "อาจมีการกันวงเงิน ฿1 เพื่อตรวจสอบบัตร และจะคืนอัตโนมัติ": "A ฿1 hold may be placed to verify the card and is released automatically", "เพิ่มบัตร": "Add card", "ยืนยันตัวตนกับธนาคาร": "Verify with your bank", "กรอกรหัส OTP ที่ธนาคารส่งไปยังเบอร์ ***-***-[0000]": "Enter the OTP your bank sent to ***-***-[0000]", "รหัสไม่ถูกต้อง กรุณาลองอีกครั้ง": "Incorrect code, please try again", "วางรหัสจาก SMS (ตัวอย่าง 123456)": "Paste code from SMS (sample 123456)", "กำลังตรวจสอบบัตร…": "Verifying card…", "กรุณาอย่าปิดหน้านี้": "Please keep this screen open", "เพิ่มบัตรสำเร็จ": "Card added", "เพิ่มบัตรไม่สำเร็จ": "Couldn't add card", "กรุณาตรวจสอบข้อมูลบัตร หรือติดต่อธนาคารผู้ออกบัตร": "Check your card details or contact your card issuer", "กลับไปชำระเงิน": "Back to payment", "แก้ไขข้อมูลบัตร": "Edit card details", "กลับไปหน้าจัดการบัตร": "Back to Manage cards", "ยืนยันการลบบัตร": "Confirm card removal", "ชื่อ-นามสกุล (ภาษาอังกฤษ)": "Full name (as on card)", "ยังไม่มีบัตร": "No cards", "บัตรเครดิต": "Credit card", "บัตรเดบิต": "Debit card", "ยืนยัน OTP": "Verify OTP", "บัตร": "Card", "ตั้ง ": "Set ", " เป็นบัตรหลักแล้ว": " as main card", "ไม่รองรับประเภทบัตรนี้ (รองรับ Visa, Mastercard, JCB)": "Card type not supported (Visa, Mastercard and JCB only)", "วันหมดอายุไม่ถูกต้อง": "Invalid expiry date", "ถูกปฏิเสธ": "Declined", "บัตรเครดิต/เดบิต": "Credit/debit card", "บัตรนี้เป็นบัตรหลัก ระบบจะตั้งบัตรที่เหลือใบแรกเป็นบัตรหลักแทน": "This is your main card. Your next card will become the main card.", "หลังลบ คุณจะต้องเพิ่มบัตรใหม่ก่อนชำระด้วยบัตร": "You'll need to add a new card before paying by card.", "คุณสามารถเพิ่มบัตรนี้กลับมาได้ภายหลัง": "You can add this card again later.", "ลบบัตรเรียบร้อยแล้ว": "Card removed", "ยังไม่มี": "None yet", "แก้ไขข้อมูล": "Edit details", "ภาษา": "Language", "กม.": "km", "ชม.": "hrs", "นาที": "min"};
+const PT = [["^บัตรที่ผูกไว้\\ \\((.+?)\\)$", "Linked cards ({1})"], ["^หมดอายุ\\ (.+?)\\ ·\\ (.+?)$", "Expires {1} · {2}"], ["^ลบบัตร\\ (.+?)\\?$", "Remove {1}?"], ["^สำหรับบัตร\\ ••••\\ (.+?)$", "for card •••• {1}"], ["^ธนาคารปฏิเสธการผูกบัตร\\ ••••\\ (.+?)$", "Your bank declined linking card •••• {1}"], ["^ลบบัตร\\ (.+?)$", "Remove card {1}"]].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["ข้อมูลบัตรเข้ารหัสตามมาตรฐาน PCI DSS โดยผู้ให้บริการรับชำระเงิน [ชื่อผู้ให้บริการ] · Charge X ไม่เก็บเลข CVV", "บัตรนี้เป็นบัตรหลัก ระบบจะตั้งบัตรที่เหลือใบแรกเป็นบัตรหลักแทน", "เพิ่มบัตรเครดิต/เดบิต เพื่อชาร์จและเติมเงินได้ในแตะเดียว", "อาจมีการกันวงเงิน ฿1 เพื่อตรวจสอบบัตร และจะคืนอัตโนมัติ", "ไม่รองรับประเภทบัตรนี้ (รองรับ Visa, Mastercard, JCB)", "กรอกรหัส OTP ที่ธนาคารส่งไปยังเบอร์ ***-***-[0000]", "กรุณาตรวจสอบข้อมูลบัตร หรือติดต่อธนาคารผู้ออกบัตร", "หลังลบ คุณจะต้องเพิ่มบัตรใหม่ก่อนชำระด้วยบัตร", "✓ บัตรหลัก · ใช้ชาร์จและเติมเงินอัตโนมัติ", "คุณสามารถเพิ่มบัตรนี้กลับมาได้ภายหลัง", "กรอกข้อมูลตัวอย่าง (สำหรับทดสอบ)", "วางรหัสจาก SMS (ตัวอย่าง 123456)", "รหัสไม่ถูกต้อง กรุณาลองอีกครั้ง", "ชื่อ-นามสกุล (ภาษาอังกฤษ)", "ยังไม่มีบัตรที่ผูกไว้", "ยืนยันตัวตนกับธนาคาร", "กลับไปหน้าจัดการบัตร", "วันหมดอายุไม่ถูกต้อง", "กรุณาอย่าปิดหน้านี้", "ลบบัตรเรียบร้อยแล้ว", "เพิ่มบัตรไม่สำเร็จ", "เติมเงินอัตโนมัติ", "กำลังตรวจสอบบัตร…", " เป็นบัตรหลักแล้ว", "ตั้งเป็นบัตรหลัก", "บัตรเครดิต/เดบิต", "เพิ่มบัตรสำเร็จ", "แก้ไขข้อมูลบัตร", "ยืนยันการลบบัตร", "กลับไปชำระเงิน", "เพิ่มบัตรใหม่", "ยังไม่มีบัตร", "ลองอีกครั้ง", "หมายเลขบัตร", "แก้ไขข้อมูล", "จัดการบัตร", "ชื่อบนบัตร", "วันหมดอายุ", "บัตรเครดิต", "ยืนยัน OTP", "เสร็จสิ้น", "ไม่สำเร็จ", "เพิ่มบัตร", "บัตรเดบิต", "ถูกปฏิเสธ", "ย้อนกลับ", "เติมเงิน", "ยังไม่มี", "นามสกุล", "หมดอายุ", "ยืนยัน", "ยกเลิก", "สำเร็จ", "ลบบัตร", "แก้ไข", "เพิ่ม", "ตั้ง ", "หรือ", "ชื่อ", "ระบบ", "ว่าง", "บัตร", "ภาษา", "นาที", "และ", "ปิด", "กม.", "ชม."];
+const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
+const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
+const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
+P.cxLang = function () { if (this.state && (this.state.lang === 'en' || this.state.lang === 'th')) return this.state.lang; const pl = this.props.lang; if (pl === 'English') return 'en'; if (pl === 'ไทย') return 'th'; try { return localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) { return 'th'; } };
+P.cxWalk = function () {
+const r = this._cxRoot; if (!r || typeof document === 'undefined') return;
+const en = this.cxLang() === 'en';
+const O = this._cxOrig || (this._cxOrig = new Map());
+if (!en) { O.forEach((v, node) => { if (v.t != null && node.nodeValue === v.e) node.nodeValue = v.t; if (v.a) for (const a in v.a) { if (node.getAttribute(a) === v.a[a].e) node.setAttribute(a, v.a[a].t); } }); O.clear(); if (this._cxObs) { this._cxObs.disconnect(); this._cxObs = null; } return; }
+const w = document.createTreeWalker(r, 5, { acceptNode: (x) => (x.nodeType === 1 && x.getAttribute('translate') === 'no') ? 2 : 1 });
+let x = w.currentNode;
+while (x) {
+if (x.nodeType === 3) { const v = x.nodeValue; if (THR.test(v)) { const e = tx(v); if (e !== v) { O.set(x, { t: v, e }); x.nodeValue = e; } } }
+else if (x.nodeType === 1) { for (const a of ATTRS) { const v = x.getAttribute(a); if (v && THR.test(v)) { const e = tx(v); if (e !== v) { const rec = O.get(x) || {}; rec.a = rec.a || {}; rec.a[a] = { t: v, e }; O.set(x, rec); x.setAttribute(a, e); } } } }
+x = w.nextNode();
+}
+if (!this._cxObs && typeof MutationObserver !== 'undefined') { this._cxObs = new MutationObserver(() => { if (this._cxQ) return; this._cxQ = true; Promise.resolve().then(() => { this._cxQ = false; this.cxWalk(); }); }); this._cxObs.observe(r, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS }); }
+};
+const cdm = P.componentDidMount, cdu = P.componentDidUpdate, cwu = P.componentWillUnmount, rv = P.renderVals;
+P.componentDidMount = function () { if (cdm) cdm.call(this); this.cxWalk(); setTimeout(() => this.cxWalk(), 60); if (typeof window !== 'undefined') { this._cxL = (e) => { if (!e || !e.key || e.key === 'cx-lang') { this.cxWalk(); } }; window.addEventListener('storage', this._cxL); window.addEventListener('cx-lang', this._cxL); } };
+P.componentDidUpdate = function (a, b) { if (cdu) cdu.call(this, a, b); this.cxWalk(); };
+P.componentWillUnmount = function () { if (this._cxObs) this._cxObs.disconnect(); if (this._cxL && typeof window !== 'undefined') { window.removeEventListener('storage', this._cxL); window.removeEventListener('cx-lang', this._cxL); } if (cwu) cwu.call(this); };
+P.renderVals = function () { const v = rv.call(this) || {}; v.cxRef = (el) => { this._cxRoot = el; }; v.cxLangProp = this.props.lang || 'ตามแอป'; return v; };
+}
+
+static {
+const P = this.prototype;
+const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide','News','Notify','Home','Station','Scan','Confirm','Charging','Complete','Wallet','Topup','Cards','Vehicles','Saved','Prefs','Help','Support','Privacy','Profile'];
+const rv = P.renderVals;
+P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
+}
+constructor(props) { super(props); let open = null, from = 'Wallet'; try { open = localStorage.getItem('cx-cards-open'); from = localStorage.getItem('cx-cards-from') || 'Wallet'; localStorage.removeItem('cx-cards-open'); localStorage.removeItem('cx-cards-from'); } catch (e) {} if (['Wallet', 'Complete', 'Topup', 'Confirm', 'Profile'].indexOf(from) < 0) from = 'Wallet'; this.state = Object.assign({ from: from }, { cards: props.cards === 'ยังไม่มีบัตร' ? [] : [{ id: 1, brand: 'visa', last: '[0000]', exp: '[MM/YY]', type: 'บัตรเครดิต' }, { id: 2, brand: 'mc', last: '[1111]', exp: '[MM/YY]', type: 'บัตรเดบิต' }], def: props.cards === 'ยังไม่มีบัตร' ? null : 1, num: '', name: '', exp: '', cvv: '', setDef: false, otp: '', otpErr: false, del: null, toast: '' }, this.screenState(props.screen));  if (open === 'add') Object.assign(this.state, { step: 'add', setDef: this.state.cards.length === 0 }); }
+screenState(s) {
+const demo = { num: '4111 1111 1111 1234', name: 'SAWANYA S', exp: '12/29', cvv: '123' };
+if (s === 'เพิ่มบัตร') return { step: 'add' };
+if (s === 'ยืนยัน OTP') return Object.assign({ step: 'otp', otp: '12' }, demo);
+if (s === 'สำเร็จ') return Object.assign({ step: 'result', ok: true }, demo);
+if (s === 'ไม่สำเร็จ') return Object.assign({ step: 'result', ok: false }, demo);
+return { step: 'list' };
+}
+componentDidUpdate(pp) {
+if (pp.screen !== this.props.screen) this.setState(this.screenState(this.props.screen));
+if (pp.cards !== this.props.cards) { const none = this.props.cards === 'ยังไม่มีบัตร'; this.setState({ cards: none ? [] : [{ id: 1, brand: 'visa', last: '[0000]', exp: '[MM/YY]', type: 'บัตรเครดิต' }, { id: 2, brand: 'mc', last: '[1111]', exp: '[MM/YY]', type: 'บัตรเดบิต' }], def: none ? null : 1 }); }
+}
+componentWillUnmount() { clearTimeout(this._t); clearTimeout(this._toast); }
+renderVals() {
+const accent = this.props.accent ?? '#FC3901';
+const st = this.state;
+const BR = { visa: ['VISA', 'Visa', '#1A1F71'], mc: ['MC', 'Mastercard', '#EB001B'], jcb: ['JCB', 'JCB', '#0B6E3A'], unk: ['CARD', 'บัตร', '#5C5C5C'] };
+const digits = st.num.replace(/\D/g, '');
+const brandOf = (d) => d.startsWith('4') ? 'visa' : /^5[1-5]|^2[2-7]/.test(d) ? 'mc' : d.startsWith('35') ? 'jcb' : 'unk';
+const nb = brandOf(digits);
+const toast = (t) => { this.setState({ toast: t }); clearTimeout(this._toast); this._toast = setTimeout(() => this.setState({ toast: '' }), 2200); };
+const cards = st.cards.map((c) => {
+const b = BR[c.brand]; const isDef = st.def === c.id;
+return { brand: b[0], brandName: b[1], bg: b[2], last: c.last, exp: c.exp, type: c.type, isDefault: isDef, notDefault: !isDef,
+border: isDef ? '1.5px solid ' + accent : '1px solid transparent',
+makeDefault: () => { this.setState({ def: c.id }); toast('ตั้ง ' + b[1] + ' •••• ' + c.last + ' เป็นบัตรหลักแล้ว'); },
+ask: () => this.setState({ del: c.id }) };
+});
+const delCard = st.cards.find((c) => c.id === st.del);
+const mm = parseInt(st.exp.slice(0, 2), 10);
+const expOk = /^\d{2}\/\d{2}$/.test(st.exp) && mm >= 1 && mm <= 12;
+const numOk = digits.length === 16;
+const valid = numOk && expOk && st.cvv.length === 3 && st.name.trim().length > 1;
+let err = '';
+if (digits.length > 0 && digits.length === 16 && nb === 'unk') err = 'ไม่รองรับประเภทบัตรนี้ (รองรับ Visa, Mastercard, JCB)';
+else if (st.exp.length === 5 && !expOk) err = 'วันหมดอายุไม่ถูกต้อง';
+const ok2 = valid && !err;
+const pvNum = (digits + '################').slice(0, 16).replace(/#/g, '•').replace(/(.{4})/g, '$1 ').trim();
+const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'].map((k) => ({ label: k, aria: k === '⌫' ? 'ลบ' : k || 'ว่าง', bg: k ? '#F4F4F4' : 'transparent',
+press: () => { if (!k) return; let o = this.state.otp; o = k === '⌫' ? o.slice(0, -1) : (o + k).slice(0, 6); this.setState({ otp: o, otpErr: false }); if (o.length === 6) verify(o); } }));
+const verify = (o) => {
+if (o !== '123456') { this._t = setTimeout(() => this.setState({ otpErr: true, otp: '' }), 250); return; }
+this._t = setTimeout(() => { this.setState({ step: 'busy' }); this._t = setTimeout(() => {
+const fail = this.props.result === 'ถูกปฏิเสธ';
+if (fail) { this.setState({ step: 'result', ok: false }); return; }
+const d = this.state.num.replace(/\D/g, ''); const id = Date.now();
+const nc = { id, brand: brandOf(d), last: d.slice(-4), exp: this.state.exp, type: 'บัตรเครดิต/เดบิต' };
+const cardsN = this.state.cards.concat([nc]);
+this.setState({ step: 'result', ok: true, cards: cardsN, def: (this.state.setDef || this.state.def == null) ? id : this.state.def });
+}, 1500); }, 250);
+};
+const resetForm = { num: '', name: '', exp: '', cvv: '', setDef: false, otp: '', otpErr: false };
+return {
+accent, cards, count: st.cards.length, hasCards: st.cards.length > 0, noCards: st.cards.length === 0,
+showToast: !!st.toast, toast: st.toast,
+showDel: !!delCard, delName: delCard ? BR[delCard.brand][1] + ' •••• ' + delCard.last : '',
+delHint: delCard && st.def === delCard.id && st.cards.length > 1 ? 'บัตรนี้เป็นบัตรหลัก ระบบจะตั้งบัตรที่เหลือใบแรกเป็นบัตรหลักแทน' : (st.cards.length === 1 ? 'หลังลบ คุณจะต้องเพิ่มบัตรใหม่ก่อนชำระด้วยบัตร' : 'คุณสามารถเพิ่มบัตรนี้กลับมาได้ภายหลัง'),
+cancelDel: () => this.setState({ del: null }),
+doDel: () => { const rest = st.cards.filter((c) => c.id !== st.del); this.setState({ cards: rest, del: null, def: st.def === st.del ? (rest[0] ? rest[0].id : null) : st.def }); toast('ลบบัตรเรียบร้อยแล้ว'); },
+openAdd: () => this.setState(Object.assign({ step: 'add' }, resetForm, { setDef: st.cards.length === 0 })),
+closeAdd: () => this.setState({ step: 'list' }),
+showAdd: st.step === 'add' || st.step === 'otp' || st.step === 'busy', showOtp: st.step === 'otp', showBusy: st.step === 'busy', showResult: st.step === 'result',
+num: st.num, name: st.name, exp: st.exp, cvv: st.cvv,
+onNum: (e) => { const d = e.target.value.replace(/\D/g, '').slice(0, 16); this.setState({ num: d.replace(/(.{4})/g, '$1 ').trim() }); },
+onName: (e) => this.setState({ name: e.target.value.toUpperCase().replace(/[^A-Z .'-]/g, '').slice(0, 26) }),
+onExp: (e) => { let d = e.target.value.replace(/\D/g, '').slice(0, 4); if (d.length > 2) d = d.slice(0, 2) + '/' + d.slice(2); this.setState({ exp: d }); },
+onCvv: (e) => this.setState({ cvv: e.target.value.replace(/\D/g, '').slice(0, 3) }),
+hasErr: !!err, err,
+setDef: st.setDef, defStr: st.setDef ? 'true' : 'false', toggleDef: () => this.setState({ setDef: !st.setDef }),
+defBg: st.setDef ? accent : '#FFFFFF', defBorder: st.setDef ? accent : '#BDBDBD',
+pvBrand: BR[nb][0], pvBrandName: BR[nb][1], pvNum, pvName: st.name || 'YOUR NAME', pvExp: st.exp || 'MM/YY', pvLast: digits.slice(-4) || '••••',
+fillDemo: () => this.setState({ num: '4111 1111 1111 1234', name: 'SAWANYA S', exp: '12/29', cvv: '123' }),
+goBg: ok2 ? accent : '#BDBDBD', goPe: ok2 ? 'auto' : 'none', notValidStr: ok2 ? 'false' : 'true',
+submit: () => { if (ok2) this.setState({ step: 'otp', otp: '', otpErr: false }); },
+boxes: [0, 1, 2, 3, 4, 5].map((i) => ({ v: st.otp[i] || '', bd: st.otpErr ? '#E5484D' : (i === st.otp.length ? accent : '#E0E0E0') })),
+keys, otpErr: st.otpErr, otpShake: st.otpErr ? 'cx-shake' : '',
+autoOtp: () => { this.setState({ otp: '123456', otpErr: false }); verify('123456'); },
+cancelOtp: () => this.setState({ step: 'add', otp: '' }),
+resOk: !!st.ok, resOkBack: !!st.ok && st.from === 'Complete', resOkList: !!st.ok && st.from !== 'Complete', backHref: st.from + (this.props.theme === 'dark' ? 'Dark' : '') + '.dc.html', resFail: !st.ok, defNote: st.ok && st.def === (st.cards[st.cards.length - 1] || {}).id ? ' · บัตรหลัก' : '',
+backToList: () => this.setState(Object.assign({ step: 'list' }, resetForm)),
+retry: () => this.setState({ step: 'add', otp: '' })
+};
+}
+}
+</script>
+</body>
+</html>

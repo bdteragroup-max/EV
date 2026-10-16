@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>Charge X — Profile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#C42D00}a:hover{color:#9E2400}
+[data-theme="dark"]{color-scheme:dark}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFFFFF"]{background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #F4F4F4"]{background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #F4F4F4; color"]{background-color:#0F0F11!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #333333"]{background-color:#3A3A40!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #1F1F1F"],[style*="color: #2B2B2B"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #C42D00"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #EDEDED"],[style*="solid #EFEFEF"]){border-color:#35353B!important}
+[data-theme="dark"] [stroke="#1F1F1F"]{stroke:#F3F3F4}
+[data-theme="dark"][data-theme][style]{background-color:#000000!important}
+[data-theme="dark"][data-theme][style]{color:#F3F3F4!important}
+[data-theme="dark"] :is(button,input,textarea,select,legend,label){color:inherit}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(31, 31, 31)"],[style*="color: rgb(43, 43, 43)"],[style*="color: rgb(0, 0, 0)"],[style*="color: #000"],[style*="color: black"],[style*="color: #1f1f1f"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(58, 58, 58)"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(92, 92, 92)"],[style*="color: rgb(107, 107, 107)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(196, 45, 0)"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(20, 108, 62)"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 255, 255)"],[style*="background-color: rgb(255, 255, 255)"]){background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(244, 244, 244)"],[style*="background: rgb(246, 246, 246)"],[style*="background: rgb(240, 240, 240)"],[style*="background-color: rgb(244, 244, 244)"],[style*="background-color: rgb(246, 246, 246)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(31, 31, 31)"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(51, 51, 51)"]{background-color:#3A3A40!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(237, 237, 237)"],[style*="solid rgb(239, 239, 239)"]){border-color:#35353B!important}
+.cx-fablabel{color:#C42D00}
+[data-theme="dark"] .cx-fablabel{color:#FF7A4D}
+[data-theme="dark"] .cx-fab{box-shadow:0 6px 14px rgba(252,57,1,.35)!important}
+@keyframes cxFabHalo{0%{transform:scale(1);opacity:.45}100%{transform:scale(1.55);opacity:0}}
+.cx-fabhalo{animation:cxFabHalo 2s ease-out infinite;transform-origin:center}
+@media (prefers-reduced-motion: reduce){.cx-fabhalo{animation:none;opacity:0}}
+nav > a{position:relative;z-index:1}
+[data-theme="dark"] .cx-navbg path{fill:#1C1C1E}
+@keyframes cxChgP{0%,100%{box-shadow:0 0 0 4px #FFFFFE,0 8px 18px rgba(252,57,1,.45),0 0 0 4px rgba(252,57,1,.35)}50%{box-shadow:0 0 0 4px #FFFFFE,0 8px 18px rgba(252,57,1,.45),0 0 0 12px rgba(252,57,1,0)}}
+.cx-chg{animation:cxChgP 1.8s ease-out infinite}
+@keyframes cxChgPD{0%,100%{box-shadow:0 0 0 4px #1C1C1E,0 8px 18px rgba(252,57,1,.5),0 0 0 4px rgba(252,57,1,.4)}50%{box-shadow:0 0 0 4px #1C1C1E,0 8px 18px rgba(252,57,1,.5),0 0 0 12px rgba(252,57,1,0)}}
+[data-theme="dark"] .cx-chg{animation-name:cxChgPD}
+@media (prefers-reduced-motion: reduce){.cx-chg{animation:none}}
+.cx-pscroll{scrollbar-width:none}.cx-pscroll::-webkit-scrollbar{display:none}.cx-pscroll>*{flex-shrink:0}
+@keyframes cxSheet{from{transform:translateY(100%)}to{transform:none}}
+.cx-sheet{animation:cxSheet .35s cubic-bezier(.2,.9,.3,1) both}
+@keyframes cxFade{from{opacity:0}to{opacity:1}}
+.cx-fade{animation:cxFade .25s ease-out both}
+@keyframes cxSpin{to{transform:rotate(360deg)}}
+.cx-spin{animation:cxSpin .8s linear infinite;transform-origin:center}
+@media (prefers-reduced-motion: reduce){.cx-sheet,.cx-fade,.cx-spin{animation:none}}
+.cx-escroll{scrollbar-width:none}.cx-escroll::-webkit-scrollbar{display:none}.cx-escroll>*{flex-shrink:0}
+.cx-in3{width:100%;height:50px;box-sizing:border-box;border-radius:14px;border:1.5px solid #E0E0E0;background:#FFFFFF;padding:0 14px;font-family:inherit;font-size:16px;color:#1F1F1F;outline:none}
+.cx-in3:focus{border-color:#FC3901}
+.cx-in3::placeholder{color:#9A9A9A}
+.cx-in3[aria-invalid="true"]{border-color:#E5484D}
+[data-theme="dark"] .cx-in3{background:#1C1C1E;border-color:#35353B;color:#F3F3F4}
+[data-theme="dark"] .cx-in3:focus{border-color:#FC3901}
+[data-theme="dark"] .cx-in3[aria-invalid="true"]{border-color:#FF8A80}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #B42318"]{color:#FF8A80!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF4E0"]{background-color:rgba(240,160,48,.16)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #B86A00"]{color:#F0A84A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF1EB"]{background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #F6F6F6"]{background-color:#000000!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="solid #E0E0E0"]{border-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF7F3"]{background-color:rgba(252,57,1,.12)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="solid #E6E6E6"]{border-color:#35353B!important}
+</style>
+</helmet>
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; box-sizing: border-box; background: #F4F4F4; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; position: relative; overflow: hidden">
+<div class="cx-pscroll" style="height: 844px; box-sizing: border-box; overflow-y: auto; padding: 52px 16px 104px; display: flex; flex-direction: column; gap: 12px">
+<h1 style="margin: 0 4px; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 28px">{{t.title}}</h1>
+
+<div style="background: #FFFFFF; border-radius: 24px; padding: 18px; display: flex; align-items: center; gap: 14px">
+<span style="width: 60px; height: 60px; flex: none; border-radius: 50%; box-shadow: 0 0 0 3px #FFFFFE, 0 0 0 5px #C9A227; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 26px; display: flex; align-items: center; justify-content: center">{{initial}}</span>
+<span style="flex: 1; display: flex; flex-direction: column; gap: 2px; font-weight: 700"><span style="font-family: Sarabun, sans-serif; font-weight: 600; font-size: 20px">{{fullName}}</span><span style="font-size: 14px; color: rgb(92, 92, 92)"><span style="font-weight: normal">{{phoneShow}}</span></span></span>
+<button type="button" onClick="{{openEdit}}" aria-label="{{t.aEdit}}" style="width: 44px; height: 44px; border: 0; cursor: pointer; border-radius: 14px; background: #F4F4F4; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4"></path></svg></button>
+</div>
+
+<div style="background: #1F1F1F; color: #FFFFFF; border-radius: 24px; padding: 18px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<span style="font-size: 13px; font-weight: 600; color: #E0BE5A">{{t.myCar}}</span>
+<a href="{{L.Vehicles}}" style="font-size: 14px; font-weight: 600; color: #FFFFFF; text-decoration: none; padding: 8px 0">{{t.manageCars}} ({{carCount}})</a>
+</div>
+<div style="display: flex; align-items: center; gap: 14px">
+<span style="width: 52px; height: 52px; border-radius: 16px; background: #333333; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M3 13l2-6a2 2 0 0 1 2-1.4h10A2 2 0 0 1 19 7l2 6v4h-2.5M5.5 17H3v-4h18"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg></span>
+<span style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px">{{carName}}</span>
+<span style="font-size: 13px; color: #BDBDBD">{{carSub}}</span>
+</span>
+</div>
+</div>
+
+<div style="background: #FFFFFF; border-radius: 24px; padding: 6px 16px; display: flex; flex-direction: column">
+<a href="{{L.Saved}}" style="display: flex; align-items: center; gap: 14px; min-height: 50px; text-decoration: none; color: #1F1F1F; border-bottom: 1px solid #EFEFEF">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg>
+<span style="flex: 1; font-size: 15px; font-weight: 500">{{t.saved}}</span>
+<span style="font-size: 14px; color: #5C5C5C">{{t.savedN}}</span>
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></a>
+<a href="{{L.Cards}}" onClick="{{toCards}}" style="display: flex; align-items: center; gap: 14px; min-height: 50px; text-decoration: none; color: #1F1F1F; border-bottom: 1px solid #EFEFEF">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3zM3 10h18M7 15h3"></path></svg>
+<span style="flex: 1; font-size: 15px; font-weight: 500">{{t.cards}}</span>
+<span style="font-size: 14px; color: #5C5C5C">{{t.cardsN}}</span>
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></a>
+<a href="{{L.Prefs}}" style="display: flex; align-items: center; gap: 14px; min-height: 50px; text-decoration: none; color: #1F1F1F; border-bottom: 1px solid #EFEFEF">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg>
+<span style="flex: 1; font-size: 15px; font-weight: 500">{{t.prefs}}</span>
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></a>
+<label style="display: flex; align-items: center; gap: 14px; min-height: 50px; border-bottom: 1px solid #EFEFEF; cursor: pointer">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+<span style="flex: 1; font-size: 15px; font-weight: 500">{{t.notif}}</span>
+<button role="switch" aria-checked="{{notifOn}}" aria-label="{{t.notif}}" onClick="{{toggle}}" style="width: 52px; height: 32px; border-radius: 16px; border: 0; padding: 3px; background: {{trackBg}}; display: flex; justify-content: {{knobPos}}; cursor: pointer">
+<span style="width: 26px; height: 26px; border-radius: 50%; background: #FFFFFE; box-shadow: 0 1px 3px rgba(0,0,0,0.25)"></span>
+</button>
+</label>
+<div style="display: flex; align-items: center; gap: 14px; min-height: 50px; border-bottom: 1px solid #EFEFEF">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+<span style="flex: 1; font-size: 15px; font-weight: 500">{{t.dark}}</span>
+<a href="{{F.Profile}}" role="switch" aria-checked="{{darkStr}}" aria-label="{{t.dark}}" style="width: 52px; height: 32px; border-radius: 16px; display: block; background: #CFCFCF; position: relative; overflow: hidden">
+<sc-if value="{{isDark}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; inset: 0; background: {{accent}}"></span><span style="position: absolute; top: 3px; left: 23px; width: 26px; height: 26px; border-radius: 50%; background: #FFFFFE; box-shadow: 0 1px 3px rgba(0,0,0,0.25)"></span></sc-if>
+<sc-if value="{{isLight}}" hint-placeholder-val="{{ true }}"><span style="position: absolute; top: 3px; left: 3px; width: 26px; height: 26px; border-radius: 50%; background: #FFFFFE; box-shadow: 0 1px 3px rgba(0,0,0,0.25)"></span></sc-if>
+</a>
+</div>
+<a href="#" onClick="{{openLang}}" role="button" style="display: flex; align-items: center; gap: 14px; min-height: 50px; text-decoration: none; color: #1F1F1F; border-bottom: 1px solid #EFEFEF">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg>
+<span style="flex: 1; font-size: 15px; font-weight: 500">{{t.lang}}</span>
+<span style="font-size: 14px; color: #5C5C5C">{{t.langVal}}</span>
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></a>
+<a href="{{L.Help}}" style="display: flex; align-items: center; gap: 14px; min-height: 50px; text-decoration: none; color: #1F1F1F; border-bottom: 1px solid #EFEFEF">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 2h13v-4M9 8h6M9 12h4"></path></svg>
+<span style="flex: 1; font-size: 15px; font-weight: 500">{{t.guide}}</span>
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></a>
+<a href="{{L.Support}}" style="display: flex; align-items: center; gap: 14px; min-height: 50px; text-decoration: none; color: #1F1F1F">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5h0"></path></svg>
+<span style="flex: 1; font-size: 15px; font-weight: 500">{{t.help}}</span>
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></a>
+<a href="{{L.Privacy}}" style="display: flex; align-items: center; gap: 14px; min-height: 50px; text-decoration: none; color: #1F1F1F; border-top: 1px solid #EFEFEF">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6zM9 12l2 2 4-4"></path></svg>
+<span style="flex: 1; font-size: 15px; font-weight: 500">ความเป็นส่วนตัวและข้อกำหนด</span>
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></a>
+</div>
+
+<a href="{{L.Main}}" style="height: 52px; border-radius: 16px; background: #FFFFFF; color: #C42D00; font-weight: 600; font-size: 15px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"></path></svg>{{t.logout}}</a>
+</div>
+
+<nav style="position: absolute; left: 0; right: 0; bottom: 0; height: 84px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding-bottom: 14px; box-sizing: border-box">
+<div aria-hidden="true" style="position: absolute; inset: 0; overflow: hidden; z-index: 0; filter: drop-shadow(0 -4px 14px rgba(0,0,0,0.08))"><svg class="cx-navbg" width="1170" height="84" viewBox="0 0 1170 84" style="position: absolute; top: 0; left: 0; transform: translateX({{nv.bx}}px); transition: transform .5s cubic-bezier(.65,0,.35,1)"><path d="M0 0 H531 C546 0 550 3 556 14 Q567 40 585 40 Q603 40 614 14 C620 3 624 0 639 0 H1170 V84 H0 Z" fill="#FFFFFF"></path></svg></div>
+<span aria-hidden="true" class="cx-fabhalo" style="display: none; position: absolute; z-index: 1; top: -14px; left: 0; width: 48px; height: 48px; border-radius: 50%; background: {{accent}}; translate: {{nv.cx}}px 0; transition: translate .5s cubic-bezier(.65,0,.35,1)"></span>
+<span aria-hidden="true" class="cx-fab" style="position: absolute; z-index: 1; top: -14px; left: 0; width: 48px; height: 48px; border-radius: 50%; background: {{accent}}; box-shadow: 0 6px 14px rgba(252,57,1,0.28); transform: translateX({{nv.cx}}px); transition: transform .5s cubic-bezier(.65,0,.35,1)"></span>
+<a href="{{L.News}}" onClick="{{nv.go0}}" aria-label="{{t.nHome}}" style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; font-size: 11px; font-weight: 500; color: {{nv.c0}}">
+<span style="display: flex; transform: translateY({{nv.y0}}px); transition: transform .5s cubic-bezier(.5,1.6,.4,1)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{nv.ic0}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke .3s"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"></path></svg></span>
+<span style="opacity: {{nv.o0}}; transform: translateY({{nv.ly0}}px); transition: opacity .35s, transform .4s">{{t.nHome}}</span></a>
+<a href="{{L.Home}}" onClick="{{nv.go1}}" aria-label="{{t.nMap}}" style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; font-size: 11px; font-weight: 500; color: {{nv.c1}}">
+<span style="display: flex; transform: translateY({{nv.y1}}px); transition: transform .5s cubic-bezier(.5,1.6,.4,1)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{nv.ic1}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke .3s"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21zM14.5 9.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 1 1 5 0z"></path></svg></span>
+<span style="opacity: {{nv.o1}}; transform: translateY({{nv.ly1}}px); transition: opacity .35s, transform .4s">{{t.nMap}}</span></a>
+<a href="{{L.Scan}}" onClick="{{nv.go2}}" aria-label="{{t.aChg}}" style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; font-size: 11px; font-weight: 500; color: {{nv.c2}}">
+<span class="cx-chg" style="display: flex; width: 46px; height: 46px; margin-top: -20px; border-radius: 50%; align-items: center; justify-content: center; background: linear-gradient(145deg, #FF7A3D 0%, {{accent}} 55%, #C42D00 100%); box-shadow: 0 0 0 4px #FFFFFE, 0 8px 18px rgba(252,57,1,0.45); transform: translateY({{nv.y2}}px); transition: transform .5s cubic-bezier(.5,1.6,.4,1)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{nv.ic2}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke .3s"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg></span>
+<span style="opacity: {{nv.o2}}; transform: translateY({{nv.ly2}}px); transition: opacity .35s, transform .4s">{{t.nChg}}</span></a>
+<a href="{{L.Wallet}}" onClick="{{nv.go3}}" aria-label="{{t.nWallet}}" style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; font-size: 11px; font-weight: 500; color: {{nv.c3}}">
+<span style="display: flex; transform: translateY({{nv.y3}}px); transition: transform .5s cubic-bezier(.5,1.6,.4,1)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{nv.ic3}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke .3s"><path d="M6 6h12a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3zM3 10h18M16 15h2"></path></svg></span>
+<span style="opacity: {{nv.o3}}; transform: translateY({{nv.ly3}}px); transition: opacity .35s, transform .4s">{{t.nWallet}}</span></a>
+<a href="{{L.Profile}}" onClick="{{nv.go4}}" aria-label="{{t.title}}" style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; font-size: 11px; font-weight: 500; color: {{nv.c4}}">
+<span style="display: flex; transform: translateY({{nv.y4}}px); transition: transform .5s cubic-bezier(.5,1.6,.4,1)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{nv.ic4}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke .3s"><path d="M16 8a4 4 0 1 1-8 0a4 4 0 1 1 8 0zM4 21a8 8 0 0 1 16 0"></path></svg></span>
+<span style="opacity: {{nv.o4}}; transform: translateY({{nv.ly4}}px); transition: opacity .35s, transform .4s">{{t.title}}</span></a>
+<a href="{{L.News}}" ref="{{nv.r0}}" tabindex="-1" aria-hidden="true" style="position: absolute; left: 0; bottom: 0; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none"></a>
+<a href="{{L.Home}}" ref="{{nv.r1}}" tabindex="-1" aria-hidden="true" style="position: absolute; left: 0; bottom: 0; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none"></a>
+<a href="{{L.Scan}}" ref="{{nv.r2}}" tabindex="-1" aria-hidden="true" style="position: absolute; left: 0; bottom: 0; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none"></a>
+<a href="{{L.Wallet}}" ref="{{nv.r3}}" tabindex="-1" aria-hidden="true" style="position: absolute; left: 0; bottom: 0; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none"></a>
+<a href="{{L.Profile}}" ref="{{nv.r4}}" tabindex="-1" aria-hidden="true" style="position: absolute; left: 0; bottom: 0; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none"></a>
+</nav>
+<sc-if value="{{showEdit}}" hint-placeholder-val="{{ false }}">
+<div class="cx-sheet" role="dialog" aria-label="แก้ไขข้อมูลส่วนตัว" style="position: absolute; inset: 0; z-index: 40; background: #F6F6F6; display: flex; flex-direction: column">
+<div style="padding: 52px 20px 10px; display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; align-items: center; gap: 8px">
+<button type="button" onClick="{{closeEdit}}" aria-label="ยกเลิก" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 14px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+<h2 style="margin: 0; text-align: center; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 19px">แก้ไขข้อมูล</h2>
+<span></span>
+</div>
+<div class="cx-escroll" ref="{{setScroll}}" style="flex: 1; min-height: 0; overflow-y: auto; padding: 6px 16px 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 4px 0">
+<span style="position: relative; width: 88px; height: 88px">
+<span style="position: absolute; inset: 0; border-radius: 50%; box-shadow: 0 0 0 3px #FFFFFE, 0 0 0 5px #C9A227; background: {{avBg}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 36px; display: flex; align-items: center; justify-content: center">{{dInitial}}</span>
+<button type="button" onClick="{{cycleAv}}" aria-label="เปลี่ยนรูปโปรไฟล์" style="position: absolute; right: -4px; bottom: -4px; width: 34px; height: 34px; border-radius: 50%; border: 3px solid #F6F6F6; background: #1F1F1F; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4zM12 17a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"></path></svg></button>
+</span>
+<span style="font-size: 12.5px; color: #6B6B6B">แตะไอคอนกล้องเพื่อเปลี่ยนรูป</span>
+</div>
+
+<div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 14px; font-weight: 700">ข้อมูลส่วนตัว</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-items: end">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">ชื่อ<input class="cx-in3" autocomplete="given-name" value="{{dFirst}}" aria-invalid="{{firstBad}}" onInput="{{onFirst}}" placeholder="ชื่อ"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">นามสกุล<input class="cx-in3" autocomplete="family-name" value="{{dLast}}" onInput="{{onLast}}" placeholder="นามสกุล"></label>
+</div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">เบอร์โทรศัพท์<input class="cx-in3" type="tel" inputmode="numeric" autocomplete="tel" value="{{dPhone}}" aria-invalid="{{phoneBad}}" onInput="{{onPhone}}" placeholder="08X-XXX-XXXX"></label>
+<sc-if value="{{phoneChanged}}" hint-placeholder-val="{{ false }}"><span style="margin-top: -4px; padding: 8px 10px; border-radius: 10px; background: #FFF4E0; color: #B86A00; font-size: 12.5px; font-weight: 600">เปลี่ยนเบอร์โทรต้องยืนยันด้วยรหัส OTP ที่ส่งไปยังเบอร์ใหม่</span></sc-if>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">อีเมล<input class="cx-in3" type="email" autocomplete="email" value="{{dEmail}}" aria-invalid="{{emailBad}}" onInput="{{onEmail}}" placeholder="name@example.com"></label>
+</div>
+
+
+</div>
+<div style="padding: 12px 16px 32px; background: #FFFFFF; border-top: 1px solid #EDEDED; display: flex; flex-direction: column; gap: 8px">
+<sc-if value="{{hasErr}}" hint-placeholder-val="{{ false }}"><span style="text-align: center; font-size: 12.5px; font-weight: 600; color: #B42318">{{errText}}</span></sc-if>
+<button type="button" onClick="{{save}}" aria-disabled="{{noSaveStr}}" style="height: 56px; border-radius: 16px; border: 0; background: {{saveBg}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; cursor: pointer; pointer-events: {{savePe}}">บันทึก</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{showOtp}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 50; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: flex-end">
+<div class="cx-sheet" role="dialog" aria-label="ยืนยันเบอร์โทรใหม่" style="background: #FFFFFF; border-radius: 26px 26px 0 0; padding: 10px 20px 30px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<span style="width: 40px; height: 4px; border-radius: 2px; background: #DADADA"></span>
+<span style="margin-top: 4px; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 19px; color: #1F1F1F">ยืนยันเบอร์โทรใหม่</span>
+<span style="font-size: 13.5px; color: #6B6B6B">กรอกรหัส 6 หลักที่ส่งไปยัง {{dPhone}}</span>
+<div style="display: flex; gap: 8px; margin: 6px 0">
+<sc-for list="{{boxes}}" as="b" hint-placeholder-count="6"><span style="width: 44px; height: 52px; box-sizing: border-box; border-radius: 12px; border: 2px solid {{b.bd}}; background: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; color: #1F1F1F">{{b.v}}</span></sc-for>
+</div>
+<sc-if value="{{otpErr}}" hint-placeholder-val="{{ false }}"><span style="font-size: 12.5px; font-weight: 600; color: #B42318">รหัสไม่ถูกต้อง กรุณาลองอีกครั้ง</span></sc-if>
+<div style="display: grid; grid-template-columns: repeat(3, 72px); gap: 8px">
+<sc-for list="{{keys}}" as="k" hint-placeholder-count="12"><button type="button" onClick="{{k.press}}" aria-label="{{k.aria}}" style="height: 46px; border-radius: 12px; border: 0; background: {{k.bg}}; font-family: inherit; font-size: 20px; font-weight: 600; color: #1F1F1F; cursor: pointer">{{k.label}}</button></sc-for>
+</div>
+<button type="button" onClick="{{autoOtp}}" style="border: 0; background: transparent; font-family: inherit; font-size: 13px; font-weight: 600; color: #C42D00; cursor: pointer; padding: 4px">วางรหัสจาก SMS (ตัวอย่าง 123456)</button>
+<button type="button" onClick="{{cancelOtp}}" style="border: 0; background: transparent; font-family: inherit; font-size: 13.5px; font-weight: 600; color: #6B6B6B; cursor: pointer; padding: 4px">ยกเลิก</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{showBusy}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" role="status" style="position: absolute; inset: 0; z-index: 55; background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center">
+<div style="width: 200px; padding: 22px; border-radius: 22px; background: #FFFFFF; display: flex; flex-direction: column; align-items: center; gap: 10px"><svg class="cx-spin" aria-hidden="true" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2.4" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"></path></svg><span style="font-size: 15px; font-weight: 700; color: #1F1F1F">กำลังบันทึก…</span></div>
+</div>
+</sc-if>
+
+
+<sc-if value="{{showLang}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 45; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: flex-end">
+<button type="button" aria-label="{{t.close}}" onClick="{{closeLang}}" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
+<div class="cx-sheet" role="dialog" aria-label="{{t.langTitle}}" style="background: #FFFFFF; border-radius: 26px 26px 0 0; padding: 10px 20px 30px; display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #DADADA"></span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; color: #1F1F1F">{{t.langTitle}}</span>
+<div role="radiogroup" style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{langs}}" as="l" hint-placeholder-count="2">
+<button type="button" role="radio" translate="no" aria-checked="{{l.on}}" onClick="{{l.pick}}" style="{{l.style}}">
+<span style="width: 40px; height: 40px; flex: none; border-radius: 12px; background: #F4F4F4; font-size: 14px; font-weight: 800; color: #3A3A3A; display: flex; align-items: center; justify-content: center">{{l.code}}</span>
+<span style="flex: 1; display: flex; flex-direction: column; text-align: left"><span style="font-size: 15px; font-weight: 600; color: #1F1F1F">{{l.name}}</span><span style="font-size: 12.5px; color: #6B6B6B">{{l.sub}}</span></span>
+<span style="width: 20px; height: 20px; flex: none; box-sizing: border-box; border-radius: 50%; border: 2px solid {{l.ring}}; display: flex; align-items: center; justify-content: center"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{l.dot}}"></span></span>
+</button>
+</sc-for>
+</div>
+<span style="font-size: 12.5px; line-height: 1.5; color: #6B6B6B">{{t.langNote}}</span>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{showToast}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" role="status" style="position: absolute; left: 16px; right: 16px; bottom: 100px; z-index: 30; padding: 12px 14px; border-radius: 16px; background: #1F1F1F; color: #FFFFFF; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 24px rgba(0,0,0,0.25)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5AD49B" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg>{{toastText}}</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"screen":{"editor":"enum","options":["โปรไฟล์","แก้ไขข้อมูล"],"default":"โปรไฟล์"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+static {
+const P = this.prototype;
+const TR = {"ความเป็นส่วนตัวและข้อกำหนด": "Privacy & terms", "เปลี่ยนภาษา": "Change language", "และ": " and ", "แก้ไข": "Edit", "ยืนยัน": "Confirm", "ลบ": "Delete", "เบอร์โทรศัพท์": "Phone number", "อีเมล": "Email", "แล้ว": "", "ชื่อ": "First name", "นามสกุล": "Last name", "เริ่มใช้งาน": "Start using the app", "หน้าหลัก": "Home", "แผนที่": "Map", "การชาร์จ": "Charge", "กระเป๋าเงิน": "Wallet", "โปรไฟล์": "Profile", "การชาร์จ (สแกน QR)": "Charge (scan QR)", "การแจ้งเตือน": "Notifications", "ระบบ": "System", "ว่าง": "Available", "ยกเลิก": "Cancel", "ปิด": "Closed", "เปลี่ยน": "Change", "เพิ่ม": "Increase", "ใบเสร็จ": "Receipt", "ลองอีกครั้ง": "Try again", "สแกน QR": "Scan QR", "รหัสไม่ถูกต้อง กรุณาลองอีกครั้ง": "Incorrect code, please try again", "วางรหัสจาก SMS (ตัวอย่าง 123456)": "Paste code from SMS (sample 123456)", "บัตร": "Card", "รถของฉัน": "My vehicles", "เพิ่มรถ": "Add car", "ยังไม่มีรถ": "No car yet", "ยังไม่ระบุทะเบียน": "No plate added", "สถานีที่บันทึกไว้": "Saved stations", "ยังไม่มี": "None yet", "การตั้งค่าการชาร์จ": "Charging settings", "แก้ไขข้อมูล": "Edit details", "แตะไอคอนกล้องเพื่อเปลี่ยนรูป": "Tap the camera icon to change your photo", "ข้อมูลส่วนตัว": "Personal details", "เปลี่ยนเบอร์โทรต้องยืนยันด้วยรหัส OTP ที่ส่งไปยังเบอร์ใหม่": "Changing your number requires an OTP sent to the new number", "บันทึก": "Save", "ยืนยันเบอร์โทรใหม่": "Verify new number", "กำลังบันทึก…": "Saving…", "แก้ไขข้อมูลส่วนตัว": "Edit personal details", "เปลี่ยนรูปโปรไฟล์": "Change profile photo", "จัดการรถ": "Manage", "4 แห่ง": "4 places", "บัตรและการชำระเงิน": "Cards & payment", "2 ใบ": "2 cards", "การแจ้งเตือนการชาร์จ": "Charging alerts", "โหมดมืด": "Dark mode", "ภาษา": "Language", "วิธีใช้งานแอป": "How to use the app", "ช่วยเหลือและติดต่อเรา": "Help & contact us", "ออกจากระบบ": "Sign out", "แก้ไขโปรไฟล์": "Edit profile", "เลือกภาษา": "Choose language", "ภาษาที่เลือกจะใช้กับทุกหน้าในแอป รวมถึงการแจ้งเตือนและใบเสร็จ": "Applies to every screen in the app, including notifications and receipts.", "รถหลัก": "Main car", "เพิ่มรถเพื่อเริ่มใช้งาน": "Add a car to get started", "บันทึกข้อมูลเรียบร้อยแล้ว": "Profile saved", "กรุณากรอกชื่อ": "Please enter your first name", "เบอร์โทรต้องเป็นตัวเลข 10 หลัก ขึ้นต้นด้วย 0": "Phone number must be 10 digits starting with 0", "รูปแบบอีเมลไม่ถูกต้อง": "Invalid email format", "กม.": "km", "ชม.": "hrs", "นาที": "min"};
+const PT = [["^กรอกรหัส\\ 6\\ หลักที่ส่งไปยัง\\ (.+?)$", "Enter the 6-digit code sent to {1}"]].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["ความเป็นส่วนตัวและข้อกำหนด", "ภาษาที่เลือกจะใช้กับทุกหน้าในแอป รวมถึงการแจ้งเตือนและใบเสร็จ", "เปลี่ยนเบอร์โทรต้องยืนยันด้วยรหัส OTP ที่ส่งไปยังเบอร์ใหม่", "เบอร์โทรต้องเป็นตัวเลข 10 หลัก ขึ้นต้นด้วย 0", "วางรหัสจาก SMS (ตัวอย่าง 123456)", "รหัสไม่ถูกต้อง กรุณาลองอีกครั้ง", "แตะไอคอนกล้องเพื่อเปลี่ยนรูป", "บันทึกข้อมูลเรียบร้อยแล้ว", "เพิ่มรถเพื่อเริ่มใช้งาน", "ช่วยเหลือและติดต่อเรา", "รูปแบบอีเมลไม่ถูกต้อง", "การแจ้งเตือนการชาร์จ", "การชาร์จ (สแกน QR)", "การตั้งค่าการชาร์จ", "ยืนยันเบอร์โทรใหม่", "แก้ไขข้อมูลส่วนตัว", "บัตรและการชำระเงิน", "ยังไม่ระบุทะเบียน", "สถานีที่บันทึกไว้", "เปลี่ยนรูปโปรไฟล์", "เบอร์โทรศัพท์", "ข้อมูลส่วนตัว", "วิธีใช้งานแอป", "กรุณากรอกชื่อ", "การแจ้งเตือน", "กำลังบันทึก…", "แก้ไขโปรไฟล์", "เปลี่ยนภาษา", "เริ่มใช้งาน", "กระเป๋าเงิน", "ลองอีกครั้ง", "แก้ไขข้อมูล", "ยังไม่มีรถ", "ออกจากระบบ", "เลือกภาษา", "หน้าหลัก", "การชาร์จ", "รถของฉัน", "ยังไม่มี", "จัดการรถ", "นามสกุล", "โปรไฟล์", "เปลี่ยน", "ใบเสร็จ", "สแกน QR", "เพิ่มรถ", "โหมดมืด", "ยืนยัน", "แผนที่", "ยกเลิก", "บันทึก", "4 แห่ง", "รถหลัก", "แก้ไข", "อีเมล", "เพิ่ม", "ชื่อ", "ระบบ", "ว่าง", "บัตร", "2 ใบ", "ภาษา", "นาที", "และ", "ปิด", "กม.", "ชม."];
+const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
+const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
+const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
+P.cxLang = function () { if (this.state && (this.state.lang === 'en' || this.state.lang === 'th')) return this.state.lang; const pl = this.props.lang; if (pl === 'English') return 'en'; if (pl === 'ไทย') return 'th'; try { return localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) { return 'th'; } };
+P.cxWalk = function () {
+const r = this._cxRoot; if (!r || typeof document === 'undefined') return;
+const en = this.cxLang() === 'en';
+const O = this._cxOrig || (this._cxOrig = new Map());
+if (!en) { O.forEach((v, node) => { if (v.t != null && node.nodeValue === v.e) node.nodeValue = v.t; if (v.a) for (const a in v.a) { if (node.getAttribute(a) === v.a[a].e) node.setAttribute(a, v.a[a].t); } }); O.clear(); if (this._cxObs) { this._cxObs.disconnect(); this._cxObs = null; } return; }
+const w = document.createTreeWalker(r, 5, { acceptNode: (x) => (x.nodeType === 1 && x.getAttribute('translate') === 'no') ? 2 : 1 });
+let x = w.currentNode;
+while (x) {
+if (x.nodeType === 3) { const v = x.nodeValue; if (THR.test(v)) { const e = tx(v); if (e !== v) { O.set(x, { t: v, e }); x.nodeValue = e; } } }
+else if (x.nodeType === 1) { for (const a of ATTRS) { const v = x.getAttribute(a); if (v && THR.test(v)) { const e = tx(v); if (e !== v) { const rec = O.get(x) || {}; rec.a = rec.a || {}; rec.a[a] = { t: v, e }; O.set(x, rec); x.setAttribute(a, e); } } } }
+x = w.nextNode();
+}
+if (!this._cxObs && typeof MutationObserver !== 'undefined') { this._cxObs = new MutationObserver(() => { if (this._cxQ) return; this._cxQ = true; Promise.resolve().then(() => { this._cxQ = false; this.cxWalk(); }); }); this._cxObs.observe(r, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS }); }
+};
+const cdm = P.componentDidMount, cdu = P.componentDidUpdate, cwu = P.componentWillUnmount, rv = P.renderVals;
+P.componentDidMount = function () { if (cdm) cdm.call(this); this.cxWalk(); setTimeout(() => this.cxWalk(), 60); if (typeof window !== 'undefined') { this._cxL = (e) => { if (!e || !e.key || e.key === 'cx-lang') { this.cxWalk(); } }; window.addEventListener('storage', this._cxL); window.addEventListener('cx-lang', this._cxL); } };
+P.componentDidUpdate = function (a, b) { if (cdu) cdu.call(this, a, b); this.cxWalk(); };
+P.componentWillUnmount = function () { if (this._cxObs) this._cxObs.disconnect(); if (this._cxL && typeof window !== 'undefined') { window.removeEventListener('storage', this._cxL); window.removeEventListener('cx-lang', this._cxL); } if (cwu) cwu.call(this); };
+P.renderVals = function () { const v = rv.call(this) || {}; v.cxRef = (el) => { this._cxRoot = el; }; v.cxLangProp = this.props.lang || 'ตามแอป'; return v; };
+}
+
+static {
+const P2 = this.prototype;
+const rv2 = P2.renderVals;
+P2.componentWillUnmount = ((cw) => function () { clearTimeout(this._navT); if (cw) cw.call(this); })(P2.componentWillUnmount);
+P2.renderVals = function () {
+const v = rv2.call(this) || {};
+const a = (this.state && this.state.navA != null) ? this.state.navA : 4;
+const nv = { bx: 39 + 78 * a - 585, cx: 39 + 78 * a - 24 };
+for (let i = 0; i < 5; i++) {
+const on = i === a;
+nv['y' + i] = on ? -14 : 0;
+nv['ly' + i] = on ? 2 : 0;
+nv['o' + i] = 1;
+nv['ic' + i] = on || i === 2 ? '#FFFFFF' : 'currentColor';
+nv['c' + i] = on || i === 2 ? (v.accent || '#FC3901') : '#6B6B6B';
+nv['r' + i] = (el) => { if (!this._navR) this._navR = []; this._navR[i] = el; };
+nv['go' + i] = (e) => {
+e.preventDefault();
+this.setState({ navA: i });
+clearTimeout(this._navT);
+this._navT = setTimeout(() => { const t = this._navR && this._navR[i]; if (t) t.click(); this._navT = setTimeout(() => this.setState({ navA: 4 }), 700); }, 520);
+};
+}
+v.nv = nv;
+return v;
+};
+}
+static {
+const P = this.prototype;
+const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide','News','Notify','Home','Station','Scan','Confirm','Charging','Complete','Wallet','Topup','Cards','Vehicles','Saved','Prefs','Help','Support','Privacy','Profile'];
+const rv = P.renderVals;
+P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
+}
+constructor(props) { super(props); let lsl = 'th'; try { lsl = localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) {} this.state = Object.assign({ lang: props.lang === 'English' ? 'en' : props.lang === 'ไทย' ? 'th' : lsl, notif: true, p: { first: 'Sawanya', last: '', phone: '0646350846', email: '', car: 'Chery Q', plate: '', plugs: ['CCS2', 'Type 2'], av: 0 }, otp: '', otpErr: false }, this.screenState(props.screen)); }
+componentDidMount() { try { const s = localStorage.getItem('cx-car'); if (s) this.setState({ car: JSON.parse(s) });  } catch (e) {}  this._pl = () => { if (this.props.lang === 'English' || this.props.lang === 'ไทย') return; let l = 'th'; try { l = localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) {} if (l !== this.state.lang) this.setState({ lang: l }); }; if (typeof window !== 'undefined') { window.addEventListener('storage', this._pl); window.addEventListener('cx-lang', this._pl); } }
+screenState(s) { if (s === 'แก้ไขข้อมูล') return { step: 'edit', d: null }; return { step: 'view' }; }
+componentDidUpdate(pp) { if (pp.screen !== this.props.screen) this.setState(this.screenState(this.props.screen)); if (pp.lang !== this.props.lang) { let l = 'th'; try { l = localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) {} this.setState({ lang: this.props.lang === 'English' ? 'en' : this.props.lang === 'ไทย' ? 'th' : l }); } }
+componentWillUnmount() { clearTimeout(this._t); clearTimeout(this._toast); }
+renderVals() {
+const accent = this.props.accent ?? '#FC3901';
+const on = this.state.notif;
+const st = this.state; const p = st.p; const d = st.d || p;
+const TX = {
+th: { title: 'โปรไฟล์', myCar: 'รถของฉัน', manageCars: 'จัดการรถ', saved: 'สถานีที่บันทึกไว้', savedN: '4 แห่ง', cards: 'บัตรและการชำระเงิน', cardsN: '2 ใบ', prefs: 'การตั้งค่าการชาร์จ', notif: 'การแจ้งเตือนการชาร์จ', dark: 'โหมดมืด', lang: 'ภาษา', langVal: 'ไทย', guide: 'วิธีใช้งานแอป', help: 'ช่วยเหลือและติดต่อเรา', logout: 'ออกจากระบบ', nHome: 'หน้าหลัก', nMap: 'แผนที่', nChg: 'การชาร์จ', nWallet: 'กระเป๋าเงิน', aEdit: 'แก้ไขโปรไฟล์', aChg: 'การชาร์จ (สแกน QR)', close: 'ปิด', langTitle: 'เลือกภาษา', langNote: 'ภาษาที่เลือกจะใช้กับทุกหน้าในแอป รวมถึงการแจ้งเตือนและใบเสร็จ', noPlate: 'ยังไม่ระบุทะเบียน', mainCar: 'รถหลัก', addCar: 'เพิ่มรถเพื่อเริ่มใช้งาน', noCar: 'ยังไม่มีรถ', saved1: 'บันทึกข้อมูลเรียบร้อยแล้ว', langChanged: 'เปลี่ยนภาษาเป็นภาษาไทยแล้ว' },
+en: { title: 'Profile', myCar: 'My car', manageCars: 'Manage', saved: 'Saved stations', savedN: '4 places', cards: 'Cards & payment', cardsN: '2 cards', prefs: 'Charging settings', notif: 'Charging alerts', dark: 'Dark mode', lang: 'Language', langVal: 'English', guide: 'How to use the app', help: 'Help & contact us', logout: 'Sign out', nHome: 'Home', nMap: 'Map', nChg: 'Charge', nWallet: 'Wallet', aEdit: 'Edit profile', aChg: 'Charge (scan QR)', close: 'Close', langTitle: 'Choose language', langNote: 'Applies to every screen in the app, including notifications and receipts.', noPlate: 'No plate added', mainCar: 'Main car', addCar: 'Add a car to get started', noCar: 'No car yet', saved1: 'Profile saved', langChanged: 'Language changed to English' }
+};
+const t = TX[st.lang] || TX.th;
+
+const AV = [accent, '#1F1F1F', '#C9A227', '#146C3E'];
+const digits = (d.phone || '').replace(/\D/g, '');
+const fmtPhone = (x) => { const g = x.replace(/\D/g, ''); return g.length === 10 ? g.slice(0, 3) + '-' + g.slice(3, 6) + '-' + g.slice(6) : x; };
+const firstBad = !d.first.trim(); const phoneBad = digits.length !== 10 || digits[0] !== '0';
+const emailBad = !!d.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email);
+const carBad = !d.car.trim();
+const errText = firstBad ? 'กรุณากรอกชื่อ' : phoneBad ? 'เบอร์โทรต้องเป็นตัวเลข 10 หลัก ขึ้นต้นด้วย 0' : emailBad ? 'รูปแบบอีเมลไม่ถูกต้อง' : '';
+const dirty = JSON.stringify(d) !== JSON.stringify(p);
+const canSave = !errText && dirty;
+const phoneChanged = digits !== p.phone.replace(/\D/g, '');
+const set = (k) => (e) => this.setState({ d: Object.assign({}, this.state.d || this.state.p, { [k]: e.target.value }) });
+const commit = () => { this.setState({ step: 'busy' }); clearTimeout(this._t); this._t = setTimeout(() => { const nd = Object.assign({}, this.state.d || this.state.p); nd.phone = nd.phone.replace(/\D/g, ''); this.setState({ p: nd, d: null, step: 'view', toast: true, toastText: '' }); clearTimeout(this._toast); this._toast = setTimeout(() => this.setState({ toast: false }), 2200); }, 900); };
+const open = (car) => { this.setState({ step: 'edit', d: Object.assign({}, this.state.p, { plugs: this.state.p.plugs.slice() }), focusCar: car }); if (car) setTimeout(() => { if (this._scroll && this._carRef) this._scroll.scrollTop = this._carRef.offsetTop - 8; }, 380); };
+const verify = (o) => { if (o !== '123456') { this._t = setTimeout(() => this.setState({ otpErr: true, otp: '' }), 250); return; } this._t = setTimeout(() => commit(), 250); };
+const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'].map((k) => ({ label: k, aria: k === '⌫' ? 'ลบ' : k || 'ว่าง', bg: k ? '#F4F4F4' : 'transparent',
+press: () => { if (!k) return; let o = this.state.otp; o = k === '⌫' ? o.slice(0, -1) : (o + k).slice(0, 6); this.setState({ otp: o, otpErr: false }); if (o.length === 6) verify(o); } }));
+return {
+accent, t,
+toastText: st.toastText || t.saved1,
+showLang: !!st.langOpen,
+openLang: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ langOpen: true }); },
+closeLang: () => this.setState({ langOpen: false }),
+langs: [['th', 'ไทย', 'Thai', 'TH'], ['en', 'English', 'อังกฤษ', 'EN']].map(([id, name, sub, code]) => { const on = st.lang === id; return { name, sub, code, on: on ? 'true' : 'false',
+pick: () => { try { localStorage.setItem('cx-lang', id); } catch (e) {} try { window.dispatchEvent(new Event('cx-lang')); const fr = window.top && window.top.frames; if (fr) for (let i = 0; i < fr.length; i++) { try { if (fr[i] !== window) fr[i].dispatchEvent(new Event('cx-lang')); } catch (e) {} } } catch (e) {} this.setState({ lang: id, langOpen: false, toast: true, toastText: (TX[id]).langChanged }); clearTimeout(this._toast); this._toast = setTimeout(() => this.setState({ toast: false, toastText: '' }), 2200); },
+ring: on ? accent : '#BDBDBD', dot: on ? accent : 'transparent',
+style: 'width: 100%; display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 16px; font-family: inherit; cursor: pointer; background: ' + (on ? '#FFF7F3' : '#FFFFFF') + '; border: ' + (on ? '1.5px solid ' + accent : '1px solid #E6E6E6') }; }),
+initial: (p.first.trim()[0] || '?').toUpperCase(), fullName: p.first + (p.last ? ' ' + p.last : ''), phoneShow: fmtPhone(p.phone),
+carName: st.car ? (st.car.name || t.noCar) : p.car, carSub: st.car ? (st.car.count ? (st.car.plate || t.noPlate) + ' · ' + t.mainCar : t.addCar) : (p.plate || t.noPlate) + ' · ' + t.mainCar, carCount: st.car ? st.car.count : 2,
+openEdit: () => open(false), openCar: () => open(true), closeEdit: () => this.setState({ step: 'view', d: null }),
+showEdit: st.step === 'edit' || st.step === 'otp' || st.step === 'busy', showOtp: st.step === 'otp', showBusy: st.step === 'busy', showToast: !!st.toast,
+setScroll: (el) => { this._scroll = el; }, setCarRef: (el) => { this._carRef = el; }, carBorder: st.focusCar ? '1.5px solid ' + accent : '1px solid transparent',
+avBg: AV[d.av % AV.length], dInitial: (d.first.trim()[0] || '?').toUpperCase(),
+cycleAv: () => this.setState({ d: Object.assign({}, d, { av: (d.av + 1) % AV.length }) }),
+dFirst: d.first, dLast: d.last, dPhone: d.phone, dEmail: d.email, dCar: d.car, dPlate: d.plate,
+onFirst: set('first'), onLast: set('last'), onEmail: set('email'), onCar: set('car'), onPlate: set('plate'),
+onPhone: (e) => this.setState({ d: Object.assign({}, d, { phone: e.target.value.replace(/[^\d-]/g, '').slice(0, 12) }) }),
+firstBad: firstBad ? 'true' : 'false', phoneBad: phoneBad ? 'true' : 'false', emailBad: emailBad ? 'true' : 'false', carBad: carBad ? 'true' : 'false',
+phoneChanged, hasErr: !!errText && st.step === 'edit', errText,
+saveBg: canSave ? accent : '#BDBDBD', savePe: canSave ? 'auto' : 'none', noSaveStr: canSave ? 'false' : 'true',
+save: () => { if (!canSave) return; if (phoneChanged) this.setState({ step: 'otp', otp: '', otpErr: false }); else commit(); },
+boxes: [0, 1, 2, 3, 4, 5].map((i) => ({ v: st.otp[i] || '', bd: st.otpErr ? '#E5484D' : (i === st.otp.length ? accent : '#E0E0E0') })),
+keys, otpErr: st.otpErr, autoOtp: () => { this.setState({ otp: '123456' }); verify('123456'); }, cancelOtp: () => this.setState({ step: 'edit', otp: '' }),
+toHelpContact: () => { try { localStorage.setItem('cx-help-focus', 'contact'); } catch (e) {} },
+toCards: () => { try { localStorage.setItem('cx-cards-from', 'Profile'); } catch (e) {} },
+notifOn: on ? 'true' : 'false',
+toggle: () => this.setState({ notif: !this.state.notif }),
+trackBg: on ? accent : '#CFCFCF',
+knobPos: on ? 'flex-end' : 'flex-start'
+};
+}
+}
+</script>
+</body>
+</html>

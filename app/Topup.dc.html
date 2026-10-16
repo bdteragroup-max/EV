@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>Charge X — เติมเงิน</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#C42D00}a:hover{color:#9E2400}
+[data-theme="dark"]{color-scheme:dark}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFFFFF"]{background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F4F4F4"],[style*="background: #F6F6F6"],[style*="background: #F0F0F0"],[style*="background: rgb(244, 244, 244)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FFF1EB"],[style*="background: #FFE4DA"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF7F3"]{background-color:rgba(252,57,1,.1)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #E7F6EE"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #1F1F1F"],[style*="color: #2B2B2B"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #3A3A3A"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #C42D00"],[style*="color: rgb(196, 45, 0)"]){color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #146C3E"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"]){border-color:#35353B!important}
+[data-theme="dark"] [stroke="#1F1F1F"]{stroke:#F3F3F4}
+[data-theme="dark"][data-theme][style]{background-color:#000000!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="margin-top: -24px; background: #FFFFFF"]{background-color:#000000!important}
+[data-theme="dark"][data-theme][style]{color:#F3F3F4!important}
+[data-theme="dark"] :is(button,input,textarea,select,legend,label){color:inherit}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(31, 31, 31)"],[style*="color: rgb(43, 43, 43)"],[style*="color: rgb(0, 0, 0)"],[style*="color: #000"],[style*="color: black"],[style*="color: #1f1f1f"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(58, 58, 58)"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(92, 92, 92)"],[style*="color: rgb(107, 107, 107)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(196, 45, 0)"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(20, 108, 62)"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 255, 255)"],[style*="background-color: rgb(255, 255, 255)"]){background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(244, 244, 244)"],[style*="background: rgb(246, 246, 246)"],[style*="background: rgb(240, 240, 240)"],[style*="background-color: rgb(244, 244, 244)"],[style*="background-color: rgb(246, 246, 246)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(31, 31, 31)"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 241, 235)"],[style*="background: rgb(255, 228, 218)"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(255, 247, 243)"]{background-color:rgba(252,57,1,.12)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(231, 246, 238)"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(230, 230, 230)"],[style*="background: rgb(237, 237, 237)"],[style*="background: rgb(239, 239, 239)"],[style*="background: rgb(217, 217, 217)"],[style*="background: rgb(218, 218, 218)"]){background-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(51, 51, 51)"]{background-color:#3A3A40!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(189, 189, 189)"]{background-color:#55555C!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="linear-gradient(rgb(255, 255, 255)"]{background:linear-gradient(#000000 72%,rgba(0,0,0,0))!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="repeating-linear-gradient(90deg, rgb(218, 218, 218)"]{background:repeating-linear-gradient(90deg,#3A3A40 0 6px,transparent 6px 12px)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(158, 36, 0)"]{color:#FF8A66!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"],[style*="solid rgb(237, 237, 237)"],[style*="solid rgb(239, 239, 239)"],[style*="solid rgb(212, 212, 212)"],[style*="solid rgb(226, 226, 226)"],[style*="solid rgb(253, 211, 195)"]){border-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="margin-top: -24px; background: rgb(255, 255, 255)"]{background-color:#000000!important}
+.cx-scroll{scrollbar-width:none}.cx-scroll>*{flex-shrink:0}.cx-scroll::-webkit-scrollbar{display:none}
+@keyframes cxSheet{from{transform:translateY(100%)}to{transform:none}}
+.cx-sheet{animation:cxSheet .35s cubic-bezier(.2,.9,.3,1) both}
+@keyframes cxFade{from{opacity:0}to{opacity:1}}
+.cx-fade{animation:cxFade .3s ease-out both}
+@keyframes cxSpin{to{transform:rotate(360deg)}}
+.cx-spin{animation:cxSpin .8s linear infinite;transform-origin:center}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #B86A00"],[style*="color: rgb(184, 106, 0)"]){color:#F0A84A!important}
+@media (prefers-reduced-motion: reduce){.cx-sheet,.cx-fade,.cx-spin{animation:none}}
+
+[data-theme="dark"] [style*="background: #FFF4E0"],[data-theme="dark"] [style*="background: rgb(255, 244, 224)"]{background-color:rgba(240,160,48,.16)!important}
+@keyframes cxPlug{0%,100%{opacity:.35}50%{opacity:1}}
+.cx-plugdot{animation:cxPlug 1.2s ease-in-out infinite}
+
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F; color: #FFFFFF"]{background-color:#1C1C1E!important}
+[data-theme="dark"] .cx-qr{background:#FFFFFF!important;border-color:#FFFFFF!important}
+[data-theme="dark"] .cx-qr span[style*="color: #6B6B6B"]{color:#6B6B6B!important}
+[data-theme="dark"] .cx-ring{box-shadow:0 0 0 10px rgba(46,180,110,.2)!important}
+@keyframes cxPop{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.cx-pop{animation:cxPop .55s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes cxRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.cx-rise{animation:cxRise .5s cubic-bezier(.2,.8,.3,1) .2s both}
+@media (prefers-reduced-motion: reduce){.cx-pop,.cx-rise{animation:none}}
+@keyframes cxDot3{0%,100%{opacity:.3}50%{opacity:1}}
+.cx-dot3{animation:cxDot3 1.2s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.cx-dot3{animation:none}}
+[data-theme="dark"] .cx-dot3{background:#55555C!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FDECEC"]{background-color:rgba(229,62,62,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF4E0"]{background-color:rgba(240,160,48,.16)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="dashed #D4D4D4"]{border-color:#45454C!important}
+[data-theme="dark"] [stroke="#E6E6E6"]{stroke:#35353B}
+</style>
+</helmet>
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F6F6F6; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; display: flex; flex-direction: column">
+<div style="padding: 56px 20px 12px; display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; align-items: center; gap: 8px">
+<a href="{{L.Wallet}}" aria-label="ย้อนกลับ" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 14px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a>
+<h1 style="margin: 0; text-align: center; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 19px">เติมเงิน</h1>
+<span></span>
+</div>
+
+<div class="cx-scroll" style="flex: 1; min-height: 0; overflow-y: auto; padding: 4px 16px 16px; display: flex; flex-direction: column; gap: 12px">
+
+<div style="background: #1F1F1F; color: #FFFFFF; border-radius: 20px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; position: relative; overflow: hidden">
+<svg aria-hidden="true" width="140" height="140" viewBox="0 0 140 140" style="position: absolute; right: -40px; top: -44px"><circle cx="70" cy="70" r="56" fill="none" stroke="#D4AF37" stroke-width="8" opacity="0.85"></circle></svg>
+<span style="width: 40px; height: 40px; flex: none; border-radius: 12px; background: rgba(212,175,55,0.18); display: flex; align-items: center; justify-content: center; position: relative"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E0BE5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h12a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3zM3 10h18M16 15h2"></path></svg></span>
+<span style="display: flex; flex-direction: column; position: relative"><span style="font-size: 12.5px; color: #E0BE5A">ยอดเงินคงเหลือปัจจุบัน</span><span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 22px; line-height: 1.25">฿{{balText}}</span></span>
+</div>
+
+<div style="background: #FFFFFF; border-radius: 22px; padding: 16px 14px 14px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 14px; font-weight: 700">จำนวนเงินที่ต้องการเติม</span>
+<div style="display: flex; align-items: center; justify-content: center; gap: 14px">
+<button type="button" onClick="{{dec}}" aria-label="ลด ฿100" style="width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-size: 22px; font-weight: 600; color: #1F1F1F; cursor: pointer; line-height: 1">−</button>
+<span style="min-width: 150px; text-align: center; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 38px; line-height: 1.2; color: #1F1F1F">฿{{amtText}}</span>
+<button type="button" onClick="{{inc}}" aria-label="เพิ่ม ฿100" style="width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-size: 22px; font-weight: 600; color: #1F1F1F; cursor: pointer; line-height: 1">+</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{chips}}" as="c" hint-placeholder-count="6"><button type="button" onClick="{{c.pick}}" aria-pressed="{{c.on}}" style="{{c.style}}">{{c.label}}</button></sc-for>
+</div>
+<span style="text-align: center; font-size: 12px; color: #6B6B6B">ขั้นต่ำ ฿100 · สูงสุด ฿10,000 ต่อครั้ง</span>
+</div>
+
+<div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="font-size: 14px; font-weight: 700">เติมเงินผ่าน</span><a href="{{L.Cards}}" style="font-size: 13px; font-weight: 600; text-decoration: none; padding: 4px 0">จัดการบัตร</a></div>
+<sc-for list="{{methods}}" as="m" hint-placeholder-count="3">
+<button type="button" onClick="{{m.pick}}" style="{{m.style}}">
+<span style="width: 38px; height: 38px; flex: none; border-radius: 12px; background: {{m.bg}}; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{m.fg}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{m.icon}}"></path></svg></span>
+<span style="flex: 1; display: flex; flex-direction: column; text-align: left"><span style="font-size: 14.5px; font-weight: 600; color: #1F1F1F">{{m.name}}</span><span style="font-size: 12.5px; color: #6B6B6B">{{m.sub}}</span></span>
+<span style="width: 20px; height: 20px; flex: none; box-sizing: border-box; border-radius: 50%; border: 2px solid {{m.ring}}; display: flex; align-items: center; justify-content: center"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{m.dot}}"></span></span>
+</button>
+</sc-for>
+</div>
+</div>
+
+<div style="padding: 12px 16px 32px; background: #FFFFFF; border-top: 1px solid #EDEDED; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; font-size: 13.5px"><span style="color: #6B6B6B">ยอดคงเหลือหลังเติม</span><span style="font-weight: 700; color: #146C3E">฿{{afterText}}</span></div>
+<button type="button" onClick="{{submit}}" style="height: 56px; border-radius: 16px; border: 0; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 19px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>เติมเงิน ฿{{amtText}}</button>
+</div>
+
+<sc-if value="{{showQr}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 40; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: flex-end">
+<button type="button" aria-label="ปิด" onClick="{{closeQr}}" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
+<div class="cx-sheet" role="dialog" aria-label="สแกน QR พร้อมเพย์" style="background: #FFFFFF; border-radius: 26px 26px 0 0; padding: 10px 20px 30px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
+<span style="width: 40px; height: 4px; border-radius: 2px; background: #DADADA"></span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; color: #1F1F1F">สแกนจ่ายด้วยแอปธนาคาร</span>
+<div class="cx-qr" style="padding: 14px; border-radius: 20px; background: #FFFFFF; border: 1px solid #E6E6E6; display: flex; flex-direction: column; align-items: center; gap: 8px">
+<span style="height: 26px; padding: 0 12px; border-radius: 8px; background: #113566; color: #FFFFFF; font-size: 13px; font-weight: 700; display: flex; align-items: center; letter-spacing: 0.5px">PromptPay</span>
+<svg role="img" aria-label="QR code ตัวอย่าง" width="196" height="196" style="opacity: {{qrOp}}; transition: opacity .3s" viewBox="0 0 29 29" shape-rendering="crispEdges"><rect width="29" height="29" fill="#FFFFFF"></rect><path d="{{qrPath}}" fill="#111111"></path><rect x="11.5" y="11.5" width="6" height="6" rx="1.2" fill="#FFFFFF"></rect><path d="M15 12.4 12.9 15.3h1.5l-.3 1.9 2.1-2.9h-1.5l.3-1.9z" fill="#FC3901"></path></svg>
+<span style="font-size: 12.5px; color: #6B6B6B">TERA CHARGE-X · [เลขอ้างอิง]</span>
+</div>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 28px; color: #1F1F1F">฿{{amtText}}</span>
+<sc-if value="{{qrLive}}" hint-placeholder-val="{{ true }}"><span style="font-size: 13px; color: #B86A00; font-weight: 600">QR หมดอายุใน {{qrLeft}} นาที</span></sc-if>
+<sc-if value="{{qrDead}}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size: 13px; color: #C42D00; font-weight: 700">QR หมดอายุแล้ว กรุณาสร้าง QR ใหม่</span></sc-if>
+<div style="align-self: stretch; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 4px">
+<button type="button" onClick="{{saveQr}}" aria-disabled="{{deadStr}}" style="height: 50px; border-radius: 14px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; color: #1F1F1F; cursor: pointer; opacity: {{saveOp}}">{{saveLabel}}</button>
+<sc-if value="{{qrLive}}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{paid}}" style="width: 100%; height: 50px; border-radius: 14px; border: 0; background: {{accent}}; font-family: inherit; font-size: 15px; font-weight: 600; color: #FFFFFF; cursor: pointer">ชำระแล้ว</button></sc-if>
+<sc-if value="{{qrDead}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{renewQr}}" style="width: 100%; height: 50px; border-radius: 14px; border: 0; background: {{accent}}; font-family: inherit; font-size: 15px; font-weight: 600; color: #FFFFFF; cursor: pointer">สร้าง QR ใหม่</button></sc-if>
+</div>
+<span style="font-size: 12px; color: #6B6B6B">ระบบจะตรวจสอบและเติมเงินให้อัตโนมัติภายในไม่กี่วินาที</span>
+</div>
+</div>
+</sc-if>
+
+
+<sc-if value="{{showBank}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 40; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: flex-end">
+<button type="button" aria-label="ปิด" onClick="{{toForm}}" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
+<div class="cx-sheet" role="dialog" aria-label="เลือกธนาคาร" style="background: #FFFFFF; border-radius: 26px 26px 0 0; padding: 10px 20px 30px; display: flex; flex-direction: column; gap: 12px">
+<span style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #DADADA"></span>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; color: #1F1F1F">เลือกแอปธนาคาร</span><span style="font-size: 13px; color: #6B6B6B">เติมเงิน ฿{{amtText}} · ระบบจะเปิดแอปธนาคารเพื่อให้คุณยืนยัน</span></div>
+<div role="radiogroup" style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{banks}}" as="b" hint-placeholder-count="5">
+<button type="button" role="radio" aria-checked="{{b.on}}" onClick="{{b.pick}}" style="{{b.style}}">
+<span style="width: 40px; height: 40px; flex: none; border-radius: 50%; background: {{b.color}}; color: {{b.ink}}; font-size: {{b.fs}}px; font-weight: 800; display: flex; align-items: center; justify-content: center; letter-spacing: -0.3px">{{b.ab}}</span>
+<span style="flex: 1; display: flex; flex-direction: column; text-align: left"><span style="font-size: 15px; font-weight: 600; color: #1F1F1F">{{b.app}}</span><span style="font-size: 12.5px; color: #6B6B6B">{{b.bank}}</span></span>
+<sc-if value="{{b.last}}" hint-placeholder-val="{{ false }}"><span style="padding: 3px 8px; border-radius: 8px; background: #F4F4F4; font-size: 11.5px; font-weight: 600; color: #3A3A3A">ใช้ล่าสุด</span></sc-if>
+<span style="width: 20px; height: 20px; flex: none; box-sizing: border-box; border-radius: 50%; border: 2px solid {{b.ring}}; display: flex; align-items: center; justify-content: center"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{b.dot}}"></span></span>
+</button>
+</sc-for>
+</div>
+<button type="button" onClick="{{goBank}}" style="margin-top: 4px; height: 54px; border-radius: 16px; border: 0; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 17px; cursor: pointer">ไปที่ {{bankApp}}</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{showRedirect}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" role="status" style="position: absolute; inset: 0; z-index: 46; background: #F6F6F6; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 0 28px; text-align: center">
+<div style="display: flex; align-items: center; gap: 14px">
+<span style="width: 64px; height: 64px; border-radius: 18px; background: {{accent}}; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg></span>
+<span style="display: flex; gap: 6px" aria-hidden="true"><span class="cx-dot3" style="width: 8px; height: 8px; border-radius: 50%; background: #BDBDBD"></span><span class="cx-dot3" style="width: 8px; height: 8px; border-radius: 50%; background: #BDBDBD; animation-delay: .2s"></span><span class="cx-dot3" style="width: 8px; height: 8px; border-radius: 50%; background: #BDBDBD; animation-delay: .4s"></span></span>
+<span style="width: 64px; height: 64px; border-radius: 50%; background: {{bankColor}}; color: {{bankInk}}; font-size: {{bankFs2}}px; font-weight: 800; display: flex; align-items: center; justify-content: center">{{bankAb}}</span>
+</div>
+<span style="margin-top: 10px; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 21px; color: #1F1F1F">กำลังเปิด {{bankApp}}…</span>
+<span style="font-size: 14px; line-height: 1.6; color: #6B6B6B">ยืนยันรายการเติมเงิน <b style="color: #1F1F1F">฿{{amtText}}</b> ในแอปธนาคาร<br>แล้วกลับมาที่ Charge X</span>
+<button type="button" onClick="{{toWait}}" style="margin-top: 8px; height: 50px; padding: 0 22px; border-radius: 14px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; color: #1F1F1F; cursor: pointer">แอปไม่เปิด? แตะเพื่อเปิด {{bankApp}}</button>
+</div>
+</sc-if>
+
+<sc-if value="{{showWait}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 46; background: #F6F6F6; display: flex; flex-direction: column; align-items: center; padding: 120px 20px 32px; box-sizing: border-box; text-align: center">
+<span style="position: relative; width: 96px; height: 96px; display: flex; align-items: center; justify-content: center">
+<svg class="cx-spin" aria-hidden="true" width="96" height="96" viewBox="0 0 96 96" style="position: absolute; inset: 0; animation-duration: 1.6s"><circle cx="48" cy="48" r="44" fill="none" stroke="#E6E6E6" stroke-width="5"></circle><path d="M48 4a44 44 0 0 1 44 44" fill="none" stroke="#FC3901" stroke-width="5" stroke-linecap="round"></path></svg>
+<span style="width: 64px; height: 64px; border-radius: 50%; background: {{bankColor}}; color: {{bankInk}}; font-size: {{bankFs2}}px; font-weight: 800; display: flex; align-items: center; justify-content: center">{{bankAb}}</span>
+</span>
+<h2 style="margin: 24px 0 6px; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 22px; color: #1F1F1F">รอการยืนยันจาก {{bankApp}}</h2>
+<span style="font-size: 14px; line-height: 1.6; color: #6B6B6B">เติมเงิน ฿{{amtText}} · ระบบจะอัปเดตอัตโนมัติเมื่อธนาคารยืนยัน</span>
+<span style="margin-top: 14px; padding: 6px 14px; border-radius: 10px; background: #FFF4E0; color: #B86A00; font-size: 13.5px; font-weight: 700">รายการหมดอายุใน {{waitLeft}} นาที</span>
+<div style="flex: 1"></div>
+<div style="align-self: stretch; display: flex; flex-direction: column; gap: 10px">
+<button type="button" onClick="{{reopen}}" style="height: 54px; border-radius: 16px; border: 0; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 17px; cursor: pointer">เปิด {{bankApp}} อีกครั้ง</button>
+<button type="button" onClick="{{simConfirm}}" style="height: 48px; border-radius: 14px; border: 1.5px dashed #D4D4D4; background: transparent; font-family: inherit; font-size: 14px; font-weight: 600; color: #6B6B6B; cursor: pointer">จำลอง: ยืนยันในแอปธนาคารแล้ว</button>
+<button type="button" onClick="{{cancelBank}}" style="height: 44px; border: 0; background: transparent; font-family: inherit; font-size: 14.5px; font-weight: 600; color: #C42D00; cursor: pointer">ยกเลิกรายการ</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{showFail}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 50; background: #F6F6F6; display: flex; flex-direction: column; align-items: center; padding: 140px 20px 32px; box-sizing: border-box; text-align: center">
+<span class="cx-pop" style="width: 84px; height: 84px; border-radius: 50%; background: #E5484D; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 10px #FDECEC"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></span>
+<h2 class="cx-rise" style="margin: 26px 0 6px; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 25px; color: #1F1F1F">เติมเงินไม่สำเร็จ</h2>
+<span class="cx-rise" style="font-size: 14.5px; line-height: 1.6; color: #5C5C5C">{{failText}}</span>
+<span class="cx-rise" style="margin-top: 6px; font-size: 13px; color: #6B6B6B">ยังไม่มีการตัดเงินจากบัญชีของคุณ</span>
+<div style="flex: 1"></div>
+<div style="align-self: stretch; display: flex; flex-direction: column; gap: 10px">
+<button type="button" onClick="{{retryBank}}" style="height: 56px; border-radius: 16px; border: 0; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; cursor: pointer">ลองอีกครั้ง</button>
+<button type="button" onClick="{{toForm}}" style="height: 50px; border-radius: 16px; border: 1.5px solid #E0E0E0; background: #FFFFFF; color: #1F1F1F; font-family: inherit; font-weight: 600; font-size: 16px; cursor: pointer">เปลี่ยนวิธีเติมเงิน</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{showToastT}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" role="status" style="position: absolute; left: 16px; right: 16px; bottom: 130px; z-index: 30; padding: 12px 14px; border-radius: 16px; background: #1F1F1F; color: #FFFFFF; font-size: 14px; font-weight: 600; box-shadow: 0 10px 24px rgba(0,0,0,0.25)">{{toastT}}</div>
+</sc-if>
+<sc-if value="{{showBusy}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" role="status" style="position: absolute; inset: 0; z-index: 45; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center">
+<div style="width: 240px; padding: 22px; border-radius: 22px; background: #FFFFFF; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center"><svg class="cx-spin" aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2.4" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"></path></svg><span style="font-size: 15px; font-weight: 700; color: #1F1F1F">กำลังเติมเงิน…</span><span style="font-size: 12.5px; color: #6B6B6B">{{busyText}}</span></div>
+</div>
+</sc-if>
+
+<sc-if value="{{showDone}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 50; background: #F6F6F6; display: flex; flex-direction: column; align-items: center; padding: 120px 20px 32px; box-sizing: border-box; text-align: center">
+<span class="cx-pop cx-ring" style="width: 84px; height: 84px; border-radius: 50%; background: #1E9E5A; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 10px #E7F6EE"><svg aria-hidden="true" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg></span>
+<h2 class="cx-rise" style="margin: 26px 0 4px; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 26px; color: #1F1F1F">เติมเงินสำเร็จ</h2>
+<span class="cx-rise" style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 34px; color: #146C3E">+฿{{amtText}}</span>
+<div class="cx-rise" style="align-self: stretch; margin-top: 22px; background: #FFFFFF; border-radius: 20px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; text-align: left">
+<div style="display: flex; justify-content: space-between"><span style="color: #6B6B6B">ยอดคงเหลือใหม่</span><span style="font-weight: 700; color: #1F1F1F">฿{{afterText}}</span></div>
+<div style="display: flex; justify-content: space-between"><span style="color: #6B6B6B">ช่องทาง</span><span style="font-weight: 600; color: #1F1F1F">{{methodName}}</span></div>
+<div style="display: flex; justify-content: space-between"><span style="color: #6B6B6B">เวลา</span><span style="font-weight: 600; color: #1F1F1F">[วันที่] · [เวลา] น.</span></div>
+<div style="display: flex; justify-content: space-between"><span style="color: #6B6B6B">เลขที่รายการ</span><span style="font-weight: 600; color: #1F1F1F">[TX-000000]</span></div>
+</div>
+<div style="flex: 1"></div>
+<div style="align-self: stretch; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<a href="{{L.Wallet}}" style="height: 56px; box-sizing: border-box; border-radius: 16px; border: 1.5px solid #E0E0E0; background: #FFFFFF; color: #1F1F1F; font-weight: 600; font-size: 16px; text-decoration: none; display: flex; align-items: center; justify-content: center">กระเป๋าเงิน</a>
+<a href="{{L.Home}}" style="height: 56px; border-radius: 16px; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 17px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg>ไปชาร์จเลย</a>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"screen":{"editor":"enum","options":["เลือกยอด","สแกน QR","เลือกธนาคาร","รอยืนยันธนาคาร","ไม่สำเร็จ","สำเร็จ"],"default":"เลือกยอด"},"bankResult":{"editor":"enum","options":["สำเร็จ","ไม่สำเร็จ"],"default":"สำเร็จ"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+static {
+const P = this.prototype;
+const TR = {"หรือ": "or", "และ": " and ", "ย้อนกลับ": "Back", "ยืนยัน": "Confirm", "แล้ว": "", "เติมเงิน": "Top up", "กระเป๋าเงิน": "Wallet", "[วันที่]": "[date]", "เติมเงินสำเร็จ": "Top-up successful", "ระบบ": "System", "ยกเลิก": "Cancel", "ปิด": "Closed", "สูงสุด": "max", "เริ่มต้น": "from", "เปลี่ยน": "Change", "จัดการบัตร": "Manage cards", "ลด": "Decrease", "เพิ่ม": "Increase", "บัตร •••• [0000]": "Card •••• [0000]", "บัตรเครดิต / เดบิต": "Credit / debit card", "นาที": "min", "ชำระผ่าน": "Paid with ", "QR พร้อมเพย์": "PromptPay QR", "ค่าเริ่มต้น": "Default", "ยอดเงินคงเหลือปัจจุบัน": "Current balance", "จำนวนเงินที่ต้องการเติม": "Top-up amount", "ขั้นต่ำ ฿100 · สูงสุด ฿10,000 ต่อครั้ง": "Min ฿100 · max ฿10,000 per top-up", "เติมเงินผ่าน": "Top up with", "ยอดคงเหลือหลังเติม": "Balance after top-up", "สแกนจ่ายด้วยแอปธนาคาร": "Scan with your banking app", "TERA CHARGE-X · [เลขอ้างอิง]": "TERA CHARGE-X · [reference no.]", "QR หมดอายุแล้ว กรุณาสร้าง QR ใหม่": "QR expired. Please create a new one.", "ชำระแล้ว": "I've paid", "สร้าง QR ใหม่": "New QR", "ระบบจะตรวจสอบและเติมเงินให้อัตโนมัติภายในไม่กี่วินาที": "We'll confirm and add the money automatically within seconds", "เลือกแอปธนาคาร": "Choose your banking app", "ใช้ล่าสุด": "Last used", "ยืนยันรายการเติมเงิน": "Confirm the top-up of", "ในแอปธนาคาร": "in your banking app", "แล้วกลับมาที่ Charge X": "then come back to Charge X", "จำลอง: ยืนยันในแอปธนาคารแล้ว": "Simulate: confirmed in banking app", "ยกเลิกรายการ": "Cancel transaction", "เติมเงินไม่สำเร็จ": "Top-up failed", "ยังไม่มีการตัดเงินจากบัญชีของคุณ": "No money has been taken from your account", "ลองอีกครั้ง": "Try again", "เปลี่ยนวิธีเติมเงิน": "Change top-up method", "กำลังเติมเงิน…": "Topping up…", "ยอดคงเหลือใหม่": "New balance", "ช่องทาง": "Method", "เวลา": "Time", "[วันที่] · [เวลา] น.": "[date] · [time]", "เลขที่รายการ": "Transaction no.", "ไปชาร์จเลย": "Go charge", "ลด ฿100": "Decrease ฿100", "เพิ่ม ฿100": "Increase ฿100", "สแกน QR พร้อมเพย์": "Scan PromptPay QR", "QR code ตัวอย่าง": "Sample QR code", "เลือกธนาคาร": "Choose bank", "สแกน QR": "Scan QR", "สำเร็จ": "Successful", "รอยืนยันธนาคาร": "Waiting for bank", "ไม่สำเร็จ": "Failed", "ธนาคารกสิกรไทย": "Kasikornbank", "ธนาคารไทยพาณิชย์": "Siam Commercial Bank", "ธนาคารกรุงไทย": "Krungthai Bank", "ธนาคารกรุงเทพ": "Bangkok Bank", "ธนาคารกรุงศรีอยุธยา": "Krungsri (Bank of Ayudhya)", "สแกนจ่ายผ่านแอปธนาคาร · ค่าเริ่มต้น": "Scan with a banking app · default", "เปิดแอปธนาคารเพื่อยืนยัน · ล่าสุด ": "Confirm in your banking app · last used ", "ตรวจสอบผลจาก ": "Checking result from ", "ยกเลิกรายการเติมเงินแล้ว": "Top-up cancelled", "หมดเวลายืนยันใน ": "Timed out waiting for ", " (5 นาที)": " (5 min)", " แจ้งว่ารายการไม่สำเร็จ เช่น ยอดเงินในบัญชีไม่พอ หรือยกเลิกในแอปธนาคาร": " reported the transaction failed, e.g. insufficient funds or cancelled in the app", "ตัดบัตร •••• [0000]": "Charging card •••• [0000]", "ตรวจสอบการชำระผ่านพร้อมเพย์": "Checking PromptPay payment", "บันทึกแล้ว ✓": "Saved ✓", "บันทึก QR": "Save QR", "หมดอายุ": "Expires", "บัตรเครดิต": "Credit card", "บัตร": "Card", "เพิ่ม ": "Added ", "ยังไม่มี": "None yet", "บันทึกแล้ว": "Saved", "บันทึก": "Save", "กำลังเติมเงิน": "Topping up", "กม.": "km", "ชม.": "hrs"};
+const PT = [["^เติมเงิน\\ ฿(.+?)$", "Top up ฿{1}"], ["^QR\\ หมดอายุใน\\ (.+?)\\ นาที$", "QR expires in {1} min"], ["^เติมเงิน\\ ฿(.+?)\\ ·\\ ระบบจะเปิดแอปธนาคารเพื่อให้คุณยืนยัน$", "Top up ฿{1} · we'll open your banking app to confirm"], ["^ไปที่\\ (.+?)$", "Go to {1}"], ["^กำลังเปิด\\ (.+?)…$", "Opening {1}…"], ["^แอปไม่เปิด\\?\\ แตะเพื่อเปิด\\ (.+?)$", "App didn't open? Tap to open {1}"], ["^รอการยืนยันจาก\\ (.+?)$", "Waiting for {1} to confirm"], ["^เติมเงิน\\ ฿(.+?)\\ ·\\ ระบบจะอัปเดตอัตโนมัติเมื่อธนาคารยืนยัน$", "Top up ฿{1} · updates automatically once your bank confirms"], ["^รายการหมดอายุใน\\ (.+?)\\ นาที$", "Expires in {1} min"], ["^เปิด\\ (.+?)\\ อีกครั้ง$", "Open {1} again"]].map(([r, e]) => [new RegExp(r), e]);
+const SUB = [" แจ้งว่ารายการไม่สำเร็จ เช่น ยอดเงินในบัญชีไม่พอ หรือยกเลิกในแอปธนาคาร", "ระบบจะตรวจสอบและเติมเงินให้อัตโนมัติภายในไม่กี่วินาที", "ขั้นต่ำ ฿100 · สูงสุด ฿10,000 ต่อครั้ง", "สแกนจ่ายผ่านแอปธนาคาร · ค่าเริ่มต้น", "เปิดแอปธนาคารเพื่อยืนยัน · ล่าสุด ", "QR หมดอายุแล้ว กรุณาสร้าง QR ใหม่", "ยังไม่มีการตัดเงินจากบัญชีของคุณ", "TERA CHARGE-X · [เลขอ้างอิง]", "จำลอง: ยืนยันในแอปธนาคารแล้ว", "ตรวจสอบการชำระผ่านพร้อมเพย์", "ยกเลิกรายการเติมเงินแล้ว", "จำนวนเงินที่ต้องการเติม", "ยอดเงินคงเหลือปัจจุบัน", "แล้วกลับมาที่ Charge X", "สแกนจ่ายด้วยแอปธนาคาร", "ยืนยันรายการเติมเงิน", "[วันที่] · [เวลา] น.", "เปลี่ยนวิธีเติมเงิน", "ธนาคารกรุงศรีอยุธยา", "ตัดบัตร •••• [0000]", "บัตรเครดิต / เดบิต", "ยอดคงเหลือหลังเติม", "เติมเงินไม่สำเร็จ", "สแกน QR พร้อมเพย์", "บัตร •••• [0000]", "QR code ตัวอย่าง", "ธนาคารไทยพาณิชย์", "หมดเวลายืนยันใน ", "เติมเงินสำเร็จ", "เลือกแอปธนาคาร", "กำลังเติมเงิน…", "ยอดคงเหลือใหม่", "รอยืนยันธนาคาร", "ธนาคารกสิกรไทย", "สร้าง QR ใหม่", "ธนาคารกรุงไทย", "ธนาคารกรุงเทพ", "ตรวจสอบผลจาก ", "กำลังเติมเงิน", "QR พร้อมเพย์", "เติมเงินผ่าน", "ยกเลิกรายการ", "เลขที่รายการ", "บันทึกแล้ว ✓", "กระเป๋าเงิน", "ค่าเริ่มต้น", "ในแอปธนาคาร", "ลองอีกครั้ง", "เลือกธนาคาร", "จัดการบัตร", "ไปชาร์จเลย", "เพิ่ม ฿100", "บัตรเครดิต", "บันทึกแล้ว", "ใช้ล่าสุด", "ไม่สำเร็จ", " (5 นาที)", "บันทึก QR", "ย้อนกลับ", "เติมเงิน", "[วันที่]", "เริ่มต้น", "ชำระผ่าน", "ชำระแล้ว", "ยังไม่มี", "เปลี่ยน", "ช่องทาง", "ลด ฿100", "สแกน QR", "หมดอายุ", "ยืนยัน", "ยกเลิก", "สูงสุด", "สำเร็จ", "เพิ่ม ", "บันทึก", "เพิ่ม", "หรือ", "ระบบ", "นาที", "เวลา", "บัตร", "และ", "ปิด", "กม.", "ชม."];
+const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
+const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
+const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
+P.cxLang = function () { if (this.state && (this.state.lang === 'en' || this.state.lang === 'th')) return this.state.lang; const pl = this.props.lang; if (pl === 'English') return 'en'; if (pl === 'ไทย') return 'th'; try { return localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) { return 'th'; } };
+P.cxWalk = function () {
+const r = this._cxRoot; if (!r || typeof document === 'undefined') return;
+const en = this.cxLang() === 'en';
+const O = this._cxOrig || (this._cxOrig = new Map());
+if (!en) { O.forEach((v, node) => { if (v.t != null && node.nodeValue === v.e) node.nodeValue = v.t; if (v.a) for (const a in v.a) { if (node.getAttribute(a) === v.a[a].e) node.setAttribute(a, v.a[a].t); } }); O.clear(); if (this._cxObs) { this._cxObs.disconnect(); this._cxObs = null; } return; }
+const w = document.createTreeWalker(r, 5, { acceptNode: (x) => (x.nodeType === 1 && x.getAttribute('translate') === 'no') ? 2 : 1 });
+let x = w.currentNode;
+while (x) {
+if (x.nodeType === 3) { const v = x.nodeValue; if (THR.test(v)) { const e = tx(v); if (e !== v) { O.set(x, { t: v, e }); x.nodeValue = e; } } }
+else if (x.nodeType === 1) { for (const a of ATTRS) { const v = x.getAttribute(a); if (v && THR.test(v)) { const e = tx(v); if (e !== v) { const rec = O.get(x) || {}; rec.a = rec.a || {}; rec.a[a] = { t: v, e }; O.set(x, rec); x.setAttribute(a, e); } } } }
+x = w.nextNode();
+}
+if (!this._cxObs && typeof MutationObserver !== 'undefined') { this._cxObs = new MutationObserver(() => { if (this._cxQ) return; this._cxQ = true; Promise.resolve().then(() => { this._cxQ = false; this.cxWalk(); }); }); this._cxObs.observe(r, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS }); }
+};
+const cdm = P.componentDidMount, cdu = P.componentDidUpdate, cwu = P.componentWillUnmount, rv = P.renderVals;
+P.componentDidMount = function () { if (cdm) cdm.call(this); this.cxWalk(); setTimeout(() => this.cxWalk(), 60); if (typeof window !== 'undefined') { this._cxL = (e) => { if (!e || !e.key || e.key === 'cx-lang') { this.cxWalk(); } }; window.addEventListener('storage', this._cxL); window.addEventListener('cx-lang', this._cxL); } };
+P.componentDidUpdate = function (a, b) { if (cdu) cdu.call(this, a, b); this.cxWalk(); };
+P.componentWillUnmount = function () { if (this._cxObs) this._cxObs.disconnect(); if (this._cxL && typeof window !== 'undefined') { window.removeEventListener('storage', this._cxL); window.removeEventListener('cx-lang', this._cxL); } if (cwu) cwu.call(this); };
+P.renderVals = function () { const v = rv.call(this) || {}; v.cxRef = (el) => { this._cxRoot = el; }; v.cxLangProp = this.props.lang || 'ตามแอป'; return v; };
+}
+
+static {
+const P = this.prototype;
+const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide','News','Notify','Home','Station','Scan','Confirm','Charging','Complete','Wallet','Topup','Cards','Vehicles','Saved','Prefs','Help','Support','Privacy','Profile'];
+const rv = P.renderVals;
+P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
+}
+constructor(props) { super(props); let lb = null; try { lb = localStorage.getItem('cx-bank'); } catch (e) {} this.state = Object.assign({ amt: 500, method: 'pp', left: 599, bank: lb || 'kb', lastBank: lb || 'kb', wleft: 299 }, this.screenState(props.screen)); }
+screenState(s) { const m = { 'สแกน QR': 'qr', 'สำเร็จ': 'done', 'เลือกธนาคาร': 'bank', 'รอยืนยันธนาคาร': 'wait', 'ไม่สำเร็จ': 'fail' }; const st = { step: m[s] || 'form' }; if (['bank', 'wait', 'fail'].indexOf(st.step) >= 0) { st.method = 'mb'; st.wleft = 299; st.failWhy = 'decline'; } return st; }
+componentDidUpdate(pp) { if (pp.screen !== this.props.screen) this.setState(this.screenState(this.props.screen)); }
+componentDidMount() { this._iv = setInterval(() => { if (this.state.step === 'qr') this.setState({ left: Math.max(0, this.state.left - 1) }); if (this.state.step === 'wait') { const w = this.state.wleft - 1; if (w <= 0) this.setState({ wleft: 0, step: 'fail', failWhy: 'timeout' }); else this.setState({ wleft: w }); } }, 1000); }
+componentWillUnmount() { clearInterval(this._iv); clearTimeout(this._t); clearTimeout(this._s); }
+renderVals() {
+const accent = this.props.accent ?? '#FC3901';
+const st = this.state;
+const BAL = 500;
+const fmt = (n) => n.toLocaleString('en-US');
+const chips = [100, 300, 500, 1000, 2000, 3000].map((v) => {
+const on = st.amt === v;
+return { label: '฿' + fmt(v), on: on ? 'true' : 'false', pick: () => this.setState({ amt: v }),
+style: 'height: 44px; border-radius: 12px; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; ' + (on ? 'border: 1.5px solid ' + accent + '; background: #FFF1EB; color: #C42D00' : 'border: 1px solid #E6E6E6; background: #FFFFFF; color: #1F1F1F') };
+});
+const ICON = { pp: 'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h3v3h-3zM20 14v1M14 20h1M18 18h3v3', card: 'M3 5h18v14H3zM3 10h18M7 15h3', mb: 'M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM11 18h2' };
+const BANKS = [['kb', 'K PLUS', 'ธนาคารกสิกรไทย', 'K', '#138F2D', '#FFFFFF'], ['scb', 'SCB EASY', 'ธนาคารไทยพาณิชย์', 'SCB', '#4E2A84', '#FFFFFF'], ['ktb', 'Krungthai NEXT', 'ธนาคารกรุงไทย', 'KTB', '#00A4E4', '#FFFFFF'], ['bbl', 'Bualuang mBanking', 'ธนาคารกรุงเทพ', 'BBL', '#1E3A8A', '#FFFFFF'], ['bay', 'KMA', 'ธนาคารกรุงศรีอยุธยา', 'KMA', '#FEC43B', '#4A3B00']];
+const bk = BANKS.find((b) => b[0] === st.bank) || BANKS[0];
+const lastB = BANKS.find((b) => b[0] === st.lastBank) || BANKS[0];
+const NAME = { pp: 'QR พร้อมเพย์', card: 'บัตร •••• [0000]', mb: 'Mobile Banking' };
+const methods = [['pp', 'สแกนจ่ายผ่านแอปธนาคาร · ค่าเริ่มต้น'], ['card', 'บัตรเครดิต / เดบิต'], ['mb', 'เปิดแอปธนาคารเพื่อยืนยัน · ล่าสุด ' + lastB[1]]].map(([id, sub]) => {
+const on = st.method === id;
+return { name: NAME[id], sub, icon: ICON[id], pick: () => this.setState({ method: id }),
+bg: on ? '#FFF1EB' : '#F4F4F4', fg: on ? accent : '#5C5C5C', ring: on ? accent : '#BDBDBD', dot: on ? accent : 'transparent',
+style: 'width: 100%; display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 16px; font-family: inherit; cursor: pointer; background: ' + (on ? '#FFF7F3' : '#FFFFFF') + '; border: ' + (on ? '1.5px solid ' + accent : '1px solid #E6E6E6') };
+});
+if (!this._qr) {
+let d = ''; let seed = (this._qrN = (this._qrN || 0) + 1) * 7;
+const rnd = () => { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
+const finder = (x, y) => 'M' + x + ' ' + y + 'h7v7h-7zM' + (x + 1) + ' ' + (y + 1) + 'v5h5v-5zM' + (x + 2) + ' ' + (y + 2) + 'h3v3h-3z';
+const inF = (x, y) => (x < 9 && y < 9) || (x > 19 && y < 9) || (x < 9 && y > 19);
+for (let y = 1; y < 28; y++) for (let x = 1; x < 28; x++) { if (inF(x, y)) continue; if (x > 10 && x < 18 && y > 10 && y < 18) continue; if (rnd() > 0.52) d += 'M' + x + ' ' + y + 'h1v1h-1z'; }
+this._qr = finder(1, 1) + finder(21, 1) + finder(1, 21) + d;
+}
+const finish = (text) => { this.setState({ step: 'busy', busyText: text }); clearTimeout(this._t); this._t = setTimeout(() => this.setState({ step: 'done' }), 1600); };
+const after = BAL + st.amt;
+const mm = Math.floor(st.left / 60), ss = st.left % 60;
+return {
+accent, chips, methods,
+balText: fmt(BAL), amtText: fmt(st.amt), afterText: fmt(after), methodName: st.method === 'mb' ? 'Mobile Banking · ' + bk[1] : NAME[st.method],
+banks: BANKS.map((b) => { const on = st.bank === b[0]; return { app: b[1], bank: b[2], ab: b[3], color: b[4], ink: b[5], fs: b[3].length > 2 ? 12 : 16, last: b[0] === st.lastBank, on: on ? 'true' : 'false', ring: on ? accent : '#BDBDBD', dot: on ? accent : 'transparent', pick: () => this.setState({ bank: b[0] }),
+style: 'width: 100%; display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-radius: 16px; font-family: inherit; cursor: pointer; background: ' + (on ? '#FFF7F3' : '#FFFFFF') + '; border: ' + (on ? '1.5px solid ' + accent : '1px solid #E6E6E6') }; }),
+bankApp: bk[1], bankAb: bk[3], bankColor: bk[4], bankInk: bk[5], bankFs2: bk[3].length > 2 ? 18 : 26,
+showBank: st.step === 'bank', showRedirect: st.step === 'redirect', showWait: st.step === 'wait', showFail: st.step === 'fail',
+goBank: () => { try { localStorage.setItem('cx-bank', st.bank); } catch (e) {} this.setState({ step: 'redirect', lastBank: st.bank, wleft: 299 }); clearTimeout(this._t); this._t = setTimeout(() => { if (this.state.step === 'redirect') this.setState({ step: 'wait' }); }, 1800); },
+toWait: () => this.setState({ step: 'wait' }),
+reopen: () => { this.setState({ step: 'redirect' }); clearTimeout(this._t); this._t = setTimeout(() => { if (this.state.step === 'redirect') this.setState({ step: 'wait' }); }, 1500); },
+simConfirm: () => { if (this.props.bankResult === 'ไม่สำเร็จ') { this.setState({ step: 'busy', busyText: 'ตรวจสอบผลจาก ' + bk[1] }); clearTimeout(this._t); this._t = setTimeout(() => this.setState({ step: 'fail', failWhy: 'decline' }), 1400); } else finish('ตรวจสอบผลจาก ' + bk[1]); },
+cancelBank: () => { this.setState({ step: 'form', toastT: 'ยกเลิกรายการเติมเงินแล้ว' }); clearTimeout(this._s); this._s = setTimeout(() => this.setState({ toastT: '' }), 2200); },
+showToastT: !!st.toastT, toastT: st.toastT || '',
+failText: st.failWhy === 'timeout' ? 'หมดเวลายืนยันใน ' + bk[1] + ' (5 นาที)' : bk[1] + ' แจ้งว่ารายการไม่สำเร็จ เช่น ยอดเงินในบัญชีไม่พอ หรือยกเลิกในแอปธนาคาร',
+retryBank: () => this.setState({ step: 'bank' }), toForm: () => this.setState({ step: 'form' }),
+waitLeft: Math.floor(st.wleft / 60) + ':' + (st.wleft % 60 < 10 ? '0' : '') + (st.wleft % 60),
+dec: () => this.setState({ amt: Math.max(100, st.amt - 100) }),
+inc: () => this.setState({ amt: Math.min(10000, st.amt + 100) }),
+submit: () => { if (st.method === 'pp') this.setState({ step: 'qr', left: 599, saved: false }); else if (st.method === 'mb') this.setState({ step: 'bank' }); else finish('ตัดบัตร •••• [0000]'); },
+showQr: st.step === 'qr', showBusy: st.step === 'busy', showDone: st.step === 'done',
+closeQr: () => this.setState({ step: 'form' }), paid: () => { if (this.state.left > 0) finish('ตรวจสอบการชำระผ่านพร้อมเพย์'); },
+qrLive: st.left > 0, qrDead: st.left <= 0, deadStr: st.left > 0 ? 'false' : 'true', qrOp: st.left > 0 ? 1 : 0.15, saveOp: st.left > 0 ? 1 : 0.5,
+renewQr: () => { this._qr = null; this.setState({ left: 599, saved: false }); },
+saveLabel: st.saved ? 'บันทึกแล้ว ✓' : 'บันทึก QR',
+saveQr: () => { if (this.state.left <= 0) return; this.setState({ saved: true }); clearTimeout(this._s); this._s = setTimeout(() => this.setState({ saved: false }), 2000); },
+busyText: st.busyText || '', qrPath: this._qr, qrLeft: mm + ':' + (ss < 10 ? '0' : '') + ss
+};
+}
+}
+</script>
+</body>
+</html>

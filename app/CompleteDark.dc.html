@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>Charge X — Session complete (โหมดมืด)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 390px; height: 844px; background: #000000; font-family: Sarabun, 'Segoe UI', sans-serif">
+<dc-import name="Complete" theme="dark" lang="{{lang}}" method="{{method}}" payment="{{payment}}" hint-size="390px,844px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"method":{"editor":"enum","options":["บัตร","กระเป๋าเงิน"],"default":"บัตร"},"payment":{"editor":"enum","options":["ชำระสำเร็จ","ตัดบัตรไม่สำเร็จ"],"default":"ชำระสำเร็จ"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() { return { method: this.props.method ?? "บัตร", payment: this.props.payment ?? "ชำระสำเร็จ", lang: this.props.lang ?? 'ตามแอป' }; }
+}
+</script>
+</body>
+</html>

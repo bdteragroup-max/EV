@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>Charge X — การแจ้งเตือน</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#C42D00}
+@keyframes cxIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.cx-item{animation:cxIn .45s cubic-bezier(.2,.8,.3,1) both}
+.cx-scroll{scrollbar-width:none}.cx-scroll::-webkit-scrollbar{display:none}
+@media (prefers-reduced-motion: reduce){.cx-item{animation:none}}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F7EFD6"],[style*="background: rgb(247, 239, 214)"]){background-color:rgba(212,175,55,.2)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #7A5C0E"],[style*="color: rgb(122, 92, 14)"]){color:#E0BE5A!important}
+[data-theme="dark"] [stroke="#7A5C0E"]{stroke:#E0BE5A}
+[data-theme="dark"] [stroke="#3A3A3A"]{stroke:#DCDCE0}
+[data-theme="dark"]{color-scheme:dark}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFFFFF"]{background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F4F4F4"],[style*="background: #F6F6F6"],[style*="background: #F0F0F0"],[style*="background: rgb(244, 244, 244)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F2EFE9"],[style*="background: #EEEEEC"]){background-color:#1C1D20!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #333333"]{background-color:#3A3A40!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FFF1EB"],[style*="background: #FFE4DA"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF7F3"]{background-color:rgba(252,57,1,.1)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #E7F6EE"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #E6E6E6"],[style*="background: #EDEDED"],[style*="background: #EFEFEF"],[style*="background: #D9D9D9"],[style*="background: #DADADA"]){background-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="linear-gradient(#FFFFFF"]{background:linear-gradient(#000000 72%,rgba(0,0,0,0))!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="repeating-linear-gradient(90deg, #DADADA"]{background:repeating-linear-gradient(90deg,#3A3A40 0 6px,transparent 6px 12px)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #1F1F1F"],[style*="color: #2B2B2B"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #3A3A3A"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #C42D00"],[style*="color: rgb(196, 45, 0)"]){color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #146C3E"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"],[style*="solid #D4D4D4"],[style*="solid #E2E2E2"],[style*="solid #FDD3C3"]){border-color:#35353B!important}
+[data-theme="dark"] [stroke="#1F1F1F"]{stroke:#F3F3F4}
+[data-theme="dark"] [stroke="#5C5C5C"]{stroke:#A6A6AD}
+[data-theme="dark"] [stroke="#3A3A3A"]{stroke:#DCDCE0}
+[data-theme="dark"] [stroke="#E8E8E8"]{stroke:#2A2A2F}
+[data-theme="dark"] [fill="#E8E8E8"]{fill:#2A2A2F}
+[data-theme="dark"] [fill="#FFF4EF"]{fill:#2A1D18}
+[data-theme="dark"] [stroke="#F0F0F0"]{stroke:#2E2E33}
+[data-theme="dark"] input::placeholder{color:#7C7C83}
+[data-theme="dark"] .cx-in{background:#1C1C1E;border-color:#35353B;color:#F3F3F4}
+[data-theme="dark"] a:not([style*="color"]){color:#FF7A4D}
+[data-theme="dark"] img[src*="f46d7ba1c670cac41e8a125f33e770a5"]{content:url("img/74494939c52664c9c5c123c6273095cc.png");mix-blend-mode:lighten}
+[data-theme="dark"][data-theme][style]{background-color:#000000!important}
+[data-theme="dark"][data-theme][style]{color:#F3F3F4!important}
+[data-theme="dark"] :is(button,input,textarea,select,legend,label){color:inherit}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(31, 31, 31)"],[style*="color: rgb(43, 43, 43)"],[style*="color: rgb(0, 0, 0)"],[style*="color: #000"],[style*="color: black"],[style*="color: #1f1f1f"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(58, 58, 58)"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(92, 92, 92)"],[style*="color: rgb(107, 107, 107)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(196, 45, 0)"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(20, 108, 62)"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 255, 255)"],[style*="background-color: rgb(255, 255, 255)"]){background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(244, 244, 244)"],[style*="background: rgb(246, 246, 246)"],[style*="background: rgb(240, 240, 240)"],[style*="background-color: rgb(244, 244, 244)"],[style*="background-color: rgb(246, 246, 246)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(31, 31, 31)"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F7EFD6"],[style*="background: rgb(247, 239, 214)"]){background-color:rgba(212,175,55,.2)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #7A5C0E"],[style*="color: rgb(122, 92, 14)"]){color:#E0BE5A!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 241, 235)"],[style*="background: rgb(255, 228, 218)"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(255, 247, 243)"]{background-color:rgba(252,57,1,.12)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(230, 230, 230)"],[style*="background: rgb(237, 237, 237)"],[style*="background: rgb(239, 239, 239)"],[style*="background: rgb(217, 217, 217)"],[style*="background: rgb(218, 218, 218)"]){background-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(51, 51, 51)"]{background-color:#3A3A40!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="linear-gradient(rgb(255, 255, 255)"]{background:linear-gradient(#000000 72%,rgba(0,0,0,0))!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(158, 36, 0)"]{color:#FF8A66!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"],[style*="solid rgb(237, 237, 237)"],[style*="solid rgb(239, 239, 239)"],[style*="solid rgb(212, 212, 212)"],[style*="solid rgb(226, 226, 226)"]){border-color:#35353B!important}
+[data-theme="dark"] .cx-fablabel{color:#FF7A4D}
+[data-theme="dark"] .cx-fab{box-shadow:0 6px 14px rgba(252,57,1,.35)!important}
+[data-theme="dark"] .cx-navbg path{fill:#1C1C1E}
+[data-theme="dark"] .cx-chg{animation-name:cxChgPD}
+</style>
+</helmet>
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; box-sizing: border-box; background: #F6F6F6; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+<div style="padding: 56px 16px 10px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; align-items: center; gap: 10px">
+<a href="{{L.News}}" aria-label="ย้อนกลับ" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 14px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a>
+<div style="display: flex; align-items: center; gap: 8px; min-width: 0">
+<h1 style="margin: 0; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 24px; line-height: 1.3">การแจ้งเตือน</h1>
+<sc-if value="{{hasUnread}}" hint-placeholder-val="{{ true }}"><span style="min-width: 22px; height: 22px; padding: 0 6px; box-sizing: border-box; border-radius: 11px; background: {{accent}}; color: #FFFFFF; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center">{{unread}}</span></sc-if>
+</div>
+<button onClick="{{readAll}}" disabled="{{noUnread}}" style="height: 36px; padding: 0 4px; border: 0; background: transparent; font-family: inherit; font-size: 14px; font-weight: 600; color: {{readAllColor}}; cursor: pointer">อ่านทั้งหมด</button>
+</div>
+<div class="cx-scroll" role="tablist" aria-label="ประเภทการแจ้งเตือน" style="display: flex; gap: 8px; overflow-x: auto">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="4">
+<button role="tab" aria-selected="{{t.sel}}" onClick="{{t.pick}}" style="{{t.style}}">{{t.label}}</button>
+</sc-for>
+</div>
+</div>
+
+<div class="cx-scroll" style="flex: 1; overflow-y: auto; padding: 4px 16px 34px; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{items}}" as="n" hint-placeholder-count="6">
+<sc-if value="{{n.showHead}}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; font-weight: 600; color: #6B6B6B; margin: 10px 4px 2px">{{n.head}}</span></sc-if>
+<a href="{{n.href}}" onClick="{{n.read}}" class="cx-item" style="{{n.cardStyle}}">
+<span style="width: 44px; height: 44px; flex: none; border-radius: 14px; background: {{n.tileBg}}; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{n.tileFg}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{n.icon}}"></path></svg></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+<span style="display: flex; align-items: baseline; gap: 8px"><span style="flex: 1; font-weight: 700; font-size: 15px; line-height: 1.35; color: #1F1F1F">{{n.title}}</span><span style="font-size: 12px; color: #6B6B6B; flex: none">{{n.time}}</span></span>
+<span style="font-size: 13.5px; line-height: 1.55; color: #5C5C5C">{{n.body}}</span>
+</span>
+<sc-if value="{{n.unread}}" hint-placeholder-val="{{ true }}"><span aria-label="ยังไม่ได้อ่าน" style="position: absolute; top: 16px; right: 14px; width: 8px; height: 8px; border-radius: 50%; background: {{accent}}"></span></sc-if>
+</a>
+</sc-for>
+<sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 80px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<span style="width: 72px; height: 72px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg></span>
+<span style="font-weight: 600; font-size: 16px; color: #1F1F1F">ยังไม่มีการแจ้งเตือน</span>
+<span style="font-size: 14px; color: #6B6B6B">การแจ้งเตือนในหมวดนี้จะแสดงที่นี่</span>
+</div>
+</sc-if>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+static {
+const P = this.prototype;
+const TR = {"ย้อนกลับ": "Back", "แล้ว": "", "ชื่อ": "First name", "เติมเงิน": "Top up", "การชาร์จ": "Charge", "กระเป๋าเงิน": "Wallet", "ทั้งหมด": "All", "โปรโมชัน": "Promotions", "แจ้งปิดปรับปรุงระบบชั่วคราว": "Scheduled system maintenance", "[วันที่ · เวลา]": "[date · time]", "สถานีใหม่": "New station", "[วันที่]": "[date]", "การแจ้งเตือน": "Notifications", "อ่านทั้งหมด": "Mark all read", "ยังไม่มีการแจ้งเตือน": "No notifications yet", "การแจ้งเตือนในหมวดนี้จะแสดงที่นี่": "Notifications in this category will appear here", "ประเภทการแจ้งเตือน": "Notification type", "ยังไม่ได้อ่าน": "Unread", "วันนี้": "Today", "ชาร์จเสร็จสมบูรณ์": "Charging complete", "Chery Q ชาร์จถึง 80% ที่มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา · 32.4 kWh": "Chery Q reached 80% at Ramkhamhaeng University, Bang Na Campus · 32.4 kWh", "หักเงินจากกระเป๋าเงิน": "Wallet payment", "−฿235.68 ค่าชาร์จช่อง 04 · ยอดคงเหลือ ฿264.32": "−฿235.68 for bay 04 · balance ฿264.32", "แบตเตอรี่ถึง 68% แล้ว": "Battery at 68%", "เต็มในอีกประมาณ 18 นาที แตะเพื่อดูสถานะการชาร์จ": "Full in about 18 min. Tap to see charging status.", "เมื่อวาน": "Yesterday", "สิทธิพิเศษสำหรับสมาชิก": "Member perk", "รับส่วนลด 10% ทุกการชาร์จ DC ช่วง 22:00–06:00 [รายละเอียดโปรโมชัน]": "10% off every DC charge between 22:00–06:00 [promotion details]", "เติมเงินสำเร็จ": "Top-up successful", "+฿735.68 ผ่านพร้อมเพย์ เข้ากระเป๋าเงิน Charge-X": "+฿735.68 via PromptPay to your Charge-X wallet", "ก่อนหน้านี้": "Earlier", "สถานีใหม่ใกล้คุณ": "New station near you", "[ชื่อสถานี] เปิดให้บริการแล้ว ห่างจากคุณ 2.4 กม. มีหัวชาร์จ DC 150 kW": "[Station name] is now open, 2.4 km from you, with 150 kW DC chargers", "ระบบชำระเงินจะปิดปรับปรุง [วันที่ · เวลา] ประมาณ 30 นาที": "Payments will be down for maintenance on [date · time] for about 30 min", "ระบบ": "System", "เต็ม": "Full", "ปิดปรับปรุง": "Under maintenance", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "ปิด": "Closed", "รายละเอียด": "Details", "ลด": "Decrease", "กระเป๋าเงิน Charge-X": "Charge-X wallet", "ยอดคงเหลือ ฿": "Balance ฿", "นาที": "min", "แบตเตอรี่": "Battery", "เวลา": "Time", "สำเร็จ": "Successful", " แล้ว": "", "ยังไม่มี": "None yet", "ชาร์จเสร็จ": "Charging finished", "กม.": "km", "ชม.": "hrs"};
+const PT = [].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["Chery Q ชาร์จถึง 80% ที่มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา · 32.4 kWh", "[ชื่อสถานี] เปิดให้บริการแล้ว ห่างจากคุณ 2.4 กม. มีหัวชาร์จ DC 150 kW", "รับส่วนลด 10% ทุกการชาร์จ DC ช่วง 22:00–06:00 [รายละเอียดโปรโมชัน]", "ระบบชำระเงินจะปิดปรับปรุง [วันที่ · เวลา] ประมาณ 30 นาที", "เต็มในอีกประมาณ 18 นาที แตะเพื่อดูสถานะการชาร์จ", "+฿735.68 ผ่านพร้อมเพย์ เข้ากระเป๋าเงิน Charge-X", "−฿235.68 ค่าชาร์จช่อง 04 · ยอดคงเหลือ ฿264.32", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "การแจ้งเตือนในหมวดนี้จะแสดงที่นี่", "แจ้งปิดปรับปรุงระบบชั่วคราว", "สิทธิพิเศษสำหรับสมาชิก", "หักเงินจากกระเป๋าเงิน", "แบตเตอรี่ถึง 68% แล้ว", "ยังไม่มีการแจ้งเตือน", "กระเป๋าเงิน Charge-X", "ประเภทการแจ้งเตือน", "ชาร์จเสร็จสมบูรณ์", "สถานีใหม่ใกล้คุณ", "[วันที่ · เวลา]", "เติมเงินสำเร็จ", "ยังไม่ได้อ่าน", "การแจ้งเตือน", "ยอดคงเหลือ ฿", "กระเป๋าเงิน", "อ่านทั้งหมด", "ก่อนหน้านี้", "ปิดปรับปรุง", "รายละเอียด", "ชาร์จเสร็จ", "สถานีใหม่", "แบตเตอรี่", "ย้อนกลับ", "เติมเงิน", "การชาร์จ", "โปรโมชัน", "[วันที่]", "เมื่อวาน", "ยังไม่มี", "ทั้งหมด", "วันนี้", "สำเร็จ", "ชื่อ", "ระบบ", "เต็ม", "นาที", "เวลา", "ปิด", "กม.", "ชม."];
+const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
+const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
+const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
+P.cxLang = function () { if (this.state && (this.state.lang === 'en' || this.state.lang === 'th')) return this.state.lang; const pl = this.props.lang; if (pl === 'English') return 'en'; if (pl === 'ไทย') return 'th'; try { return localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) { return 'th'; } };
+P.cxWalk = function () {
+const r = this._cxRoot; if (!r || typeof document === 'undefined') return;
+const en = this.cxLang() === 'en';
+const O = this._cxOrig || (this._cxOrig = new Map());
+if (!en) { O.forEach((v, node) => { if (v.t != null && node.nodeValue === v.e) node.nodeValue = v.t; if (v.a) for (const a in v.a) { if (node.getAttribute(a) === v.a[a].e) node.setAttribute(a, v.a[a].t); } }); O.clear(); if (this._cxObs) { this._cxObs.disconnect(); this._cxObs = null; } return; }
+const w = document.createTreeWalker(r, 5, { acceptNode: (x) => (x.nodeType === 1 && x.getAttribute('translate') === 'no') ? 2 : 1 });
+let x = w.currentNode;
+while (x) {
+if (x.nodeType === 3) { const v = x.nodeValue; if (THR.test(v)) { const e = tx(v); if (e !== v) { O.set(x, { t: v, e }); x.nodeValue = e; } } }
+else if (x.nodeType === 1) { for (const a of ATTRS) { const v = x.getAttribute(a); if (v && THR.test(v)) { const e = tx(v); if (e !== v) { const rec = O.get(x) || {}; rec.a = rec.a || {}; rec.a[a] = { t: v, e }; O.set(x, rec); x.setAttribute(a, e); } } } }
+x = w.nextNode();
+}
+if (!this._cxObs && typeof MutationObserver !== 'undefined') { this._cxObs = new MutationObserver(() => { if (this._cxQ) return; this._cxQ = true; Promise.resolve().then(() => { this._cxQ = false; this.cxWalk(); }); }); this._cxObs.observe(r, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS }); }
+};
+const cdm = P.componentDidMount, cdu = P.componentDidUpdate, cwu = P.componentWillUnmount, rv = P.renderVals;
+P.componentDidMount = function () { if (cdm) cdm.call(this); this.cxWalk(); setTimeout(() => this.cxWalk(), 60); if (typeof window !== 'undefined') { this._cxL = (e) => { if (!e || !e.key || e.key === 'cx-lang') { this.cxWalk(); } }; window.addEventListener('storage', this._cxL); window.addEventListener('cx-lang', this._cxL); } };
+P.componentDidUpdate = function (a, b) { if (cdu) cdu.call(this, a, b); this.cxWalk(); };
+P.componentWillUnmount = function () { if (this._cxObs) this._cxObs.disconnect(); if (this._cxL && typeof window !== 'undefined') { window.removeEventListener('storage', this._cxL); window.removeEventListener('cx-lang', this._cxL); } if (cwu) cwu.call(this); };
+P.renderVals = function () { const v = rv.call(this) || {}; v.cxRef = (el) => { this._cxRoot = el; }; v.cxLangProp = this.props.lang || 'ตามแอป'; return v; };
+}
+
+static {
+const P = this.prototype;
+const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide','News','Notify','Home','Station','Scan','Confirm','Charging','Complete','Wallet','Topup','Cards','Vehicles','Saved','Prefs','Help','Support','Privacy','Profile'];
+const rv = P.renderVals;
+P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
+}
+constructor(props) { super(props); this.state = { tab: 'all', read: {} }; }
+renderVals() {
+const accent = this.props.accent ?? '#FC3901';
+const d = this.props.theme === 'dark';
+const pre = (n) => n + (d ? 'Dark' : '') + '.dc.html';
+const IC = {
+charge: 'M13 2 4 14h7l-1 8 9-12h-7l1-8z',
+done: 'M22 11.1V12a10 10 0 1 1-5.9-9.1M22 4 12 14l-3-3',
+wallet: 'M6 6h12a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3zM3 10h18M16 15h2',
+plus: 'M12 5v14M5 12h14',
+gift: 'M3 8h18v4H3zM12 8v13M5 12v9h14v-9M12 8H8a2.5 2.5 0 1 1 0-5c2.5 0 4 5 4 5zM12 8h4a2.5 2.5 0 1 0 0-5c-2.5 0-4 5-4 5z',
+alert: 'M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h0',
+pin: 'M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21zM14.5 9.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 1 1 5 0z'
+};
+const T = {
+charge: { bg: '#FFF1EB', fg: accent },
+wallet: { bg: '#FFF1EB', fg: accent },
+topup: { bg: '#E7F6EE', fg: '#146C3E' },
+promo: { bg: '#F7EFD6', fg: '#7A5C0E' },
+system: { bg: '#F4F4F4', fg: '#3A3A3A' }
+};
+const all = [
+{ id: 'n1', cat: 'charge', t: 'charge', head: 'วันนี้', icon: IC.done, title: 'ชาร์จเสร็จสมบูรณ์', body: 'Chery Q ชาร์จถึง 80% ที่มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา · 32.4 kWh', time: '10:42', to: 'Complete', unread: true },
+{ id: 'n2', cat: 'charge', t: 'wallet', head: 'วันนี้', icon: IC.wallet, title: 'หักเงินจากกระเป๋าเงิน', body: '−฿235.68 ค่าชาร์จช่อง 04 · ยอดคงเหลือ ฿264.32', time: '10:43', to: 'Wallet', unread: true },
+{ id: 'n3', cat: 'charge', t: 'charge', head: 'วันนี้', icon: IC.charge, title: 'แบตเตอรี่ถึง 68% แล้ว', body: 'เต็มในอีกประมาณ 18 นาที แตะเพื่อดูสถานะการชาร์จ', time: '10:24', to: 'Charging', unread: true },
+{ id: 'n4', cat: 'promo', t: 'promo', head: 'เมื่อวาน', icon: IC.gift, title: 'สิทธิพิเศษสำหรับสมาชิก', body: 'รับส่วนลด 10% ทุกการชาร์จ DC ช่วง 22:00–06:00 [รายละเอียดโปรโมชัน]', time: '18:05', to: 'News', unread: false },
+{ id: 'n5', cat: 'charge', t: 'topup', head: 'เมื่อวาน', icon: IC.plus, title: 'เติมเงินสำเร็จ', body: '+฿735.68 ผ่านพร้อมเพย์ เข้ากระเป๋าเงิน Charge-X', time: '09:12', to: 'Wallet', unread: false },
+{ id: 'n6', cat: 'system', t: 'charge', head: 'ก่อนหน้านี้', icon: IC.pin, title: 'สถานีใหม่ใกล้คุณ', body: '[ชื่อสถานี] เปิดให้บริการแล้ว ห่างจากคุณ 2.4 กม. มีหัวชาร์จ DC 150 kW', time: '[วันที่]', to: 'Home', unread: false },
+{ id: 'n7', cat: 'system', t: 'system', head: 'ก่อนหน้านี้', icon: IC.alert, title: 'แจ้งปิดปรับปรุงระบบชั่วคราว', body: 'ระบบชำระเงินจะปิดปรับปรุง [วันที่ · เวลา] ประมาณ 30 นาที', time: '[วันที่]', to: 'News', unread: false }
+];
+const isUnread = (n) => n.unread && !this.state.read[n.id];
+const tab = this.state.tab;
+const list = all.filter((n) => tab === 'all' || n.cat === tab);
+let last = null;
+const items = list.map((n, i) => {
+const u = isUnread(n);
+const showHead = n.head !== last; last = n.head;
+return {
+showHead, head: n.head, icon: n.icon, title: n.title, body: n.body, time: n.time,
+href: pre(n.to), unread: u,
+tileBg: T[n.t].bg, tileFg: T[n.t].fg,
+read: () => this.setState({ read: Object.assign({}, this.state.read, { [n.id]: true }) }),
+cardStyle: 'position: relative; display: flex; align-items: flex-start; gap: 12px; padding: 14px 30px 14px 14px; border-radius: 18px; text-decoration: none; animation-delay: ' + (i * 0.05).toFixed(2) + 's; background: ' + (u ? '#FFF7F3' : '#FFFFFF') + '; border: 1px solid ' + (u ? '#FDD3C3' : '#EFEFEF')
+};
+});
+const unread = all.filter(isUnread).length;
+const tabs = [['all', 'ทั้งหมด'], ['charge', 'การชาร์จ'], ['promo', 'โปรโมชัน'], ['system', 'ระบบ']].map(([id, label]) => {
+const on = tab === id;
+return { label, sel: on ? 'true' : 'false', pick: () => this.setState({ tab: id }),
+style: 'height: 36px; padding: 0 16px; flex: none; border-radius: 18px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; ' + (on ? 'border: 0; background: ' + accent + '; color: #FFFFFF' : 'border: 1px solid #E6E6E6; background: #FFFFFF; color: #3A3A3A') };
+});
+return {
+accent, items, tabs, unread,
+hasUnread: unread > 0,
+noUnread: unread === 0,
+readAllColor: unread > 0 ? '#C42D00' : '#8A8A8A',
+empty: items.length === 0,
+readAll: () => { const r = {}; all.forEach((n) => { r[n.id] = true; }); this.setState({ read: r }); }
+};
+}
+}
+</script>
+</body>
+</html>

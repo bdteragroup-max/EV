@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>Charge X — Station detail</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#C42D00}a:hover{color:#9E2400}
+[data-theme="dark"]{color-scheme:dark}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFFFFF"]{background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F4F4F4"],[style*="background: #F6F6F6"],[style*="background: #F0F0F0"],[style*="background: rgb(244, 244, 244)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FFF1EB"],[style*="background: #FFE4DA"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF7F3"]{background-color:rgba(252,57,1,.1)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #E7F6EE"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #1F1F1F"],[style*="color: #2B2B2B"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #3A3A3A"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #C42D00"],[style*="color: rgb(196, 45, 0)"]){color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #146C3E"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"]){border-color:#35353B!important}
+[data-theme="dark"] [stroke="#1F1F1F"]{stroke:#F3F3F4}
+[data-theme="dark"][data-theme][style]{background-color:#000000!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="margin-top: -24px; background: #FFFFFF"]{background-color:#000000!important}
+[data-theme="dark"][data-theme][style]{color:#F3F3F4!important}
+[data-theme="dark"] :is(button,input,textarea,select,legend,label){color:inherit}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(31, 31, 31)"],[style*="color: rgb(43, 43, 43)"],[style*="color: rgb(0, 0, 0)"],[style*="color: #000"],[style*="color: black"],[style*="color: #1f1f1f"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(58, 58, 58)"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(92, 92, 92)"],[style*="color: rgb(107, 107, 107)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(196, 45, 0)"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(20, 108, 62)"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 255, 255)"],[style*="background-color: rgb(255, 255, 255)"]){background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(244, 244, 244)"],[style*="background: rgb(246, 246, 246)"],[style*="background: rgb(240, 240, 240)"],[style*="background-color: rgb(244, 244, 244)"],[style*="background-color: rgb(246, 246, 246)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(31, 31, 31)"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 241, 235)"],[style*="background: rgb(255, 228, 218)"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(255, 247, 243)"]{background-color:rgba(252,57,1,.12)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(231, 246, 238)"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(230, 230, 230)"],[style*="background: rgb(237, 237, 237)"],[style*="background: rgb(239, 239, 239)"],[style*="background: rgb(217, 217, 217)"],[style*="background: rgb(218, 218, 218)"]){background-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(51, 51, 51)"]{background-color:#3A3A40!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(189, 189, 189)"]{background-color:#55555C!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="linear-gradient(rgb(255, 255, 255)"]{background:linear-gradient(#000000 72%,rgba(0,0,0,0))!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="repeating-linear-gradient(90deg, rgb(218, 218, 218)"]{background:repeating-linear-gradient(90deg,#3A3A40 0 6px,transparent 6px 12px)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(158, 36, 0)"]{color:#FF8A66!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"],[style*="solid rgb(237, 237, 237)"],[style*="solid rgb(239, 239, 239)"],[style*="solid rgb(212, 212, 212)"],[style*="solid rgb(226, 226, 226)"],[style*="solid rgb(253, 211, 195)"]){border-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="margin-top: -24px; background: rgb(255, 255, 255)"]{background-color:#000000!important}
+.cx-scroll{scrollbar-width:none}.cx-scroll::-webkit-scrollbar{display:none}
+@keyframes cxSheet{from{transform:translateY(100%)}to{transform:none}}
+.cx-sheet{animation:cxSheet .35s cubic-bezier(.2,.9,.3,1) both}
+@keyframes cxFade{from{opacity:0}to{opacity:1}}
+.cx-fade{animation:cxFade .3s ease-out both}
+@keyframes cxSpin{to{transform:rotate(360deg)}}
+.cx-spin{animation:cxSpin .8s linear infinite;transform-origin:center}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #B86A00"],[style*="color: rgb(184, 106, 0)"]){color:#F0A84A!important}
+@media (prefers-reduced-motion: reduce){.cx-sheet,.cx-fade,.cx-spin{animation:none}}
+</style>
+</helmet>
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #FFFFFF; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; display: flex; flex-direction: column">
+<div style="height: 260px; flex: none; position: relative; overflow: hidden; background: #1F1F1F">
+<img src="img/18970bd8ea282f5bf473c1f7b19d490d.jpg" alt="สถานีชาร์จ TERA Charge-X" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 55% 50%; display: block">
+<div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 0; height: 120px; background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 100%)"></div>
+<div style="position: absolute; left: 16px; right: 16px; top: 56px; display: flex; justify-content: space-between">
+<a href="{{L.Home}}" aria-label="กลับไปที่แผนที่" style="width: 44px; height: 44px; border-radius: 14px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1)">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a>
+<button onClick="{{toggleFav}}" aria-label="บันทึกสถานี" style="width: 44px; height: 44px; border-radius: 14px; border: 0; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1); cursor: pointer">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="{{favFill}}" stroke="{{favStroke}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg>
+</button>
+</div>
+</div>
+
+<div class="cx-scroll" style="flex: 1; min-height: 0; overflow-y: auto; margin-top: -24px; background: #FFFFFF; border-radius: 24px 24px 0 0; position: relative; padding: 20px 20px 16px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap">
+<span style="padding: 4px 10px; border-radius: 8px; background: #E7F6EE; color: #146C3E; font-size: 12px; font-weight: 700">พร้อมใช้งาน</span>
+<span style="padding: 4px 10px; border-radius: 8px; background: #F4F4F4; color: #3A3A3A; font-size: 12px; font-weight: 600">เปิด 24 ชม.</span>
+<button type="button" onClick="{{refresh}}" style="margin-left: auto; display: flex; align-items: center; gap: 4px; height: 28px; padding: 0 10px; border-radius: 14px; border: 1px solid #E6E6E6; background: #FFFFFF; font-family: inherit; font-size: 12px; color: #5C5C5C; cursor: pointer"><svg aria-hidden="true" class="{{spinCls}}" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5C5C5C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4M21 4v5h-5"></path></svg>อัปเดต {{updated}} น.</button>
+</div>
+<h1 style="margin: 0; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 23px; line-height: 1.3">มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา</h1>
+<span style="font-size: 13.5px; color: #5C5C5C">ถ.บางนา-ตราด กม.6 · 1.2 กม. (ขับรถ 4 นาที)</span>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<div style="background: #F6F6F6; border-radius: 14px; padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 1px"><span style="font-size: 11.5px; color: #5C5C5C">สูงสุด</span><span style="font-weight: 700; font-size: 16px">150 kW</span></div>
+<div style="background: #F6F6F6; border-radius: 14px; padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 1px"><span style="font-size: 11.5px; color: #5C5C5C">เริ่มต้น</span><span style="font-weight: 700; font-size: 16px">฿6.5/kWh</span></div>
+<div style="background: #F6F6F6; border-radius: 14px; padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 1px"><span style="font-size: 11.5px; color: #5C5C5C">ว่างตอนนี้</span><span style="font-weight: 700; font-size: 16px; color: #146C3E">{{freeCount}} จาก 4</span></div>
+</div>
+
+<div style="display: flex; gap: 8px">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="2"><button type="button" onClick="{{t.pick}}" style="{{t.style}}">{{t.label}}</button></sc-for>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{cons}}" as="c" hint-placeholder-count="4">
+<sc-if value="{{c.showHead}}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; gap: 1px; margin-top: 4px"><span style="font-size: 14px; font-weight: 700; color: #1F1F1F">{{c.charger}}</span><span style="font-size: 12px; color: #6B6B6B">{{c.chargerSub}}</span></div></sc-if>
+<button type="button" onClick="{{c.open}}" style="{{c.card}}">
+<span style="flex: none; display: flex"><sc-if value="{{c.isCcs}}" hint-placeholder-val="{{ true }}"><svg aria-hidden="true" width="40" height="50" viewBox="0 0 40 50"><rect x="1" y="1" width="38" height="48" rx="12" fill="#2B2B2F"></rect><circle cx="20" cy="17" r="13" fill="#3E3E44"></circle><circle cx="14" cy="12" r="2.4" fill="#111"></circle><circle cx="20" cy="10" r="2.4" fill="#111"></circle><circle cx="26" cy="12" r="2.4" fill="#111"></circle><circle cx="14" cy="20" r="2.4" fill="#111"></circle><circle cx="20" cy="18" r="2.4" fill="#111"></circle><circle cx="26" cy="20" r="2.4" fill="#111"></circle><circle cx="20" cy="25" r="1.8" fill="#111"></circle><rect x="7" y="33" width="26" height="12" rx="6" fill="#3E3E44"></rect><circle cx="14" cy="39" r="3" fill="#111"></circle><circle cx="26" cy="39" r="3" fill="#111"></circle></svg></sc-if><sc-if value="{{c.isT2}}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="40" height="50" viewBox="0 0 40 50"><rect x="1" y="1" width="38" height="48" rx="12" fill="#2B2B2F"></rect><path d="M6 20a14 14 0 0 0 28 0V14H6z" fill="#3E3E44"></path><circle cx="13" cy="17" r="2.6" fill="#111"></circle><circle cx="20" cy="15" r="2.6" fill="#111"></circle><circle cx="27" cy="17" r="2.6" fill="#111"></circle><circle cx="15" cy="25" r="2.6" fill="#111"></circle><circle cx="25" cy="25" r="2.6" fill="#111"></circle><circle cx="17" cy="9" r="1.6" fill="#111"></circle><circle cx="23" cy="9" r="1.6" fill="#111"></circle><rect x="15" y="37" width="10" height="8" rx="2" fill="#3E3E44"></rect></svg></sc-if></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; text-align: left">
+<span style="font-weight: 700; font-size: 15px; color: #1F1F1F">{{c.name}}</span>
+<span style="font-size: 12.5px; color: #6B6B6B">{{c.pos}}</span>
+<span style="font-size: 13px; color: #3A3A3A">สูงสุด <b>{{c.kw}}</b> kW · <b>฿{{c.price}}</b>/kWh</span>
+</span>
+<span style="flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 8px">
+<span style="{{c.badge}}">{{c.statusText}}</span>
+<span style="display: flex; align-items: center; gap: 2px; font-size: 12.5px; font-weight: 600; color: #C42D00">รายละเอียด<svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></span>
+</span>
+</button>
+</sc-for>
+</div>
+<p style="margin: 2px 0 0; font-size: 12px; line-height: 1.55; color: #6B6B6B">หมายเหตุ: อัตราค่าบริการอาจเปลี่ยนแปลงได้ กรุณาตรวจสอบราคาก่อนเริ่มชาร์จทุกครั้ง</p>
+</div>
+
+<div style="padding: 12px 20px 32px; border-top: 1px solid #EDEDED; background: #FFFFFF; display: grid; grid-template-columns: 52px 52px minmax(0, 1fr); gap: 10px; align-items: center">
+<a href="{{navUrl}}" target="_blank" rel="noopener" aria-label="นำทางไปสถานี" style="height: 52px; border-radius: 16px; background: #F4F4F4; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 21 3l-8 18-2-8-8-2z"></path></svg></a>
+<a href="{{L.Home}}" aria-label="ดูบนแผนที่" style="height: 52px; border-radius: 16px; background: #F4F4F4; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"></path></svg></a>
+<a href="{{L.Scan}}" style="height: 52px; border-radius: 16px; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M8 12h8"></path></svg>สแกนเพื่อชาร์จ</a>
+</div>
+
+<sc-if value="{{dt.open}}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; inset: 0; z-index: 30; display: flex; flex-direction: column; justify-content: flex-end">
+<div onClick="{{dt.close}}" class="cx-fade" style="position: absolute; inset: 0; background: rgba(10,10,12,0.5)"></div>
+<div role="dialog" aria-label="รายละเอียดหัวชาร์จ" class="cx-sheet" style="position: relative; background: #FFFFFF; border-radius: 28px 28px 0 0; padding: 12px 20px 30px; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: center; width: 40px; height: 5px; border-radius: 3px; background: #E0E0E0"></span>
+<div style="display: flex; align-items: center; gap: 14px">
+<span style="flex: none; display: flex"><sc-if value="{{dt.isCcs}}" hint-placeholder-val="{{ true }}"><svg aria-hidden="true" width="56" height="70" viewBox="0 0 40 50"><rect x="1" y="1" width="38" height="48" rx="12" fill="#2B2B2F"></rect><circle cx="20" cy="17" r="13" fill="#3E3E44"></circle><circle cx="14" cy="12" r="2.4" fill="#111"></circle><circle cx="20" cy="10" r="2.4" fill="#111"></circle><circle cx="26" cy="12" r="2.4" fill="#111"></circle><circle cx="14" cy="20" r="2.4" fill="#111"></circle><circle cx="20" cy="18" r="2.4" fill="#111"></circle><circle cx="26" cy="20" r="2.4" fill="#111"></circle><circle cx="20" cy="25" r="1.8" fill="#111"></circle><rect x="7" y="33" width="26" height="12" rx="6" fill="#3E3E44"></rect><circle cx="14" cy="39" r="3" fill="#111"></circle><circle cx="26" cy="39" r="3" fill="#111"></circle></svg></sc-if><sc-if value="{{dt.isT2}}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="56" height="70" viewBox="0 0 40 50"><rect x="1" y="1" width="38" height="48" rx="12" fill="#2B2B2F"></rect><path d="M6 20a14 14 0 0 0 28 0V14H6z" fill="#3E3E44"></path><circle cx="13" cy="17" r="2.6" fill="#111"></circle><circle cx="20" cy="15" r="2.6" fill="#111"></circle><circle cx="27" cy="17" r="2.6" fill="#111"></circle><circle cx="15" cy="25" r="2.6" fill="#111"></circle><circle cx="25" cy="25" r="2.6" fill="#111"></circle><circle cx="17" cy="9" r="1.6" fill="#111"></circle><circle cx="23" cy="9" r="1.6" fill="#111"></circle><rect x="15" y="37" width="10" height="8" rx="2" fill="#3E3E44"></rect></svg></sc-if></span>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0">
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 19px; color: #1F1F1F">{{dt.name}}</span>
+<span style="font-size: 13px; color: #6B6B6B">{{dt.charger}} · {{dt.pos}}</span>
+<span style="align-self: flex-start; {{dt.badge}}">{{dt.statusText}}</span>
+</div>
+</div>
+<sc-if value="{{dt.charging}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 12px; border-radius: 14px; background: #FFF7F3"><span style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px"><span style="font-size: 13px; font-weight: 600; color: #C42D00">มีผู้ใช้กำลังชาร์จ</span><span style="font-size: 13px; font-weight: 700; color: #C42D00">แบตเตอรี่ {{dt.soc}}%</span></span><span style="height: 6px; border-radius: 3px; background: #EFEFEF; overflow: hidden"><span style="display: block; width: {{dt.soc}}%; height: 100%; border-radius: 3px; background: {{accent}}; transition: width .6s"></span></span></div>
+</sc-if>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{dt.specs}}" as="x" hint-placeholder-count="8"><div style="padding: 10px 12px; border-radius: 14px; background: #F6F6F6; display: flex; flex-direction: column; gap: 1px"><span style="font-size: 11.5px; color: #6B6B6B">{{x.k}}</span><span style="font-size: 14px; font-weight: 700; color: #1F1F1F">{{x.v}}</span></div></sc-for>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 10px">
+<button type="button" onClick="{{dt.close}}" style="height: 52px; border-radius: 16px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 600; color: #3A3A3A; cursor: pointer">ปิด</button>
+<a href="{{L.Confirm}}" aria-disabled="{{dt.noStr}}" style="height: 52px; border-radius: 16px; background: {{dt.btnBg}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 16px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; pointer-events: {{dt.pe}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg><span>{{dt.btnLabel}}</span></a>
+</div>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+static {
+const P = this.prototype;
+const TR = {"แบตเตอรี่": "Battery", "มีผู้ใช้กำลังชาร์จ": "Someone is charging", "แบตปัจจุบัน": "Current battery", "สแกนเพื่อชาร์จ": "Scan to charge", "แล้ว": "", "แผนที่": "Map", "ทั้งหมด": "All", "ถ.บางนา-ตราด": "Bang Na-Trat Rd", "ว่าง": "Available", "ปิดปรับปรุง": "Under maintenance", "นำทาง": "Navigate", "ประเภทหัวชาร์จ": "Connector type", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "24 ชม.": "24 hrs", " จาก ": " of ", "ปิด": "Closed", "เริ่มชาร์จ": "Start charging", "พร้อมใช้งาน": "Available", "เปิด 24 ชม.": "Open 24 hrs", "ถ.บางนา-ตราด กม.6 · 1.2 กม. (ขับรถ 4 นาที)": "Bang Na-Trat Rd Km 6 · 1.2 km (4 min drive)", "สูงสุด": "max", "เริ่มต้น": "from", "ว่างตอนนี้": "Available now", "รายละเอียด": "Details", "หมายเหตุ: อัตราค่าบริการอาจเปลี่ยนแปลงได้ กรุณาตรวจสอบราคาก่อนเริ่มชาร์จทุกครั้ง": "Note: rates may change. Please check the price before each charge.", "มีผู้ใช้กำลังชาร์จ · คาดว่าว่างในอีก ~15 นาที": "In use · expected free in ~15 min", "สถานีชาร์จ TERA Charge-X": "TERA Charge-X charging station", "กลับไปที่แผนที่": "Back to map", "บันทึกสถานี": "Save station", "นำทางไปสถานี": "Navigate to station", "ดูบนแผนที่": "View on map", "รายละเอียดหัวชาร์จ": "Connector details", "เครื่องชาร์จ #4041": "Charger #4041", "DC · กระแสสูงสุด 200A · 2 หัวชาร์จ": "DC · max 200A · 2 connectors", "หัว A · ฝั่งซ้าย": "Connector A · left side", "5 ม.": "5 m", "35 นาทีที่แล้ว": "35 min ago", "หัว B · ฝั่งขวา": "Connector B · right side", "กำลังใช้งาน": "In use", "เครื่องชาร์จ #4042": "Charger #4042", "AC · กระแสสูงสุด 32A · 2 หัวชาร์จ": "AC · max 32A · 2 connectors", "หัว C · ช่องจอด 5": "Connector C · bay 5", "7 ม.": "7 m", "2 ชม. ที่แล้ว": "2 hrs ago", "หัว D · ช่องจอด 6": "Connector D · bay 6", "กำลังชาร์จ": "Charging", "ทั้งหมด (": "All (", "ว่างตอนนี้ (": "Available now (", "กำลังไฟสูงสุด": "Max power", "กระแส / แรงดัน": "Current / voltage", "ความยาวสาย": "Cable length", "ค่าบริการ": "Rate", "ค่าจอดเกินเวลา": "Idle fee", "฿5/นาที หลัง 15 นาที": "฿5/min after 15 min", "รหัสหัวชาร์จ": "Connector ID", "เครื่องชาร์จ ": "Charger ", "ใช้งานล่าสุด": "Last used", "เริ่มชาร์จที่หัวนี้": "Charge with this connector", "หัวนี้ไม่ว่าง": "Connector busy", "เปลี่ยน": "Change", "กำลังไฟ": "Power", "นาที": "min", "อัตราค่าบริการ": "Rate", "เวลา": "Time", " หัว": " connectors", "บันทึก": "Save", "กม.": "km", "ชม.": "hrs"};
+const PT = [["^อัปเดต\\ (.+?)\\ น\\.$", "Updated {1}"], ["^(.+?)\\ จาก\\ 4$", "{1} of 4"]].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["แบตเตอรี่", "มีผู้ใช้กำลังชาร์จ", "แบตปัจจุบัน", "หมายเหตุ: อัตราค่าบริการอาจเปลี่ยนแปลงได้ กรุณาตรวจสอบราคาก่อนเริ่มชาร์จทุกครั้ง", "มีผู้ใช้กำลังชาร์จ · คาดว่าว่างในอีก ~15 นาที", "ถ.บางนา-ตราด กม.6 · 1.2 กม. (ขับรถ 4 นาที)", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "DC · กระแสสูงสุด 200A · 2 หัวชาร์จ", "AC · กระแสสูงสุด 32A · 2 หัวชาร์จ", "สถานีชาร์จ TERA Charge-X", "฿5/นาที หลัง 15 นาที", "เริ่มชาร์จที่หัวนี้", "รายละเอียดหัวชาร์จ", "เครื่องชาร์จ #4041", "เครื่องชาร์จ #4042", "หัว C · ช่องจอด 5", "หัว D · ช่องจอด 6", "หัว A · ฝั่งซ้าย", "กลับไปที่แผนที่", "หัว B · ฝั่งขวา", "สแกนเพื่อชาร์จ", "ประเภทหัวชาร์จ", "35 นาทีที่แล้ว", "กระแส / แรงดัน", "ค่าจอดเกินเวลา", "อัตราค่าบริการ", "2 ชม. ที่แล้ว", "กำลังไฟสูงสุด", "เครื่องชาร์จ ", "หัวนี้ไม่ว่าง", "ถ.บางนา-ตราด", "นำทางไปสถานี", "ว่างตอนนี้ (", "รหัสหัวชาร์จ", "ใช้งานล่าสุด", "ปิดปรับปรุง", "พร้อมใช้งาน", "เปิด 24 ชม.", "บันทึกสถานี", "กำลังใช้งาน", "เริ่มชาร์จ", "ว่างตอนนี้", "รายละเอียด", "ดูบนแผนที่", "กำลังชาร์จ", "ความยาวสาย", "ทั้งหมด (", "ค่าบริการ", "เริ่มต้น", "ทั้งหมด", "เปลี่ยน", "กำลังไฟ", "แผนที่", "24 ชม.", "สูงสุด", "บันทึก", "นำทาง", " จาก ", "ว่าง", "5 ม.", "7 ม.", "นาที", "เวลา", " หัว", "ปิด", "กม.", "ชม."];
+const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
+const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
+const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
+P.cxLang = function () { if (this.state && (this.state.lang === 'en' || this.state.lang === 'th')) return this.state.lang; const pl = this.props.lang; if (pl === 'English') return 'en'; if (pl === 'ไทย') return 'th'; try { return localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) { return 'th'; } };
+P.cxWalk = function () {
+const r = this._cxRoot; if (!r || typeof document === 'undefined') return;
+const en = this.cxLang() === 'en';
+const O = this._cxOrig || (this._cxOrig = new Map());
+if (!en) { O.forEach((v, node) => { if (v.t != null && node.nodeValue === v.e) node.nodeValue = v.t; if (v.a) for (const a in v.a) { if (node.getAttribute(a) === v.a[a].e) node.setAttribute(a, v.a[a].t); } }); O.clear(); if (this._cxObs) { this._cxObs.disconnect(); this._cxObs = null; } return; }
+const w = document.createTreeWalker(r, 5, { acceptNode: (x) => (x.nodeType === 1 && x.getAttribute('translate') === 'no') ? 2 : 1 });
+let x = w.currentNode;
+while (x) {
+if (x.nodeType === 3) { const v = x.nodeValue; if (THR.test(v)) { const e = tx(v); if (e !== v) { O.set(x, { t: v, e }); x.nodeValue = e; } } }
+else if (x.nodeType === 1) { for (const a of ATTRS) { const v = x.getAttribute(a); if (v && THR.test(v)) { const e = tx(v); if (e !== v) { const rec = O.get(x) || {}; rec.a = rec.a || {}; rec.a[a] = { t: v, e }; O.set(x, rec); x.setAttribute(a, e); } } } }
+x = w.nextNode();
+}
+if (!this._cxObs && typeof MutationObserver !== 'undefined') { this._cxObs = new MutationObserver(() => { if (this._cxQ) return; this._cxQ = true; Promise.resolve().then(() => { this._cxQ = false; this.cxWalk(); }); }); this._cxObs.observe(r, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS }); }
+};
+const cdm = P.componentDidMount, cdu = P.componentDidUpdate, cwu = P.componentWillUnmount, rv = P.renderVals;
+P.componentDidMount = function () { if (cdm) cdm.call(this); this.cxWalk(); setTimeout(() => this.cxWalk(), 60); if (typeof window !== 'undefined') { this._cxL = (e) => { if (!e || !e.key || e.key === 'cx-lang') { this.cxWalk(); } }; window.addEventListener('storage', this._cxL); window.addEventListener('cx-lang', this._cxL); } };
+P.componentDidUpdate = function (a, b) { if (cdu) cdu.call(this, a, b); this.cxWalk(); };
+P.componentWillUnmount = function () { if (this._cxObs) this._cxObs.disconnect(); if (this._cxL && typeof window !== 'undefined') { window.removeEventListener('storage', this._cxL); window.removeEventListener('cx-lang', this._cxL); } if (cwu) cwu.call(this); };
+P.renderVals = function () { const v = rv.call(this) || {}; v.cxRef = (el) => { this._cxRoot = el; }; v.cxLangProp = this.props.lang || 'ตามแอป'; return v; };
+}
+
+static {
+const P = this.prototype;
+const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide','News','Notify','Home','Station','Scan','Confirm','Charging','Complete','Wallet','Topup','Cards','Vehicles','Saved','Prefs','Help','Support','Privacy','Profile'];
+const rv = P.renderVals;
+P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
+}
+constructor(props) { super(props); this.state = { fav: false, tab: 'all', detail: null, updated: '13:19', spin: false }; }
+componentWillUnmount() { clearInterval(this._soc); }
+componentDidMount() { this._soc = setInterval(() => { const s = this.state.soc != null ? this.state.soc : 72; if (s < 99) this.setState({ soc: s + 1 }); }, 4000); }
+renderVals() {
+const accent = this.props.accent ?? '#FC3901';
+const C = [
+{ id: 'a', type: 'ccs', name: 'DC CCS2 (Combo 2)', charger: 'เครื่องชาร์จ #4041', chargerSub: 'DC · กระแสสูงสุด 200A · 2 หัวชาร์จ', pos: 'หัว A · ฝั่งซ้าย', kw: 150, price: '7.5', status: 'avail', amp: '200A / 1000V', cable: '5 ม.', last: '35 นาทีที่แล้ว' },
+{ id: 'b', type: 'ccs', name: 'DC CCS2 (Combo 2)', charger: 'เครื่องชาร์จ #4041', chargerSub: '', pos: 'หัว B · ฝั่งขวา', kw: 150, price: '7.5', status: 'charging', amp: '200A / 1000V', cable: '5 ม.', last: 'กำลังใช้งาน', soc: 72 },
+{ id: 'c', type: 't2', name: 'AC Type 2', charger: 'เครื่องชาร์จ #4042', chargerSub: 'AC · กระแสสูงสุด 32A · 2 หัวชาร์จ', pos: 'หัว C · ช่องจอด 5', kw: 22, price: '6.5', status: 'avail', amp: '32A / 400V', cable: '7 ม.', last: '2 ชม. ที่แล้ว' },
+{ id: 'd', type: 't2', name: 'AC Type 2', charger: 'เครื่องชาร์จ #4042', chargerSub: '', pos: 'หัว D · ช่องจอด 6', kw: 22, price: '6.5', status: 'off', amp: '32A / 400V', cable: '7 ม.', last: '—' }
+];
+const ST = {
+avail: { t: 'พร้อมใช้งาน', b: 'padding: 4px 10px; border-radius: 8px; font-size: 12px; font-weight: 700; white-space: nowrap; background: #E7F6EE; color: #146C3E' },
+charging: { t: 'กำลังชาร์จ', b: 'padding: 4px 10px; border-radius: 8px; font-size: 12px; font-weight: 700; white-space: nowrap; background: #FFF1EB; color: #C42D00' },
+off: { t: 'ปิดปรับปรุง', b: 'padding: 4px 10px; border-radius: 8px; font-size: 12px; font-weight: 700; white-space: nowrap; background: #F4F4F4; color: #6B6B6B' }
+};
+const tab = this.state.tab;
+const soc = this.state.soc != null ? this.state.soc : 72;
+const shown = C.filter((c) => tab === 'all' || c.status === 'avail');
+let last = null;
+const cons = shown.map((c) => {
+const head = c.charger !== last; last = c.charger;
+const base = C.find((x) => x.charger === c.charger);
+return Object.assign({}, c, {
+isCcs: c.type === 'ccs', isT2: c.type === 't2',
+showHead: head, chargerSub: base.chargerSub,
+statusText: c.status === 'charging' ? ST[c.status].t + ' · ' + soc + '%' : ST[c.status].t, badge: ST[c.status].b,
+open: () => this.setState({ detail: c.id }),
+card: 'width: 100%; display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 18px; border: 1px solid #EFEFEF; background: #FFFFFF; box-shadow: 0 4px 14px rgba(0,0,0,0.05); font-family: inherit; cursor: pointer; opacity: ' + (c.status === 'off' ? '0.6' : '1')
+});
+});
+const free = C.filter((c) => c.status === 'avail').length;
+const tabs = [['all', 'ทั้งหมด (' + C.length + ')'], ['free', 'ว่างตอนนี้ (' + free + ')']].map(([id, label]) => {
+const on = tab === id;
+return { label, pick: () => this.setState({ tab: id }), style: 'height: 38px; padding: 0 16px; border-radius: 19px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; ' + (on ? 'border: 0; background: ' + accent + '; color: #FFFFFF' : 'border: 1px solid #E0E0E0; background: #FFFFFF; color: #3A3A3A') };
+});
+const cur = C.find((c) => c.id === this.state.detail);
+const dt = cur ? {
+open: true, isCcs: cur.type === 'ccs', isT2: cur.type === 't2',
+name: cur.name, charger: cur.charger, pos: cur.pos, statusText: ST[cur.status].t, badge: ST[cur.status].b,
+charging: cur.status === 'charging', soc,
+specs: [
+{ k: 'ประเภทหัวชาร์จ', v: cur.type === 'ccs' ? 'CCS2 · DC' : 'Type 2 · AC' },
+{ k: 'กำลังไฟสูงสุด', v: cur.kw + ' kW' },
+{ k: 'กระแส / แรงดัน', v: cur.amp },
+{ k: 'ความยาวสาย', v: cur.cable },
+{ k: 'ค่าบริการ', v: '฿' + cur.price + '/kWh' },
+{ k: 'ค่าจอดเกินเวลา', v: '฿5/นาที หลัง 15 นาที' },
+{ k: 'รหัสหัวชาร์จ', v: cur.charger.replace('เครื่องชาร์จ ', '') + '-' + cur.id.toUpperCase() },
+cur.status === 'charging' ? { k: 'แบตปัจจุบัน', v: soc + '%' } : { k: 'ใช้งานล่าสุด', v: cur.last }
+],
+btnBg: cur.status === 'avail' ? accent : '#BDBDBD', pe: cur.status === 'avail' ? 'auto' : 'none', noStr: cur.status === 'avail' ? 'false' : 'true',
+btnLabel: cur.status === 'avail' ? 'เริ่มชาร์จที่หัวนี้' : (cur.status === 'charging' ? 'หัวนี้ไม่ว่าง' : 'ปิดปรับปรุง'),
+close: () => this.setState({ detail: null })
+} : { open: false, close: () => this.setState({ detail: null }) };
+return {
+accent, cons, tabs, dt,
+freeCount: free,
+updated: this.state.updated,
+spinCls: this.state.spin ? 'cx-spin' : '',
+refresh: () => { this.setState({ spin: true }); clearTimeout(this._rt); this._rt = setTimeout(() => { const d = new Date(); this.setState({ spin: false, updated: String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0') }); }, 900); },
+navUrl: 'https://www.google.com/maps/dir/?api=1&destination=13.6669,100.6447',
+toggleFav: () => this.setState({ fav: !this.state.fav }),
+favFill: this.state.fav ? accent : 'none',
+favStroke: this.state.fav ? accent : '#1F1F1F'
+};
+}
+}
+</script>
+</body>
+</html>

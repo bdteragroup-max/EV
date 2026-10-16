@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>Charge X — Live charging</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#C42D00}a:hover{color:#9E2400}
+@keyframes cxblink{0%,100%{opacity:1}50%{opacity:.25}}
+.cx-live{animation:cxblink 1.4s ease-in-out infinite}
+@keyframes cxspin{to{transform:rotate(360deg)}}
+.cx-orbit{animation:cxspin 6s linear infinite;transform-origin:150px 150px}
+@keyframes cxHint{0%,100%{opacity:.25}50%{opacity:1}}
+.cx-c1{animation:cxHint 1.5s ease-in-out infinite}
+.cx-c2{animation:cxHint 1.5s ease-in-out .2s infinite}
+.cx-c3{animation:cxHint 1.5s ease-in-out .4s infinite}
+.cx-thumb{touch-action:none;user-select:none;-webkit-user-select:none}
+.cx-thumb:focus-visible{outline:3px solid #FFFFFF;outline-offset:2px}
+@keyframes cxWave{from{transform:translateX(0)}to{transform:translateX(-56px)}}
+@keyframes cxWave2{from{transform:translateX(-56px)}to{transform:translateX(0)}}
+@keyframes cxRise{from{transform:translateY(200px)}to{transform:translateY(0)}}
+@keyframes cxBub{0%{transform:translateY(0);opacity:0}15%{opacity:.95}100%{transform:translateY(-150px);opacity:0}}
+@keyframes cxBoltBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes cxGlowP{0%,100%{opacity:.3}50%{opacity:.6}}
+.cx-wave{animation:cxWave 2.2s linear infinite}
+.cx-wave2{animation:cxWave2 3.4s linear infinite}
+.cx-rise{animation:cxRise 1.6s cubic-bezier(.2,.8,.3,1) both}
+.cx-bub{animation:cxBub 3s ease-in infinite}
+.b1{animation-delay:.2s}.b2{animation-delay:1.1s;animation-duration:2.6s}.b3{animation-delay:1.8s;animation-duration:3.4s}.b4{animation-delay:.7s;animation-duration:2.3s}
+.cx-boltbob{animation:cxBoltBob 2.8s ease-in-out infinite}
+.cx-glowp{animation:cxGlowP 2.4s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.cx-wave,.cx-wave2,.cx-rise,.cx-bub,.cx-boltbob,.cx-glowp{animation:none}}
+@keyframes cxPlus{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+.cx-plusglow{transform-box:fill-box;transform-origin:center;animation:cxPlus .8s ease-in-out infinite}
+.cx-e{opacity:0;animation-duration:2.4s;animation-timing-function:cubic-bezier(.55,0,.85,.55);animation-iteration-count:infinite}
+@keyframes cxE1{0%{transform:translate(0,0);opacity:0}12%{opacity:1}55%{transform:translate(11px,-128px)}86%{opacity:1}100%{transform:translate(38px,-238px);opacity:0}}
+.e1{animation-name:cxE1;animation-delay:0.0s}
+@keyframes cxE2{0%{transform:translate(0,0);opacity:0}12%{opacity:1}55%{transform:translate(7px,-128px)}86%{opacity:1}100%{transform:translate(22px,-238px);opacity:0}}
+.e2{animation-name:cxE2;animation-delay:0.8s}
+@keyframes cxE3{0%{transform:translate(0,0);opacity:0}12%{opacity:1}55%{transform:translate(2px,-128px)}86%{opacity:1}100%{transform:translate(8px,-238px);opacity:0}}
+.e3{animation-name:cxE3;animation-delay:1.6s}
+@keyframes cxE4{0%{transform:translate(0,0);opacity:0}12%{opacity:1}55%{transform:translate(-2px,-128px)}86%{opacity:1}100%{transform:translate(-8px,-238px);opacity:0}}
+.e4{animation-name:cxE4;animation-delay:0.4s}
+@keyframes cxE5{0%{transform:translate(0,0);opacity:0}12%{opacity:1}55%{transform:translate(-7px,-128px)}86%{opacity:1}100%{transform:translate(-22px,-238px);opacity:0}}
+.e5{animation-name:cxE5;animation-delay:1.2s}
+@keyframes cxE6{0%{transform:translate(0,0);opacity:0}12%{opacity:1}55%{transform:translate(-11px,-128px)}86%{opacity:1}100%{transform:translate(-38px,-238px);opacity:0}}
+.e6{animation-name:cxE6;animation-delay:2.0s}
+@media (prefers-reduced-motion: reduce){.cx-e,.cx-plusglow{animation:none}.cx-e{opacity:.8}}
+@keyframes cxFlowA{to{stroke-dashoffset:-48}}
+.cx-flow{animation:cxFlowA 1s linear infinite}
+@keyframes cxNext{0%,100%{opacity:.35}50%{opacity:1}}
+.cx-next{animation:cxNext 1.1s ease-in-out infinite}
+@keyframes cxNode{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.cx-node{transform-box:fill-box;transform-origin:center;animation:cxNode 1.6s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.cx-flow,.cx-next,.cx-node{animation:none}}
+[data-theme="dark"] [fill="#DADADA"]{fill:#3A3A40}
+@keyframes cxBand{from{transform:translateY(0)}to{transform:translateY(-300px)}}
+.cx-band{animation:cxBand 2.2s cubic-bezier(.4,0,.6,1) infinite}
+@keyframes cxBoltP{0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 rgba(242,210,122,0))}50%{transform:scale(1.06);filter:drop-shadow(0 0 10px rgba(242,210,122,.9))}}
+.cx-boltp{transform-box:fill-box;transform-origin:center;animation:cxBoltP 1.6s ease-in-out infinite}
+@keyframes cxSpark{0%{transform:translate(0,-34px);opacity:0}20%{opacity:1}100%{transform:translate(0,4px);opacity:0}}
+.cx-spark{opacity:0;animation:cxSpark 1.2s ease-in infinite}
+.s2{animation-delay:.4s}.s3{animation-delay:.8s}
+@media (prefers-reduced-motion: reduce){.cx-band,.cx-boltp,.cx-spark{animation:none}}
+[data-theme="dark"] [fill="#1F1F1F"]{fill:#F3F3F4}
+[data-theme="dark"] [fill="#FFFFFF"][stroke="#1F1F1F"]{fill:#0B0B0D}
+@keyframes cxPort{0%,100%{transform:scale(.8);opacity:.25}50%{transform:scale(1.25);opacity:.6}}
+.cx-port{transform-box:fill-box;transform-origin:center;animation:cxPort 1.2s ease-in-out infinite}
+[data-theme="dark"] [fill="#E6E6E6"]{fill:#2A2A2F}
+[data-theme="dark"] [fill="#F4F4F4"]{fill:#151517}
+[data-theme="dark"] [fill="#3A3A3A"]{fill:#4A4A52}
+[data-theme="dark"] [stroke="#2B2B2B"]{stroke:#55555C}
+[data-theme="dark"] [fill="#2B2B2B"]{fill:#55555C}
+@keyframes cxShine2{from{transform:translateX(0)}to{transform:translateX(120px)}}
+.cx-shine2{animation:cxShine2 1.8s ease-in-out infinite}
+@keyframes cxFillIn{from{width:0}}
+.cx-fillw{animation:cxFillIn 1.4s cubic-bezier(.2,.8,.3,1) both}
+@keyframes cxSpin{to{transform:rotate(360deg)}}
+.cx-spin{transform-box:fill-box;transform-origin:center}
+@media (prefers-reduced-motion: reduce){.cx-shine2,.cx-fillw{animation:none}}
+@keyframes cxBP2{0%,100%{opacity:.75}50%{opacity:1}}
+.cx-boltp2{animation:cxBP2 1.4s ease-in-out infinite}
+@keyframes cxSq{0%,100%{fill-opacity:.12}50%{fill-opacity:.32}}
+.cx-sqnow{animation:cxSq 1.4s ease-in-out infinite}
+@keyframes cxSpiralIn{from{stroke-dashoffset:100}}
+.cx-spiral{animation:cxSpiralIn 1.6s cubic-bezier(.3,.7,.3,1) both}
+@media (prefers-reduced-motion: reduce){.cx-sqnow,.cx-spiral{animation:none}}
+[data-theme="dark"] [stroke="#E6E6E6"]{stroke:#2E2E33}
+[data-theme="dark"] [stroke="#E0E0E0"]{stroke:#3A3A40}
+[data-theme="dark"] [fill="#E0E0E0"]{fill:#3A3A40}
+[data-theme="dark"] [stroke="#EFEFEF"]{stroke:#26262B}
+[data-theme="dark"] [fill="#FFFFFF"][stroke="#1F1F1F"]{fill:#0B0B0D}
+[data-theme="dark"] [fill="#1F1F1F"]{fill:#F3F3F4}
+@keyframes cxPt{0%,100%{opacity:.15;transform:translateY(0)}50%{opacity:1;transform:translateY(-6px)}}
+.cx-pt{animation:cxPt 2.4s ease-in-out infinite}
+@keyframes cxSwirl{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(14px,-10px) scale(1.15)}66%{transform:translate(-10px,8px) scale(.9)}}
+.cx-swirl{transform-box:fill-box;transform-origin:center;animation:cxSwirl 6s ease-in-out infinite}
+.cx-swirl.s2{animation-duration:7.5s;animation-direction:reverse}
+.cx-swirl.s3{animation-duration:5s;animation-delay:-2s}
+@keyframes cxFloor{0%,100%{opacity:.4}50%{opacity:.7}}
+.cx-floor{animation:cxFloor 2.6s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.cx-pt,.cx-swirl,.cx-floor{animation:none}}
+@keyframes cxSway{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
+.cx-sway{animation:cxSway 3.6s ease-in-out infinite}
+@keyframes cxSlosh{0%,100%{transform:rotate(3deg)}50%{transform:rotate(-3deg)}}
+.cx-slosh{animation:cxSlosh 3.6s ease-in-out infinite;animation-delay:-.25s}
+.cx-boost .cx-pt{animation-duration:.7s!important}
+.cx-boost .cx-swirl{animation-duration:1.6s!important}
+.cx-boost .cx-floor{opacity:.9}
+.cx-boost .cx-boltbob{filter:brightness(1.3)}
+@media (prefers-reduced-motion: reduce){.cx-sway,.cx-slosh{animation:none}}
+[data-theme="dark"] [stroke="#1F1F1F"][stroke-opacity]{stroke:#FFFFFF}
+@keyframes rbBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.cx-head{animation:rbBob 2.6s ease-in-out infinite}
+@keyframes rbKick{0%,80%,100%{transform:rotate(0)}86%{transform:rotate(-14deg)}92%{transform:rotate(6deg)}}
+.cx-kick{transform-box:fill-box;transform-origin:50% 0;animation:rbKick 4s ease-in-out infinite}
+.cx-kick.k2{animation-delay:.35s}
+@keyframes rbEar{0%,100%{opacity:.45}50%{opacity:1}}
+.cx-ear{animation:rbEar 1.6s ease-in-out infinite}
+.cx-plugled{animation:rbEar 1s ease-in-out infinite}
+@keyframes rbDisp{0%,82%,100%{opacity:1}86%,96%{opacity:0}}
+@keyframes rbEyes{0%,82%,100%{opacity:0}86%,96%{opacity:1}}
+.cx-disp{animation:rbDisp 7s ease-in-out infinite}
+.cx-eyes{opacity:0;animation:rbEyes 7s ease-in-out infinite}
+@keyframes rbFill{0%,100%{fill-opacity:.6}50%{fill-opacity:.95}}
+.cx-fillp{animation:rbFill 1.8s ease-in-out infinite}
+@keyframes rbBolt{0%,100%{opacity:1}50%{opacity:.55}}
+.cx-boltb{animation:rbBolt 1.2s ease-in-out infinite}
+@keyframes rbJump{0%,100%{transform:translateY(0)}30%{transform:translateY(-16px)}55%{transform:translateY(0)}70%{transform:translateY(-5px)}}
+.cx-robot{transform-box:view-box}
+.cx-boost .cx-robot{animation:rbJump .9s cubic-bezier(.3,.7,.4,1)}
+.cx-boost .cx-disp{animation:none;opacity:0}
+.cx-boost .cx-eyes{animation:none;opacity:1}
+@media (prefers-reduced-motion: reduce){.cx-head,.cx-kick,.cx-ear,.cx-plugled,.cx-disp,.cx-eyes,.cx-fillp,.cx-boltb{animation:none}.cx-eyes{opacity:0}}
+[data-theme="dark"] [stroke="#E6DCD8"]{stroke:#3A3A40}
+@keyframes bmBub{0%{transform:translateY(0);opacity:0}15%{opacity:.9}100%{transform:translateY(-190px);opacity:0}}
+.cx-bub2{animation:bmBub 3s ease-in infinite}
+@keyframes bmSheen{0%{transform:skewX(-12deg) translateX(0)}100%{transform:skewX(-12deg) translateX(160px)}}
+.cx-sheen{animation:bmSheen 3.2s ease-in-out infinite}
+@keyframes bmLed{0%,100%{opacity:.5}50%{opacity:1}}
+.cx-capled{animation:bmLed 1.6s ease-in-out infinite}
+@keyframes bmCar{0%,100%{opacity:.4}50%{opacity:.7}}
+.cx-car{animation:bmCar 3s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.cx-bub2,.cx-sheen,.cx-capled,.cx-car{animation:none}}
+@keyframes bmSlosh{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.8)}}
+.cx-slosh2{transform-box:fill-box;transform-origin:center;animation:bmSlosh 2.4s ease-in-out infinite}
+.cx-bub2 circle{}
+@media (prefers-reduced-motion: reduce){.cx-slosh2{animation:none}}
+[data-theme="dark"] [stroke="#1F1F1F"][stroke-opacity="0.18"]{stroke:#FFFFFF}
+@keyframes bmHaloP{0%,100%{opacity:.5}50%{opacity:.85}}
+.cx-halo2{animation:bmHaloP 2.4s ease-in-out infinite}
+@keyframes bmNeonP{0%,100%{opacity:.75}50%{opacity:1}}
+.cx-neon{animation:bmNeonP 1.8s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.cx-halo2,.cx-neon{animation:none}}
+[data-theme="dark"] [fill="#EFEFEF"]{fill:#0B0B0D}
+[data-theme="dark"] [stroke="#DADADA"]{stroke:#3A3A40}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F7EFD6"],[style*="background: rgb(247, 239, 214)"]){background-color:rgba(212,175,55,.2)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #7A5C0E"],[style*="color: rgb(122, 92, 14)"]){color:#E0BE5A!important}
+[data-theme="dark"]{color-scheme:dark}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFFFFF"]{background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F4F4F4"],[style*="background: #F6F6F6"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #BDBDBD"]{background-color:#55555C!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #1F1F1F"],[style*="color: #2B2B2B"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #3A3A3A"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #C42D00"],[style*="color: rgb(196, 45, 0)"]){color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"]){border-color:#35353B!important}
+[data-theme="dark"] [stroke="#1F1F1F"]{stroke:#F3F3F4}
+[data-theme="dark"] [fill="#FFF4EF"]{fill:#2A1D18}
+[data-theme="dark"] [stroke="#F0F0F0"]{stroke:#2E2E33}
+[data-theme="dark"][data-theme][style]{background-color:#000000!important}
+[data-theme="dark"][data-theme][style]{color:#F3F3F4!important}
+[data-theme="dark"] :is(button,input,textarea,select,legend,label){color:inherit}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(31, 31, 31)"],[style*="color: rgb(43, 43, 43)"],[style*="color: rgb(0, 0, 0)"],[style*="color: #000"],[style*="color: black"],[style*="color: #1f1f1f"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(58, 58, 58)"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(92, 92, 92)"],[style*="color: rgb(107, 107, 107)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(196, 45, 0)"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(20, 108, 62)"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 255, 255)"],[style*="background-color: rgb(255, 255, 255)"]){background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(244, 244, 244)"],[style*="background: rgb(246, 246, 246)"],[style*="background: rgb(240, 240, 240)"],[style*="background-color: rgb(244, 244, 244)"],[style*="background-color: rgb(246, 246, 246)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(31, 31, 31)"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 241, 235)"],[style*="background: rgb(255, 228, 218)"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(255, 247, 243)"]{background-color:rgba(252,57,1,.12)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(231, 246, 238)"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(230, 230, 230)"],[style*="background: rgb(237, 237, 237)"],[style*="background: rgb(239, 239, 239)"],[style*="background: rgb(217, 217, 217)"],[style*="background: rgb(218, 218, 218)"]){background-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(51, 51, 51)"]{background-color:#3A3A40!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(189, 189, 189)"]{background-color:#55555C!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(247, 239, 214)"]{background-color:rgba(212,175,55,.2)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"]){border-color:#35353B!important}
+</style>
+</helmet>
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; box-sizing: border-box; background: #FFFFFF; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; display: flex; flex-direction: column; padding: 56px 20px 34px">
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; align-items: center; gap: 8px">
+<a href="{{L.Confirm}}" aria-label="ย้อนกลับ" style="width: 44px; height: 44px; border-radius: 14px; border: 1px solid #E6E6E6; display: flex; align-items: center; justify-content: center; box-sizing: border-box">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a>
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0">
+<span style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #C42D00"><span class="cx-live" style="width: 8px; height: 8px; border-radius: 50%; background: {{accent}}"></span>กำลังชาร์จ</span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 600; font-size: 16px; line-height: 1.35; text-wrap: balance">มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา · ช่อง 04</span>
+</div>
+<span aria-hidden="true" style="width: 44px; height: 44px"></span>
+</div>
+
+<div style="margin-top: 14px">
+<div role="img" aria-label="แบตเตอรี่ {{charge}} เปอร์เซ็นต์ กำลังไฟ 142 kW เหลือเวลาประมาณ 18 นาที" style="position: relative; width: 350px; height: 318px; border-radius: 24px; overflow: hidden; background: #FFFFFF; box-shadow: 0 10px 28px rgba(31,31,31,0.06)">
+<div aria-hidden="true" style="position: absolute; inset: 0; background: radial-gradient(55% 45% at 50% 62%, rgba(252,57,1,0.16) 0%, rgba(252,57,1,0) 100%)"></div>
+<svg aria-hidden="true" width="350" height="318" viewBox="0 0 350 318" style="position: absolute; inset: 0">
+<defs>
+<linearGradient id="bmMetal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1E1E22"></stop><stop offset="0.18" stop-color="#5A5A62"></stop><stop offset="0.34" stop-color="#B4B4BC"></stop><stop offset="0.5" stop-color="#55555D"></stop><stop offset="0.82" stop-color="#2E2E33"></stop><stop offset="1" stop-color="#141417"></stop></linearGradient><linearGradient id="bmMetalTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D6D6DC"></stop><stop offset="0.5" stop-color="#7A7A82"></stop><stop offset="1" stop-color="#3A3A40"></stop></linearGradient>
+<linearGradient id="bmLiq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF8A4C"></stop><stop offset="0.5" stop-color="{{accent}}"></stop><stop offset="1" stop-color="#B82A00"></stop></linearGradient>
+<linearGradient id="bmGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.5"></stop><stop offset="0.14" stop-color="#FFFFFF" stop-opacity="0.08"></stop><stop offset="0.8" stop-color="#FFFFFF" stop-opacity="0"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0.3"></stop></linearGradient>
+<linearGradient id="bmShade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3A0A00" stop-opacity="0.55"></stop><stop offset="0.18" stop-color="#3A0A00" stop-opacity="0.08"></stop><stop offset="0.36" stop-color="#FFFFFF" stop-opacity="0.18"></stop><stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0"></stop><stop offset="0.82" stop-color="#3A0A00" stop-opacity="0.15"></stop><stop offset="1" stop-color="#3A0A00" stop-opacity="0.6"></stop></linearGradient>
+<linearGradient id="bmTopGlow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB08A" stop-opacity="0.6"></stop><stop offset="1" stop-color="#FFB08A" stop-opacity="0"></stop></linearGradient>
+<radialGradient id="bmSurf" cx="0.42" cy="0.4" r="0.7"><stop offset="0" stop-color="#FFC4A4"></stop><stop offset="0.6" stop-color="#FF7A3D"></stop><stop offset="1" stop-color="#D93A06"></stop></radialGradient>
+<linearGradient id="bmCapShadow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000000" stop-opacity="0.28"></stop><stop offset="1" stop-color="#000000" stop-opacity="0"></stop></linearGradient>
+<filter id="bmNeon" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur in="SourceGraphic" stdDeviation="2" result="a"></feGaussianBlur><feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="b"></feMergeNode><feMergeNode in="a"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter><filter id="bmHalo" x="-80%" y="-40%" width="260%" height="180%"><feGaussianBlur stdDeviation="16"></feGaussianBlur></filter>
+<clipPath id="bmBody"><path d="M121 96 V282 A54 9 0 0 0 229 282 V96 Z"></path></clipPath>
+<clipPath id="bmLiqC"><rect x="120" y="{{bm.y}}" width="110" height="220"></rect></clipPath>
+<filter id="bmGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.5" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
+</defs>
+<path class="cx-car" d="M14 268 Q12 246 34 238 L78 228 Q104 206 136 196 M214 194 Q258 194 288 214 L318 232 Q338 238 338 256 V268 M14 268 H40 M100 268 H250 M310 268 H338 M40 268 A30 30 0 0 1 100 268 M250 268 A30 30 0 0 1 310 268" fill="none" stroke="{{accent}}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" filter="url(#bmNeon)"></path>
+<circle cx="70" cy="268" r="20" fill="none" stroke="{{accent}}" stroke-width="2" opacity="0.7" filter="url(#bmNeon)"></circle>
+<circle cx="280" cy="268" r="20" fill="none" stroke="{{accent}}" stroke-width="2" opacity="0.7" filter="url(#bmNeon)"></circle>
+<ellipse class="cx-halo2" cx="175" cy="308" rx="96" ry="12" fill="{{accent}}" opacity="0.55" filter="url(#bmHalo)"></ellipse><ellipse cx="175" cy="304" rx="58" ry="4" fill="#000000" opacity="0.35" filter="url(#bmGlow)"></ellipse>
+<rect class="cx-halo2" x="112" y="{{bm.y}}" width="126" height="{{bm.h}}" rx="30" fill="{{accent}}" opacity="0.7" filter="url(#bmHalo)"></rect>
+<path d="M119 96 V282 A56 10 0 0 0 231 282 V96 Z" fill="#FC3901" fill-opacity="0.06"></path>
+<g clip-path="url(#bmBody)">
+<g class="cx-rise"><g transform="translate(0 {{bm.y}})">
+<rect x="115" y="0" width="120" height="200" fill="url(#bmLiq)"></rect>
+<rect x="115" y="0" width="120" height="200" fill="url(#bmShade)"></rect>
+<rect x="115" y="0" width="120" height="26" fill="url(#bmTopGlow)"></rect>
+</g></g>
+<g clip-path="url(#bmLiqC)"><g class="cx-bub2" style="animation-delay: -2.00s; animation-duration: 3.92s"><circle cx="171" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="169.6" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -1.83s; animation-duration: 3.16s"><circle cx="207" cy="276" r="2.6" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="206.2" cy="275.1" r="0.8" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.99s; animation-duration: 4.59s"><circle cx="171" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="169.5" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.36s; animation-duration: 4.02s"><circle cx="147" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="146.0" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -1.26s; animation-duration: 3.06s"><circle cx="173" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="171.7" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -1.16s; animation-duration: 2.74s"><circle cx="201" cy="276" r="1.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="200.9" cy="275.6" r="0.4" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.07s; animation-duration: 3.40s"><circle cx="170" cy="276" r="1.6" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="169.6" cy="275.4" r="0.5" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.39s; animation-duration: 3.37s"><circle cx="138" cy="276" r="1.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="137.7" cy="275.6" r="0.4" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.83s; animation-duration: 4.29s"><circle cx="184" cy="276" r="2.6" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="182.7" cy="275.1" r="0.8" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -0.00s; animation-duration: 3.02s"><circle cx="217" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="215.7" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.64s; animation-duration: 3.54s"><circle cx="189" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="187.4" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.92s; animation-duration: 3.39s"><circle cx="131" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="130.2" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -0.29s; animation-duration: 3.86s"><circle cx="136" cy="276" r="1.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="135.3" cy="275.6" r="0.4" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.11s; animation-duration: 3.14s"><circle cx="147" cy="276" r="1.6" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="146.6" cy="275.4" r="0.5" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -0.35s; animation-duration: 3.27s"><circle cx="184" cy="276" r="2.6" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="183.1" cy="275.1" r="0.8" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.86s; animation-duration: 4.12s"><circle cx="159" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="158.2" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -0.47s; animation-duration: 3.09s"><circle cx="206" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="204.7" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -0.40s; animation-duration: 2.72s"><circle cx="151" cy="276" r="2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="150.3" cy="275.3" r="0.6" fill="#FFFFFF" opacity="0.9"></circle></g><rect class="cx-sheen" x="100" y="80" width="26" height="210" fill="#FFFFFF" opacity="0.18" transform="skewX(-12)"></rect></g>
+<path d="M226 116 h-6" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path><path d="M226 134 h-6" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path><path d="M226 153 h-6" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path><path d="M226 171 h-6" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path><path d="M226 189 h-11" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path><path d="M226 207 h-6" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path><path d="M226 225 h-6" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path><path d="M226 244 h-6" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path><path d="M226 262 h-6" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path>
+</g>
+<g class="cx-rise"><g transform="translate(0 {{bm.y}})"><ellipse class="cx-slosh2" cx="175" cy="0" rx="53.5" ry="8.5" fill="url(#bmSurf)"></ellipse><ellipse cx="175" cy="0" rx="53.5" ry="8.5" fill="none" stroke="#FFD2BC" stroke-opacity="0.7" stroke-width="1"></ellipse></g></g>
+<ellipse cx="175" cy="96" rx="56" ry="10" fill="none" stroke="#1F1F1F" stroke-opacity="0.18" stroke-width="1"></ellipse>
+<rect x="119" y="96" width="112" height="14" fill="url(#bmCapShadow)"></rect>
+<path d="M119 96 V282 A56 10 0 0 0 231 282 V96 Z" fill="url(#bmGlass)" opacity="0.55"></path>
+<g class="cx-neon" filter="url(#bmNeon)" fill="none" stroke-linecap="round">
+<path d="M119.5 98 V282" stroke="{{accent}}" stroke-width="2"></path>
+<path d="M230.5 98 V282" stroke="{{accent}}" stroke-width="2"></path>
+<path d="M119 282 A56 10 0 0 0 231 282" stroke="{{accent}}" stroke-width="2"></path>
+<ellipse cx="175" cy="96" rx="56" ry="10" stroke="#FF8A5C" stroke-width="1.4"></ellipse>
+</g>
+
+<path d="M121.5 100 V280" stroke="#FFFFFF" stroke-opacity="0.75" stroke-width="3.5" stroke-linecap="round"></path>
+<path d="M131 104 V274" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="5" stroke-linecap="round"></path>
+<path d="M228.5 100 V280" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="2.5" stroke-linecap="round"></path>
+<path d="M119 96 V282 M231 96 V282" stroke="#1F1F1F" stroke-opacity="0.22" stroke-width="1.2"></path>
+<path d="M115 280 A60 10 0 0 0 235 280 V296 A60 10 0 0 1 115 296 Z" fill="url(#bmMetal)"></path><path d="M115 285 A60 10 0 0 0 235 285" fill="none" stroke="#FFFFFF" stroke-opacity="0.14" stroke-width="0.8"></path><path d="M117 297 A58 9 0 0 0 233 297" fill="none" stroke="#000000" stroke-opacity="0.3" stroke-width="1.2"></path>
+<path d="M115 280 A60 10 0 0 0 235 280" fill="none" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="1"></path>
+<path class="cx-capled" d="M116 291 A60 10 0 0 0 234 291" fill="none" stroke="#FF5A1F" stroke-width="3" stroke-linecap="round" filter="url(#bmNeon)"></path>
+<path d="M115 78 V96 A60 10 0 0 0 235 96 V78 Z" fill="url(#bmMetal)"></path><path d="M115 82 A60 10 0 0 0 235 82" fill="none" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="0.8"></path><path d="M115 86 A60 10 0 0 0 235 86" fill="none" stroke="#000000" stroke-opacity="0.15" stroke-width="0.8"></path>
+<path class="cx-capled" d="M116 90 A60 10 0 0 0 234 90" fill="none" stroke="#FF5A1F" stroke-width="3" stroke-linecap="round" filter="url(#bmNeon)"></path>
+<ellipse cx="175" cy="78" rx="60" ry="10" fill="url(#bmMetalTop)"></ellipse>
+<ellipse cx="175" cy="78" rx="60" ry="10" fill="none" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="0.8"></ellipse><ellipse cx="175" cy="78" rx="52" ry="8.4" fill="none" stroke="#000000" stroke-opacity="0.18" stroke-width="0.8"></ellipse><ellipse cx="175" cy="78" rx="34" ry="5.6" fill="none" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="0.8"></ellipse>
+<ellipse cx="175" cy="78" rx="44" ry="6.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="1"></ellipse>
+<path d="M155 62 V76 A20 4.5 0 0 0 195 76 V62 Z" fill="url(#bmMetal)"></path>
+<ellipse cx="175" cy="62" rx="20" ry="4.5" fill="url(#bmMetalTop)"></ellipse>
+<path d="M150 54 h4 M152 52 v4" stroke="#C9A02E" stroke-width="1.4" stroke-linecap="round" opacity="0"></path>
+</svg>
+<div style="position: absolute; left: 18px; top: 16px; display: flex; flex-direction: column; gap: 0">
+<span style="font-size: 12.5px; color: #6B6B6B">กำลังไฟ</span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 24px; line-height: 1.2; color: #1F1F1F">142 <span style="font-size: 14px; color: #C42D00">kW</span></span>
+</div>
+<div style="position: absolute; right: 18px; top: 16px; display: flex; flex-direction: column; align-items: flex-end; gap: 0">
+<span style="font-size: 12.5px; color: #6B6B6B">เหลือเวลา</span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 24px; line-height: 1.2; color: #1F1F1F">18 <span style="font-size: 14px; color: #C42D00">นาที</span></span>
+</div>
+<div aria-hidden="true" style="position: absolute; left: 119px; top: 176px; width: 112px; text-align: center; pointer-events: none">
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 38px; line-height: 1; letter-spacing: -1px; color: #FFFFFF; text-shadow: 0 0 8px rgba(255,138,92,0.9), 0 0 22px rgba(252,57,1,0.8), 0 2px 6px rgba(122,26,0,0.5)">{{charge}}<span style="font-size: 18px">%</span></span>
+</div>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 24px">
+<div style="background: #F6F6F6; border-radius: 18px; padding: 14px 12px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2px">
+<span style="font-size: 12px; color: #5C5C5C">กำลังไฟขณะนี้</span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 600; font-size: 24px">142 <span style="font-size: 15px; color: #C42D00">kW</span></span>
+</div>
+<div style="background: #F6F6F6; border-radius: 18px; padding: 14px 12px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2px">
+<span style="font-size: 12px; color: #5C5C5C">พลังงานที่ได้รับ</span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 600; font-size: 24px">32.4 <span style="font-size: 15px; color: #C42D00">kWh</span></span>
+</div>
+<div style="background: #F6F6F6; border-radius: 18px; padding: 14px 12px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2px">
+<span style="font-size: 12px; color: #5C5C5C">เวลาที่ชาร์จแล้ว</span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 600; font-size: 24px">00:21:46</span>
+</div>
+<div style="background: #F6F6F6; border-radius: 18px; padding: 14px 12px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2px"><span style="font-size: 12px; color: rgb(92, 92, 92)">ค่าบริการขณะนี้</span><span style="font-family: Sarabun, sans-serif; font-weight: 600; font-size: 24px">฿235.68</span></div>
+</div>
+
+<div style="flex: 1"></div>
+<div style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 14px; border: 1px solid #E6E6E6; border-radius: 16px; margin-bottom: 14px; font-size: 14px; color: #3A3A3A">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M3 13l2-6a2 2 0 0 1 2-1.4h10A2 2 0 0 1 19 7l2 6v4h-2.5M5.5 17H3v-4h18"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
+<span>Chery Q · CCS2</span>
+<span aria-hidden="true" style="width: 4px; height: 4px; border-radius: 50%; background: #BDBDBD"></span>
+<span style="color: #5C5C5C">แจ้งเตือนที่ 80%</span>
+</div>
+
+<div style="position: relative; height: 60px; border-radius: 30px; background: linear-gradient(90deg, #C42D00 0%, {{accent}} 100%); box-shadow: 0 8px 20px rgba(252,57,1,0.3); overflow: hidden">
+<div aria-hidden="true" style="position: absolute; left: 0; top: 0; bottom: 0; width: {{fillW}}px; border-radius: 30px; background: linear-gradient(90deg, #A8801A 0%, #D4AF37 55%, #F2D27A 100%); box-shadow: 0 0 18px rgba(212,175,55,0.45); transition: {{trans}}"></div>
+<div aria-hidden="true" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 10px; padding-left: 40px; opacity: {{labelOpacity}}; pointer-events: none">
+<span style="font-family: Sarabun, sans-serif; font-weight: 600; font-size: 17px; color: #FFFFFF">{{label}}</span>
+<span style="display: flex; gap: 0">
+<svg class="cx-c1" width="14" height="18" viewBox="0 0 14 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 6 6-6 6"></path></svg>
+<svg class="cx-c2" width="14" height="18" viewBox="0 0 14 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 6 6-6 6"></path></svg>
+<svg class="cx-c3" width="14" height="18" viewBox="0 0 14 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 6 6-6 6"></path></svg>
+</span>
+</div>
+<button class="cx-thumb" aria-label="เลื่อนเพื่อหยุดชาร์จ (กด Enter เพื่อหยุด)" onPointerDown="{{down}}" onPointerMove="{{move}}" onPointerUp="{{up}}" onPointerCancel="{{up}}" onClick="{{tap}}" style="position: absolute; left: {{thumbX}}px; top: 6px; width: 48px; height: 48px; border-radius: 50%; border: 0; padding: 0; background: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: grab; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: {{trans}}">
+<sc-if value="{{done}}" hint-placeholder-val="{{ false }}">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg>
+</sc-if>
+<sc-if value="{{notDone}}" hint-placeholder-val="{{ true }}">
+<span style="width: 16px; height: 16px; border-radius: 4px; background: {{accent}}"></span>
+</sc-if>
+</button>
+</div>
+<a href="{{L.Complete}}" ref="{{setLink}}" tabindex="-1" aria-hidden="true" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0">สรุปการชาร์จ</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"charge":{"editor":"range","default":68,"min":0,"max":100,"step":1,"unit":"%"},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+static {
+const P = this.prototype;
+const TR = {"ย้อนกลับ": "Back", "แล้ว": "", "การชาร์จ": "Charge", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "กำลังชาร์จ": "Charging", "ค่าบริการ": "Rate", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา · ช่อง 04": "Ramkhamhaeng University, Bang Na Campus · bay 04", "กำลังไฟ": "Power", "เหลือเวลา": "Time left", "นาที": "min", "กำลังไฟขณะนี้": "Current power", "พลังงานที่ได้รับ": "Energy delivered", "เวลาที่ชาร์จแล้ว": "Time charging", "ค่าบริการขณะนี้": "Cost so far", "แจ้งเตือนที่ 80%": "Alert at 80%", "สรุปการชาร์จ": "Charging summary", "เลื่อนเพื่อหยุดชาร์จ (กด Enter เพื่อหยุด)": "Slide to stop charging (press Enter to stop)", "เลื่อนเพื่อหยุดชาร์จ": "Slide to stop charging", "แบตเตอรี่": "Battery", "เวลา": "Time", "กม.": "km", "ชม.": "hrs"};
+const PT = [["^แบตเตอรี่\\ (.+?)\\ เปอร์เซ็นต์\\ กำลังไฟ\\ 142\\ kW\\ เหลือเวลาประมาณ\\ 18\\ นาที$", "Battery {1} percent, 142 kW, about 18 min left"]].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา · ช่อง 04", "เลื่อนเพื่อหยุดชาร์จ (กด Enter เพื่อหยุด)", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "เลื่อนเพื่อหยุดชาร์จ", "พลังงานที่ได้รับ", "เวลาที่ชาร์จแล้ว", "แจ้งเตือนที่ 80%", "ค่าบริการขณะนี้", "กำลังไฟขณะนี้", "สรุปการชาร์จ", "กำลังชาร์จ", "ค่าบริการ", "เหลือเวลา", "แบตเตอรี่", "ย้อนกลับ", "การชาร์จ", "กำลังไฟ", "นาที", "เวลา", "กม.", "ชม."];
+const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
+const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
+const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
+P.cxLang = function () { if (this.state && (this.state.lang === 'en' || this.state.lang === 'th')) return this.state.lang; const pl = this.props.lang; if (pl === 'English') return 'en'; if (pl === 'ไทย') return 'th'; try { return localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) { return 'th'; } };
+P.cxWalk = function () {
+const r = this._cxRoot; if (!r || typeof document === 'undefined') return;
+const en = this.cxLang() === 'en';
+const O = this._cxOrig || (this._cxOrig = new Map());
+if (!en) { O.forEach((v, node) => { if (v.t != null && node.nodeValue === v.e) node.nodeValue = v.t; if (v.a) for (const a in v.a) { if (node.getAttribute(a) === v.a[a].e) node.setAttribute(a, v.a[a].t); } }); O.clear(); if (this._cxObs) { this._cxObs.disconnect(); this._cxObs = null; } return; }
+const w = document.createTreeWalker(r, 5, { acceptNode: (x) => (x.nodeType === 1 && x.getAttribute('translate') === 'no') ? 2 : 1 });
+let x = w.currentNode;
+while (x) {
+if (x.nodeType === 3) { const v = x.nodeValue; if (THR.test(v)) { const e = tx(v); if (e !== v) { O.set(x, { t: v, e }); x.nodeValue = e; } } }
+else if (x.nodeType === 1) { for (const a of ATTRS) { const v = x.getAttribute(a); if (v && THR.test(v)) { const e = tx(v); if (e !== v) { const rec = O.get(x) || {}; rec.a = rec.a || {}; rec.a[a] = { t: v, e }; O.set(x, rec); x.setAttribute(a, e); } } } }
+x = w.nextNode();
+}
+if (!this._cxObs && typeof MutationObserver !== 'undefined') { this._cxObs = new MutationObserver(() => { if (this._cxQ) return; this._cxQ = true; Promise.resolve().then(() => { this._cxQ = false; this.cxWalk(); }); }); this._cxObs.observe(r, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS }); }
+};
+const cdm = P.componentDidMount, cdu = P.componentDidUpdate, cwu = P.componentWillUnmount, rv = P.renderVals;
+P.componentDidMount = function () { if (cdm) cdm.call(this); this.cxWalk(); setTimeout(() => this.cxWalk(), 60); if (typeof window !== 'undefined') { this._cxL = (e) => { if (!e || !e.key || e.key === 'cx-lang') { this.cxWalk(); } }; window.addEventListener('storage', this._cxL); window.addEventListener('cx-lang', this._cxL); } };
+P.componentDidUpdate = function (a, b) { if (cdu) cdu.call(this, a, b); this.cxWalk(); };
+P.componentWillUnmount = function () { if (this._cxObs) this._cxObs.disconnect(); if (this._cxL && typeof window !== 'undefined') { window.removeEventListener('storage', this._cxL); window.removeEventListener('cx-lang', this._cxL); } if (cwu) cwu.call(this); };
+P.renderVals = function () { const v = rv.call(this) || {}; v.cxRef = (el) => { this._cxRoot = el; }; v.cxLangProp = this.props.lang || 'ตามแอป'; return v; };
+}
+
+static {
+const P = this.prototype;
+const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide','News','Notify','Home','Station','Scan','Confirm','Charging','Complete','Wallet','Topup','Cards','Vehicles','Saved','Prefs','Help','Support','Privacy','Profile'];
+const rv = P.renderVals;
+P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
+}
+constructor(props) {
+super(props);
+this.state = { x: 0, dragging: false, done: false };
+this.MAX = 350 - 12 - 48;
+}
+componentWillUnmount() { clearTimeout(this._t); }
+finish() {
+this.setState({ x: this.MAX, dragging: false, done: true });
+clearTimeout(this._t);
+this._t = setTimeout(() => {
+if (this._a) this._a.click();
+this._t = setTimeout(() => this.setState({ x: 0, done: false }), 600);
+}, 450);
+}
+renderVals() {
+const charge = Math.max(0, Math.min(100, this.props.charge ?? 68));
+const c = 741.4;
+const x = this.state.x;
+const p = x / this.MAX;
+return {
+accent: this.props.accent ?? '#FC3901',
+charge,
+offset: (c * (1 - charge / 100)).toFixed(1),
+liquidY: Math.round(222 - 152 * charge / 100),
+glowH: Math.max(30, Math.round(240 * charge / 100)),
+packW: Math.max(2, Math.round(82 * charge / 100)),
+cy: Math.round(22 + 178 * (1 - charge / 100)),
+rbw: Math.max(3, Math.round(64 * charge / 100)),
+bm: { y: Math.round(98 + 182 * (1 - charge / 100)), h: Math.max(20, Math.round(182 * charge / 100) + 10) },
+cyl: (() => { const t = (this.state && this.state.tilt) || 0; return {
+tilt: t.toFixed(1), counter: (-t * 1.4).toFixed(1),
+tr: (this.state && this.state.dragT) ? '.12s ease-out' : '.9s cubic-bezier(.3,1.6,.4,1)',
+boost: (this.state && this.state.boost) ? 'cx-boost' : '',
+move: (e) => { const r = e.currentTarget.getBoundingClientRect(); const dx = (e.clientX - (r.left + r.width * 0.3)) / (r.width * 0.5); this.setState({ tilt: Math.max(-12, Math.min(12, dx * 12)), dragT: true }); },
+leave: () => this.setState({ tilt: 0, dragT: false }),
+tap: () => { this.setState({ boost: true, tilt: ((this.state && this.state.tilt) || 0) > 0 ? -10 : 10, dragT: false }); clearTimeout(this._bt); this._bt = setTimeout(() => this.setState({ boost: false, tilt: 0 }), 900); }
+}; })(),
+g: (() => { const cum = [40.3, 65.3, 80.6, 90.3, 96, 100]; const o = { off: (100 - charge).toFixed(1), kp: Math.max(0.001, charge / 100).toFixed(3) }; let prev = 0; cum.forEach((c, i) => { const done = charge >= c; const now = !done && charge > prev; o['o' + (i + 1)] = done ? (0.22 - i * 0.02).toFixed(2) : (now ? '0.18' : '0'); o['k' + (i + 1)] = now ? 'cx-sqnow' : ''; prev = c; }); return o; })(),
+thumbX: 6 + x,
+fillW: x + 60,
+labelOpacity: Math.max(0, 1 - p * 1.6).toFixed(2),
+label: 'เลื่อนเพื่อหยุดชาร์จ',
+trans: this.state.dragging ? 'none' : 'left .3s ease, width .3s ease',
+done: this.state.done,
+notDone: !this.state.done,
+setLink: (el) => { this._a = el; },
+down: (e) => {
+if (this.state.done) return;
+const el = e.currentTarget;
+try { el.setPointerCapture(e.pointerId); } catch (err) {}
+const r = el.getBoundingClientRect();
+this._scale = r.width / 48 || 1;
+this._start = e.clientX;
+this._x0 = this.state.x;
+this._moved = false;
+this.setState({ dragging: true });
+},
+move: (e) => {
+if (!this.state.dragging) return;
+const dx = (e.clientX - this._start) / this._scale;
+if (Math.abs(dx) > 3) this._moved = true;
+this.setState({ x: Math.max(0, Math.min(this.MAX, this._x0 + dx)) });
+},
+up: () => {
+if (!this.state.dragging) return;
+if (this.state.x >= this.MAX * 0.85) this.finish();
+else this.setState({ x: 0, dragging: false });
+},
+tap: (e) => {
+if (this._moved) { this._moved = false; return; }
+if (e.detail === 0 && !this.state.done) this.finish();
+}
+};
+}
+}
+</script>
+</body>
+</html>

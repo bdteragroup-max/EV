@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>Charge X — Welcome</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#C42D00}a:hover{color:#9E2400}
+@keyframes cxLogoIn{0%{opacity:0;transform:scale(.25) rotate(-35deg)}60%{opacity:1;transform:scale(1.12) rotate(4deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes cxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes cxHalo{0%,100%{transform:scale(.92);opacity:.55}50%{transform:scale(1.08);opacity:1}}
+@keyframes cxRipple{0%{transform:scale(.3);opacity:.9}100%{transform:scale(2.2);opacity:0}}
+@keyframes cxFlash{0%{opacity:0;transform:scale(.2)}35%{opacity:1}100%{opacity:0;transform:scale(1.6)}}
+@keyframes cxUp{0%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes cxFromL{0%{opacity:0;transform:translateX(-70px) scale(.6)}100%{opacity:1;transform:translateX(0) scale(1)}}
+@keyframes cxFromR{0%{opacity:0;transform:translateX(70px) scale(.6)}100%{opacity:1;transform:translateX(0) scale(1)}}
+@keyframes cxBob{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@keyframes cxDraw{to{stroke-dashoffset:0}}
+@keyframes cxFade{from{opacity:0}to{opacity:1}}
+@keyframes cxShine{0%{left:-40%}60%,100%{left:120%}}
+@keyframes cxBtnGlow{0%,100%{box-shadow:0 10px 26px rgba(252,57,1,.35)}50%{box-shadow:0 12px 34px rgba(252,57,1,.6)}}
+.cx-bg{animation:cxFade 1.2s ease-out both}
+.cx-logo{animation:cxLogoIn 1s cubic-bezier(.2,.9,.3,1) .15s both}
+.cx-halo{animation:cxHalo 3s ease-in-out 1s infinite both}
+.cx-ripple{animation:cxRipple 1.4s ease-out .5s both}
+.cx-flash{animation:cxFlash .9s ease-out .55s both}
+.cx-up{animation:cxUp .7s cubic-bezier(.2,.8,.3,1) both}
+.d1{animation-delay:.9s}.d2{animation-delay:1.05s}.d3{animation-delay:1.2s}.d4{animation-delay:1.45s}.d5{animation-delay:1.6s}.d6{animation-delay:1.75s}.d7{animation-delay:2s}.d8{animation-delay:2.15s}.d9{animation-delay:2.3s}
+.cx-l{animation:cxFromL .8s cubic-bezier(.2,.9,.3,1) both}
+.cx-r{animation:cxFromR .8s cubic-bezier(.2,.9,.3,1) both}
+.l1{animation-delay:1.2s}.l2{animation-delay:1.35s}.r1{animation-delay:1.3s}.r2{animation-delay:1.45s}
+.cx-line{stroke-dasharray:120;stroke-dashoffset:120;animation:cxDraw .9s ease-out 1.9s forwards}
+.cx-btn{animation:cxUp .7s cubic-bezier(.2,.8,.3,1) 2s both, cxBtnGlow 2.6s ease-in-out 2.8s infinite}
+.cx-shine{animation:cxShine 3s ease-in-out 3s infinite}
+.cx-replay{background:none;border:0;padding:0;cursor:pointer}
+@media (prefers-reduced-motion: reduce){.cx-bg,.cx-logo,.cx-halo,.cx-ripple,.cx-flash,.cx-up,.cx-l,.cx-r,.cx-btn,.cx-shine{animation:none}.cx-line{animation:none;stroke-dashoffset:0}.cx-ripple,.cx-flash{opacity:0}}
+[data-theme="dark"]{color-scheme:dark}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFFFFF"]{background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F4F4F4"],[style*="background: #F6F6F6"],[style*="background: #F0F0F0"],[style*="background: rgb(244, 244, 244)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F2EFE9"],[style*="background: #EEEEEC"]){background-color:#1C1D20!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #333333"]{background-color:#3A3A40!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FFF1EB"],[style*="background: #FFE4DA"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF7F3"]{background-color:rgba(252,57,1,.1)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #E7F6EE"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #E6E6E6"],[style*="background: #EDEDED"],[style*="background: #EFEFEF"],[style*="background: #D9D9D9"],[style*="background: #DADADA"]){background-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="linear-gradient(#FFFFFF"]{background:linear-gradient(#000000 72%,rgba(0,0,0,0))!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="repeating-linear-gradient(90deg, #DADADA"]{background:repeating-linear-gradient(90deg,#3A3A40 0 6px,transparent 6px 12px)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #1F1F1F"],[style*="color: #2B2B2B"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #3A3A3A"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #C42D00"],[style*="color: rgb(196, 45, 0)"]){color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #146C3E"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"],[style*="solid #D4D4D4"],[style*="solid #E2E2E2"],[style*="solid #FDD3C3"]){border-color:#35353B!important}
+[data-theme="dark"] [stroke="#1F1F1F"]{stroke:#F3F3F4}
+[data-theme="dark"] [stroke="#5C5C5C"]{stroke:#A6A6AD}
+[data-theme="dark"] [stroke="#E8E8E8"]{stroke:#2A2A2F}
+[data-theme="dark"] [fill="#E8E8E8"]{fill:#2A2A2F}
+[data-theme="dark"] [fill="#FFF4EF"]{fill:#2A1D18}
+[data-theme="dark"] [stroke="#F0F0F0"]{stroke:#2E2E33}
+[data-theme="dark"] input::placeholder{color:#7C7C83}
+[data-theme="dark"] .cx-in{background:#1C1C1E;border-color:#35353B;color:#F3F3F4}
+[data-theme="dark"] a:not([style*="color"]){color:#FF7A4D}
+[data-theme="dark"] img[src*="f46d7ba1c670cac41e8a125f33e770a5"]{content:url("img/74494939c52664c9c5c123c6273095cc.png");mix-blend-mode:lighten}
+[data-theme="dark"][data-theme][style]{background-color:#000000!important}
+[data-theme="dark"][data-theme][style]{color:#F3F3F4!important}
+[data-theme="dark"] :is(button,input,textarea,select,legend,label){color:inherit}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(31, 31, 31)"],[style*="color: rgb(43, 43, 43)"],[style*="color: rgb(0, 0, 0)"],[style*="color: #000"],[style*="color: black"],[style*="color: #1f1f1f"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(58, 58, 58)"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(92, 92, 92)"],[style*="color: rgb(107, 107, 107)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(196, 45, 0)"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(20, 108, 62)"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 255, 255)"],[style*="background-color: rgb(255, 255, 255)"]){background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(244, 244, 244)"],[style*="background: rgb(246, 246, 246)"],[style*="background: rgb(240, 240, 240)"],[style*="background-color: rgb(244, 244, 244)"],[style*="background-color: rgb(246, 246, 246)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(31, 31, 31)"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 241, 235)"],[style*="background: rgb(255, 228, 218)"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(255, 247, 243)"]{background-color:rgba(252,57,1,.12)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(231, 246, 238)"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(230, 230, 230)"],[style*="background: rgb(237, 237, 237)"],[style*="background: rgb(239, 239, 239)"],[style*="background: rgb(217, 217, 217)"],[style*="background: rgb(218, 218, 218)"]){background-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(51, 51, 51)"]{background-color:#3A3A40!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="linear-gradient(rgb(255, 255, 255)"]{background:linear-gradient(#000000 72%,rgba(0,0,0,0))!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"],[style*="solid rgb(237, 237, 237)"],[style*="solid rgb(239, 239, 239)"],[style*="solid rgb(212, 212, 212)"],[style*="solid rgb(226, 226, 226)"],[style*="solid rgb(253, 211, 195)"]){border-color:#35353B!important}
+</style>
+</helmet>
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; box-sizing: border-box; background: #FFFFFF; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; position: relative; overflow: hidden">
+<sc-if value="{{show}}" hint-placeholder-val="{{ true }}">
+
+<svg class="cx-bg" aria-hidden="true" width="390" height="844" viewBox="0 0 390 844" fill="none" stroke="#E8E8E8" stroke-width="1.5" style="position: absolute; inset: 0">
+<path d="M0 120 H60 L90 150 V230"></path><circle cx="90" cy="232" r="3" fill="#E8E8E8"></circle>
+<path d="M0 200 H30 L50 220 V300"></path>
+<path d="M390 90 H320 L290 120 V200"></path><circle cx="290" cy="202" r="3" fill="#E8E8E8"></circle>
+<path d="M390 170 H350 L330 190 V250"></path>
+<path d="M0 560 H40 L70 590 V680 L90 700 H130"></path><circle cx="132" cy="700" r="3" fill="#E8E8E8"></circle>
+<path d="M390 600 H340 L310 630 V720 L290 740 H250"></path><circle cx="248" cy="740" r="3" fill="#E8E8E8"></circle>
+<path d="M0 780 H90 L110 800 V844"></path>
+<path d="M390 790 H300 L280 810 V844"></path>
+<path d="M150 0 V40 L170 60 H220 L240 40 V0"></path>
+</svg>
+
+
+<div style="position: relative; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; padding: 56px 24px 40px; text-align: center">
+<div style="align-self: stretch; display: flex; justify-content: flex-end">
+<button class="cx-up d9" type="button" onClick="{{toggleLang}}" translate="no" aria-label="{{langAria}}" style="height: 36px; padding: 0 12px; border-radius: 18px; border: 1px solid #E6E6E6; background: transparent; display: flex; align-items: center; gap: 6px; font-family: inherit; font-size: 13px; font-weight: 600; color: #5C5C5C; cursor: pointer">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5C5C5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg>{{langCode}}</button>
+</div>
+
+<div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px">
+<div style="position: relative; width: 280px; height: 280px; display: flex; align-items: center; justify-content: center">
+<div aria-hidden="true" class="cx-halo" style="position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle, rgba(252,57,1,0.18) 0%, rgba(252,57,1,0.05) 45%, rgba(252,57,1,0) 70%)"></div>
+<div aria-hidden="true" class="cx-ripple" style="position: absolute; inset: 60px; border-radius: 50%; border: 2px solid #D4AF37"></div>
+<div aria-hidden="true" class="cx-flash" style="position: absolute; inset: 80px; border-radius: 50%; background: radial-gradient(circle, #FFFFFF 0%, rgba(255,214,190,0.9) 30%, rgba(252,57,1,0) 70%)"></div>
+<button class="cx-replay" onClick="{{replay}}" aria-label="เล่นแอนิเมชันอีกครั้ง" style="position: relative">
+<img class="cx-logo" src="img/40a68032ae1c879ecedb4032e727cb86.png" alt="Charge-X" style="height: 220px; width: auto; display: block">
+</button>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px">
+<span class="cx-up d1" style="font-family: Sarabun, sans-serif; font-weight: 600; font-size: 24px; line-height: 1.35; color: #1F1F1F">ชาร์จง่าย ทุกที่ที่คุณไป</span>
+<span class="cx-up d2" style="font-size: 15px; line-height: 1.5; color: #6B6B6B">ค้นหา ชาร์จ และจ่าย ในแอปเดียว</span>
+</div>
+</div>
+
+<a class="cx-btn" href="{{L.Onboarding}}" style="width: 100%; height: 56px; border-radius: 28px; background: {{accent}}; color: #FFFFFF; text-decoration: none; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 19px">
+<span class="cx-shine" aria-hidden="true" style="position: absolute; top: 0; left: -40%; width: 30%; height: 100%; background: linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%); transform: skewX(-20deg)"></span>
+<span style="position: relative">เริ่มต้นใช้งาน</span>
+</a>
+<a class="cx-up d8" href="{{L.Member}}" style="margin-top: 8px; min-height: 44px; display: flex; align-items: center; gap: 4px; font-size: 14px; color: #6B6B6B; text-decoration: none">มีบัญชีอยู่แล้ว? <span style="font-weight: 600; color: #C42D00">เข้าสู่ระบบ</span></a>
+</div>
+
+
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+static {
+const P = this.prototype;
+const TR = {"ชาร์จง่าย ทุกที่ที่คุณไป": "Easy charging, wherever you go", "ค้นหา ชาร์จ และจ่าย ในแอปเดียว": "Find, charge and pay in one app", "เริ่มต้นใช้งาน": "Get started", "มีบัญชีอยู่แล้ว?": "Already have an account?", "เข้าสู่ระบบ": "Sign in", "เปลี่ยนภาษา": "Change language", "เล่นแอนิเมชันอีกครั้ง": "Replay animation", "และ": " and ", "แล้ว": "", "ระบบ": "System", "เริ่มต้น": "from", "เปลี่ยน": "Change", "ภาษา": "Language", "กม.": "km", "ชม.": "hrs", "นาที": "min"};
+const PT = [].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["ค้นหา ชาร์จ และจ่าย ในแอปเดียว", "ชาร์จง่าย ทุกที่ที่คุณไป", "เล่นแอนิเมชันอีกครั้ง", "มีบัญชีอยู่แล้ว?", "เริ่มต้นใช้งาน", "เข้าสู่ระบบ", "เปลี่ยนภาษา", "เริ่มต้น", "เปลี่ยน", "ระบบ", "ภาษา", "นาที", "และ", "กม.", "ชม."];
+const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
+const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
+const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
+P.cxLang = function () { if (this.state && (this.state.lang === 'en' || this.state.lang === 'th')) return this.state.lang; const pl = this.props.lang; if (pl === 'English') return 'en'; if (pl === 'ไทย') return 'th'; try { return localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) { return 'th'; } };
+P.cxWalk = function () {
+const r = this._cxRoot; if (!r || typeof document === 'undefined') return;
+const en = this.cxLang() === 'en';
+const O = this._cxOrig || (this._cxOrig = new Map());
+if (!en) { O.forEach((v, node) => { if (v.t != null && node.nodeValue === v.e) node.nodeValue = v.t; if (v.a) for (const a in v.a) { if (node.getAttribute(a) === v.a[a].e) node.setAttribute(a, v.a[a].t); } }); O.clear(); if (this._cxObs) { this._cxObs.disconnect(); this._cxObs = null; } return; }
+const w = document.createTreeWalker(r, 5, { acceptNode: (x) => (x.nodeType === 1 && x.getAttribute('translate') === 'no') ? 2 : 1 });
+let x = w.currentNode;
+while (x) {
+if (x.nodeType === 3) { const v = x.nodeValue; if (THR.test(v)) { const e = tx(v); if (e !== v) { O.set(x, { t: v, e }); x.nodeValue = e; } } }
+else if (x.nodeType === 1) { for (const a of ATTRS) { const v = x.getAttribute(a); if (v && THR.test(v)) { const e = tx(v); if (e !== v) { const rec = O.get(x) || {}; rec.a = rec.a || {}; rec.a[a] = { t: v, e }; O.set(x, rec); x.setAttribute(a, e); } } } }
+x = w.nextNode();
+}
+if (!this._cxObs && typeof MutationObserver !== 'undefined') { this._cxObs = new MutationObserver(() => { if (this._cxQ) return; this._cxQ = true; Promise.resolve().then(() => { this._cxQ = false; this.cxWalk(); }); }); this._cxObs.observe(r, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS }); }
+};
+const cdm = P.componentDidMount, cdu = P.componentDidUpdate, cwu = P.componentWillUnmount, rv = P.renderVals;
+P.componentDidMount = function () { if (cdm) cdm.call(this); this.cxWalk(); setTimeout(() => this.cxWalk(), 60); if (typeof window !== 'undefined') { this._cxL = (e) => { if (!e || !e.key || e.key === 'cx-lang') { this.cxWalk(); } }; window.addEventListener('storage', this._cxL); window.addEventListener('cx-lang', this._cxL); } };
+P.componentDidUpdate = function (a, b) { if (cdu) cdu.call(this, a, b); this.cxWalk(); };
+P.componentWillUnmount = function () { if (this._cxObs) this._cxObs.disconnect(); if (this._cxL && typeof window !== 'undefined') { window.removeEventListener('storage', this._cxL); window.removeEventListener('cx-lang', this._cxL); } if (cwu) cwu.call(this); };
+P.renderVals = function () { const v = rv.call(this) || {}; v.cxRef = (el) => { this._cxRoot = el; }; v.cxLangProp = this.props.lang || 'ตามแอป'; return v; };
+}
+
+static {
+const P = this.prototype;
+const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide','News','Notify','Home','Station','Scan','Confirm','Charging','Complete','Wallet','Topup','Cards','Vehicles','Saved','Prefs','Help','Support','Privacy','Profile'];
+const rv = P.renderVals;
+P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
+}
+constructor(props) { super(props); let l = 'th'; try { l = localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) {} this.state = { show: true, lang: props.lang === 'English' ? 'en' : props.lang === 'ไทย' ? 'th' : l }; }
+componentDidUpdate(pp) { if (pp.lang !== this.props.lang) { let l = 'th'; try { l = localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) {} this.setState({ lang: this.props.lang === 'English' ? 'en' : this.props.lang === 'ไทย' ? 'th' : l }); } }
+componentDidMount() { this._pl = () => { if (this.props.lang === 'English' || this.props.lang === 'ไทย') return; let l = 'th'; try { l = localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) {} if (l !== this.state.lang) this.setState({ lang: l }); }; if (typeof window !== 'undefined') { window.addEventListener('storage', this._pl); window.addEventListener('cx-lang', this._pl); } }
+componentWillUnmount() { clearTimeout(this._t); if (this._pl && typeof window !== 'undefined') { window.removeEventListener('storage', this._pl); window.removeEventListener('cx-lang', this._pl); } }
+renderVals() {
+return {
+accent: this.props.accent ?? '#FC3901',
+show: this.state.show,
+langCode: this.state.lang === 'en' ? 'EN' : 'TH',
+langAria: this.state.lang === 'en' ? 'Change language (English)' : 'เปลี่ยนภาษา (ไทย)',
+toggleLang: () => { const id = this.state.lang === 'en' ? 'th' : 'en'; try { localStorage.setItem('cx-lang', id); } catch (e) {} this.setState({ lang: id }); try { window.dispatchEvent(new Event('cx-lang')); const fr = window.top && window.top.frames; if (fr) for (let i = 0; i < fr.length; i++) { try { if (fr[i] !== window) fr[i].dispatchEvent(new Event('cx-lang')); } catch (e) {} } } catch (e) {} },
+replay: () => {
+this.setState({ show: false });
+clearTimeout(this._t);
+this._t = setTimeout(() => this.setState({ show: true }), 40);
+}
+};
+}
+}
+</script>
+</body>
+</html>

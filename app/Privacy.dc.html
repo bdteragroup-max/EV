@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>Charge X — ความเป็นส่วนตัวและข้อกำหนด</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#C42D00}a:hover{color:#9E2400}
+[data-theme="dark"]{color-scheme:dark}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFFFFF"]{background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F4F4F4"],[style*="background: #F6F6F6"],[style*="background: #F0F0F0"],[style*="background: rgb(244, 244, 244)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FFF1EB"],[style*="background: #FFE4DA"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF7F3"]{background-color:rgba(252,57,1,.1)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #E7F6EE"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #1F1F1F"],[style*="color: #2B2B2B"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #3A3A3A"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #C42D00"],[style*="color: rgb(196, 45, 0)"]){color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #146C3E"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"]){border-color:#35353B!important}
+[data-theme="dark"] [stroke="#1F1F1F"]{stroke:#F3F3F4}
+[data-theme="dark"][data-theme][style]{background-color:#000000!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="margin-top: -24px; background: #FFFFFF"]{background-color:#000000!important}
+[data-theme="dark"][data-theme][style]{color:#F3F3F4!important}
+[data-theme="dark"] :is(button,input,textarea,select,legend,label){color:inherit}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(31, 31, 31)"],[style*="color: rgb(43, 43, 43)"],[style*="color: rgb(0, 0, 0)"],[style*="color: #000"],[style*="color: black"],[style*="color: #1f1f1f"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(58, 58, 58)"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(92, 92, 92)"],[style*="color: rgb(107, 107, 107)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(196, 45, 0)"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(20, 108, 62)"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 255, 255)"],[style*="background-color: rgb(255, 255, 255)"]){background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(244, 244, 244)"],[style*="background: rgb(246, 246, 246)"],[style*="background: rgb(240, 240, 240)"],[style*="background-color: rgb(244, 244, 244)"],[style*="background-color: rgb(246, 246, 246)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(31, 31, 31)"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 241, 235)"],[style*="background: rgb(255, 228, 218)"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(255, 247, 243)"]{background-color:rgba(252,57,1,.12)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(231, 246, 238)"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(230, 230, 230)"],[style*="background: rgb(237, 237, 237)"],[style*="background: rgb(239, 239, 239)"],[style*="background: rgb(217, 217, 217)"],[style*="background: rgb(218, 218, 218)"]){background-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(51, 51, 51)"]{background-color:#3A3A40!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(189, 189, 189)"]{background-color:#55555C!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="linear-gradient(rgb(255, 255, 255)"]{background:linear-gradient(#000000 72%,rgba(0,0,0,0))!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="repeating-linear-gradient(90deg, rgb(218, 218, 218)"]{background:repeating-linear-gradient(90deg,#3A3A40 0 6px,transparent 6px 12px)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(158, 36, 0)"]{color:#FF8A66!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"],[style*="solid rgb(237, 237, 237)"],[style*="solid rgb(239, 239, 239)"],[style*="solid rgb(212, 212, 212)"],[style*="solid rgb(226, 226, 226)"],[style*="solid rgb(253, 211, 195)"]){border-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="margin-top: -24px; background: rgb(255, 255, 255)"]{background-color:#000000!important}
+.cx-scroll{scrollbar-width:none}.cx-scroll>*{flex-shrink:0}.cx-scroll::-webkit-scrollbar{display:none}
+@keyframes cxSheet{from{transform:translateY(100%)}to{transform:none}}
+.cx-sheet{animation:cxSheet .35s cubic-bezier(.2,.9,.3,1) both}
+@keyframes cxFade{from{opacity:0}to{opacity:1}}
+.cx-fade{animation:cxFade .3s ease-out both}
+@keyframes cxSpin{to{transform:rotate(360deg)}}
+.cx-spin{animation:cxSpin .8s linear infinite;transform-origin:center}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #B86A00"],[style*="color: rgb(184, 106, 0)"]){color:#F0A84A!important}
+@media (prefers-reduced-motion: reduce){.cx-sheet,.cx-fade,.cx-spin{animation:none}}
+
+[data-theme="dark"] [style*="background: #FFF4E0"],[data-theme="dark"] [style*="background: rgb(255, 244, 224)"]{background-color:rgba(240,160,48,.16)!important}
+@keyframes cxPlug{0%,100%{opacity:.35}50%{opacity:1}}
+.cx-plugdot{animation:cxPlug 1.2s ease-in-out infinite}
+
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F; color: #FFFFFF"]{background-color:#1C1C1E!important}
+[data-theme="dark"] .cx-qr{background:#FFFFFF!important;border-color:#FFFFFF!important}
+[data-theme="dark"] .cx-qr span[style*="color: #6B6B6B"]{color:#6B6B6B!important}
+[data-theme="dark"] .cx-ring{box-shadow:0 0 0 10px rgba(46,180,110,.2)!important}
+@keyframes cxPop{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.cx-pop{animation:cxPop .55s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes cxRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.cx-rise{animation:cxRise .5s cubic-bezier(.2,.8,.3,1) .2s both}
+@media (prefers-reduced-motion: reduce){.cx-pop,.cx-rise{animation:none}}
+[data-theme="dark"] .cx-pv{box-shadow:0 14px 30px rgba(0,0,0,.6)!important}
+.cx-in2{width:100%;height:52px;box-sizing:border-box;border-radius:14px;border:1.5px solid #E0E0E0;background:#FFFFFF;padding:0 14px;font-family:inherit;font-size:16px;color:#1F1F1F;outline:none}
+.cx-in2:focus{border-color:#FC3901}
+[data-theme="dark"] .cx-in2{background:#1C1C1E;border-color:#35353B;color:#F3F3F4}
+[data-theme="dark"] .cx-in2:focus{border-color:#FC3901}
+.cx-in2::placeholder{color:#9A9A9A}
+@keyframes cxShake{0%,100%{transform:none}20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+.cx-shake{animation:cxShake .45s ease-in-out both}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FDECEC"]){background-color:rgba(229,62,62,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #B42318"]{color:#FF8A80!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF4E0"]{background-color:rgba(240,160,48,.16)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="dashed #D4D4D4"]{border-color:#45454C!important}
+.cx-ta{width:100%;min-height:96px;box-sizing:border-box;border-radius:14px;border:1.5px solid #E0E0E0;background:#FFFFFF;padding:12px 14px;font-family:inherit;font-size:15px;color:#1F1F1F;outline:none;resize:none}
+.cx-ta:focus{border-color:#FC3901}
+[data-theme="dark"] .cx-ta{background:#1C1C1E;border-color:#35353B;color:#F3F3F4}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FDECEC"]{background-color:rgba(229,62,62,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #B42318"]{color:#FF8A80!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF4E0"]{background-color:rgba(240,160,48,.16)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #B86A00"]{color:#F0A84A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #E7F6EE"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #EAF1FB"]{background-color:rgba(60,120,220,.2)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #1D4E89"]{color:#8CB8F0!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="border-top: 1px solid #EFEFEF"]{border-top-color:#2A2A2F!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="dashed #D4D4D4"]{border-color:#45454C!important}
+</style>
+</helmet>
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F6F6F6; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; display: flex; flex-direction: column">
+<div style="padding: 56px 20px 10px; display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; align-items: center; gap: 8px">
+<sc-if value="{{isHome}}" hint-placeholder-val="{{ true }}"><a href="{{backHref}}" aria-label="ย้อนกลับ" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 14px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a></sc-if>
+<sc-if value="{{isDoc}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{backDoc}}" aria-label="ย้อนกลับ" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 14px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button></sc-if>
+<a href="{{backHref}}" ref="{{setBackA}}" tabindex="-1" aria-hidden="true" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none"></a>
+<h1 style="margin: 0; text-align: center; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; line-height: 1.3">{{title}}</h1>
+<span></span>
+</div>
+<div class="cx-scroll" style="flex: 1; min-height: 0; overflow-y: auto; padding: 4px 16px 28px; display: flex; flex-direction: column; gap: 12px">
+<sc-if value="{{isHome}}" hint-placeholder-val="{{ true }}">
+<div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px; gap: 0">
+<span style="font-size: 15px; font-weight: 700; padding-bottom: 8px">นโยบายและข้อกำหนด</span>
+<button type="button" onClick="{{openPrivacy}}" style="width: 100%; display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 8px 0; border: 0; border-top: 1px solid #EFEFEF; background: transparent; font-family: inherit; text-align: left; text-decoration: none; cursor: pointer">
+<span style="width: 38px; height: 38px; flex: none; border-radius: 12px; background: #FFF1EB; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h6"></path></svg></span>
+<span style="flex: 1; display: flex; flex-direction: column; gap: 1px"><span style="font-size: 14.5px; font-weight: 600; color: #1F1F1F">นโยบายความเป็นส่วนตัว</span><span style="font-size: 12px; color: #6B6B6B">อัปเดตล่าสุด [วันที่]</span></span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button>
+<button type="button" onClick="{{openTerms}}" style="width: 100%; display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 8px 0; border: 0; border-top: 1px solid #EFEFEF; background: transparent; font-family: inherit; text-align: left; text-decoration: none; cursor: pointer">
+<span style="width: 38px; height: 38px; flex: none; border-radius: 12px; background: #FFF1EB; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h6M9 16h6M9 8h2M5 3h14v18H5z"></path></svg></span>
+<span style="flex: 1; display: flex; flex-direction: column; gap: 1px"><span style="font-size: 14.5px; font-weight: 600; color: #1F1F1F">ข้อกำหนดการให้บริการ</span><span style="font-size: 12px; color: #6B6B6B">อัปเดตล่าสุด [วันที่]</span></span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button>
+</div>
+<div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px; gap: 0">
+<span style="font-size: 15px; font-weight: 700">จัดการความยินยอม</span>
+<span style="font-size: 12.5px; line-height: 1.5; color: #6B6B6B; padding: 2px 0 8px">คุณเปลี่ยนหรือถอนความยินยอมได้ทุกเมื่อ ไม่กระทบการใช้งานหลักของแอป</span>
+<div style="display: flex; align-items: center; gap: 12px; min-height: 56px; border-top: 1px solid #EFEFEF; padding: 8px 0"><span style="flex: 1; display: flex; flex-direction: column; gap: 1px"><span style="font-size: 14.5px; font-weight: 600; color: #1F1F1F">ข้อมูลที่จำเป็นต่อการให้บริการ</span><span style="font-size: 12px; line-height: 1.45; color: #6B6B6B">บัญชี การชาร์จ การชำระเงิน และความปลอดภัย</span></span><span style="flex: none; padding: 4px 10px; border-radius: 8px; background: #F4F4F4; font-size: 12px; font-weight: 700; color: #6B6B6B">เปิดตลอด</span></div>
+<sc-for list="{{consents}}" as="k" hint-placeholder-count="4">
+<div style="display: flex; align-items: center; gap: 12px; min-height: 56px; border-top: 1px solid #EFEFEF; padding: 8px 0"><span style="flex: 1; display: flex; flex-direction: column; gap: 1px"><span style="font-size: 14.5px; font-weight: 600; color: #1F1F1F">{{k.title}}</span><span style="font-size: 12px; line-height: 1.45; color: #6B6B6B">{{k.sub}}</span></span><button type="button" role="switch" aria-checked="{{k.str}}" aria-label="{{k.title}}" onClick="{{k.toggle}}" style="width: 50px; height: 30px; flex: none; border-radius: 15px; border: 0; padding: 3px; cursor: pointer; background: {{k.bg}}; display: flex; justify-content: {{k.pos}}; transition: background .2s"><span style="width: 24px; height: 24px; border-radius: 50%; background: #FFFFFE; box-shadow: 0 1px 3px rgba(0,0,0,0.25)"></span></button></div>
+</sc-for>
+</div>
+<div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px; gap: 0">
+<span style="font-size: 15px; font-weight: 700; padding-bottom: 8px">สิทธิของคุณตาม PDPA</span>
+<button type="button" onClick="{{askExport}}" style="width: 100%; display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 8px 0; border: 0; border-top: 1px solid #EFEFEF; background: transparent; font-family: inherit; text-align: left; text-decoration: none; cursor: pointer">
+<span style="width: 38px; height: 38px; flex: none; border-radius: 12px; background: #FFF1EB; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg></span>
+<span style="flex: 1; display: flex; flex-direction: column; gap: 1px"><span style="font-size: 14.5px; font-weight: 600; color: #1F1F1F">ขอสำเนาข้อมูลของฉัน</span><span style="font-size: 12px; color: #6B6B6B">ส่งไฟล์ข้อมูลไปที่อีเมลของคุณ</span></span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button>
+<a href="{{L.Profile}}" style="width: 100%; display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 8px 0; border: 0; border-top: 1px solid #EFEFEF; background: transparent; font-family: inherit; text-align: left; text-decoration: none; cursor: pointer">
+<span style="width: 38px; height: 38px; flex: none; border-radius: 12px; background: #FFF1EB; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4"></path></svg></span>
+<span style="flex: 1; display: flex; flex-direction: column; gap: 1px"><span style="font-size: 14.5px; font-weight: 600; color: #1F1F1F">ขอแก้ไขข้อมูล</span><span style="font-size: 12px; color: #6B6B6B">แก้ไขชื่อ เบอร์โทร อีเมลในหน้าโปรไฟล์</span></span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></a>
+<button type="button" onClick="{{askDelete}}" style="width: 100%; display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 8px 0; border: 0; border-top: 1px solid #EFEFEF; background: transparent; font-family: inherit; text-align: left; text-decoration: none; cursor: pointer">
+<span style="width: 38px; height: 38px; flex: none; border-radius: 12px; background: #FDECEC; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E5484D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg></span>
+<span style="flex: 1; display: flex; flex-direction: column; gap: 1px"><span style="font-size: 14.5px; font-weight: 600; color: #B42318">ขอลบบัญชีและข้อมูล</span><span style="font-size: 12px; color: #6B6B6B">ลบบัญชีถาวร ไม่สามารถกู้คืนได้</span></span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></button>
+</div>
+<div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; gap: 12px; align-items: flex-start"><span style="width: 38px; height: 38px; flex: none; border-radius: 12px; background: #F4F4F4; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5C5C5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3zM3 7l9 6 9-6"></path></svg></span>
+<span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14.5px; font-weight: 700; color: #1F1F1F">เจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล (DPO)</span><span style="font-size: 12.5px; line-height: 1.55; color: #5C5C5C">[ชื่อบริษัท] · อีเมล [dpo@email] · [ที่อยู่บริษัท]</span></span></div>
+</div>
+</sc-if>
+
+<sc-if value="{{isDoc}}" hint-placeholder-val="{{ false }}">
+<div style="padding: 10px 12px; border-radius: 14px; background: #FFF4E0; font-size: 12.5px; line-height: 1.5; color: #B86A00">เนื้อหาตัวอย่าง รอฝ่ายกฎหมายตรวจสอบและแก้ไขก่อนเผยแพร่</div>
+<div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px; gap: 14px">
+<span style="font-size: 12.5px; color: #6B6B6B">มีผลบังคับใช้ [วันที่] · ฉบับที่ [x.x]</span>
+<sc-for list="{{sections}}" as="s" hint-placeholder-count="6"><div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 15px; font-weight: 700; color: #1F1F1F">{{s.h}}</span><span style="font-size: 13.5px; line-height: 1.7; color: #3A3A3A">{{s.p}}</span></div></sc-for>
+</div>
+</sc-if>
+</div>
+
+<sc-if value="{{showSheet}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 40; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: flex-end">
+<button type="button" aria-label="ปิด" onClick="{{closeSheet}}" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
+<div class="cx-sheet" role="dialog" aria-label="{{sheetTitle}}" style="background: #FFFFFF; border-radius: 26px 26px 0 0; padding: 10px 20px 30px; display: flex; flex-direction: column; gap: 12px">
+<span style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #DADADA"></span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 19px; color: #1F1F1F">{{sheetTitle}}</span>
+<sc-if value="{{isExport}}" hint-placeholder-val="{{ false }}"><span style="font-size: 14px; line-height: 1.6; color: #5C5C5C">เราจะรวบรวมข้อมูลบัญชี รถ ประวัติการชาร์จ และการชำระเงินของคุณเป็นไฟล์ แล้วส่งไปที่อีเมล [อีเมลของคุณ] ภายใน 30 วัน</span></sc-if>
+<sc-if value="{{isDelete}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 14px; background: #FDECEC">
+<span style="font-size: 13.5px; font-weight: 700; color: #B42318">ก่อนลบบัญชี โปรดทราบ</span>
+<span style="font-size: 13px; line-height: 1.6; color: #5C5C5C">• ยอดเงินคงเหลือ ฿500 ใน Wallet ต้องขอคืนหรือใช้ให้หมดก่อน<br>• ประวัติการชาร์จ รถ และบัตรที่ผูกไว้จะถูกลบถาวร<br>• ข้อมูลที่กฎหมายกำหนดให้เก็บ เช่น ใบกำกับภาษี จะเก็บต่อตามระยะเวลาที่กฎหมายกำหนด<br>• ดำเนินการภายใน 30 วัน และยกเลิกคำขอได้ก่อนครบกำหนด</span>
+</div>
+<button type="button" role="checkbox" aria-checked="{{ackStr}}" onClick="{{toggleAck}}" style="display: flex; align-items: center; gap: 10px; border: 0; background: transparent; padding: 2px 0; font-family: inherit; text-align: left; cursor: pointer"><span style="width: 22px; height: 22px; flex: none; box-sizing: border-box; border-radius: 7px; border: 2px solid {{ackBorder}}; background: {{ackBg}}; display: flex; align-items: center; justify-content: center"><sc-if value="{{ack}}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg></sc-if></span><span style="font-size: 14px; color: #3A3A3A">ฉันเข้าใจและต้องการลบบัญชี</span></button>
+</sc-if>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 4px">
+<button type="button" onClick="{{closeSheet}}" style="height: 52px; border-radius: 14px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; color: #1F1F1F; cursor: pointer">ยกเลิก</button>
+<button type="button" onClick="{{confirmSheet}}" aria-disabled="{{cDis}}" style="height: 52px; border-radius: 14px; border: 0; background: {{cBg}}; pointer-events: {{cPe}}; font-family: inherit; font-size: 15px; font-weight: 600; color: #FFFFFF; cursor: pointer">{{cLabel}}</button>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{showToast}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" role="status" style="position: absolute; left: 16px; right: 16px; bottom: 30px; z-index: 30; padding: 12px 14px; border-radius: 16px; background: #1F1F1F; color: #FFFFFF; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 24px rgba(0,0,0,0.25)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5AD49B" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg>{{toast}}</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"screen":{"editor":"enum","options":["หน้าหลัก","นโยบายความเป็นส่วนตัว","ข้อกำหนดการให้บริการ","ลบบัญชี"],"default":"หน้าหลัก"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+static {
+const P = this.prototype;
+const TR = {"ถัดไป": "Next", "หรือ": "or", "ข้อกำหนดการให้บริการ": "Terms of Service", "และ": " and ", "นโยบายความเป็นส่วนตัว": "Privacy Policy", "ย้อนกลับ": "Back", "แก้ไข": "Edit", "ยืนยัน": "Confirm", "ลบ": "Delete", "เบอร์โทรศัพท์": "Phone number", "อีเมล": "Email", "แล้ว": "", "ชื่อ": "First name", "โปรโมชันและสิทธิพิเศษ": "Promotions and perks", "ค้นหาสถานี": "Find station", "หน้าหลัก": "Home", "การชาร์จ": "Charge", "กระเป๋าเงิน": "Wallet", "โปรไฟล์": "Profile", "โปรโมชัน": "Promotions", "ข่าวสาร": "News", "[วันที่]": "[date]", "ระบบ": "System", "โรงแรม": "Hotel", "ยกเลิก": "Cancel", "24 ชม.": "24 hrs", "ปิด": "Closed", "เริ่มชาร์จ": "Start charging", "ค่าบริการ": "Rate", "ค่าจอดเกินเวลา": "Idle fee", "เปลี่ยน": "Change", "นาที": "min", "พลังงานที่ได้รับ": "Energy delivered", "ยอดค้างชำระ": "Amount due", "ระยะเวลา": "Duration", "ใบเสร็จ": "Receipt", "ชำระผ่าน": "Paid with ", "ช่องทาง": "Method", "เวลา": "Time", "สำเร็จ": "Successful", "ไม่สำเร็จ": "Failed", "บัตร": "Card", "ตั้ง ": "Set ", "ดำ": "Black", " แล้ว": "", "ชาร์จเสร็จ": "Charging finished", "แก้ไขข้อมูล": "Edit details", "บันทึก": "Save", "ชม.": "hrs", "การชำระเงิน": "Payments", "ติดต่อเรา": "Contact us", "โทร": "Call", "อัปเดตล่าสุด": "Latest update", "นโยบายและข้อกำหนด": "Policies and terms", "อัปเดตล่าสุด [วันที่]": "Last updated [date]", "จัดการความยินยอม": "Manage consent", "คุณเปลี่ยนหรือถอนความยินยอมได้ทุกเมื่อ ไม่กระทบการใช้งานหลักของแอป": "You can change or withdraw consent at any time without affecting the app's core features.", "ข้อมูลที่จำเป็นต่อการให้บริการ": "Data required for the service", "บัญชี การชาร์จ การชำระเงิน และความปลอดภัย": "Account, charging, payments and security", "เปิดตลอด": "Always on", "สิทธิของคุณตาม PDPA": "Your rights under PDPA", "ขอสำเนาข้อมูลของฉัน": "Request a copy of my data", "ส่งไฟล์ข้อมูลไปที่อีเมลของคุณ": "We'll email you a data file", "ขอแก้ไขข้อมูล": "Correct my data", "แก้ไขชื่อ เบอร์โทร อีเมลในหน้าโปรไฟล์": "Edit your name, phone and email in Profile", "ขอลบบัญชีและข้อมูล": "Delete my account and data", "ลบบัญชีถาวร ไม่สามารถกู้คืนได้": "Permanent, can't be undone", "เจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล (DPO)": "Data Protection Officer (DPO)", "[ชื่อบริษัท] · อีเมล [dpo@email] · [ที่อยู่บริษัท]": "[Company name] · email [dpo@email] · [company address]", "เนื้อหาตัวอย่าง รอฝ่ายกฎหมายตรวจสอบและแก้ไขก่อนเผยแพร่": "Sample content, pending legal review before publishing", "มีผลบังคับใช้ [วันที่] · ฉบับที่ [x.x]": "Effective [date] · version [x.x]", "เราจะรวบรวมข้อมูลบัญชี รถ ประวัติการชาร์จ และการชำระเงินของคุณเป็นไฟล์ แล้วส่งไปที่อีเมล [อีเมลของคุณ] ภายใน 30 วัน": "We'll compile your account, car, charging and payment data into a file and email it to [your email] within 30 days.", "ก่อนลบบัญชี โปรดทราบ": "Before you delete your account", "• ยอดเงินคงเหลือ ฿500 ใน Wallet ต้องขอคืนหรือใช้ให้หมดก่อน": "• Your ฿500 wallet balance must be refunded or used first", "• ประวัติการชาร์จ รถ และบัตรที่ผูกไว้จะถูกลบถาวร": "• Charging history, cars and linked cards will be permanently deleted", "• ข้อมูลที่กฎหมายกำหนดให้เก็บ เช่น ใบกำกับภาษี จะเก็บต่อตามระยะเวลาที่กฎหมายกำหนด": "• Records we must keep by law, such as tax invoices, are kept for the required period", "• ดำเนินการภายใน 30 วัน และยกเลิกคำขอได้ก่อนครบกำหนด": "• Processed within 30 days; you can cancel before then", "ฉันเข้าใจและต้องการลบบัญชี": "I understand and want to delete my account", "ลบบัญชี": "Delete account", "รับข่าวสารและโปรโมชัน": "News and promotions", "ส่งโปรโมชันและสิทธิพิเศษทางแอป SMS และอีเมล": "Promotions and perks by app, SMS and email", "ใช้ตำแหน่งของฉัน": "Use my location", "ค้นหาสถานีใกล้คุณและคำนวณระยะทาง": "Find nearby stations and show distances", "วิเคราะห์การใช้งาน": "Usage analytics", "ช่วยเราปรับปรุงแอปจากข้อมูลการใช้งานแบบไม่ระบุตัวตน": "Help us improve the app with anonymous usage data", "แชร์ข้อมูลกับพาร์ทเนอร์": "Share with partners", "เพื่อรับสิทธิพิเศษจากพาร์ทเนอร์ เช่น ห้างและโรงแรม": "Get perks from partners such as malls and hotels", "1. ข้อมูลที่เราเก็บ": "1. Data we collect", "ชื่อ เบอร์โทรศัพท์ อีเมล ข้อมูลรถ ตำแหน่งที่ตั้ง (เมื่อคุณอนุญาต) ประวัติการชาร์จ และข้อมูลการชำระเงิน โดยข้อมูลบัตรจัดเก็บโดยผู้ให้บริการรับชำระเงิน [ชื่อผู้ให้บริการ]": "Name, phone number, email, car details, location (with your permission), charging history and payment data. Card data is stored by our payment provider [provider name].", "2. วัตถุประสงค์การใช้ข้อมูล": "2. How we use it", "เพื่อให้บริการชาร์จ เรียกเก็บค่าบริการ ออกใบเสร็จ ดูแลความปลอดภัยของบัญชี ติดต่อเรื่องที่คุณแจ้ง และส่งข่าวสารเมื่อคุณให้ความยินยอม": "To provide charging, bill you, issue receipts, keep your account secure, follow up on your requests and send news when you consent.", "3. การเปิดเผยข้อมูล": "3. Sharing", "เราเปิดเผยข้อมูลเท่าที่จำเป็นแก่ผู้ให้บริการรับชำระเงิน ผู้ให้บริการระบบ และพาร์ทเนอร์เมื่อคุณยินยอม หรือเมื่อกฎหมายกำหนด": "We share only what's needed with payment and system providers, with partners when you consent, or when required by law.", "4. ระยะเวลาการเก็บรักษา": "4. Retention", "เก็บข้อมูลตลอดระยะเวลาที่คุณใช้บริการ และไม่เกิน [x] ปีหลังปิดบัญชี เว้นแต่กฎหมายกำหนดให้เก็บนานกว่านั้น": "We keep data while you use the service and up to [x] years after you close your account, unless the law requires longer.", "5. สิทธิของคุณ": "5. Your rights", "คุณมีสิทธิขอเข้าถึง ขอสำเนา ขอแก้ไข ขอลบ ขอระงับ คัดค้าน ขอโอนย้ายข้อมูล และถอนความยินยอมได้ทุกเมื่อ ผ่านหน้านี้หรือติดต่อ DPO": "You can access, copy, correct, delete, restrict, object to, or port your data, and withdraw consent at any time, here or via our DPO.", "6. ติดต่อเรา": "6. Contact us", "[ชื่อบริษัท] เจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล อีเมล [dpo@email] ที่อยู่ [ที่อยู่บริษัท]": "[Company name] Data Protection Officer, email [dpo@email], address [company address]", "1. การใช้บริการ": "1. Using the service", "ผู้ใช้ต้องมีอายุ 18 ปีขึ้นไป ให้ข้อมูลที่ถูกต้อง และใช้ตู้ชาร์จตามคำแนะนำที่ตู้และในแอป": "You must be 18 or older, give accurate information and use chargers as instructed on the charger and in the app.", "2. ค่าบริการและการชำระเงิน": "2. Fees and payment", "ค่าบริการคิดตามพลังงานที่ได้รับ (kWh) ตามอัตราที่แสดงในแอปก่อนเริ่มชาร์จ ชำระผ่านกระเป๋าเงิน บัตร หรือช่องทางที่รองรับ": "Fees are based on energy delivered (kWh) at the rate shown before charging, paid by wallet, card or other supported methods.", "3. ค่าจอดเกินเวลา": "3. Idle fees", "คิด ฿5/นาที เมื่อชาร์จเสร็จแล้ว 15 นาทีและรถยังจอดอยู่ที่ช่องชาร์จ": "฿5/min applies once charging has ended for 15 min and the car is still in the bay.", "4. ยอดค้างชำระ": "4. Outstanding balances", "หากชำระไม่สำเร็จ ยอดจะถูกบันทึกเป็นยอดค้างชำระ และต้องชำระภายใน 24 ชม. ก่อนเริ่มชาร์จครั้งถัดไป": "If payment fails, the amount becomes due and must be paid within 24 hrs before your next charge.", "5. ความรับผิดชอบ": "5. Liability", "บริษัทไม่รับผิดชอบความเสียหายที่เกิดจากการใช้งานผิดวิธี หรือเหตุสุดวิสัย ตามขอบเขตที่กฎหมายอนุญาต": "To the extent permitted by law, we aren't liable for damage from misuse or events beyond our control.", "6. การเปลี่ยนแปลงข้อกำหนด": "6. Changes to these terms", "เราอาจปรับปรุงข้อกำหนดและจะแจ้งให้ทราบในแอปล่วงหน้าก่อนมีผลบังคับใช้": "We may update these terms and will notify you in the app before changes take effect.", "ความเป็นส่วนตัวและข้อกำหนด": "Privacy & terms", "ถอนความยินยอมแล้ว": "Consent withdrawn", "ให้ความยินยอมแล้ว": "Consent given", "ส่งคำขอลบบัญชี": "Request deletion", "ส่งคำขอ": "Send request", "ส่งคำขอลบบัญชีแล้ว เราจะยืนยันทางอีเมลภายใน 30 วัน": "Deletion requested. We'll confirm by email within 30 days.", "ส่งคำขอแล้ว เราจะส่งไฟล์ไปที่อีเมลภายใน 30 วัน": "Request sent. We'll email your file within 30 days.", "กม.": "km"};
+const PT = [].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["ชื่อ เบอร์โทรศัพท์ อีเมล ข้อมูลรถ ตำแหน่งที่ตั้ง (เมื่อคุณอนุญาต) ประวัติการชาร์จ และข้อมูลการชำระเงิน โดยข้อมูลบัตรจัดเก็บโดยผู้ให้บริการรับชำระเงิน [ชื่อผู้ให้บริการ]", "เพื่อให้บริการชาร์จ เรียกเก็บค่าบริการ ออกใบเสร็จ ดูแลความปลอดภัยของบัญชี ติดต่อเรื่องที่คุณแจ้ง และส่งข่าวสารเมื่อคุณให้ความยินยอม", "คุณมีสิทธิขอเข้าถึง ขอสำเนา ขอแก้ไข ขอลบ ขอระงับ คัดค้าน ขอโอนย้ายข้อมูล และถอนความยินยอมได้ทุกเมื่อ ผ่านหน้านี้หรือติดต่อ DPO", "เราเปิดเผยข้อมูลเท่าที่จำเป็นแก่ผู้ให้บริการรับชำระเงิน ผู้ให้บริการระบบ และพาร์ทเนอร์เมื่อคุณยินยอม หรือเมื่อกฎหมายกำหนด", "ค่าบริการคิดตามพลังงานที่ได้รับ (kWh) ตามอัตราที่แสดงในแอปก่อนเริ่มชาร์จ ชำระผ่านกระเป๋าเงิน บัตร หรือช่องทางที่รองรับ", "เราจะรวบรวมข้อมูลบัญชี รถ ประวัติการชาร์จ และการชำระเงินของคุณเป็นไฟล์ แล้วส่งไปที่อีเมล [อีเมลของคุณ] ภายใน 30 วัน", "เก็บข้อมูลตลอดระยะเวลาที่คุณใช้บริการ และไม่เกิน [x] ปีหลังปิดบัญชี เว้นแต่กฎหมายกำหนดให้เก็บนานกว่านั้น", "บริษัทไม่รับผิดชอบความเสียหายที่เกิดจากการใช้งานผิดวิธี หรือเหตุสุดวิสัย ตามขอบเขตที่กฎหมายอนุญาต", "หากชำระไม่สำเร็จ ยอดจะถูกบันทึกเป็นยอดค้างชำระ และต้องชำระภายใน 24 ชม. ก่อนเริ่มชาร์จครั้งถัดไป", "[ชื่อบริษัท] เจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล อีเมล [dpo@email] ที่อยู่ [ที่อยู่บริษัท]", "ผู้ใช้ต้องมีอายุ 18 ปีขึ้นไป ให้ข้อมูลที่ถูกต้อง และใช้ตู้ชาร์จตามคำแนะนำที่ตู้และในแอป", "• ข้อมูลที่กฎหมายกำหนดให้เก็บ เช่น ใบกำกับภาษี จะเก็บต่อตามระยะเวลาที่กฎหมายกำหนด", "เราอาจปรับปรุงข้อกำหนดและจะแจ้งให้ทราบในแอปล่วงหน้าก่อนมีผลบังคับใช้", "คุณเปลี่ยนหรือถอนความยินยอมได้ทุกเมื่อ ไม่กระทบการใช้งานหลักของแอป", "คิด ฿5/นาที เมื่อชาร์จเสร็จแล้ว 15 นาทีและรถยังจอดอยู่ที่ช่องชาร์จ", "• ยอดเงินคงเหลือ ฿500 ใน Wallet ต้องขอคืนหรือใช้ให้หมดก่อน", "เนื้อหาตัวอย่าง รอฝ่ายกฎหมายตรวจสอบและแก้ไขก่อนเผยแพร่", "• ดำเนินการภายใน 30 วัน และยกเลิกคำขอได้ก่อนครบกำหนด", "ช่วยเราปรับปรุงแอปจากข้อมูลการใช้งานแบบไม่ระบุตัวตน", "[ชื่อบริษัท] · อีเมล [dpo@email] · [ที่อยู่บริษัท]", "เพื่อรับสิทธิพิเศษจากพาร์ทเนอร์ เช่น ห้างและโรงแรม", "ส่งคำขอลบบัญชีแล้ว เราจะยืนยันทางอีเมลภายใน 30 วัน", "• ประวัติการชาร์จ รถ และบัตรที่ผูกไว้จะถูกลบถาวร", "ส่งคำขอแล้ว เราจะส่งไฟล์ไปที่อีเมลภายใน 30 วัน", "ส่งโปรโมชันและสิทธิพิเศษทางแอป SMS และอีเมล", "บัญชี การชาร์จ การชำระเงิน และความปลอดภัย", "เจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล (DPO)", "มีผลบังคับใช้ [วันที่] · ฉบับที่ [x.x]", "แก้ไขชื่อ เบอร์โทร อีเมลในหน้าโปรไฟล์", "ค้นหาสถานีใกล้คุณและคำนวณระยะทาง", "ข้อมูลที่จำเป็นต่อการให้บริการ", "ลบบัญชีถาวร ไม่สามารถกู้คืนได้", "ส่งไฟล์ข้อมูลไปที่อีเมลของคุณ", "2. วัตถุประสงค์การใช้ข้อมูล", "ฉันเข้าใจและต้องการลบบัญชี", "2. ค่าบริการและการชำระเงิน", "ความเป็นส่วนตัวและข้อกำหนด", "6. การเปลี่ยนแปลงข้อกำหนด", "แชร์ข้อมูลกับพาร์ทเนอร์", "4. ระยะเวลาการเก็บรักษา", "นโยบายความเป็นส่วนตัว", "โปรโมชันและสิทธิพิเศษ", "อัปเดตล่าสุด [วันที่]", "รับข่าวสารและโปรโมชัน", "ข้อกำหนดการให้บริการ", "ก่อนลบบัญชี โปรดทราบ", "สิทธิของคุณตาม PDPA", "ขอสำเนาข้อมูลของฉัน", "1. ข้อมูลที่เราเก็บ", "3. การเปิดเผยข้อมูล", "ขอลบบัญชีและข้อมูล", "วิเคราะห์การใช้งาน", "นโยบายและข้อกำหนด", "3. ค่าจอดเกินเวลา", "ถอนความยินยอมแล้ว", "ให้ความยินยอมแล้ว", "พลังงานที่ได้รับ", "จัดการความยินยอม", "ใช้ตำแหน่งของฉัน", "5. ความรับผิดชอบ", "1. การใช้บริการ", "ค่าจอดเกินเวลา", "5. สิทธิของคุณ", "4. ยอดค้างชำระ", "ส่งคำขอลบบัญชี", "เบอร์โทรศัพท์", "ขอแก้ไขข้อมูล", "อัปเดตล่าสุด", "6. ติดต่อเรา", "กระเป๋าเงิน", "ยอดค้างชำระ", "แก้ไขข้อมูล", "การชำระเงิน", "ค้นหาสถานี", "เริ่มชาร์จ", "ชาร์จเสร็จ", "ค่าบริการ", "ไม่สำเร็จ", "ติดต่อเรา", "ย้อนกลับ", "หน้าหลัก", "การชาร์จ", "โปรโมชัน", "[วันที่]", "ระยะเวลา", "ชำระผ่าน", "เปิดตลอด", "โปรไฟล์", "ข่าวสาร", "เปลี่ยน", "ใบเสร็จ", "ช่องทาง", "ลบบัญชี", "ส่งคำขอ", "ยืนยัน", "โรงแรม", "ยกเลิก", "24 ชม.", "สำเร็จ", "บันทึก", "ถัดไป", "แก้ไข", "อีเมล", "ตั้ง ", "หรือ", "ชื่อ", "ระบบ", "นาที", "เวลา", "บัตร", "และ", "ปิด", "ชม.", "โทร", "กม."];
+const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
+const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
+const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
+P.cxLang = function () { if (this.state && (this.state.lang === 'en' || this.state.lang === 'th')) return this.state.lang; const pl = this.props.lang; if (pl === 'English') return 'en'; if (pl === 'ไทย') return 'th'; try { return localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) { return 'th'; } };
+P.cxWalk = function () {
+const r = this._cxRoot; if (!r || typeof document === 'undefined') return;
+const en = this.cxLang() === 'en';
+const O = this._cxOrig || (this._cxOrig = new Map());
+if (!en) { O.forEach((v, node) => { if (v.t != null && node.nodeValue === v.e) node.nodeValue = v.t; if (v.a) for (const a in v.a) { if (node.getAttribute(a) === v.a[a].e) node.setAttribute(a, v.a[a].t); } }); O.clear(); if (this._cxObs) { this._cxObs.disconnect(); this._cxObs = null; } return; }
+const w = document.createTreeWalker(r, 5, { acceptNode: (x) => (x.nodeType === 1 && x.getAttribute('translate') === 'no') ? 2 : 1 });
+let x = w.currentNode;
+while (x) {
+if (x.nodeType === 3) { const v = x.nodeValue; if (THR.test(v)) { const e = tx(v); if (e !== v) { O.set(x, { t: v, e }); x.nodeValue = e; } } }
+else if (x.nodeType === 1) { for (const a of ATTRS) { const v = x.getAttribute(a); if (v && THR.test(v)) { const e = tx(v); if (e !== v) { const rec = O.get(x) || {}; rec.a = rec.a || {}; rec.a[a] = { t: v, e }; O.set(x, rec); x.setAttribute(a, e); } } } }
+x = w.nextNode();
+}
+if (!this._cxObs && typeof MutationObserver !== 'undefined') { this._cxObs = new MutationObserver(() => { if (this._cxQ) return; this._cxQ = true; Promise.resolve().then(() => { this._cxQ = false; this.cxWalk(); }); }); this._cxObs.observe(r, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS }); }
+};
+const cdm = P.componentDidMount, cdu = P.componentDidUpdate, cwu = P.componentWillUnmount, rv = P.renderVals;
+P.componentDidMount = function () { if (cdm) cdm.call(this); this.cxWalk(); setTimeout(() => this.cxWalk(), 60); if (typeof window !== 'undefined') { this._cxL = (e) => { if (!e || !e.key || e.key === 'cx-lang') { this.cxWalk(); } }; window.addEventListener('storage', this._cxL); window.addEventListener('cx-lang', this._cxL); } };
+P.componentDidUpdate = function (a, b) { if (cdu) cdu.call(this, a, b); this.cxWalk(); };
+P.componentWillUnmount = function () { if (this._cxObs) this._cxObs.disconnect(); if (this._cxL && typeof window !== 'undefined') { window.removeEventListener('storage', this._cxL); window.removeEventListener('cx-lang', this._cxL); } if (cwu) cwu.call(this); };
+P.renderVals = function () { const v = rv.call(this) || {}; v.cxRef = (el) => { this._cxRoot = el; }; v.cxLangProp = this.props.lang || 'ตามแอป'; return v; };
+}
+
+static {
+const P = this.prototype;
+const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide','News','Notify','Home','Station','Scan','Confirm','Charging','Complete','Wallet','Topup','Cards','Vehicles','Saved','Prefs','Help','Support','Privacy','Profile'];
+const rv = P.renderVals;
+P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
+}
+constructor(props) { super(props); let from = 'Profile', doc = null, cs = null; try { from = localStorage.getItem('cx-priv-from') || 'Profile'; doc = localStorage.getItem('cx-priv-doc'); cs = JSON.parse(localStorage.getItem('cx-consent') || 'null'); localStorage.removeItem('cx-priv-from'); localStorage.removeItem('cx-priv-doc'); } catch (e) {} if (['Profile', 'Login', 'Register'].indexOf(from) < 0) from = 'Profile';
+this.state = Object.assign({ from, view: doc === 'terms' ? 'terms' : doc === 'privacy' ? 'privacy' : 'home', docOnly: !!doc, c: cs || { mkt: true, loc: true, ana: false, share: false }, sheet: null, ack: false, toast: '' }, this.screenState(props.screen)); }
+screenState(s) { const m = { 'นโยบายความเป็นส่วนตัว': { view: 'privacy' }, 'ข้อกำหนดการให้บริการ': { view: 'terms' }, 'ลบบัญชี': { view: 'home', sheet: 'delete' } }; return m[s] || {}; }
+componentDidUpdate(pp) { if (pp.screen !== this.props.screen) this.setState(Object.assign({ view: 'home', sheet: null }, this.screenState(this.props.screen))); }
+componentWillUnmount() { clearTimeout(this._toast); }
+renderVals() {
+const accent = this.props.accent ?? '#FC3901';
+const st = this.state; const v = st.view;
+const toast = (t) => { this.setState({ toast: t }); clearTimeout(this._toast); this._toast = setTimeout(() => this.setState({ toast: '' }), 2600); };
+const CS = [['mkt', 'รับข่าวสารและโปรโมชัน', 'ส่งโปรโมชันและสิทธิพิเศษทางแอป SMS และอีเมล'], ['loc', 'ใช้ตำแหน่งของฉัน', 'ค้นหาสถานีใกล้คุณและคำนวณระยะทาง'], ['ana', 'วิเคราะห์การใช้งาน', 'ช่วยเราปรับปรุงแอปจากข้อมูลการใช้งานแบบไม่ระบุตัวตน'], ['share', 'แชร์ข้อมูลกับพาร์ทเนอร์', 'เพื่อรับสิทธิพิเศษจากพาร์ทเนอร์ เช่น ห้างและโรงแรม']];
+const PRI = [['1. ข้อมูลที่เราเก็บ', 'ชื่อ เบอร์โทรศัพท์ อีเมล ข้อมูลรถ ตำแหน่งที่ตั้ง (เมื่อคุณอนุญาต) ประวัติการชาร์จ และข้อมูลการชำระเงิน โดยข้อมูลบัตรจัดเก็บโดยผู้ให้บริการรับชำระเงิน [ชื่อผู้ให้บริการ]'], ['2. วัตถุประสงค์การใช้ข้อมูล', 'เพื่อให้บริการชาร์จ เรียกเก็บค่าบริการ ออกใบเสร็จ ดูแลความปลอดภัยของบัญชี ติดต่อเรื่องที่คุณแจ้ง และส่งข่าวสารเมื่อคุณให้ความยินยอม'], ['3. การเปิดเผยข้อมูล', 'เราเปิดเผยข้อมูลเท่าที่จำเป็นแก่ผู้ให้บริการรับชำระเงิน ผู้ให้บริการระบบ และพาร์ทเนอร์เมื่อคุณยินยอม หรือเมื่อกฎหมายกำหนด'], ['4. ระยะเวลาการเก็บรักษา', 'เก็บข้อมูลตลอดระยะเวลาที่คุณใช้บริการ และไม่เกิน [x] ปีหลังปิดบัญชี เว้นแต่กฎหมายกำหนดให้เก็บนานกว่านั้น'], ['5. สิทธิของคุณ', 'คุณมีสิทธิขอเข้าถึง ขอสำเนา ขอแก้ไข ขอลบ ขอระงับ คัดค้าน ขอโอนย้ายข้อมูล และถอนความยินยอมได้ทุกเมื่อ ผ่านหน้านี้หรือติดต่อ DPO'], ['6. ติดต่อเรา', '[ชื่อบริษัท] เจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล อีเมล [dpo@email] ที่อยู่ [ที่อยู่บริษัท]']];
+const TER = [['1. การใช้บริการ', 'ผู้ใช้ต้องมีอายุ 18 ปีขึ้นไป ให้ข้อมูลที่ถูกต้อง และใช้ตู้ชาร์จตามคำแนะนำที่ตู้และในแอป'], ['2. ค่าบริการและการชำระเงิน', 'ค่าบริการคิดตามพลังงานที่ได้รับ (kWh) ตามอัตราที่แสดงในแอปก่อนเริ่มชาร์จ ชำระผ่านกระเป๋าเงิน บัตร หรือช่องทางที่รองรับ'], ['3. ค่าจอดเกินเวลา', 'คิด ฿5/นาที เมื่อชาร์จเสร็จแล้ว 15 นาทีและรถยังจอดอยู่ที่ช่องชาร์จ'], ['4. ยอดค้างชำระ', 'หากชำระไม่สำเร็จ ยอดจะถูกบันทึกเป็นยอดค้างชำระ และต้องชำระภายใน 24 ชม. ก่อนเริ่มชาร์จครั้งถัดไป'], ['5. ความรับผิดชอบ', 'บริษัทไม่รับผิดชอบความเสียหายที่เกิดจากการใช้งานผิดวิธี หรือเหตุสุดวิสัย ตามขอบเขตที่กฎหมายอนุญาต'], ['6. การเปลี่ยนแปลงข้อกำหนด', 'เราอาจปรับปรุงข้อกำหนดและจะแจ้งให้ทราบในแอปล่วงหน้าก่อนมีผลบังคับใช้']];
+const ok = st.sheet === 'export' || st.ack;
+return {
+accent,
+title: v === 'privacy' ? 'นโยบายความเป็นส่วนตัว' : v === 'terms' ? 'ข้อกำหนดการให้บริการ' : 'ความเป็นส่วนตัวและข้อกำหนด',
+isHome: v === 'home', isDoc: v !== 'home',
+backHref: st.from + (this.props.theme === 'dark' ? 'Dark' : '') + '.dc.html',
+backDoc: () => { if (st.docOnly && this._backA) { this._backA.click(); return; } this.setState({ view: 'home' }); },
+openPrivacy: () => this.setState({ view: 'privacy', docOnly: false }), openTerms: () => this.setState({ view: 'terms', docOnly: false }),
+sections: (v === 'terms' ? TER : PRI).map(([h, p]) => ({ h, p })),
+consents: CS.map(([id, title, sub]) => { const on = !!st.c[id]; return { title, sub, str: on ? 'true' : 'false', bg: on ? accent : '#CFCFCF', pos: on ? 'flex-end' : 'flex-start',
+toggle: () => { const c = Object.assign({}, this.state.c, { [id]: !on }); this.setState({ c }); try { localStorage.setItem('cx-consent', JSON.stringify(c)); } catch (e) {} toast(on ? 'ถอนความยินยอมแล้ว' : 'ให้ความยินยอมแล้ว'); } }; }),
+askExport: () => this.setState({ sheet: 'export' }), askDelete: () => this.setState({ sheet: 'delete', ack: false }),
+showSheet: !!st.sheet, isExport: st.sheet === 'export', isDelete: st.sheet === 'delete',
+sheetTitle: st.sheet === 'delete' ? 'ขอลบบัญชีและข้อมูล' : 'ขอสำเนาข้อมูลของฉัน',
+closeSheet: () => this.setState({ sheet: null }),
+ack: st.ack, ackStr: st.ack ? 'true' : 'false', toggleAck: () => this.setState({ ack: !st.ack }), ackBg: st.ack ? '#E5484D' : '#FFFFFF', ackBorder: st.ack ? '#E5484D' : '#BDBDBD',
+cLabel: st.sheet === 'delete' ? 'ส่งคำขอลบบัญชี' : 'ส่งคำขอ', cBg: !ok ? '#BDBDBD' : st.sheet === 'delete' ? '#E5484D' : accent, cPe: ok ? 'auto' : 'none', cDis: ok ? 'false' : 'true',
+confirmSheet: () => { if (!ok) return; const del = st.sheet === 'delete'; this.setState({ sheet: null, ack: false }); toast(del ? 'ส่งคำขอลบบัญชีแล้ว เราจะยืนยันทางอีเมลภายใน 30 วัน' : 'ส่งคำขอแล้ว เราจะส่งไฟล์ไปที่อีเมลภายใน 30 วัน'); },
+showToast: !!st.toast, toast: st.toast,
+setBackA: (el) => { this._backA = el; }
+};
+}
+}
+</script>
+</body>
+</html>

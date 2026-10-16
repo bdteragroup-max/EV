@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>Charge X — Session complete</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#C42D00}a:hover{color:#9E2400}
+@keyframes cxPop{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+@keyframes cxPulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.9);opacity:0}}
+@keyframes cxTick{to{stroke-dashoffset:0}}
+.cx-pop{animation:cxPop .55s cubic-bezier(.2,.9,.3,1.3) both}
+.cx-pulse{animation:cxPulse 2s ease-out .5s infinite}
+.cx-tick{stroke-dasharray:24;stroke-dashoffset:24;animation:cxTick .45s ease-out .45s forwards}
+@media (prefers-reduced-motion: reduce){.cx-pop,.cx-pulse{animation:none}.cx-tick{animation:none;stroke-dashoffset:0}}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E0E0E0"],[style*="solid rgb(224, 224, 224)"]){border-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #146C3E"]{color:#5AD49B!important}
+[data-theme="dark"] [stroke="#146C3E"]{stroke:#5AD49B}
+[data-theme="dark"]{color-scheme:dark}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFFFFF"]{background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F4F4F4"],[style*="background: #F6F6F6"],[style*="background: rgb(244, 244, 244)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #F4F4F4; color"]{background-color:#0F0F11!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="repeating-linear-gradient(90deg, #DADADA"]{background:repeating-linear-gradient(90deg,#3A3A40 0 6px,transparent 6px 12px)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #1F1F1F"],[style*="color: #2B2B2B"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
+[data-theme="dark"] a:not([style*="color"]){color:#FF7A4D}
+[data-theme="dark"][data-theme][style]{background-color:#000000!important}
+[data-theme="dark"][data-theme][style]{color:#F3F3F4!important}
+[data-theme="dark"] :is(button,input,textarea,select,legend,label){color:inherit}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(31, 31, 31)"],[style*="color: rgb(43, 43, 43)"],[style*="color: rgb(0, 0, 0)"],[style*="color: #000"],[style*="color: black"],[style*="color: #1f1f1f"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(58, 58, 58)"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(92, 92, 92)"],[style*="color: rgb(107, 107, 107)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(196, 45, 0)"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(20, 108, 62)"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 255, 255)"],[style*="background-color: rgb(255, 255, 255)"]){background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(244, 244, 244)"],[style*="background: rgb(246, 246, 246)"],[style*="background: rgb(240, 240, 240)"],[style*="background-color: rgb(244, 244, 244)"],[style*="background-color: rgb(246, 246, 246)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(31, 31, 31)"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="repeating-linear-gradient(90deg, rgb(218, 218, 218)"]{background:repeating-linear-gradient(90deg,#3A3A40 0 6px,transparent 6px 12px)!important}
+@keyframes cxToast{0%{transform:translateY(-140%)}12%,85%{transform:none}100%{transform:translateY(-140%)}}
+.cx-toast{animation:cxToast 5s cubic-bezier(.2,.9,.3,1) both}
+@keyframes cxSheet{from{transform:translateY(100%)}to{transform:none}}
+.cx-sheet{animation:cxSheet .35s cubic-bezier(.2,.9,.3,1) both}
+@keyframes cxFade{from{opacity:0}to{opacity:1}}
+.cx-fade{animation:cxFade .25s ease-out both}
+@keyframes cxSpin{to{transform:rotate(360deg)}}
+.cx-spin{animation:cxSpin .8s linear infinite;transform-origin:center}
+@keyframes cxShake{0%,100%{transform:none}20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+.cx-shake{animation:cxShake .5s ease-in-out .3s both}
+@media (prefers-reduced-motion: reduce){.cx-toast,.cx-sheet,.cx-fade,.cx-spin,.cx-shake{animation:none}}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FDECEC"],[style*="background: rgb(253, 236, 236)"]){background-color:rgba(229,62,62,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #B42318"],[style*="color: rgb(180, 35, 24)"]){color:#FF8A80!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #F5C2C0"],[style*="solid rgb(245, 194, 192)"]){border-color:rgba(255,138,128,.45)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #EDEDED"],[style*="solid rgb(237, 237, 237)"]){border-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F; color: #FFFFFF"]{background-color:#2C2C31!important}
+</style>
+</helmet>
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; box-sizing: border-box; background: #F4F4F4; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; position: relative; overflow: hidden">
+<div style="flex: none; align-self: stretch; background: {{accent}}; color: #FFFFFF; padding: 58px 24px 78px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; position: relative; overflow: hidden; border-radius: 0 0 32px 32px">
+<svg aria-hidden="true" width="390" height="320" viewBox="0 0 390 320" fill="none" style="position: absolute; left: 50%; top: 0; margin-left: -195px">
+<circle cx="195" cy="90" r="56" stroke="rgba(255,255,255,0.22)" stroke-width="2"></circle>
+<circle cx="195" cy="90" r="82" stroke="rgba(255,255,255,0.14)" stroke-width="2"></circle>
+<circle cx="195" cy="90" r="120" stroke="rgba(255,255,255,0.09)" stroke-width="2"></circle>
+<circle cx="195" cy="90" r="164" stroke="rgba(255,255,255,0.06)" stroke-width="2"></circle>
+</svg>
+<span style="flex: none; position: relative; width: 64px; height: 64px">
+<span class="cx-pulse" aria-hidden="true" style="position: absolute; inset: 0; border-radius: 50%; background: rgba(255,255,255,0.45)"></span>
+<span class="cx-pop" style="position: absolute; inset: 0; border-radius: 50%; background: #FFFFFE; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.15)">
+<svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path class="cx-tick" d="m5 12 5 5L20 7"></path></svg></span>
+</span>
+<h1 style="margin: 10px 0 0; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 26px; line-height: 1.3; position: relative">ชาร์จเสร็จสมบูรณ์</h1>
+<p style="margin: 0; font-size: 15px; font-weight: 500; position: relative; opacity: 0.92">แบตเตอรี่ 92% · ถอดหัวชาร์จได้เลย</p>
+</div>
+
+<div style="flex: none; width: 358px; box-sizing: border-box; margin-top: -54px; background: #FFFFFF; border-radius: 24px; padding: 20px 16px 16px; position: relative; box-shadow: 0 12px 30px rgba(0,0,0,0.08); display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 2px">
+<sc-if value="{{amtOwe}}" hint-placeholder-val="{{ false }}">
+<span style="font-size: 13px; font-weight: 600; color: #B42318">ยอดค้างชำระ</span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 40px; line-height: 1.15; color: #B42318">฿235.68</span>
+<span style="margin-top: 6px; padding: 5px 12px; border-radius: 10px; background: #FDECEC; color: #B42318; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>ตัดบัตร •••• [0000] ไม่สำเร็จ</span>
+</sc-if>
+<sc-if value="{{amtPaid}}" hint-placeholder-val="{{ true }}">
+<span style="font-size: 13px; color: #5C5C5C">ยอดชำระทั้งหมด</span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 40px; line-height: 1.15; color: #1F1F1F">฿235.68</span>
+<span style="margin-top: 6px; padding: 5px 12px; border-radius: 10px; background: #F4F4F4; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#146C3E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg>{{paidText}}</span>
+</sc-if>
+</div>
+<div style="align-self: stretch; height: 1px; background: repeating-linear-gradient(90deg, #DADADA 0 6px, transparent 6px 12px)"></div>
+<div style="align-self: stretch; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<div style="background: #F6F6F6; border-radius: 16px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 20px; line-height: 1.3; color: #1F1F1F">48.6<span style="font-size: 13px; font-weight: 600; color: #6B6B6B"> kWh</span></span>
+<span style="font-size: 12px; color: #6B6B6B">พลังงานที่ได้รับ</span>
+</div>
+<div style="background: #F6F6F6; border-radius: 16px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2"></path></svg>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 20px; line-height: 1.3; color: #1F1F1F">38<span style="font-size: 13px; font-weight: 600; color: #6B6B6B"> นาที</span></span>
+<span style="font-size: 12px; color: #6B6B6B">ระยะเวลา</span>
+</div>
+<div style="background: #F6F6F6; border-radius: 16px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 6h9a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zM20 10v4M9 10v4M12 10v4"></path></svg>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 20px; line-height: 1.3; color: #1F1F1F">92<span style="font-size: 13px; font-weight: 600; color: #6B6B6B"> %</span></span>
+<span style="font-size: 12px; color: #6B6B6B">แบตเตอรี่</span>
+</div>
+<div style="background: #F6F6F6; border-radius: 16px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8zM7.5 7.5h0"></path></svg>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 20px; line-height: 1.3; color: #1F1F1F">฿7.5<span style="font-size: 13px; font-weight: 600; color: #6B6B6B"> /kWh</span></span>
+<span style="font-size: 12px; color: #6B6B6B">อัตราค่าบริการ</span>
+</div>
+</div>
+</div>
+
+<sc-if value="{{isFail}}" hint-placeholder-val="{{ false }}">
+<div class="cx-shake" role="alert" style="flex: none; width: 358px; box-sizing: border-box; margin-top: 12px; padding: 12px 14px; border-radius: 20px; background: #FDECEC; border: 1px solid #F5C2C0; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; gap: 12px; align-items: flex-start">
+<span style="width: 36px; height: 36px; flex: none; border-radius: 50%; background: #E5484D; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3zM3 10h18M12 13v2M12 17h0"></path></svg></span>
+<span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 700; color: #B42318">ตัดบัตรไม่สำเร็จ</span><span style="font-size: 12.5px; line-height: 1.5; color: #5C5C5C">ธนาคารปฏิเสธรายการ กรุณาชำระภายใน 24 ชม. จึงจะเริ่มชาร์จครั้งถัดไปได้</span></span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<button type="button" onClick="{{retry}}" style="height: 40px; border-radius: 12px; border: 1.5px solid #F5C2C0; background: #FFFFFF; font-family: inherit; font-size: 13.5px; font-weight: 600; color: #B42318; cursor: pointer">ลองตัดบัตรอีกครั้ง</button>
+<button type="button" onClick="{{openSheet}}" style="height: 40px; border-radius: 12px; border: 0; background: #E5484D; font-family: inherit; font-size: 13.5px; font-weight: 600; color: #FFFFFF; cursor: pointer">เปลี่ยนวิธีชำระ</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{isPaying}}" hint-placeholder-val="{{ false }}">
+<div style="flex: none; width: 358px; box-sizing: border-box; margin-top: 16px; padding: 14px; border-radius: 20px; background: #FFFFFF; display: flex; align-items: center; gap: 12px"><svg class="cx-spin" aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2.6" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"></path></svg><span style="display: flex; flex-direction: column"><span style="font-size: 14px; font-weight: 700; color: #1F1F1F">กำลังดำเนินการชำระเงิน…</span><span style="font-size: 12px; color: #6B6B6B">{{payingText}}</span></span></div>
+</sc-if>
+<sc-if value="{{isPaid}}" hint-placeholder-val="{{ true }}">
+<div style="flex: none; width: 358px; margin-top: 16px; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center">
+<span style="width: 36px; height: 36px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21zM14.5 9.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 1 1 5 0z"></path></svg></span>
+<span style="font-weight: 600; font-size: 15px; line-height: 1.45; color: #1F1F1F; text-wrap: balance">มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา</span>
+<span style="font-size: 13px; color: #6B6B6B">ช่อง 04 · CCS2 · ชาร์จเร็ว DC</span>
+</div>
+</sc-if>
+
+<div style="flex: 1; min-height: 12px"></div>
+<div style="flex: none; width: 358px; padding-bottom: 30px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<a href="#" style="height: 56px; box-sizing: border-box; border-radius: 16px; border: 1.5px solid #E0E0E0; background: #FFFFFF; color: #1F1F1F; font-weight: 600; font-size: 16px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>ใบเสร็จ</a>
+<sc-if value="{{notFail}}" hint-placeholder-val="{{ true }}"><a href="{{L.News}}" aria-disabled="{{payingStr}}" style="height: 56px; border-radius: 16px; background: {{doneBg}}; pointer-events: {{donePe}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; text-decoration: none; display: flex; align-items: center; justify-content: center">เสร็จสิ้น</a></sc-if>
+<sc-if value="{{isFail}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{openSheet}}" style="height: 56px; border-radius: 16px; border: 0; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; cursor: pointer">ชำระ ฿235.68</button></sc-if>
+</div>
+<sc-if value="{{showToast}}" hint-placeholder-val="{{ false }}">
+<div class="cx-toast" role="status" style="position: absolute; left: 12px; right: 12px; top: 12px; z-index: 30; padding: 10px 12px; border-radius: 18px; background: #1F1F1F; color: #FFFFFF; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.25)">
+<span style="width: 34px; height: 34px; flex: none; border-radius: 10px; background: {{accent}}; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column"><span style="font-size: 12px; opacity: 0.7">Charge X · เมื่อสักครู่</span><span style="font-size: 13.5px; font-weight: 600">ตัดบัตรไม่สำเร็จ ยอดค้างชำระ ฿235.68</span></span>
+</div>
+</sc-if>
+<sc-if value="{{sheet}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 40; background: rgba(0,0,0,0.45); display: flex; flex-direction: column; justify-content: flex-end">
+<button type="button" aria-label="ปิด" onClick="{{closeSheet}}" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
+<div class="cx-sheet" role="dialog" aria-label="เลือกวิธีชำระ" style="background: #FFFFFF; border-radius: 26px 26px 0 0; padding: 10px 16px 30px; display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #DADADA"></span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; color: #1F1F1F">ชำระยอดค้าง ฿235.68</span>
+<sc-for list="{{methods}}" as="m" hint-placeholder-count="3">
+<button type="button" onClick="{{m.pick}}" style="{{m.style}}">
+<span style="width: 38px; height: 38px; flex: none; border-radius: 12px; background: {{m.bg}}; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{m.fg}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{m.icon}}"></path></svg></span>
+<span style="flex: 1; display: flex; flex-direction: column; text-align: left"><span style="font-size: 14.5px; font-weight: 600; color: #1F1F1F">{{m.name}}</span><span style="font-size: 12.5px; color: #6B6B6B">{{m.sub}}</span></span>
+<span style="width: 20px; height: 20px; flex: none; box-sizing: border-box; border-radius: 50%; border: 2px solid {{m.ring}}; display: flex; align-items: center; justify-content: center"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{m.dot}}"></span></span>
+</button>
+</sc-for>
+<a href="{{L.Cards}}" ref="{{setCardsA}}" tabindex="-1" aria-hidden="true" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none"></a>
+<button type="button" onClick="{{payNow}}" style="margin-top: 4px; height: 54px; border-radius: 16px; border: 0; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 17px; cursor: pointer">ยืนยันชำระเงิน</button>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"method":{"editor":"enum","options":["บัตร","กระเป๋าเงิน"],"default":"บัตร"},"payment":{"editor":"enum","options":["ชำระสำเร็จ","ตัดบัตรไม่สำเร็จ"],"default":"ชำระสำเร็จ"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+static {
+const P = this.prototype;
+const TR = {"ชาร์จเร็ว DC": "DC fast charging", "ถัดไป": "Next", "ยืนยัน": "Confirm", "กระเป๋าเงิน": "Wallet", "ทั้งหมด": "All", "ชาร์จเสร็จสมบูรณ์": "Charging complete", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "24 ชม.": "24 hrs", "ปิด": "Closed", "เริ่มชาร์จ": "Start charging", "ค่าบริการ": "Rate", "CCS2 · ชาร์จเร็ว DC": "CCS2 · DC fast charging", "เปลี่ยน": "Change", "จัดการบัตร": "Manage cards", "เพิ่ม": "Increase", "กระเป๋าเงิน Charge-X": "Charge-X wallet", "ยอดคงเหลือ ฿": "Balance ฿", "บัตร •••• [0000]": "Card •••• [0000]", "นาที": "min", "พลังงานที่ได้รับ": "Energy delivered", "แบตเตอรี่ 92% · ถอดหัวชาร์จได้เลย": "Battery 92% · you can unplug now", "ยอดค้างชำระ": "Amount due", "ตัดบัตร •••• [0000] ไม่สำเร็จ": "Card •••• [0000] declined", "ยอดชำระทั้งหมด": "Total paid", "ระยะเวลา": "Duration", "แบตเตอรี่": "Battery", "อัตราค่าบริการ": "Rate", "ตัดบัตรไม่สำเร็จ": "Card payment failed", "ธนาคารปฏิเสธรายการ กรุณาชำระภายใน 24 ชม. จึงจะเริ่มชาร์จครั้งถัดไปได้": "Your bank declined the payment. Please pay within 24 hrs to charge again.", "ลองตัดบัตรอีกครั้ง": "Retry card", "เปลี่ยนวิธีชำระ": "Change payment method", "กำลังดำเนินการชำระเงิน…": "Processing payment…", "ช่อง 04 · CCS2 · ชาร์จเร็ว DC": "Bay 04 · CCS2 · DC fast charging", "ใบเสร็จ": "Receipt", "เสร็จสิ้น": "Done", "ชำระ ฿235.68": "Pay ฿235.68", "Charge X · เมื่อสักครู่": "Charge X · just now", "ตัดบัตรไม่สำเร็จ ยอดค้างชำระ ฿235.68": "Card payment failed · ฿235.68 due", "ชำระยอดค้าง ฿235.68": "Pay ฿235.68 due", "ยืนยันชำระเงิน": "Confirm payment", "เลือกวิธีชำระ": "Choose payment method", "บัตร •••• [1111]": "Card •••• [1111]", "เพิ่มบัตรใหม่": "Add new card", "ยอดคงเหลือ ฿500": "Balance ฿500", "บัตรเดบิตสำรอง": "Backup debit card", "ไปหน้าจัดการบัตรเพื่อผูกบัตร ›": "Go to Manage cards to link a card ›", "ชำระผ่าน": "Paid with ", "ลองตัดบัตร •••• [0000] อีกครั้ง": "Retrying card •••• [0000]", "เวลา": "Time", "สำเร็จ": "Successful", "ไม่สำเร็จ": "Failed", "ตัดบัตร •••• [0000]": "Charging card •••• [0000]", "เพิ่มบัตร": "Add card", "บัตรเดบิต": "Debit card", "บัตร": "Card", "ดำ": "Black", "ชาร์จเสร็จ": "Charging finished", "ชม.": "hrs", "กม.": "km"};
+const PT = [].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["ธนาคารปฏิเสธรายการ กรุณาชำระภายใน 24 ชม. จึงจะเริ่มชาร์จครั้งถัดไปได้", "ตัดบัตรไม่สำเร็จ ยอดค้างชำระ ฿235.68", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "แบตเตอรี่ 92% · ถอดหัวชาร์จได้เลย", "ลองตัดบัตร •••• [0000] อีกครั้ง", "ไปหน้าจัดการบัตรเพื่อผูกบัตร ›", "ตัดบัตร •••• [0000] ไม่สำเร็จ", "ช่อง 04 · CCS2 · ชาร์จเร็ว DC", "กำลังดำเนินการชำระเงิน…", "Charge X · เมื่อสักครู่", "กระเป๋าเงิน Charge-X", "CCS2 · ชาร์จเร็ว DC", "ชำระยอดค้าง ฿235.68", "ตัดบัตร •••• [0000]", "ลองตัดบัตรอีกครั้ง", "ชาร์จเสร็จสมบูรณ์", "บัตร •••• [0000]", "พลังงานที่ได้รับ", "ตัดบัตรไม่สำเร็จ", "บัตร •••• [1111]", "เปลี่ยนวิธีชำระ", "ยอดคงเหลือ ฿500", "ยอดชำระทั้งหมด", "อัตราค่าบริการ", "ยืนยันชำระเงิน", "บัตรเดบิตสำรอง", "เลือกวิธีชำระ", "เพิ่มบัตรใหม่", "ชาร์จเร็ว DC", "ยอดคงเหลือ ฿", "ชำระ ฿235.68", "กระเป๋าเงิน", "ยอดค้างชำระ", "เริ่มชาร์จ", "จัดการบัตร", "ชาร์จเสร็จ", "ค่าบริการ", "แบตเตอรี่", "เสร็จสิ้น", "ไม่สำเร็จ", "เพิ่มบัตร", "บัตรเดบิต", "ระยะเวลา", "ชำระผ่าน", "ทั้งหมด", "เปลี่ยน", "ใบเสร็จ", "ยืนยัน", "24 ชม.", "สำเร็จ", "ถัดไป", "เพิ่ม", "นาที", "เวลา", "บัตร", "ปิด", "ชม.", "กม."];
+const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
+const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
+const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
+P.cxLang = function () { if (this.state && (this.state.lang === 'en' || this.state.lang === 'th')) return this.state.lang; const pl = this.props.lang; if (pl === 'English') return 'en'; if (pl === 'ไทย') return 'th'; try { return localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) { return 'th'; } };
+P.cxWalk = function () {
+const r = this._cxRoot; if (!r || typeof document === 'undefined') return;
+const en = this.cxLang() === 'en';
+const O = this._cxOrig || (this._cxOrig = new Map());
+if (!en) { O.forEach((v, node) => { if (v.t != null && node.nodeValue === v.e) node.nodeValue = v.t; if (v.a) for (const a in v.a) { if (node.getAttribute(a) === v.a[a].e) node.setAttribute(a, v.a[a].t); } }); O.clear(); if (this._cxObs) { this._cxObs.disconnect(); this._cxObs = null; } return; }
+const w = document.createTreeWalker(r, 5, { acceptNode: (x) => (x.nodeType === 1 && x.getAttribute('translate') === 'no') ? 2 : 1 });
+let x = w.currentNode;
+while (x) {
+if (x.nodeType === 3) { const v = x.nodeValue; if (THR.test(v)) { const e = tx(v); if (e !== v) { O.set(x, { t: v, e }); x.nodeValue = e; } } }
+else if (x.nodeType === 1) { for (const a of ATTRS) { const v = x.getAttribute(a); if (v && THR.test(v)) { const e = tx(v); if (e !== v) { const rec = O.get(x) || {}; rec.a = rec.a || {}; rec.a[a] = { t: v, e }; O.set(x, rec); x.setAttribute(a, e); } } } }
+x = w.nextNode();
+}
+if (!this._cxObs && typeof MutationObserver !== 'undefined') { this._cxObs = new MutationObserver(() => { if (this._cxQ) return; this._cxQ = true; Promise.resolve().then(() => { this._cxQ = false; this.cxWalk(); }); }); this._cxObs.observe(r, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS }); }
+};
+const cdm = P.componentDidMount, cdu = P.componentDidUpdate, cwu = P.componentWillUnmount, rv = P.renderVals;
+P.componentDidMount = function () { if (cdm) cdm.call(this); this.cxWalk(); setTimeout(() => this.cxWalk(), 60); if (typeof window !== 'undefined') { this._cxL = (e) => { if (!e || !e.key || e.key === 'cx-lang') { this.cxWalk(); } }; window.addEventListener('storage', this._cxL); window.addEventListener('cx-lang', this._cxL); } };
+P.componentDidUpdate = function (a, b) { if (cdu) cdu.call(this, a, b); this.cxWalk(); };
+P.componentWillUnmount = function () { if (this._cxObs) this._cxObs.disconnect(); if (this._cxL && typeof window !== 'undefined') { window.removeEventListener('storage', this._cxL); window.removeEventListener('cx-lang', this._cxL); } if (cwu) cwu.call(this); };
+P.renderVals = function () { const v = rv.call(this) || {}; v.cxRef = (el) => { this._cxRoot = el; }; v.cxLangProp = this.props.lang || 'ตามแอป'; return v; };
+}
+
+static {
+const P = this.prototype;
+const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide','News','Notify','Home','Station','Scan','Confirm','Charging','Complete','Wallet','Topup','Cards','Vehicles','Saved','Prefs','Help','Support','Privacy','Profile'];
+const rv = P.renderVals;
+P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
+}
+constructor(props) { super(props); this.state = this.initState(props, true); }
+initState(p, useSaved) { const f = p.payment === 'ตัดบัตรไม่สำเร็จ'; let m = p.method === 'กระเป๋าเงิน' ? 'wallet' : 'card'; if (useSaved) { try { const s = localStorage.getItem('cx-pay'); if (s === 'wallet' || s === 'card') m = s; } catch (e) {} } if (f) m = 'card'; return { pay: f ? 'fail' : 'ok', sheet: false, method: 'wallet', toast: f, paidVia: m === 'card' ? 'บัตร •••• [0000]' : 'กระเป๋าเงิน Charge-X' }; }
+componentDidUpdate(pp) { if (pp.payment !== this.props.payment || pp.method !== this.props.method) { try { localStorage.removeItem('cx-pay'); } catch (e) {} this.setState(this.initState(this.props, false)); } }
+componentDidMount() { if (this.state.toast) this._t = setTimeout(() => this.setState({ toast: false }), 5200); }
+componentWillUnmount() { clearTimeout(this._t); clearTimeout(this._p); }
+renderVals() {
+const accent = this.props.accent ?? '#FC3901';
+const st = this.state;
+const ICON = { wallet: 'M6 6h12a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3zM3 10h18M16 15h2', card: 'M3 5h18v14H3zM3 10h18M7 15h3', add: 'M12 5v14M5 12h14' };
+const LBL = { wallet: 'กระเป๋าเงิน Charge-X', card2: 'บัตร •••• [1111]', newcard: 'เพิ่มบัตรใหม่' };
+const methods = [['wallet', LBL.wallet, 'ยอดคงเหลือ ฿500', 'wallet'], ['card2', LBL.card2, 'บัตรเดบิตสำรอง', 'card'], ['newcard', LBL.newcard, 'ไปหน้าจัดการบัตรเพื่อผูกบัตร ›', 'add']].map(([id, name, sub, ic]) => {
+const on = st.method === id;
+return { name, sub, icon: ICON[ic], pick: () => { if (id === 'newcard') { try { localStorage.setItem('cx-cards-open', 'add'); localStorage.setItem('cx-cards-from', 'Complete'); } catch (e) {} if (this._cardsA) this._cardsA.click(); return; } this.setState({ method: id }); }, bg: on ? '#FFF1EB' : '#F4F4F4', fg: on ? accent : '#5C5C5C', ring: on ? accent : '#BDBDBD', dot: on ? accent : 'transparent',
+style: 'width: 100%; display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 16px; font-family: inherit; cursor: pointer; background: ' + (on ? '#FFF7F3' : '#FFFFFF') + '; border: ' + (on ? '1.5px solid ' + accent : '1px solid #EDEDED') };
+});
+const go = (via, text) => { this.setState({ pay: 'paying', sheet: false, toast: false, payingText: text }); this._p = setTimeout(() => this.setState({ pay: 'paid', paidVia: via }), 1800); };
+const paying = st.pay === 'paying';
+return {
+accent, methods, setCardsA: (el) => { this._cardsA = el; },
+amtOwe: st.pay === 'fail' || paying, amtPaid: st.pay === 'ok' || st.pay === 'paid',
+isFail: st.pay === 'fail', notFail: st.pay !== 'fail', isPaying: paying, isPaid: st.pay === 'ok' || st.pay === 'paid',
+paidText: 'ชำระผ่าน' + st.paidVia, payingText: st.payingText || '',
+showToast: st.toast, sheet: st.sheet,
+openSheet: () => this.setState({ sheet: true }), closeSheet: () => this.setState({ sheet: false }),
+retry: () => go('บัตร •••• [0000]', 'ลองตัดบัตร •••• [0000] อีกครั้ง'),
+payNow: () => go(LBL[st.method], 'ชำระผ่าน' + LBL[st.method]),
+doneBg: paying ? '#BDBDBD' : accent, donePe: paying ? 'none' : 'auto', payingStr: paying ? 'true' : 'false'
+};
+}
+}
+</script>
+</body>
+</html>

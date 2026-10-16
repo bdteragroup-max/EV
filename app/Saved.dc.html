@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>Charge X — สถานีที่บันทึกไว้</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#C42D00}a:hover{color:#9E2400}
+[data-theme="dark"]{color-scheme:dark}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFFFFF"]{background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F4F4F4"],[style*="background: #F6F6F6"],[style*="background: #F0F0F0"],[style*="background: rgb(244, 244, 244)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FFF1EB"],[style*="background: #FFE4DA"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF7F3"]{background-color:rgba(252,57,1,.1)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #E7F6EE"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #1F1F1F"],[style*="color: #2B2B2B"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #3A3A3A"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #C42D00"],[style*="color: rgb(196, 45, 0)"]){color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #146C3E"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"]){border-color:#35353B!important}
+[data-theme="dark"] [stroke="#1F1F1F"]{stroke:#F3F3F4}
+[data-theme="dark"][data-theme][style]{background-color:#000000!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="margin-top: -24px; background: #FFFFFF"]{background-color:#000000!important}
+[data-theme="dark"][data-theme][style]{color:#F3F3F4!important}
+[data-theme="dark"] :is(button,input,textarea,select,legend,label){color:inherit}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(31, 31, 31)"],[style*="color: rgb(43, 43, 43)"],[style*="color: rgb(0, 0, 0)"],[style*="color: #000"],[style*="color: black"],[style*="color: #1f1f1f"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(58, 58, 58)"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(92, 92, 92)"],[style*="color: rgb(107, 107, 107)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(196, 45, 0)"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(20, 108, 62)"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 255, 255)"],[style*="background-color: rgb(255, 255, 255)"]){background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(244, 244, 244)"],[style*="background: rgb(246, 246, 246)"],[style*="background: rgb(240, 240, 240)"],[style*="background-color: rgb(244, 244, 244)"],[style*="background-color: rgb(246, 246, 246)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(31, 31, 31)"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 241, 235)"],[style*="background: rgb(255, 228, 218)"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(255, 247, 243)"]{background-color:rgba(252,57,1,.12)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(231, 246, 238)"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(230, 230, 230)"],[style*="background: rgb(237, 237, 237)"],[style*="background: rgb(239, 239, 239)"],[style*="background: rgb(217, 217, 217)"],[style*="background: rgb(218, 218, 218)"]){background-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(51, 51, 51)"]{background-color:#3A3A40!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(189, 189, 189)"]{background-color:#55555C!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="linear-gradient(rgb(255, 255, 255)"]{background:linear-gradient(#000000 72%,rgba(0,0,0,0))!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="repeating-linear-gradient(90deg, rgb(218, 218, 218)"]{background:repeating-linear-gradient(90deg,#3A3A40 0 6px,transparent 6px 12px)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(158, 36, 0)"]{color:#FF8A66!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"],[style*="solid rgb(237, 237, 237)"],[style*="solid rgb(239, 239, 239)"],[style*="solid rgb(212, 212, 212)"],[style*="solid rgb(226, 226, 226)"],[style*="solid rgb(253, 211, 195)"]){border-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="margin-top: -24px; background: rgb(255, 255, 255)"]{background-color:#000000!important}
+.cx-scroll{scrollbar-width:none}.cx-scroll>*{flex-shrink:0}.cx-scroll::-webkit-scrollbar{display:none}
+@keyframes cxSheet{from{transform:translateY(100%)}to{transform:none}}
+.cx-sheet{animation:cxSheet .35s cubic-bezier(.2,.9,.3,1) both}
+@keyframes cxFade{from{opacity:0}to{opacity:1}}
+.cx-fade{animation:cxFade .3s ease-out both}
+@keyframes cxSpin{to{transform:rotate(360deg)}}
+.cx-spin{animation:cxSpin .8s linear infinite;transform-origin:center}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #B86A00"],[style*="color: rgb(184, 106, 0)"]){color:#F0A84A!important}
+@media (prefers-reduced-motion: reduce){.cx-sheet,.cx-fade,.cx-spin{animation:none}}
+
+[data-theme="dark"] [style*="background: #FFF4E0"],[data-theme="dark"] [style*="background: rgb(255, 244, 224)"]{background-color:rgba(240,160,48,.16)!important}
+@keyframes cxPlug{0%,100%{opacity:.35}50%{opacity:1}}
+.cx-plugdot{animation:cxPlug 1.2s ease-in-out infinite}
+
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F; color: #FFFFFF"]{background-color:#1C1C1E!important}
+[data-theme="dark"] .cx-qr{background:#FFFFFF!important;border-color:#FFFFFF!important}
+[data-theme="dark"] .cx-qr span[style*="color: #6B6B6B"]{color:#6B6B6B!important}
+[data-theme="dark"] .cx-ring{box-shadow:0 0 0 10px rgba(46,180,110,.2)!important}
+@keyframes cxPop{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.cx-pop{animation:cxPop .55s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes cxRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.cx-rise{animation:cxRise .5s cubic-bezier(.2,.8,.3,1) .2s both}
+@media (prefers-reduced-motion: reduce){.cx-pop,.cx-rise{animation:none}}
+[data-theme="dark"] .cx-pv{box-shadow:0 14px 30px rgba(0,0,0,.6)!important}
+.cx-in2{width:100%;height:52px;box-sizing:border-box;border-radius:14px;border:1.5px solid #E0E0E0;background:#FFFFFF;padding:0 14px;font-family:inherit;font-size:16px;color:#1F1F1F;outline:none}
+.cx-in2:focus{border-color:#FC3901}
+[data-theme="dark"] .cx-in2{background:#1C1C1E;border-color:#35353B;color:#F3F3F4}
+[data-theme="dark"] .cx-in2:focus{border-color:#FC3901}
+.cx-in2::placeholder{color:#9A9A9A}
+@keyframes cxShake{0%,100%{transform:none}20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+.cx-shake{animation:cxShake .45s ease-in-out both}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FDECEC"]){background-color:rgba(229,62,62,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #B42318"]{color:#FF8A80!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF4E0"]{background-color:rgba(240,160,48,.16)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="dashed #D4D4D4"]{border-color:#45454C!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #E7F6EE"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FDECEC"]{background-color:rgba(229,62,62,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #B42318"]{color:#FF8A80!important}
+[data-theme="dark"] [fill="#E5484D"]{fill:#FF6B6B}
+</style>
+</helmet>
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F6F6F6; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; display: flex; flex-direction: column">
+<div style="padding: 56px 20px 10px; display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; align-items: center; gap: 8px">
+<a href="{{L.Profile}}" aria-label="ย้อนกลับ" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 14px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a>
+<h1 style="margin: 0; text-align: center; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 19px">สถานีที่บันทึกไว้</h1>
+<a href="{{L.Home}}" aria-label="เปิดแผนที่" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 14px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2zM9 4v14M15 6v14"></path></svg></a>
+</div>
+<sc-if value="{{hasAny}}" hint-placeholder-val="{{ true }}">
+<div role="tablist" style="padding: 0 16px 10px; display: flex; gap: 8px">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="2"><button type="button" role="tab" aria-selected="{{t.on}}" onClick="{{t.pick}}" style="{{t.style}}">{{t.label}}</button></sc-for>
+<span style="flex: 1"></span>
+<span style="align-self: center; font-size: 12.5px; color: #6B6B6B">เรียงตามระยะทาง</span>
+</div>
+</sc-if>
+<div class="cx-scroll" style="flex: 1; min-height: 0; overflow-y: auto; padding: 2px 16px 24px; display: flex; flex-direction: column; gap: 12px">
+<sc-for list="{{rows}}" as="s" hint-placeholder-count="3">
+<div style="background: #FFFFFF; border-radius: 22px; padding: 12px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; gap: 12px">
+<span style="width: 76px; height: 76px; flex: none; border-radius: 16px; overflow: hidden; background: #E6E6E6; position: relative"><img src="img/18970bd8ea282f5bf473c1f7b19d490d.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: {{s.imgFilter}}"></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 15px; font-weight: 700; line-height: 1.35; color: #1F1F1F">{{s.name}}</span>
+<span style="font-size: 12.5px; color: #6B6B6B">{{s.dist}} · ฿{{s.price}}/kWh · {{s.hours}}</span>
+<span style="align-self: flex-start; margin-top: 2px; padding: 3px 9px; border-radius: 8px; background: {{s.badgeBg}}; color: {{s.badgeFg}}; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 5px"><span style="width: 7px; height: 7px; border-radius: 50%; background: {{s.dot}}"></span>{{s.badge}}</span>
+</span>
+<button type="button" onClick="{{s.unsave}}" aria-label="เลิกบันทึก {{s.name}}" aria-pressed="true" style="width: 40px; height: 40px; flex: none; border-radius: 12px; border: 0; background: #F4F4F4; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="#E5484D" stroke="#E5484D" stroke-width="1.6" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg></button>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 12px; background: #F4F4F4; font-size: 12.5px; font-weight: 600; color: #3A3A3A"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg>{{s.plugText}}</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<a href="{{s.nav}}" target="_blank" rel="noopener" style="height: 42px; box-sizing: border-box; border-radius: 12px; border: 1.5px solid #E0E0E0; background: #FFFFFF; color: #1F1F1F; font-size: 14px; font-weight: 600; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 21 3l-8 18-2-8z"></path></svg>นำทาง</a>
+<a href="{{L.Station}}" style="height: 42px; border-radius: 12px; background: {{s.goBg}}; color: #FFFFFF; font-size: 14px; font-weight: 600; text-decoration: none; display: flex; align-items: center; justify-content: center">ดูสถานี</a>
+</div>
+</div>
+</sc-for>
+<sc-if value="{{tabEmpty}}" hint-placeholder-val="{{ false }}">
+<div style="padding: 30px 20px; text-align: center; font-size: 14px; color: #6B6B6B">ตอนนี้ไม่มีสถานีที่บันทึกไว้ที่ว่าง</div>
+</sc-if>
+<sc-if value="{{noneSaved}}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 40px; background: #FFFFFF; border-radius: 22px; padding: 30px 20px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center">
+<span style="width: 64px; height: 64px; border-radius: 20px; background: #FFF1EB; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg></span>
+<span style="font-size: 16px; font-weight: 700; color: #1F1F1F">ยังไม่มีสถานีที่บันทึกไว้</span>
+<span style="font-size: 13px; line-height: 1.55; color: #6B6B6B">กดรูปหัวใจในหน้ารายละเอียดสถานี เพื่อบันทึกสถานีที่ใช้บ่อย</span>
+<a href="{{L.Home}}" style="margin-top: 8px; height: 46px; padding: 0 20px; border-radius: 14px; background: {{accent}}; color: #FFFFFF; font-size: 15px; font-weight: 600; text-decoration: none; display: flex; align-items: center">ค้นหาสถานีบนแผนที่</a>
+</div>
+</sc-if>
+</div>
+
+<sc-if value="{{showToast}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" role="status" style="position: absolute; left: 16px; right: 16px; bottom: 30px; z-index: 30; padding: 10px 10px 10px 14px; border-radius: 16px; background: #1F1F1F; color: #FFFFFF; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 24px rgba(0,0,0,0.25)"><span style="flex: 1; min-width: 0">{{toast}}</span><button type="button" onClick="{{undo}}" style="height: 34px; padding: 0 12px; border-radius: 10px; border: 0; background: #333333; color: #FF7A4D; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer">เลิกทำ</button></div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"list":{"editor":"enum","options":["มีสถานี 4 แห่ง","ยังไม่มี"],"default":"มีสถานี 4 แห่ง"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+static {
+const P = this.prototype;
+const TR = {"ย้อนกลับ": "Back", "แล้ว": "", "ชื่อ": "First name", "ค้นหาสถานี": "Find station", "แผนที่": "Map", "ทั้งหมด": "All", "ว่าง": "Available", "ปิดปรับปรุง": "Under maintenance", "นำทาง": "Navigate", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "24 ชม.": "24 hrs", "เมกา บางนา (ลานจอด P3)": "Mega Bangna (Car park P3)", "ไบเทค บางนา (อาคาร 2)": "BITEC Bangna (Hall 2)", "[ชื่อสถานี] บางนา-ตราด กม.4": "[Station name] Bang Na-Trat Km 4", "ว่าง ": "Available ", "ปิด": "Closed", "ว่างตอนนี้": "Available now", "รายละเอียด": "Details", "บันทึกสถานี": "Save station", "ทั้งหมด (": "All (", "ว่างตอนนี้ (": "Available now (", " แล้ว": "", "สถานีที่บันทึกไว้": "Saved stations", "เรียงตามระยะทาง": "Sorted by distance", "ดูสถานี": "View station", "ตอนนี้ไม่มีสถานีที่บันทึกไว้ที่ว่าง": "None of your saved stations are free right now", "ยังไม่มีสถานีที่บันทึกไว้": "No saved stations yet", "กดรูปหัวใจในหน้ารายละเอียดสถานี เพื่อบันทึกสถานีที่ใช้บ่อย": "Tap the heart on a station's page to save the ones you use often.", "ค้นหาสถานีบนแผนที่": "Find stations on the map", "เลิกทำ": "Undo", "เปิดแผนที่": "Open map", "ยังไม่มี": "None yet", " หัว": " connectors", "ไม่ว่าง · ใช้งานครบทุกหัว": "Busy · all connectors in use", "ปิดปรับปรุงชั่วคราว": "Temporarily closed", "เลิกบันทึก ": "Removed ", "บันทึก": "Save", "4 แห่ง": "4 places", "กม.": "km", "ชม.": "hrs", "นาที": "min"};
+const PT = [["^เลิกบันทึก\\ (.+?)$", "Unsave {1}"]].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["กดรูปหัวใจในหน้ารายละเอียดสถานี เพื่อบันทึกสถานีที่ใช้บ่อย", "ตอนนี้ไม่มีสถานีที่บันทึกไว้ที่ว่าง", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "[ชื่อสถานี] บางนา-ตราด กม.4", "ยังไม่มีสถานีที่บันทึกไว้", "ไม่ว่าง · ใช้งานครบทุกหัว", "เมกา บางนา (ลานจอด P3)", "ไบเทค บางนา (อาคาร 2)", "ปิดปรับปรุงชั่วคราว", "ค้นหาสถานีบนแผนที่", "สถานีที่บันทึกไว้", "เรียงตามระยะทาง", "ว่างตอนนี้ (", "ปิดปรับปรุง", "บันทึกสถานี", "เลิกบันทึก ", "ค้นหาสถานี", "ว่างตอนนี้", "รายละเอียด", "เปิดแผนที่", "ทั้งหมด (", "ย้อนกลับ", "ยังไม่มี", "ทั้งหมด", "ดูสถานี", "แผนที่", "24 ชม.", "เลิกทำ", "บันทึก", "4 แห่ง", "นำทาง", "ว่าง ", "ชื่อ", "ว่าง", " หัว", "นาที", "ปิด", "กม.", "ชม."];
+const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
+const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
+const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
+P.cxLang = function () { if (this.state && (this.state.lang === 'en' || this.state.lang === 'th')) return this.state.lang; const pl = this.props.lang; if (pl === 'English') return 'en'; if (pl === 'ไทย') return 'th'; try { return localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) { return 'th'; } };
+P.cxWalk = function () {
+const r = this._cxRoot; if (!r || typeof document === 'undefined') return;
+const en = this.cxLang() === 'en';
+const O = this._cxOrig || (this._cxOrig = new Map());
+if (!en) { O.forEach((v, node) => { if (v.t != null && node.nodeValue === v.e) node.nodeValue = v.t; if (v.a) for (const a in v.a) { if (node.getAttribute(a) === v.a[a].e) node.setAttribute(a, v.a[a].t); } }); O.clear(); if (this._cxObs) { this._cxObs.disconnect(); this._cxObs = null; } return; }
+const w = document.createTreeWalker(r, 5, { acceptNode: (x) => (x.nodeType === 1 && x.getAttribute('translate') === 'no') ? 2 : 1 });
+let x = w.currentNode;
+while (x) {
+if (x.nodeType === 3) { const v = x.nodeValue; if (THR.test(v)) { const e = tx(v); if (e !== v) { O.set(x, { t: v, e }); x.nodeValue = e; } } }
+else if (x.nodeType === 1) { for (const a of ATTRS) { const v = x.getAttribute(a); if (v && THR.test(v)) { const e = tx(v); if (e !== v) { const rec = O.get(x) || {}; rec.a = rec.a || {}; rec.a[a] = { t: v, e }; O.set(x, rec); x.setAttribute(a, e); } } } }
+x = w.nextNode();
+}
+if (!this._cxObs && typeof MutationObserver !== 'undefined') { this._cxObs = new MutationObserver(() => { if (this._cxQ) return; this._cxQ = true; Promise.resolve().then(() => { this._cxQ = false; this.cxWalk(); }); }); this._cxObs.observe(r, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS }); }
+};
+const cdm = P.componentDidMount, cdu = P.componentDidUpdate, cwu = P.componentWillUnmount, rv = P.renderVals;
+P.componentDidMount = function () { if (cdm) cdm.call(this); this.cxWalk(); setTimeout(() => this.cxWalk(), 60); if (typeof window !== 'undefined') { this._cxL = (e) => { if (!e || !e.key || e.key === 'cx-lang') { this.cxWalk(); } }; window.addEventListener('storage', this._cxL); window.addEventListener('cx-lang', this._cxL); } };
+P.componentDidUpdate = function (a, b) { if (cdu) cdu.call(this, a, b); this.cxWalk(); };
+P.componentWillUnmount = function () { if (this._cxObs) this._cxObs.disconnect(); if (this._cxL && typeof window !== 'undefined') { window.removeEventListener('storage', this._cxL); window.removeEventListener('cx-lang', this._cxL); } if (cwu) cwu.call(this); };
+P.renderVals = function () { const v = rv.call(this) || {}; v.cxRef = (el) => { this._cxRoot = el; }; v.cxLangProp = this.props.lang || 'ตามแอป'; return v; };
+}
+
+static {
+const P = this.prototype;
+const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide','News','Notify','Home','Station','Scan','Confirm','Charging','Complete','Wallet','Topup','Cards','Vehicles','Saved','Prefs','Help','Support','Privacy','Profile'];
+const rv = P.renderVals;
+P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
+}
+constructor(props) { super(props); this.state = { saved: props.list === 'ยังไม่มี' ? [] : [1, 2, 3, 4], tab: 'all', last: null }; }
+componentDidUpdate(pp) { if (pp.list !== this.props.list) this.setState({ saved: this.props.list === 'ยังไม่มี' ? [] : [1, 2, 3, 4], tab: 'all' }); }
+componentWillUnmount() { clearTimeout(this._toast); }
+renderVals() {
+const accent = this.props.accent ?? '#FC3901';
+const st = this.state;
+const S = [
+{ id: 1, name: 'มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา', dist: '1.2 กม.', km: 1.2, price: '7.5', hours: '24 ชม.', status: 'avail', free: 8, total: 10, lat: 13.6669, lng: 100.6447, plugs: ['CCS2 150 kW', 'Type 2 22 kW'] },
+{ id: 2, name: '[ชื่อสถานี] บางนา-ตราด กม.4', dist: '1.9 กม.', km: 1.9, price: '7.5', hours: '24 ชม.', status: 'busy', free: 0, total: 2, lat: 13.668, lng: 100.63, plugs: ['CCS2 120 kW'] },
+{ id: 3, name: 'เมกา บางนา (ลานจอด P3)', dist: '2.8 กม.', km: 2.8, price: '8.0', hours: '10:00–22:00', status: 'avail', free: 3, total: 4, lat: 13.6467, lng: 100.68, plugs: ['CCS2 120 kW', 'Type 2 22 kW'] },
+{ id: 4, name: 'ไบเทค บางนา (อาคาร 2)', dist: '3.1 กม.', km: 3.1, price: '7.9', hours: '08:00–20:00', status: 'off', free: 0, total: 6, lat: 13.6694, lng: 100.6113, plugs: ['CCS2 60 kW', 'Type 2 22 kW'] }
+];
+const B = { avail: ['#E7F6EE', '#146C3E', '#1E9E5A'], busy: ['#FFF4E0', '#B86A00', '#F0A030'], off: ['#F4F4F4', '#6B6B6B', '#9A9A9A'] };
+const saved = S.filter((s) => st.saved.indexOf(s.id) >= 0).sort((a, b) => a.km - b.km);
+const freeN = saved.filter((s) => s.status === 'avail').length;
+const shown = st.tab === 'free' ? saved.filter((s) => s.status === 'avail') : saved;
+const toast = (t) => { this.setState({ toast: t }); clearTimeout(this._toast); this._toast = setTimeout(() => this.setState({ toast: '', last: null }), 3500); };
+const tabs = [['all', 'ทั้งหมด (' + saved.length + ')'], ['free', 'ว่างตอนนี้ (' + freeN + ')']].map(([id, label]) => { const on = st.tab === id; return { label, on: on ? 'true' : 'false', pick: () => this.setState({ tab: id }),
+style: 'height: 36px; padding: 0 14px; border-radius: 18px; font-family: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer; ' + (on ? 'border: 0; background: ' + accent + '; color: #FFFFFF' : 'border: 1px solid #E0E0E0; background: #FFFFFF; color: #3A3A3A') }; });
+return {
+accent, tabs,
+hasAny: saved.length > 0, noneSaved: saved.length === 0, tabEmpty: saved.length > 0 && shown.length === 0,
+rows: shown.map((s) => { const b = B[s.status]; return {
+name: s.name, dist: s.dist, price: s.price, hours: s.hours, plugText: s.plugs.join('  ·  '),
+badge: s.status === 'avail' ? 'ว่าง ' + s.free + '/' + s.total + ' หัว' : s.status === 'busy' ? 'ไม่ว่าง · ใช้งานครบทุกหัว' : 'ปิดปรับปรุงชั่วคราว',
+badgeBg: b[0], badgeFg: b[1], dot: b[2], imgFilter: s.status === 'off' ? 'grayscale(1)' : 'none',
+goBg: s.status === 'off' ? '#BDBDBD' : accent,
+nav: 'https://www.google.com/maps/dir/?api=1&destination=' + s.lat + ',' + s.lng,
+unsave: () => { this.setState({ saved: this.state.saved.filter((x) => x !== s.id), last: s.id }); toast('เลิกบันทึก ' + s.name + ' แล้ว'); } }; }),
+showToast: !!st.toast, toast: st.toast || '',
+undo: () => { if (st.last != null) this.setState({ saved: st.saved.concat([st.last]), last: null, toast: '' }); }
+};
+}
+}
+</script>
+</body>
+</html>

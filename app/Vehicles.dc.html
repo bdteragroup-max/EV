@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>Charge X — รถของฉัน</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#C42D00}a:hover{color:#9E2400}
+[data-theme="dark"]{color-scheme:dark}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFFFFF"]{background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F4F4F4"],[style*="background: #F6F6F6"],[style*="background: #F0F0F0"],[style*="background: rgb(244, 244, 244)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FFF1EB"],[style*="background: #FFE4DA"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF7F3"]{background-color:rgba(252,57,1,.1)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #E7F6EE"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #1F1F1F"],[style*="color: #2B2B2B"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #3A3A3A"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #C42D00"],[style*="color: rgb(196, 45, 0)"]){color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #146C3E"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"]){border-color:#35353B!important}
+[data-theme="dark"] [stroke="#1F1F1F"]{stroke:#F3F3F4}
+[data-theme="dark"][data-theme][style]{background-color:#000000!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="margin-top: -24px; background: #FFFFFF"]{background-color:#000000!important}
+[data-theme="dark"][data-theme][style]{color:#F3F3F4!important}
+[data-theme="dark"] :is(button,input,textarea,select,legend,label){color:inherit}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(31, 31, 31)"],[style*="color: rgb(43, 43, 43)"],[style*="color: rgb(0, 0, 0)"],[style*="color: #000"],[style*="color: black"],[style*="color: #1f1f1f"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(58, 58, 58)"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(92, 92, 92)"],[style*="color: rgb(107, 107, 107)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(196, 45, 0)"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(20, 108, 62)"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 255, 255)"],[style*="background-color: rgb(255, 255, 255)"]){background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(244, 244, 244)"],[style*="background: rgb(246, 246, 246)"],[style*="background: rgb(240, 240, 240)"],[style*="background-color: rgb(244, 244, 244)"],[style*="background-color: rgb(246, 246, 246)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(31, 31, 31)"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 241, 235)"],[style*="background: rgb(255, 228, 218)"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(255, 247, 243)"]{background-color:rgba(252,57,1,.12)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(231, 246, 238)"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(230, 230, 230)"],[style*="background: rgb(237, 237, 237)"],[style*="background: rgb(239, 239, 239)"],[style*="background: rgb(217, 217, 217)"],[style*="background: rgb(218, 218, 218)"]){background-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(51, 51, 51)"]{background-color:#3A3A40!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(189, 189, 189)"]{background-color:#55555C!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="linear-gradient(rgb(255, 255, 255)"]{background:linear-gradient(#000000 72%,rgba(0,0,0,0))!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="repeating-linear-gradient(90deg, rgb(218, 218, 218)"]{background:repeating-linear-gradient(90deg,#3A3A40 0 6px,transparent 6px 12px)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(158, 36, 0)"]{color:#FF8A66!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"],[style*="solid rgb(237, 237, 237)"],[style*="solid rgb(239, 239, 239)"],[style*="solid rgb(212, 212, 212)"],[style*="solid rgb(226, 226, 226)"],[style*="solid rgb(253, 211, 195)"]){border-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="margin-top: -24px; background: rgb(255, 255, 255)"]{background-color:#000000!important}
+.cx-scroll{scrollbar-width:none}.cx-scroll>*{flex-shrink:0}.cx-scroll::-webkit-scrollbar{display:none}
+@keyframes cxSheet{from{transform:translateY(100%)}to{transform:none}}
+.cx-sheet{animation:cxSheet .35s cubic-bezier(.2,.9,.3,1) both}
+@keyframes cxFade{from{opacity:0}to{opacity:1}}
+.cx-fade{animation:cxFade .3s ease-out both}
+@keyframes cxSpin{to{transform:rotate(360deg)}}
+.cx-spin{animation:cxSpin .8s linear infinite;transform-origin:center}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #B86A00"],[style*="color: rgb(184, 106, 0)"]){color:#F0A84A!important}
+@media (prefers-reduced-motion: reduce){.cx-sheet,.cx-fade,.cx-spin{animation:none}}
+
+[data-theme="dark"] [style*="background: #FFF4E0"],[data-theme="dark"] [style*="background: rgb(255, 244, 224)"]{background-color:rgba(240,160,48,.16)!important}
+@keyframes cxPlug{0%,100%{opacity:.35}50%{opacity:1}}
+.cx-plugdot{animation:cxPlug 1.2s ease-in-out infinite}
+
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F; color: #FFFFFF"]{background-color:#1C1C1E!important}
+[data-theme="dark"] .cx-qr{background:#FFFFFF!important;border-color:#FFFFFF!important}
+[data-theme="dark"] .cx-qr span[style*="color: #6B6B6B"]{color:#6B6B6B!important}
+[data-theme="dark"] .cx-ring{box-shadow:0 0 0 10px rgba(46,180,110,.2)!important}
+@keyframes cxPop{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.cx-pop{animation:cxPop .55s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes cxRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.cx-rise{animation:cxRise .5s cubic-bezier(.2,.8,.3,1) .2s both}
+@media (prefers-reduced-motion: reduce){.cx-pop,.cx-rise{animation:none}}
+[data-theme="dark"] .cx-pv{box-shadow:0 14px 30px rgba(0,0,0,.6)!important}
+.cx-in2{width:100%;height:52px;box-sizing:border-box;border-radius:14px;border:1.5px solid #E0E0E0;background:#FFFFFF;padding:0 14px;font-family:inherit;font-size:16px;color:#1F1F1F;outline:none}
+.cx-in2:focus{border-color:#FC3901}
+[data-theme="dark"] .cx-in2{background:#1C1C1E;border-color:#35353B;color:#F3F3F4}
+[data-theme="dark"] .cx-in2:focus{border-color:#FC3901}
+.cx-in2::placeholder{color:#9A9A9A}
+@keyframes cxShake{0%,100%{transform:none}20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+.cx-shake{animation:cxShake .45s ease-in-out both}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FDECEC"]){background-color:rgba(229,62,62,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #B42318"]{color:#FF8A80!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF4E0"]{background-color:rgba(240,160,48,.16)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="dashed #D4D4D4"]{border-color:#45454C!important}
+</style>
+</helmet>
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F6F6F6; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; display: flex; flex-direction: column">
+<div style="padding: 56px 20px 12px; display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; align-items: center; gap: 8px">
+<a href="{{L.Profile}}" aria-label="ย้อนกลับ" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 14px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a>
+<h1 style="margin: 0; text-align: center; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 19px">รถของฉัน</h1>
+<span></span>
+</div>
+<div class="cx-scroll" style="flex: 1; min-height: 0; overflow-y: auto; padding: 4px 16px 24px; display: flex; flex-direction: column; gap: 12px">
+<sc-if value="{{hasCars}}" hint-placeholder-val="{{ true }}">
+<span style="padding: 0 4px; font-size: 13px; color: #6B6B6B">รถทั้งหมด ({{count}} คัน) · รถหลักใช้เป็นค่าเริ่มต้นตอนเริ่มชาร์จ</span>
+<sc-for list="{{cars}}" as="v" hint-placeholder-count="2">
+<div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px; border: {{v.border}}">
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="width: 92px; height: 56px; flex: none; border-radius: 14px; background: #F4F4F4; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="84" height="40" viewBox="0 0 84 40"><path d="M6 28c0-4 2-7 6-8l10-3 9-8c2-1.5 4-2 6-2h16c3 0 5 1 7 3l7 7 9 2c3 .8 5 3 5 6v3c0 1.5-1 2.5-2.5 2.5H8.5C7 30.5 6 29.5 6 28z" fill="{{v.color}}" stroke="{{v.stroke}}" stroke-width="1.4"></path><path d="M33 11h11v8H25zM47 11h8c1.5 0 3 .6 4 1.7l5 5.3H47z" fill="#2B3A4A" opacity="0.85"></path><circle cx="22" cy="31" r="6" fill="#1F1F1F"></circle><circle cx="22" cy="31" r="2.6" fill="#BDBDBD"></circle><circle cx="64" cy="31" r="6" fill="#1F1F1F"></circle><circle cx="64" cy="31" r="2.6" fill="#BDBDBD"></circle><path d="M72 19.5h4" stroke="#FC3901" stroke-width="2" stroke-linecap="round"></path></svg></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px"><span style="font-size: 16px; font-weight: 700; color: #1F1F1F">{{v.name}}</span><span style="font-size: 13px; color: #6B6B6B">{{v.plate}}</span></span>
+<button type="button" onClick="{{v.edit}}" aria-label="แก้ไข {{v.name}}" style="width: 38px; height: 38px; flex: none; border-radius: 12px; border: 0; background: #F4F4F4; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#5C5C5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4"></path></svg></button>
+<button type="button" onClick="{{v.ask}}" aria-label="ลบ {{v.name}}" style="width: 38px; height: 38px; flex: none; border-radius: 12px; border: 0; background: #F4F4F4; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#5C5C5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg></button>
+</div>
+<sc-if value="{{v.isMain}}" hint-placeholder-val="{{ true }}"><span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: #FFF1EB; color: #C42D00; font-size: 12px; font-weight: 700">✓ รถหลัก</span></sc-if>
+<sc-if value="{{v.notMain}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{v.makeMain}}" style="align-self: flex-start; height: 32px; padding: 0 12px; border-radius: 10px; border: 1px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 600; color: #3A3A3A; cursor: pointer">ตั้งเป็นรถหลัก</button></sc-if>
+</div>
+</sc-for>
+</sc-if>
+<sc-if value="{{noCars}}" hint-placeholder-val="{{ false }}">
+<div style="background: #FFFFFF; border-radius: 22px; padding: 28px 20px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center">
+<span style="width: 72px; height: 64px; border-radius: 20px; background: #FFF1EB; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M3 13l2-6a2 2 0 0 1 2-1.4h10A2 2 0 0 1 19 7l2 6v4h-2.5M5.5 17H3v-4h18"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg></span>
+<span style="font-size: 16px; font-weight: 700; color: #1F1F1F">ยังไม่มีรถในบัญชี</span>
+<span style="font-size: 13px; line-height: 1.55; color: #6B6B6B">เพิ่มรถของคุณ เพื่อให้แอปแนะนำสถานีและหัวชาร์จที่เหมาะสม</span>
+</div>
+</sc-if>
+<button type="button" onClick="{{openAdd}}" style="height: 56px; border-radius: 18px; border: 1.5px dashed #D4D4D4; background: transparent; font-family: inherit; font-size: 15px; font-weight: 600; color: #C42D00; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C42D00" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>เพิ่มรถ</button>
+</div>
+
+<sc-if value="{{showToast}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" role="status" style="position: absolute; left: 16px; right: 16px; bottom: 30px; z-index: 30; padding: 12px 14px; border-radius: 16px; background: #1F1F1F; color: #FFFFFF; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 24px rgba(0,0,0,0.25)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5AD49B" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg>{{toast}}</div>
+</sc-if>
+
+<sc-if value="{{showDel}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 40; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: flex-end">
+<button type="button" aria-label="ปิด" onClick="{{cancelDel}}" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
+<div class="cx-sheet" role="alertdialog" aria-label="ยืนยันการลบรถ" style="background: #FFFFFF; border-radius: 26px 26px 0 0; padding: 10px 20px 30px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<span style="width: 40px; height: 4px; border-radius: 2px; background: #DADADA"></span>
+<span style="margin-top: 6px; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; color: #1F1F1F">ลบ {{delName}} ออกจากบัญชี?</span>
+<span style="font-size: 13.5px; line-height: 1.55; color: #6B6B6B">{{delHint}}</span>
+<div style="align-self: stretch; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 6px">
+<button type="button" onClick="{{cancelDel}}" style="height: 50px; border-radius: 14px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; color: #1F1F1F; cursor: pointer">ยกเลิก</button>
+<button type="button" onClick="{{doDel}}" style="height: 50px; border-radius: 14px; border: 0; background: #E5484D; font-family: inherit; font-size: 15px; font-weight: 600; color: #FFFFFF; cursor: pointer">ลบรถ</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{showForm}}" hint-placeholder-val="{{ false }}">
+<div class="cx-sheet" role="dialog" aria-label="{{formTitle}}" style="position: absolute; inset: 0; z-index: 45; background: #F6F6F6; display: flex; flex-direction: column">
+<div style="padding: 56px 20px 8px; display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; align-items: center; gap: 8px">
+<button type="button" onClick="{{closeForm}}" aria-label="ปิด" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 14px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+<h2 style="margin: 0; text-align: center; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 19px">{{formTitle}}</h2>
+<span></span>
+</div>
+<div class="cx-scroll" style="flex: 1; min-height: 0; overflow-y: auto; padding: 8px 16px 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="height: 120px; border-radius: 22px; background: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px">
+<sc-for list="{{preview}}" as="v" hint-placeholder-count="1"><span style="transform: scale(1.7); transform-origin: center; display: flex"><svg aria-hidden="true" width="84" height="40" viewBox="0 0 84 40"><path d="M6 28c0-4 2-7 6-8l10-3 9-8c2-1.5 4-2 6-2h16c3 0 5 1 7 3l7 7 9 2c3 .8 5 3 5 6v3c0 1.5-1 2.5-2.5 2.5H8.5C7 30.5 6 29.5 6 28z" fill="{{v.color}}" stroke="{{v.stroke}}" stroke-width="1.4"></path><path d="M33 11h11v8H25zM47 11h8c1.5 0 3 .6 4 1.7l5 5.3H47z" fill="#2B3A4A" opacity="0.85"></path><circle cx="22" cy="31" r="6" fill="#1F1F1F"></circle><circle cx="22" cy="31" r="2.6" fill="#BDBDBD"></circle><circle cx="64" cy="31" r="6" fill="#1F1F1F"></circle><circle cx="64" cy="31" r="2.6" fill="#BDBDBD"></circle><path d="M72 19.5h4" stroke="#FC3901" stroke-width="2" stroke-linecap="round"></path></svg></span></sc-for>
+<span style="margin-top: 14px; font-size: 15px; font-weight: 700; color: #1F1F1F">{{pvName}}</span>
+</div>
+<div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; font-weight: 600; color: #3A3A3A">ยี่ห้อ</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{brands}}" as="b" hint-placeholder-count="9"><button type="button" role="radio" aria-checked="{{b.on}}" onClick="{{b.pick}}" style="{{b.style}}">{{b.label}}</button></sc-for>
+</div>
+<sc-if value="{{isOther}}" hint-placeholder-val="{{ false }}"><label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">ระบุยี่ห้อ<input class="cx-in2" value="{{fOther}}" onInput="{{onOther}}" placeholder="ยี่ห้อรถ"></label></sc-if>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">รุ่น<input class="cx-in2" value="{{fModel}}" onInput="{{onModel}}" placeholder="เช่น Atto 3, ZS EV, Model Y"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">ทะเบียนรถ (ไม่บังคับ)<input class="cx-in2" value="{{fPlate}}" onInput="{{onPlate}}" placeholder="เช่น 1กข 1234 กรุงเทพฯ"></label>
+<span style="font-size: 13px; font-weight: 600; color: #3A3A3A">สีรถ</span>
+<div style="display: flex; gap: 10px">
+<sc-for list="{{colors}}" as="cl" hint-placeholder-count="6"><button type="button" role="radio" aria-checked="{{cl.on}}" aria-label="{{cl.name}}" onClick="{{cl.pick}}" style="width: 36px; height: 36px; border-radius: 50%; cursor: pointer; background: {{cl.hex}}; border: {{cl.bd}}; box-shadow: {{cl.ring}}"></button></sc-for>
+</div>
+<button type="button" role="checkbox" aria-checked="{{mainStr}}" onClick="{{toggleMain}}" style="display: flex; align-items: center; gap: 10px; border: 0; background: transparent; padding: 4px 0; font-family: inherit; text-align: left; cursor: pointer">
+<span style="width: 22px; height: 22px; flex: none; box-sizing: border-box; border-radius: 7px; border: 2px solid {{mainBorder}}; background: {{mainBg}}; display: flex; align-items: center; justify-content: center"><sc-if value="{{fMain}}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg></sc-if></span>
+<span style="font-size: 14px; color: #3A3A3A">ตั้งเป็นรถหลัก</span>
+</button>
+</div>
+</div>
+<div style="padding: 12px 16px 32px; background: #FFFFFF; border-top: 1px solid #EDEDED">
+<button type="button" onClick="{{saveCar}}" aria-disabled="{{noSaveStr}}" style="width: 100%; height: 56px; border-radius: 16px; border: 0; background: {{saveBg}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; cursor: pointer; pointer-events: {{savePe}}">{{saveLabel}}</button>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"screen":{"editor":"enum","options":["รายการรถ","เพิ่มรถ"],"default":"รายการรถ"},"cars":{"editor":"enum","options":["มีรถ 2 คัน","ยังไม่มีรถ"],"default":"มีรถ 2 คัน"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+static {
+const P = this.prototype;
+const TR = {"ถัดไป": "Next", "และ": " and ", "ย้อนกลับ": "Back", "แก้ไข": "Edit", "ยืนยัน": "Confirm", "ลบ": "Delete", "แล้ว": "", "รถของคุณ": "Your car", "การชาร์จ": "Charge", "ทั้งหมด": "All", "ระบบ": "System", "ยกเลิก": "Cancel", "ปิด": "Closed", "เริ่มชาร์จ": "Start charging", "เริ่มต้น": "from", "ทั้งหมด (": "All (", "เพิ่ม": "Increase", "ค่าเริ่มต้น": "Default", "ตั้ง ": "Set ", "รถของฉัน": "My vehicles", "✓ รถหลัก": "✓ Main car", "ตั้งเป็นรถหลัก": "Set as main car", "ยังไม่มีรถในบัญชี": "No cars in your account", "เพิ่มรถของคุณ เพื่อให้แอปแนะนำสถานีและหัวชาร์จที่เหมาะสม": "Add your car so we can suggest the right stations and connectors.", "เพิ่มรถ": "Add car", "ลบรถ": "Remove car", "ยี่ห้อ": "Make", "ระบุยี่ห้อ": "Enter make", "รุ่น": "Model", "ทะเบียนรถ (ไม่บังคับ)": "Licence plate (optional)", "สีรถ": "Colour", "ยืนยันการลบรถ": "Confirm car removal", "ยี่ห้อรถ": "Car make", "เช่น Atto 3, ZS EV, Model Y": "e.g. Atto 3, ZS EV, Model Y", "เช่น 1กข 1234 กรุงเทพฯ": "e.g. 1กข 1234 Bangkok", "ยังไม่มีรถ": "No car yet", "ขาว": "White", "ดำ": "Black", "เทา": "Grey", "น้ำเงิน": "Blue", "แดง": "Red", "ทอง": "Gold", "ยังไม่ระบุทะเบียน": "No plate added", " เป็นรถหลักแล้ว": " is now your main car", "อื่นๆ": "Other", "คันนี้เป็นรถหลัก ระบบจะตั้งรถคันถัดไปเป็นรถหลักแทน": "This is your main car. Your next car will become the main car.", "ประวัติการชาร์จของรถคันนี้ยังคงอยู่ในบัญชี": "Charging history for this car stays in your account.", "ลบรถเรียบร้อยแล้ว": "Car removed", "แก้ไขข้อมูลรถ": "Edit car", "บันทึกการแก้ไข": "Save changes", "บันทึกข้อมูลรถแล้ว": "Car saved", "เพิ่ม ": "Added ", " แล้ว": "", "ยังไม่มี": "None yet", "แก้ไขข้อมูล": "Edit details", "บันทึก": "Save", "รถหลัก": "Main car", "กม.": "km", "ชม.": "hrs", "นาที": "min"};
+const PT = [["^รถทั้งหมด\\ \\((.+?)\\ คัน\\)\\ ·\\ รถหลักใช้เป็นค่าเริ่มต้นตอนเริ่มชาร์จ$", "All cars ({1}) · your main car is used by default when charging"], ["^ลบ\\ (.+?)\\ ออกจากบัญชี\\?$", "Remove {1} from your account?"], ["^แก้ไข\\ (.+?)$", "Edit {1}"], ["^ลบ\\ (.+?)$", "Remove {1}"]].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["เพิ่มรถของคุณ เพื่อให้แอปแนะนำสถานีและหัวชาร์จที่เหมาะสม", "คันนี้เป็นรถหลัก ระบบจะตั้งรถคันถัดไปเป็นรถหลักแทน", "ประวัติการชาร์จของรถคันนี้ยังคงอยู่ในบัญชี", "เช่น Atto 3, ZS EV, Model Y", "เช่น 1กข 1234 กรุงเทพฯ", "ทะเบียนรถ (ไม่บังคับ)", "บันทึกข้อมูลรถแล้ว", "ยังไม่มีรถในบัญชี", "ยังไม่ระบุทะเบียน", "ลบรถเรียบร้อยแล้ว", " เป็นรถหลักแล้ว", "ตั้งเป็นรถหลัก", "บันทึกการแก้ไข", "ยืนยันการลบรถ", "แก้ไขข้อมูลรถ", "ค่าเริ่มต้น", "แก้ไขข้อมูล", "เริ่มชาร์จ", "ระบุยี่ห้อ", "ยังไม่มีรถ", "ทั้งหมด (", "ย้อนกลับ", "รถของคุณ", "การชาร์จ", "เริ่มต้น", "รถของฉัน", "✓ รถหลัก", "ยี่ห้อรถ", "ยังไม่มี", "ทั้งหมด", "เพิ่มรถ", "น้ำเงิน", "ยืนยัน", "ยกเลิก", "ยี่ห้อ", "เพิ่ม ", "บันทึก", "รถหลัก", "ถัดไป", "แก้ไข", "เพิ่ม", "ตั้ง ", "อื่นๆ", "ระบบ", "ลบรถ", "รุ่น", "สีรถ", "นาที", "และ", "ปิด", "ขาว", "เทา", "แดง", "ทอง", "กม.", "ชม."];
+const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
+const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
+const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
+P.cxLang = function () { if (this.state && (this.state.lang === 'en' || this.state.lang === 'th')) return this.state.lang; const pl = this.props.lang; if (pl === 'English') return 'en'; if (pl === 'ไทย') return 'th'; try { return localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) { return 'th'; } };
+P.cxWalk = function () {
+const r = this._cxRoot; if (!r || typeof document === 'undefined') return;
+const en = this.cxLang() === 'en';
+const O = this._cxOrig || (this._cxOrig = new Map());
+if (!en) { O.forEach((v, node) => { if (v.t != null && node.nodeValue === v.e) node.nodeValue = v.t; if (v.a) for (const a in v.a) { if (node.getAttribute(a) === v.a[a].e) node.setAttribute(a, v.a[a].t); } }); O.clear(); if (this._cxObs) { this._cxObs.disconnect(); this._cxObs = null; } return; }
+const w = document.createTreeWalker(r, 5, { acceptNode: (x) => (x.nodeType === 1 && x.getAttribute('translate') === 'no') ? 2 : 1 });
+let x = w.currentNode;
+while (x) {
+if (x.nodeType === 3) { const v = x.nodeValue; if (THR.test(v)) { const e = tx(v); if (e !== v) { O.set(x, { t: v, e }); x.nodeValue = e; } } }
+else if (x.nodeType === 1) { for (const a of ATTRS) { const v = x.getAttribute(a); if (v && THR.test(v)) { const e = tx(v); if (e !== v) { const rec = O.get(x) || {}; rec.a = rec.a || {}; rec.a[a] = { t: v, e }; O.set(x, rec); x.setAttribute(a, e); } } } }
+x = w.nextNode();
+}
+if (!this._cxObs && typeof MutationObserver !== 'undefined') { this._cxObs = new MutationObserver(() => { if (this._cxQ) return; this._cxQ = true; Promise.resolve().then(() => { this._cxQ = false; this.cxWalk(); }); }); this._cxObs.observe(r, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS }); }
+};
+const cdm = P.componentDidMount, cdu = P.componentDidUpdate, cwu = P.componentWillUnmount, rv = P.renderVals;
+P.componentDidMount = function () { if (cdm) cdm.call(this); this.cxWalk(); setTimeout(() => this.cxWalk(), 60); if (typeof window !== 'undefined') { this._cxL = (e) => { if (!e || !e.key || e.key === 'cx-lang') { this.cxWalk(); } }; window.addEventListener('storage', this._cxL); window.addEventListener('cx-lang', this._cxL); } };
+P.componentDidUpdate = function (a, b) { if (cdu) cdu.call(this, a, b); this.cxWalk(); };
+P.componentWillUnmount = function () { if (this._cxObs) this._cxObs.disconnect(); if (this._cxL && typeof window !== 'undefined') { window.removeEventListener('storage', this._cxL); window.removeEventListener('cx-lang', this._cxL); } if (cwu) cwu.call(this); };
+P.renderVals = function () { const v = rv.call(this) || {}; v.cxRef = (el) => { this._cxRoot = el; }; v.cxLangProp = this.props.lang || 'ตามแอป'; return v; };
+}
+
+static {
+const P = this.prototype;
+const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide','News','Notify','Home','Station','Scan','Confirm','Charging','Complete','Wallet','Topup','Cards','Vehicles','Saved','Prefs','Help','Support','Privacy','Profile'];
+const rv = P.renderVals;
+P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
+}
+constructor(props) { super(props); this.state = Object.assign({ cars: this.seed(props.cars), main: props.cars === 'ยังไม่มีรถ' ? null : 1, del: null, toast: '', f: null }, this.screenState(props.screen)); }
+seed(k) { return k === 'ยังไม่มีรถ' ? [] : [{ id: 1, brand: 'Chery', model: 'Q', plate: '', color: '#FFFFFF' }, { id: 2, brand: 'BYD', model: 'Atto 3', plate: '', color: '#2E5E8C' }]; }
+screenState(s) { return s === 'เพิ่มรถ' ? { f: { id: null, brand: 'BYD', other: '', model: '', plate: '', color: '#FFFFFF', main: false } } : { f: null }; }
+componentDidMount() { this.sync(); }
+componentDidUpdate(pp) {
+if (pp.screen !== this.props.screen) this.setState(this.screenState(this.props.screen));
+if (pp.cars !== this.props.cars) this.setState({ cars: this.seed(this.props.cars), main: this.props.cars === 'ยังไม่มีรถ' ? null : 1 });
+}
+componentWillUnmount() { clearTimeout(this._toast); }
+sync(cars, main) { cars = cars || this.state.cars; main = main === undefined ? this.state.main : main; const m = cars.find((c) => c.id === main); try { localStorage.setItem('cx-car', JSON.stringify(m ? { name: m.brand + ' ' + m.model, plate: m.plate, count: cars.length } : { name: '', plate: '', count: 0 })); } catch (e) {} }
+renderVals() {
+const accent = this.props.accent ?? '#FC3901';
+const st = this.state;
+const COLORS = [['#FFFFFF', 'ขาว'], ['#1F1F1F', 'ดำ'], ['#A9ADB3', 'เทา'], ['#2E5E8C', 'น้ำเงิน'], ['#C42D00', 'แดง'], ['#C9A227', 'ทอง']];
+const toast = (t) => { this.setState({ toast: t }); clearTimeout(this._toast); this._toast = setTimeout(() => this.setState({ toast: '' }), 2200); };
+const nameOf = (c) => c.brand + ' ' + c.model;
+const strokeOf = (hex) => hex === '#FFFFFF' ? '#BDBDBD' : 'rgba(0,0,0,0.25)';
+const cars = st.cars.map((c) => { const isMain = st.main === c.id; return {
+name: nameOf(c), plate: c.plate || 'ยังไม่ระบุทะเบียน', color: c.color, stroke: strokeOf(c.color), isMain, notMain: !isMain,
+border: isMain ? '1.5px solid ' + accent : '1px solid transparent',
+makeMain: () => { this.setState({ main: c.id }); this.sync(null, c.id); toast('ตั้ง ' + nameOf(c) + ' เป็นรถหลักแล้ว'); },
+edit: () => { const known = BR.indexOf(c.brand) >= 0; this.setState({ f: { id: c.id, brand: known ? c.brand : 'อื่นๆ', other: known ? '' : c.brand, model: c.model, plate: c.plate, color: c.color, main: isMain } }); },
+ask: () => this.setState({ del: c.id }) }; });
+const BR = ['BYD', 'MG', 'Tesla', 'ORA', 'NETA', 'Chery', 'Volvo', 'BMW', 'อื่นๆ'];
+const f = st.f;
+const delCar = st.cars.find((c) => c.id === st.del);
+const fBrand = f ? (f.brand === 'อื่นๆ' ? f.other.trim() : f.brand) : '';
+const valid = !!f && !!fBrand && !!f.model.trim();
+const setF = (k) => (e) => this.setState({ f: Object.assign({}, this.state.f, { [k]: e.target.value }) });
+return {
+accent, cars, count: st.cars.length, hasCars: st.cars.length > 0, noCars: st.cars.length === 0,
+showToast: !!st.toast, toast: st.toast,
+showDel: !!delCar, delName: delCar ? nameOf(delCar) : '',
+delHint: delCar && st.main === delCar.id && st.cars.length > 1 ? 'คันนี้เป็นรถหลัก ระบบจะตั้งรถคันถัดไปเป็นรถหลักแทน' : 'ประวัติการชาร์จของรถคันนี้ยังคงอยู่ในบัญชี',
+cancelDel: () => this.setState({ del: null }),
+doDel: () => { const rest = st.cars.filter((c) => c.id !== st.del); const nm = st.main === st.del ? (rest[0] ? rest[0].id : null) : st.main; this.setState({ cars: rest, del: null, main: nm }); this.sync(rest, nm); toast('ลบรถเรียบร้อยแล้ว'); },
+openAdd: () => this.setState({ f: { id: null, brand: 'BYD', other: '', model: '', plate: '', color: '#FFFFFF', main: st.cars.length === 0 } }),
+closeForm: () => this.setState({ f: null }),
+showForm: !!f, formTitle: f && f.id ? 'แก้ไขข้อมูลรถ' : 'เพิ่มรถ', saveLabel: f && f.id ? 'บันทึกการแก้ไข' : 'เพิ่มรถ',
+brands: BR.map((b) => { const on = !!f && f.brand === b; return { label: b, on: on ? 'true' : 'false', pick: () => this.setState({ f: Object.assign({}, this.state.f, { brand: b }) }),
+style: 'height: 38px; padding: 0 14px; border-radius: 12px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; ' + (on ? 'border: 1.5px solid ' + accent + '; background: #FFF1EB; color: #C42D00' : 'border: 1px solid #E0E0E0; background: #FFFFFF; color: #3A3A3A') }; }),
+isOther: !!f && f.brand === 'อื่นๆ', fOther: f ? f.other : '', fModel: f ? f.model : '', fPlate: f ? f.plate : '',
+onOther: setF('other'), onModel: setF('model'), onPlate: setF('plate'),
+colors: COLORS.map(([hex, name]) => { const on = !!f && f.color === hex; return { hex, name, on: on ? 'true' : 'false', pick: () => this.setState({ f: Object.assign({}, this.state.f, { color: hex }) }),
+bd: hex === '#FFFFFF' ? '1px solid #D4D4D4' : '1px solid transparent', ring: on ? '0 0 0 3px #FFFFFF, 0 0 0 5px ' + accent : 'none' }; }),
+preview: f ? [{ color: f.color, stroke: strokeOf(f.color) }] : [], pvName: f ? ((fBrand || 'ยี่ห้อ') + ' ' + (f.model || 'รุ่น')) : '',
+fMain: !!f && f.main, mainStr: f && f.main ? 'true' : 'false', mainBg: f && f.main ? accent : '#FFFFFF', mainBorder: f && f.main ? accent : '#BDBDBD',
+toggleMain: () => this.setState({ f: Object.assign({}, this.state.f, { main: !this.state.f.main }) }),
+saveBg: valid ? accent : '#BDBDBD', savePe: valid ? 'auto' : 'none', noSaveStr: valid ? 'false' : 'true',
+saveCar: () => {
+if (!valid) return;
+const rec = { brand: fBrand, model: f.model.trim(), plate: f.plate.trim(), color: f.color };
+let list, id;
+if (f.id) { id = f.id; list = st.cars.map((c) => c.id === id ? Object.assign({ id }, rec) : c); }
+else { id = Date.now(); list = st.cars.concat([Object.assign({ id }, rec)]); }
+const nm = f.main || st.main == null ? id : (st.main === id && !f.main ? (list.find((c) => c.id !== id) || { id }).id : st.main);
+this.setState({ cars: list, main: nm, f: null }); this.sync(list, nm); toast(f.id ? 'บันทึกข้อมูลรถแล้ว' : 'เพิ่ม ' + rec.brand + ' ' + rec.model + ' แล้ว');
+}
+};
+}
+}
+</script>
+</body>
+</html>

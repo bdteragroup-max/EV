@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>Charge X — วิธีใช้งาน</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+@keyframes cxTipIn{0%{opacity:0;transform:translateY(14px) scale(.85)}60%{opacity:1;transform:translateY(-4px) scale(1.03)}80%{transform:translateY(2px) scale(.99)}100%{opacity:1;transform:none}}
+@keyframes cxBadge{0%{transform:scale(0)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
+@keyframes cxRingP{0%{box-shadow:0 0 0 0 rgba(255,255,255,.55)}100%{box-shadow:0 0 0 12px rgba(255,255,255,0)}}
+@keyframes cxBob2{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.cx-tip{animation:cxTipIn .55s cubic-bezier(.2,.9,.3,1.2) both}
+.cx-badge{animation:cxBadge .5s cubic-bezier(.2,.9,.3,1.4) .15s both}
+.cx-ringp{animation:cxRingP 1.4s ease-out infinite}
+.cx-bob{animation:cxBob2 2.4s ease-in-out .6s infinite}
+@media (prefers-reduced-motion: reduce){.cx-tip,.cx-badge,.cx-ringp,.cx-bob{animation:none}}
+[data-theme="dark"]{color-scheme:dark}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFFFFF"]{background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F4F4F4"],[style*="background: #F6F6F6"],[style*="background: #F0F0F0"],[style*="background: rgb(244, 244, 244)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F2EFE9"],[style*="background: #EEEEEC"]){background-color:#1C1D20!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #333333"]{background-color:#3A3A40!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FFF1EB"],[style*="background: #FFE4DA"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF7F3"]{background-color:rgba(252,57,1,.1)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #E7F6EE"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #E6E6E6"],[style*="background: #EDEDED"],[style*="background: #EFEFEF"],[style*="background: #D9D9D9"],[style*="background: #DADADA"]){background-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="linear-gradient(#FFFFFF"]{background:linear-gradient(#000000 72%,rgba(0,0,0,0))!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="repeating-linear-gradient(90deg, #DADADA"]{background:repeating-linear-gradient(90deg,#3A3A40 0 6px,transparent 6px 12px)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #1F1F1F"],[style*="color: #2B2B2B"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #3A3A3A"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #C42D00"],[style*="color: rgb(196, 45, 0)"]){color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #146C3E"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"],[style*="solid #D4D4D4"],[style*="solid #E2E2E2"],[style*="solid #FDD3C3"]){border-color:#35353B!important}
+[data-theme="dark"] [stroke="#1F1F1F"]{stroke:#F3F3F4}
+[data-theme="dark"] [stroke="#5C5C5C"]{stroke:#A6A6AD}
+[data-theme="dark"] [stroke="#E8E8E8"]{stroke:#2A2A2F}
+[data-theme="dark"] [fill="#E8E8E8"]{fill:#2A2A2F}
+[data-theme="dark"] [fill="#FFF4EF"]{fill:#2A1D18}
+[data-theme="dark"] [stroke="#F0F0F0"]{stroke:#2E2E33}
+[data-theme="dark"] input::placeholder{color:#7C7C83}
+[data-theme="dark"] .cx-in{background:#1C1C1E;border-color:#35353B;color:#F3F3F4}
+[data-theme="dark"] a:not([style*="color"]){color:#FF7A4D}
+[data-theme="dark"] img[src*="f46d7ba1c670cac41e8a125f33e770a5"]{content:url("img/74494939c52664c9c5c123c6273095cc.png");mix-blend-mode:lighten}
+[data-theme="dark"][data-theme][style]{background-color:#000000!important}
+[data-theme="dark"][data-theme][style]{color:#F3F3F4!important}
+[data-theme="dark"] :is(button,input,textarea,select,legend,label){color:inherit}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(31, 31, 31)"],[style*="color: rgb(43, 43, 43)"],[style*="color: rgb(0, 0, 0)"],[style*="color: #000"],[style*="color: black"],[style*="color: #1f1f1f"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(58, 58, 58)"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(92, 92, 92)"],[style*="color: rgb(107, 107, 107)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(196, 45, 0)"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(20, 108, 62)"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 255, 255)"],[style*="background-color: rgb(255, 255, 255)"]){background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(244, 244, 244)"],[style*="background: rgb(246, 246, 246)"],[style*="background: rgb(240, 240, 240)"],[style*="background-color: rgb(244, 244, 244)"],[style*="background-color: rgb(246, 246, 246)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(31, 31, 31)"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 241, 235)"],[style*="background: rgb(255, 228, 218)"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(255, 247, 243)"]{background-color:rgba(252,57,1,.12)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(230, 230, 230)"],[style*="background: rgb(237, 237, 237)"],[style*="background: rgb(239, 239, 239)"],[style*="background: rgb(217, 217, 217)"],[style*="background: rgb(218, 218, 218)"]){background-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(189, 189, 189)"]{background-color:#55555C!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"],[style*="solid rgb(237, 237, 237)"],[style*="solid rgb(239, 239, 239)"],[style*="solid rgb(212, 212, 212)"],[style*="solid rgb(226, 226, 226)"],[style*="solid rgb(189, 189, 189)"]){border-color:#45454C!important}
+</style>
+</helmet>
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #FFFFFF; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif">
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none">
+<sc-if value="{{isLight}}" hint-placeholder-val="{{ true }}"><dc-import name="News" lang="{{cxLangProp}}" hint-size="390px,844px"></dc-import></sc-if>
+<sc-if value="{{isDark}}" hint-placeholder-val="{{ false }}"><dc-import name="News" lang="{{cxLangProp}}" theme="dark" hint-size="390px,844px"></dc-import></sc-if>
+</div>
+
+<div style="position: absolute; inset: 0; z-index: 5"></div>
+<div aria-hidden="true" class="cx-ringp" style="position: absolute; z-index: 6; left: {{sx}}px; top: {{sy}}px; width: {{sw}}px; height: {{sh}}px; border-radius: {{sr}}px; outline: 2px solid rgba(255,255,255,0.9); outline-offset: 2px; transition: left .5s cubic-bezier(.65,0,.35,1), top .5s cubic-bezier(.65,0,.35,1), width .5s cubic-bezier(.65,0,.35,1), height .5s cubic-bezier(.65,0,.35,1), border-radius .5s; pointer-events: none"></div>
+<div aria-hidden="true" style="position: absolute; z-index: 5; left: {{sx}}px; top: {{sy}}px; width: {{sw}}px; height: {{sh}}px; border-radius: {{sr}}px; box-shadow: 0 0 0 1400px rgba(10,10,12,0.66); transition: left .5s cubic-bezier(.65,0,.35,1), top .5s cubic-bezier(.65,0,.35,1), width .5s cubic-bezier(.65,0,.35,1), height .5s cubic-bezier(.65,0,.35,1), border-radius .5s; pointer-events: none"></div>
+
+<div style="position: absolute; z-index: 7; top: 50px; right: 16px">
+<a href="{{L.News}}" style="display: flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 18px; background: rgba(255,255,255,0.16); color: #FFFFFF; font-size: 14px; font-weight: 600; text-decoration: none; backdrop-filter: blur(6px)">ข้าม</a>
+</div>
+
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="4">
+<sc-if value="{{s.active}}" hint-placeholder-val="{{ true }}">
+<div role="dialog" aria-label="{{s.title}}" class="cx-tip" style="position: absolute; z-index: 8; left: 20px; right: 20px; top: {{s.ty}}px; background: #FFFFFF; border-radius: 22px; padding: 18px 18px 16px; box-shadow: 0 18px 40px rgba(0,0,0,0.3); transform-origin: {{s.origin}}">
+<span aria-hidden="true" style="position: absolute; left: {{s.ax}}px; {{s.aside}}: -7px; width: 16px; height: 16px; background: #FFFFFF; transform: rotate(45deg); border-radius: 3px"></span>
+<div style="display: flex; gap: 12px; align-items: flex-start; position: relative">
+<span class="cx-badge" style="width: 34px; height: 34px; flex: none; border-radius: 50%; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 17px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 14px rgba(252,57,1,0.35)">{{s.no}}</span>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; line-height: 1.35; color: #1F1F1F">{{s.title}}</span>
+<span style="font-size: 14px; line-height: 1.6; color: #5C5C5C">{{s.desc}}</span>
+</div>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-top: 14px; position: relative">
+<span style="font-size: 13px; font-weight: 600; color: #6B6B6B">{{s.no}} / 4</span>
+<div style="display: flex; gap: 8px">
+<sc-if value="{{s.notFirst}}" hint-placeholder-val="{{ false }}">
+<button onClick="{{prev}}" style="height: 40px; padding: 0 14px; border-radius: 12px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 600; color: #3A3A3A; cursor: pointer">ย้อนกลับ</button>
+</sc-if>
+<sc-if value="{{s.notLast}}" hint-placeholder-val="{{ true }}">
+<button onClick="{{next}}" style="height: 40px; padding: 0 18px; border-radius: 12px; border: 0; background: {{accent}}; font-family: inherit; font-size: 15px; font-weight: 600; color: #FFFFFF; cursor: pointer">ถัดไป</button>
+</sc-if>
+<sc-if value="{{s.isLast}}" hint-placeholder-val="{{ false }}">
+<a href="{{L.News}}" style="height: 40px; padding: 0 18px; border-radius: 12px; background: {{accent}}; font-size: 15px; font-weight: 600; color: #FFFFFF; text-decoration: none; display: flex; align-items: center">เริ่มใช้งาน</a>
+</sc-if>
+</div>
+</div>
+</div>
+</sc-if>
+</sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+static {
+const P = this.prototype;
+const TR = {"ข้าม": "Skip", "ถัดไป": "Next", "หรือ": "or", "และ": " and ", "ย้อนกลับ": "Back", "แล้ว": "", "เริ่มใช้งาน": "Start using the app", "โปรโมชันและสิทธิพิเศษ": "Promotions and perks", "ปัดซ้ายขวาเพื่อดูโปรโมชันล่าสุดและสิทธิพิเศษสำหรับสมาชิก": "Swipe left or right to see the latest promotions and member perks.", "ค้นหาสถานีหรือสแกนชาร์จ": "Find a station or scan to charge", "กดค้นหาสถานีเพื่อดูแผนที่จุดชาร์จใกล้คุณ หรือกดสแกนเพื่อเริ่มชาร์จทันที": "Tap Find station to see chargers near you on the map, or tap Scan to start charging right away.", "ปุ่มการชาร์จ": "Charge button", "ปุ่มตรงกลางเมนูด้านล่าง กดแล้วเปิดกล้องสแกน QR ที่ตู้ชาร์จได้เลย": "The middle button in the bottom bar opens the camera to scan the QR code on the charger.", "แจ้งเตือนและโหมดมืด": "Alerts and dark mode", "ดูการแจ้งเตือนสถานะการชาร์จ และสลับโหมดสว่าง/มืดได้จากมุมขวาบน": "See charging alerts and switch light/dark mode from the top right.", "ค้นหาสถานี": "Find station", "แผนที่": "Map", "การชาร์จ": "Charge", "โปรโมชัน": "Promotions", "การแจ้งเตือน": "Notifications", "สิทธิพิเศษสำหรับสมาชิก": "Member perk", "ว่าง": "Available", "ปิด": "Closed", "เริ่มชาร์จ": "Start charging", "สแกน QR": "Scan QR", "โหมดมืด": "Dark mode", "กม.": "km", "ชม.": "hrs", "นาที": "min"};
+const PT = [].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["กดค้นหาสถานีเพื่อดูแผนที่จุดชาร์จใกล้คุณ หรือกดสแกนเพื่อเริ่มชาร์จทันที", "ปุ่มตรงกลางเมนูด้านล่าง กดแล้วเปิดกล้องสแกน QR ที่ตู้ชาร์จได้เลย", "ดูการแจ้งเตือนสถานะการชาร์จ และสลับโหมดสว่าง/มืดได้จากมุมขวาบน", "ปัดซ้ายขวาเพื่อดูโปรโมชันล่าสุดและสิทธิพิเศษสำหรับสมาชิก", "ค้นหาสถานีหรือสแกนชาร์จ", "สิทธิพิเศษสำหรับสมาชิก", "โปรโมชันและสิทธิพิเศษ", "แจ้งเตือนและโหมดมืด", "ปุ่มการชาร์จ", "การแจ้งเตือน", "เริ่มใช้งาน", "ค้นหาสถานี", "เริ่มชาร์จ", "ย้อนกลับ", "การชาร์จ", "โปรโมชัน", "สแกน QR", "โหมดมืด", "แผนที่", "ถัดไป", "ข้าม", "หรือ", "ว่าง", "นาที", "และ", "ปิด", "กม.", "ชม."];
+const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
+const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
+const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
+P.cxLang = function () { if (this.state && (this.state.lang === 'en' || this.state.lang === 'th')) return this.state.lang; const pl = this.props.lang; if (pl === 'English') return 'en'; if (pl === 'ไทย') return 'th'; try { return localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) { return 'th'; } };
+P.cxWalk = function () {
+const r = this._cxRoot; if (!r || typeof document === 'undefined') return;
+const en = this.cxLang() === 'en';
+const O = this._cxOrig || (this._cxOrig = new Map());
+if (!en) { O.forEach((v, node) => { if (v.t != null && node.nodeValue === v.e) node.nodeValue = v.t; if (v.a) for (const a in v.a) { if (node.getAttribute(a) === v.a[a].e) node.setAttribute(a, v.a[a].t); } }); O.clear(); if (this._cxObs) { this._cxObs.disconnect(); this._cxObs = null; } return; }
+const w = document.createTreeWalker(r, 5, { acceptNode: (x) => (x.nodeType === 1 && x.getAttribute('translate') === 'no') ? 2 : 1 });
+let x = w.currentNode;
+while (x) {
+if (x.nodeType === 3) { const v = x.nodeValue; if (THR.test(v)) { const e = tx(v); if (e !== v) { O.set(x, { t: v, e }); x.nodeValue = e; } } }
+else if (x.nodeType === 1) { for (const a of ATTRS) { const v = x.getAttribute(a); if (v && THR.test(v)) { const e = tx(v); if (e !== v) { const rec = O.get(x) || {}; rec.a = rec.a || {}; rec.a[a] = { t: v, e }; O.set(x, rec); x.setAttribute(a, e); } } } }
+x = w.nextNode();
+}
+if (!this._cxObs && typeof MutationObserver !== 'undefined') { this._cxObs = new MutationObserver(() => { if (this._cxQ) return; this._cxQ = true; Promise.resolve().then(() => { this._cxQ = false; this.cxWalk(); }); }); this._cxObs.observe(r, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS }); }
+};
+const cdm = P.componentDidMount, cdu = P.componentDidUpdate, cwu = P.componentWillUnmount, rv = P.renderVals;
+P.componentDidMount = function () { if (cdm) cdm.call(this); this.cxWalk(); setTimeout(() => this.cxWalk(), 60); if (typeof window !== 'undefined') { this._cxL = (e) => { if (!e || !e.key || e.key === 'cx-lang') { this.cxWalk(); } }; window.addEventListener('storage', this._cxL); window.addEventListener('cx-lang', this._cxL); } };
+P.componentDidUpdate = function (a, b) { if (cdu) cdu.call(this, a, b); this.cxWalk(); };
+P.componentWillUnmount = function () { if (this._cxObs) this._cxObs.disconnect(); if (this._cxL && typeof window !== 'undefined') { window.removeEventListener('storage', this._cxL); window.removeEventListener('cx-lang', this._cxL); } if (cwu) cwu.call(this); };
+P.renderVals = function () { const v = rv.call(this) || {}; v.cxRef = (el) => { this._cxRoot = el; }; v.cxLangProp = this.props.lang || 'ตามแอป'; return v; };
+}
+
+static {
+const P = this.prototype;
+const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide','News','Notify','Home','Station','Scan','Confirm','Charging','Complete','Wallet','Topup','Cards','Vehicles','Saved','Prefs','Help','Support','Privacy','Profile'];
+const rv = P.renderVals;
+P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
+}
+constructor(props) { super(props); this.state = { step: 0 }; }
+renderVals() {
+const accent = this.props.accent ?? '#FC3901';
+const step = this.state.step;
+const T = [
+{ title: 'โปรโมชันและสิทธิพิเศษ', desc: 'ปัดซ้ายขวาเพื่อดูโปรโมชันล่าสุดและสิทธิพิเศษสำหรับสมาชิก', s: [12, 193, 366, 164, 28], ty: 374, below: true, ax: 170 },
+{ title: 'ค้นหาสถานีหรือสแกนชาร์จ', desc: 'กดค้นหาสถานีเพื่อดูแผนที่จุดชาร์จใกล้คุณ หรือกดสแกนเพื่อเริ่มชาร์จทันที', s: [12, 393, 366, 72, 22], ty: 480, below: true, ax: 170 },
+{ title: 'ปุ่มการชาร์จ', desc: 'ปุ่มตรงกลางเมนูด้านล่าง กดแล้วเปิดกล้องสแกน QR ที่ตู้ชาร์จได้เลย', s: [151, 738, 88, 94, 24], ty: 548, below: false, ax: 168 },
+{ title: 'แจ้งเตือนและโหมดมืด', desc: 'ดูการแจ้งเตือนสถานะการชาร์จ และสลับโหมดสว่าง/มืดได้จากมุมขวาบน', s: [276, 51, 100, 56, 18], ty: 124, below: true, ax: 296 }
+];
+const cur = T[step];
+const go = (i) => this.setState({ step: Math.max(0, Math.min(3, i)) });
+const steps = T.map((t, i) => ({
+active: i === step,
+no: i + 1,
+title: t.title,
+desc: t.desc,
+ty: t.ty,
+ax: t.ax,
+aside: t.below ? 'top' : 'bottom',
+origin: t.below ? 'top center' : 'bottom center',
+notFirst: i > 0,
+notLast: i < 3,
+isLast: i === 3
+}));
+return {
+accent,
+steps,
+sx: cur.s[0], sy: cur.s[1], sw: cur.s[2], sh: cur.s[3], sr: cur.s[4],
+next: () => go(this.state.step + 1),
+prev: () => go(this.state.step - 1)
+};
+}
+}
+</script>
+</body>
+</html>

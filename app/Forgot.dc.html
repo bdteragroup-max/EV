@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>Charge X — ลืมรหัสผ่าน</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#C42D00}a:hover{color:#9E2400}
+input::placeholder{color:#8A8A8A}
+[data-theme="dark"]{color-scheme:dark}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFFFFF"]{background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F4F4F4"],[style*="background: #F6F6F6"],[style*="background: #F0F0F0"],[style*="background: rgb(244, 244, 244)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F2EFE9"],[style*="background: #EEEEEC"]){background-color:#1C1D20!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #333333"]{background-color:#3A3A40!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FFF1EB"],[style*="background: #FFE4DA"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF7F3"]{background-color:rgba(252,57,1,.1)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #E7F6EE"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #E6E6E6"],[style*="background: #EDEDED"],[style*="background: #EFEFEF"],[style*="background: #D9D9D9"],[style*="background: #DADADA"]){background-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="linear-gradient(#FFFFFF"]{background:linear-gradient(#000000 72%,rgba(0,0,0,0))!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="repeating-linear-gradient(90deg, #DADADA"]{background:repeating-linear-gradient(90deg,#3A3A40 0 6px,transparent 6px 12px)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #1F1F1F"],[style*="color: #2B2B2B"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #3A3A3A"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #C42D00"],[style*="color: rgb(196, 45, 0)"]){color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #146C3E"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"],[style*="solid #D4D4D4"],[style*="solid #E2E2E2"],[style*="solid #FDD3C3"]){border-color:#35353B!important}
+[data-theme="dark"] [stroke="#1F1F1F"]{stroke:#F3F3F4}
+[data-theme="dark"] [stroke="#5C5C5C"]{stroke:#A6A6AD}
+[data-theme="dark"] [stroke="#E8E8E8"]{stroke:#2A2A2F}
+[data-theme="dark"] [fill="#E8E8E8"]{fill:#2A2A2F}
+[data-theme="dark"] [fill="#FFF4EF"]{fill:#2A1D18}
+[data-theme="dark"] [stroke="#F0F0F0"]{stroke:#2E2E33}
+[data-theme="dark"] input::placeholder{color:#7C7C83}
+[data-theme="dark"] .cx-in{background:#1C1C1E;border-color:#35353B;color:#F3F3F4}
+[data-theme="dark"] a:not([style*="color"]){color:#FF7A4D}
+[data-theme="dark"] img[src*="f46d7ba1c670cac41e8a125f33e770a5"]{content:url("img/cf2b715d8eabc7b1e922083f160b65b8.png");mix-blend-mode:lighten}
+[data-theme="dark"][data-theme][style]{background-color:#000000!important}
+[data-theme="dark"][data-theme][style]{color:#F3F3F4!important}
+[data-theme="dark"] :is(button,input,textarea,select,legend,label){color:inherit}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(31, 31, 31)"],[style*="color: rgb(43, 43, 43)"],[style*="color: rgb(0, 0, 0)"],[style*="color: #000"],[style*="color: black"],[style*="color: #1f1f1f"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(58, 58, 58)"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(92, 92, 92)"],[style*="color: rgb(107, 107, 107)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(196, 45, 0)"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(20, 108, 62)"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 255, 255)"],[style*="background-color: rgb(255, 255, 255)"]){background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(244, 244, 244)"],[style*="background: rgb(246, 246, 246)"],[style*="background: rgb(240, 240, 240)"],[style*="background-color: rgb(244, 244, 244)"],[style*="background-color: rgb(246, 246, 246)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(31, 31, 31)"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 241, 235)"],[style*="background: rgb(255, 228, 218)"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(255, 247, 243)"]{background-color:rgba(252,57,1,.12)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(230, 230, 230)"],[style*="background: rgb(237, 237, 237)"],[style*="background: rgb(239, 239, 239)"],[style*="background: rgb(217, 217, 217)"],[style*="background: rgb(218, 218, 218)"]){background-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"],[style*="solid rgb(237, 237, 237)"],[style*="solid rgb(239, 239, 239)"],[style*="solid rgb(212, 212, 212)"],[style*="solid rgb(226, 226, 226)"],[style*="solid rgb(253, 211, 195)"]){border-color:#35353B!important}
+
+.cx-in{width:100%;height:54px;box-sizing:border-box;border-radius:14px;border:1.5px solid #E0E0E0;background:#FFFFFF;padding:0 16px;font-size:16px;font-family:inherit;color:#1F1F1F;outline:none}
+.cx-in:focus{border-color:#FC3901;box-shadow:0 0 0 3px rgba(252,57,1,0.15)}
+@keyframes cxUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.cx-up{animation:cxUp .5s cubic-bezier(.2,.8,.3,1) both}
+@media (prefers-reduced-motion: reduce){.cx-up{animation:none}}
+
+@keyframes cxPopS{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.cx-pops{animation:cxPopS .5s cubic-bezier(.2,.9,.3,1.3) both}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #146C3E"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #E7F6EE"],[style*="background: rgb(231, 246, 238)"]){background-color:rgba(46,180,110,.18)!important}
+</style>
+</helmet>
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; box-sizing: border-box; background: #FFFFFF; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; display: flex; flex-direction: column; padding: 56px 24px 32px">
+<div style="display: flex; align-items: center; gap: 14px">
+<sc-if value="{{isFirst}}" hint-placeholder-val="{{ true }}"><a href="{{L.Member}}" aria-label="ย้อนกลับ" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 14px; border: 1px solid #E6E6E6; display: flex; align-items: center; justify-content: center; flex: none"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a></sc-if>
+<sc-if value="{{notFirst}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{back}}" aria-label="ย้อนกลับ" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 14px; border: 1px solid #E6E6E6; background: transparent; display: flex; align-items: center; justify-content: center; flex: none; cursor: pointer"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button></sc-if>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 600; color: #5C5C5C">{{stepText}}</span>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{bars}}" as="b" hint-placeholder-count="3"><span style="height: 5px; border-radius: 5px; background: {{b.bg}}; transition: background .3s"></span></sc-for>
+</div>
+</div>
+</div>
+
+<sc-if value="{{s0}}" hint-placeholder-val="{{ true }}">
+<div class="cx-up" style="display: flex; flex-direction: column; flex: 1; margin-top: 28px">
+<span style="width: 64px; height: 64px; border-radius: 20px; background: #FFF1EB; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"></rect><path d="M8 10V7a4 4 0 0 1 7.5-2M12 14.5v2.5"></path></svg></span>
+<h1 style="margin: 18px 0 6px; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 28px; line-height: 1.3">ลืมรหัสผ่าน?</h1>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5C5C5C">กรอกเบอร์โทรศัพท์หรืออีเมลที่ใช้สมัคร เราจะส่งรหัสยืนยันเพื่อตั้งรหัสผ่านใหม่ให้คุณ</p>
+<label for="fg-id" style="margin-top: 24px; font-size: 13px; font-weight: 600; color: #3A3A3A">เบอร์โทรศัพท์ หรือ อีเมล</label>
+<input id="fg-id" class="cx-in" style="margin-top: 6px" placeholder="081 234 5678 หรือ name@example.com" value="081 234 5678">
+<div style="flex: 1"></div>
+<button type="button" onClick="{{next}}" style="height: 56px; border: 0; border-radius: 16px; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 19px; cursor: pointer">ส่งรหัสยืนยัน</button>
+<p style="margin: 16px 0 0; font-size: 14px; color: #6B6B6B; text-align: center">นึกออกแล้ว? <a href="{{L.Member}}" style="font-weight: 600; color: #C42D00; text-decoration: none">กลับไปเข้าสู่ระบบ</a></p>
+</div>
+</sc-if>
+
+<sc-if value="{{s1}}" hint-placeholder-val="{{ false }}">
+<div class="cx-up" style="display: flex; flex-direction: column; flex: 1; margin-top: 28px">
+<span style="width: 64px; height: 64px; border-radius: 20px; background: #FFF1EB; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2zM8 10h.01M12 10h.01M16 10h.01"></path></svg></span>
+<h1 style="margin: 18px 0 6px; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 28px; line-height: 1.3">กรอกรหัสยืนยัน</h1>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5C5C5C">ส่งรหัส 6 หลักไปที่ <span style="font-weight: 600; color: #1F1F1F">081 234 5678</span> แล้ว</p>
+<div style="margin-top: 22px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{boxes}}" as="x" hint-placeholder-count="6"><div style="{{x.style}}"><span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 24px; color: #1F1F1F">{{x.d}}</span></div></sc-for>
+</div>
+<sc-if value="{{codeEmpty}}" hint-placeholder-val="{{ true }}">
+<button type="button" onClick="{{fill}}" style="margin-top: 16px; align-self: center; display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 14px; border-radius: 19px; border: 1px solid #E6E6E6; background: #FFFFFF; font-family: inherit; font-size: 13px; color: #3A3A3A; cursor: pointer">จาก SMS: <span style="font-weight: 700; letter-spacing: 1px; color: #1F1F1F">735 106</span> · แตะเพื่อกรอก</button>
+</sc-if>
+<sc-if value="{{codeFull}}" hint-placeholder-val="{{ false }}"><span style="margin-top: 14px; align-self: center; font-size: 14px; font-weight: 600; color: #146C3E">✓ รหัสถูกต้อง</span></sc-if>
+<div style="flex: 1"></div>
+<button type="button" onClick="{{next}}" disabled="{{codeNotFull}}" style="height: 56px; border: 0; border-radius: 16px; background: {{codeBtn}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 19px; cursor: pointer">ถัดไป</button>
+<button type="button" onClick="{{clear}}" style="margin-top: 10px; height: 44px; border: 0; background: transparent; font-family: inherit; font-size: 14px; font-weight: 600; color: #C42D00; cursor: pointer">ส่งรหัสอีกครั้ง</button>
+</div>
+</sc-if>
+
+<sc-if value="{{s2}}" hint-placeholder-val="{{ false }}">
+<div class="cx-up" style="display: flex; flex-direction: column; flex: 1; margin-top: 28px">
+<span style="width: 64px; height: 64px; border-radius: 20px; background: #FFF1EB; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 7.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zM12 11v10M12 17h3M12 20h2"></path></svg></span>
+<h1 style="margin: 18px 0 6px; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 28px; line-height: 1.3">ตั้งรหัสผ่านใหม่</h1>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5C5C5C">รหัสผ่านใหม่ต้องไม่ซ้ำกับรหัสเดิม</p>
+<label for="fg-p1" style="margin-top: 22px; font-size: 13px; font-weight: 600; color: #3A3A3A">รหัสผ่านใหม่</label>
+<input id="fg-p1" class="cx-in" type="password" style="margin-top: 6px" value="Charge2026!">
+<div style="margin-top: 10px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px">
+<span style="height: 5px; border-radius: 5px; background: #1E9E5A"></span><span style="height: 5px; border-radius: 5px; background: #1E9E5A"></span><span style="height: 5px; border-radius: 5px; background: #1E9E5A"></span><span style="height: 5px; border-radius: 5px; background: #E6E6E6"></span>
+</div>
+<span style="margin-top: 6px; font-size: 12.5px; font-weight: 600; color: #146C3E">ความปลอดภัย: ดี</span>
+<div style="margin-top: 10px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #5C5C5C">
+<span style="display: flex; align-items: center; gap: 8px"><span style="color: #146C3E; font-weight: 700">✓</span>อย่างน้อย 8 ตัวอักษร</span>
+<span style="display: flex; align-items: center; gap: 8px"><span style="color: #146C3E; font-weight: 700">✓</span>มีตัวพิมพ์ใหญ่และตัวเลข</span>
+<span style="display: flex; align-items: center; gap: 8px"><span style="color: #146C3E; font-weight: 700">✓</span>มีอักขระพิเศษ</span>
+</div>
+<label for="fg-p2" style="margin-top: 16px; font-size: 13px; font-weight: 600; color: #3A3A3A">ยืนยันรหัสผ่านใหม่</label>
+<input id="fg-p2" class="cx-in" type="password" style="margin-top: 6px" value="Charge2026!">
+<div style="flex: 1"></div>
+<button type="button" onClick="{{next}}" style="height: 56px; border: 0; border-radius: 16px; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 19px; cursor: pointer">บันทึกรหัสผ่านใหม่</button>
+</div>
+</sc-if>
+
+<sc-if value="{{s3}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; align-items: center; flex: 1; text-align: center">
+<div style="flex: 1"></div>
+<span class="cx-pops" style="width: 96px; height: 96px; border-radius: 50%; background: #E7F6EE; display: flex; align-items: center; justify-content: center"><span style="width: 64px; height: 64px; border-radius: 50%; background: #1E9E5A; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 22px rgba(30,158,90,0.3)"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg></span></span>
+<h1 class="cx-up" style="animation-delay: .15s; margin: 22px 0 6px; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 26px; line-height: 1.3">เปลี่ยนรหัสผ่านสำเร็จ</h1>
+<p class="cx-up" style="animation-delay: .2s; margin: 0; max-width: 290px; font-size: 15px; line-height: 1.6; color: #5C5C5C">ใช้รหัสผ่านใหม่เพื่อเข้าสู่ระบบบัญชี Charge-X ของคุณได้เลย</p>
+<div style="flex: 1.3"></div>
+<a href="{{L.Member}}" style="align-self: stretch; height: 56px; border-radius: 16px; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 19px; text-decoration: none; display: flex; align-items: center; justify-content: center">กลับไปเข้าสู่ระบบ</a>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"step":{"editor":"enum","options":["0","1","2","3"],"default":"0"},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+static {
+const P = this.prototype;
+const TR = {"เข้าสู่ระบบ": "Sign in", "ถัดไป": "Next", "หรือ": "or", "และ": " and ", "ย้อนกลับ": "Back", "ส่งรหัสอีกครั้ง": "Resend code", "จาก SMS:": "From SMS:", "· แตะเพื่อกรอก": "· tap to fill", "ยืนยัน": "Confirm", "รหัสผ่าน": "Password", "ลืมรหัสผ่าน?": "Forgot password?", "เบอร์โทรศัพท์": "Phone number", "อีเมล": "Email", "กรอกเบอร์โทรศัพท์หรืออีเมลที่ใช้สมัคร เราจะส่งรหัสยืนยันเพื่อตั้งรหัสผ่านใหม่ให้คุณ": "Enter the phone number or email you signed up with. We'll send a code so you can set a new password.", "เบอร์โทรศัพท์ หรือ อีเมล": "Phone number or email", "ส่งรหัสยืนยัน": "Send code", "นึกออกแล้ว?": "Remembered it?", "กลับไปเข้าสู่ระบบ": "Back to sign in", "กรอกรหัสยืนยัน": "Enter verification code", "ส่งรหัส 6 หลักไปที่": "6-digit code sent to", "แล้ว": "", "✓ รหัสถูกต้อง": "✓ Code correct", "ตั้งรหัสผ่านใหม่": "Set a new password", "รหัสผ่านใหม่ต้องไม่ซ้ำกับรหัสเดิม": "Your new password must differ from the old one", "รหัสผ่านใหม่": "New password", "ความปลอดภัย: ดี": "Strength: good", "อย่างน้อย 8 ตัวอักษร": "At least 8 characters", "มีตัวพิมพ์ใหญ่และตัวเลข": "Uppercase letter and number", "มีอักขระพิเศษ": "Special character", "ยืนยันรหัสผ่านใหม่": "Confirm new password", "บันทึกรหัสผ่านใหม่": "Save new password", "เปลี่ยนรหัสผ่านสำเร็จ": "Password changed", "ใช้รหัสผ่านใหม่เพื่อเข้าสู่ระบบบัญชี Charge-X ของคุณได้เลย": "You can now sign in to Charge-X with your new password.", "081 234 5678 หรือ name@example.com": "081 234 5678 or name@example.com", "เสร็จเรียบร้อย": "Done", "ระบบ": "System", " จาก ": " of ", "เปลี่ยน": "Change", "สำเร็จ": "Successful", " แล้ว": "", "บันทึก": "Save", "ขั้นตอนที่ ": "Step ", " จาก 3": " of 3", "กม.": "km", "ชม.": "hrs", "นาที": "min"};
+const PT = [].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["กรอกเบอร์โทรศัพท์หรืออีเมลที่ใช้สมัคร เราจะส่งรหัสยืนยันเพื่อตั้งรหัสผ่านใหม่ให้คุณ", "ใช้รหัสผ่านใหม่เพื่อเข้าสู่ระบบบัญชี Charge-X ของคุณได้เลย", "081 234 5678 หรือ name@example.com", "รหัสผ่านใหม่ต้องไม่ซ้ำกับรหัสเดิม", "เบอร์โทรศัพท์ หรือ อีเมล", "มีตัวพิมพ์ใหญ่และตัวเลข", "เปลี่ยนรหัสผ่านสำเร็จ", "อย่างน้อย 8 ตัวอักษร", "ส่งรหัส 6 หลักไปที่", "ยืนยันรหัสผ่านใหม่", "บันทึกรหัสผ่านใหม่", "กลับไปเข้าสู่ระบบ", "ตั้งรหัสผ่านใหม่", "ส่งรหัสอีกครั้ง", "ความปลอดภัย: ดี", "· แตะเพื่อกรอก", "กรอกรหัสยืนยัน", "เสร็จเรียบร้อย", "เบอร์โทรศัพท์", "ส่งรหัสยืนยัน", "✓ รหัสถูกต้อง", "มีอักขระพิเศษ", "ลืมรหัสผ่าน?", "รหัสผ่านใหม่", "เข้าสู่ระบบ", "นึกออกแล้ว?", "ขั้นตอนที่ ", "ย้อนกลับ", "จาก SMS:", "รหัสผ่าน", "เปลี่ยน", "ยืนยัน", "สำเร็จ", "บันทึก", " จาก 3", "ถัดไป", "อีเมล", " จาก ", "หรือ", "ระบบ", "นาที", "และ", "กม.", "ชม."];
+const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
+const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
+const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
+P.cxLang = function () { if (this.state && (this.state.lang === 'en' || this.state.lang === 'th')) return this.state.lang; const pl = this.props.lang; if (pl === 'English') return 'en'; if (pl === 'ไทย') return 'th'; try { return localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) { return 'th'; } };
+P.cxWalk = function () {
+const r = this._cxRoot; if (!r || typeof document === 'undefined') return;
+const en = this.cxLang() === 'en';
+const O = this._cxOrig || (this._cxOrig = new Map());
+if (!en) { O.forEach((v, node) => { if (v.t != null && node.nodeValue === v.e) node.nodeValue = v.t; if (v.a) for (const a in v.a) { if (node.getAttribute(a) === v.a[a].e) node.setAttribute(a, v.a[a].t); } }); O.clear(); if (this._cxObs) { this._cxObs.disconnect(); this._cxObs = null; } return; }
+const w = document.createTreeWalker(r, 5, { acceptNode: (x) => (x.nodeType === 1 && x.getAttribute('translate') === 'no') ? 2 : 1 });
+let x = w.currentNode;
+while (x) {
+if (x.nodeType === 3) { const v = x.nodeValue; if (THR.test(v)) { const e = tx(v); if (e !== v) { O.set(x, { t: v, e }); x.nodeValue = e; } } }
+else if (x.nodeType === 1) { for (const a of ATTRS) { const v = x.getAttribute(a); if (v && THR.test(v)) { const e = tx(v); if (e !== v) { const rec = O.get(x) || {}; rec.a = rec.a || {}; rec.a[a] = { t: v, e }; O.set(x, rec); x.setAttribute(a, e); } } } }
+x = w.nextNode();
+}
+if (!this._cxObs && typeof MutationObserver !== 'undefined') { this._cxObs = new MutationObserver(() => { if (this._cxQ) return; this._cxQ = true; Promise.resolve().then(() => { this._cxQ = false; this.cxWalk(); }); }); this._cxObs.observe(r, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS }); }
+};
+const cdm = P.componentDidMount, cdu = P.componentDidUpdate, cwu = P.componentWillUnmount, rv = P.renderVals;
+P.componentDidMount = function () { if (cdm) cdm.call(this); this.cxWalk(); setTimeout(() => this.cxWalk(), 60); if (typeof window !== 'undefined') { this._cxL = (e) => { if (!e || !e.key || e.key === 'cx-lang') { this.cxWalk(); } }; window.addEventListener('storage', this._cxL); window.addEventListener('cx-lang', this._cxL); } };
+P.componentDidUpdate = function (a, b) { if (cdu) cdu.call(this, a, b); this.cxWalk(); };
+P.componentWillUnmount = function () { if (this._cxObs) this._cxObs.disconnect(); if (this._cxL && typeof window !== 'undefined') { window.removeEventListener('storage', this._cxL); window.removeEventListener('cx-lang', this._cxL); } if (cwu) cwu.call(this); };
+P.renderVals = function () { const v = rv.call(this) || {}; v.cxRef = (el) => { this._cxRoot = el; }; v.cxLangProp = this.props.lang || 'ตามแอป'; return v; };
+}
+
+static {
+const P = this.prototype;
+const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide','News','Notify','Home','Station','Scan','Confirm','Charging','Complete','Wallet','Topup','Cards','Vehicles','Saved','Prefs','Help','Support','Privacy','Profile'];
+const rv = P.renderVals;
+P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
+}
+constructor(props) { super(props); this.state = { step: null, code: '' }; }
+renderVals() {
+const accent = this.props.accent ?? '#FC3901';
+const step = this.state.step == null ? Number(this.props.step ?? 0) : this.state.step;
+const code = this.state.code;
+const full = code.length === 6;
+const go = (n) => this.setState({ step: Math.max(0, Math.min(3, n)) });
+return {
+accent,
+s0: step === 0, s1: step === 1, s2: step === 2, s3: step === 3,
+isFirst: step === 0 || step === 3, notFirst: step === 1 || step === 2,
+stepText: step === 3 ? 'เสร็จเรียบร้อย' : 'ขั้นตอนที่ ' + (step + 1) + ' จาก 3',
+bars: [0, 1, 2].map((i) => ({ bg: i <= step ? accent : '#E6E6E6' })),
+next: () => go(step + 1),
+back: () => go(step - 1),
+boxes: [0, 1, 2, 3, 4, 5].map((i) => ({ d: code[i] || '', style: 'height: 56px; box-sizing: border-box; border-radius: 14px; display: flex; align-items: center; justify-content: center; border: ' + (full ? '2px solid #1E9E5A' : (i === code.length ? '2px solid ' + accent : '1.5px solid #E0E0E0')) + '; background: ' + (full ? '#E7F6EE' : '#FFFFFF') })),
+codeEmpty: !full, codeFull: full, codeNotFull: !full,
+codeBtn: full ? accent : '#BDBDBD',
+fill: () => this.setState({ code: '735106' }),
+clear: () => this.setState({ code: '' })
+};
+}
+}
+</script>
+</body>
+</html>

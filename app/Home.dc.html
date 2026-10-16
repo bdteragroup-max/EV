@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>Charge X — Map</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#C42D00}a:hover{color:#9E2400}
+input::placeholder{color:#6B6B6B}
+@keyframes cxpulse{0%{transform:scale(.5);opacity:.6}100%{transform:scale(1.7);opacity:0}}
+.cx-pulse{animation:cxpulse 2.2s ease-out infinite}
+@keyframes cxdash{to{stroke-dashoffset:-28}}
+.cx-route{animation:cxdash 1.2s linear infinite}
+.cx-lbl{font-family:Sarabun,'Segoe UI',sans-serif;paint-order:stroke;stroke:#FFFFFF;stroke-width:3px;stroke-linejoin:round}
+@media (prefers-reduced-motion: reduce){.cx-pulse,.cx-route{animation:none}}
+@keyframes cxSheet{from{transform:translateY(100%)}to{transform:none}}
+.cx-sheet{animation:cxSheet .35s cubic-bezier(.2,.9,.3,1) both}
+@keyframes cxFade{from{opacity:0}to{opacity:1}}
+.cx-fade{animation:cxFade .3s ease-out both}
+@keyframes cxPinH{0%,100%{transform:scale(1);opacity:.35}50%{transform:scale(1.6);opacity:.1}}
+.cx-pinhalo{animation:cxPinH 1.6s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.cx-sheet,.cx-fade,.cx-pinhalo{animation:none}}
+
+[data-theme="dark"]{color-scheme:dark}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFFFFF"]{background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F4F4F4"],[style*="background: #F6F6F6"],[style*="background: #F0F0F0"],[style*="background: rgb(244, 244, 244)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F2EFE9"],[style*="background: #EEEEEC"]){background-color:#1C1D20!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #333333"]{background-color:#3A3A40!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FFF1EB"],[style*="background: #FFE4DA"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF7F3"]{background-color:rgba(252,57,1,.1)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #E7F6EE"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #E6E6E6"],[style*="background: #EDEDED"],[style*="background: #EFEFEF"],[style*="background: #D9D9D9"],[style*="background: #DADADA"]){background-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="linear-gradient(#FFFFFF"]{background:linear-gradient(#000000 72%,rgba(0,0,0,0))!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #1F1F1F"],[style*="color: #2B2B2B"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #3A3A3A"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #C42D00"],[style*="color: rgb(196, 45, 0)"]){color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #146C3E"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"],[style*="solid #D4D4D4"],[style*="solid #E2E2E2"],[style*="solid #3A3A3A"]){border-color:#35353B!important}
+[data-theme="dark"] [stroke="#1F1F1F"]{stroke:#F3F3F4}
+[data-theme="dark"] [stroke="#5C5C5C"]{stroke:#A6A6AD}
+[data-theme="dark"] input::placeholder{color:#7C7C83}
+.mp-bg{fill:#F1F3F4}.mp-park{fill:#CDEBC5}.mp-water{fill:#AADAFF}.mp-canal{stroke:#AADAFF}
+.mp-lane{stroke:#FFFFFF}.mp-case{stroke:#DADCE0}.mp-road{stroke:#FFFFFF}.mp-majc{stroke:#F2C14E}.mp-maj{stroke:#FDE293}
+.mp-alt{stroke:#F7A889}
+.mp-district{fill:#80868B}.mp-rlbl{fill:#5F6368}.mp-slbl{fill:#80868B}.mp-wlbl{fill:#4A7FAF}.mp-plbl{fill:#3E7B3A}
+.mp-poi-r{fill:#C5221F}.mp-poi-p{fill:#B0306F}.mp-poi-o{fill:#B06000}.mp-poi-v{fill:#5E35B1}
+.cx-map text{paint-order:stroke;stroke:#FFFFFF;stroke-width:2.5px;stroke-linejoin:round}
+@keyframes cxRt{from{stroke-dasharray:0 400}to{stroke-dasharray:400 0}}
+.cx-route2{animation:cxRt 1.4s ease-out both}
+[data-theme="dark"] .mp-bg{fill:#1B1D21}[data-theme="dark"] .mp-park{fill:#1E2E22}[data-theme="dark"] .mp-water,[data-theme="dark"] .mp-canal{fill:#1D3946;stroke:#1D3946}
+[data-theme="dark"] .mp-lane{stroke:#2A2C31}[data-theme="dark"] .mp-case{stroke:#2A2C31}[data-theme="dark"] .mp-road{stroke:#3A3D44}[data-theme="dark"] .mp-majc{stroke:#5E4A24}[data-theme="dark"] .mp-maj{stroke:#7A6230}
+[data-theme="dark"] .cx-map text{stroke:#1B1D21}[data-theme="dark"] .mp-district,[data-theme="dark"] .mp-rlbl,[data-theme="dark"] .mp-slbl{fill:#B0B3B8}
+[data-theme="dark"] .mp-canal{fill:none}
+[data-theme="dark"] .cx-map [fill="#F2EFE9"]{fill:#1C1D20}
+[data-theme="dark"] .cx-map [fill="#E6E1D8"]{fill:#25262A}
+[data-theme="dark"] .cx-map [fill="#EFE6D6"]{fill:#2A2620}
+[data-theme="dark"] .cx-map :is([fill="#CFE8C6"],[fill="#DCEFD3"]){fill:#1D2B20}
+[data-theme="dark"] .cx-map [fill="#AAD3DF"]{fill:#1D3946}
+[data-theme="dark"] .cx-map [stroke="#AAD3DF"]{stroke:#1D3946}
+[data-theme="dark"] .cx-map :is([stroke="#E2DED6"],[stroke="#DCD7CD"]){stroke:#2A2B30}
+[data-theme="dark"] .cx-map [stroke="#FFFFFF"]{stroke:#3A3B42}
+[data-theme="dark"] .cx-map [stroke="#E7BE73"]{stroke:#5E4A24}
+[data-theme="dark"] .cx-map [stroke="#FCE2A4"]{stroke:#4A3F27}
+[data-theme="dark"] .cx-map [stroke="#F8F0DC"]{stroke:#6B5C3A}
+[data-theme="dark"] .cx-map .cx-lbl{stroke:#1C1D20;fill:#C4C4CA}
+[data-theme="dark"][data-theme][style]{background-color:#000000!important}
+[data-theme="dark"][data-theme][style]{color:#F3F3F4!important}
+[data-theme="dark"] :is(button,input,textarea,select,legend,label){color:inherit}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(31, 31, 31)"],[style*="color: rgb(43, 43, 43)"],[style*="color: rgb(0, 0, 0)"],[style*="color: #000"],[style*="color: black"],[style*="color: #1f1f1f"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(58, 58, 58)"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(92, 92, 92)"],[style*="color: rgb(107, 107, 107)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(196, 45, 0)"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(20, 108, 62)"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 255, 255)"],[style*="background-color: rgb(255, 255, 255)"]){background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(244, 244, 244)"],[style*="background: rgb(246, 246, 246)"],[style*="background: rgb(240, 240, 240)"],[style*="background-color: rgb(244, 244, 244)"],[style*="background-color: rgb(246, 246, 246)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(31, 31, 31)"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 241, 235)"],[style*="background: rgb(255, 228, 218)"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(231, 246, 238)"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="linear-gradient(rgb(255, 255, 255)"]{background:linear-gradient(#000000 72%,rgba(0,0,0,0))!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"],[style*="solid rgb(237, 237, 237)"]){border-color:#35353B!important}
+.cx-fablabel{color:#C42D00}
+[data-theme="dark"] .cx-fablabel{color:#FF7A4D}
+[data-theme="dark"] .cx-fab{box-shadow:0 6px 14px rgba(252,57,1,.35)!important}
+@keyframes cxFabHalo{0%{transform:scale(1);opacity:.45}100%{transform:scale(1.55);opacity:0}}
+.cx-fabhalo{animation:cxFabHalo 2s ease-out infinite;transform-origin:center}
+@media (prefers-reduced-motion: reduce){.cx-fabhalo{animation:none;opacity:0}}
+nav > a{position:relative;z-index:1}
+[data-theme="dark"] .cx-navbg path{fill:#1C1C1E}
+@keyframes cxChgP{0%,100%{box-shadow:0 0 0 4px #FFFFFE,0 8px 18px rgba(252,57,1,.45),0 0 0 4px rgba(252,57,1,.35)}50%{box-shadow:0 0 0 4px #FFFFFE,0 8px 18px rgba(252,57,1,.45),0 0 0 12px rgba(252,57,1,0)}}
+.cx-chg{animation:cxChgP 1.8s ease-out infinite}
+@keyframes cxChgPD{0%,100%{box-shadow:0 0 0 4px #1C1C1E,0 8px 18px rgba(252,57,1,.5),0 0 0 4px rgba(252,57,1,.4)}50%{box-shadow:0 0 0 4px #1C1C1E,0 8px 18px rgba(252,57,1,.5),0 0 0 12px rgba(252,57,1,0)}}
+[data-theme="dark"] .cx-chg{animation-name:cxChgPD}
+@media (prefers-reduced-motion: reduce){.cx-chg{animation:none}}
+</style>
+</helmet>
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F2EFE9; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif">
+
+<svg class="cx-map" aria-hidden="true" width="390" height="844" viewBox="0 0 390 844" style="position: absolute; inset: 0">
+<defs>
+<radialGradient id="cxCone" cx="0.5" cy="1" r="1"><stop offset="0" stop-color="#2962FF" stop-opacity="0.35"></stop><stop offset="1" stop-color="#2962FF" stop-opacity="0"></stop></radialGradient>
+</defs>
+<rect class="mp-bg" width="390" height="844"></rect>
+<path class="mp-park" d="M286 418 C 320 410, 372 414, 400 420 L 400 540 C 360 548, 318 545, 292 536 Z"></path>
+<path class="mp-park" d="M-10 660 L 120 640 L 132 760 L -10 780 Z"></path>
+<path class="mp-park" d="M150 196 L 262 192 L 266 286 L 154 290 Z" opacity="0.55"></path>
+<ellipse class="mp-water" cx="338" cy="476" rx="18" ry="13"></ellipse>
+<ellipse class="mp-water" cx="40" cy="214" rx="26" ry="16"></ellipse>
+<path class="mp-canal" d="M-20 548 C 60 530, 110 560, 180 548 S 300 520, 410 536" stroke-width="7" fill="none"></path>
+<path class="mp-canal" d="M352 0 C 346 120, 360 220, 352 300" stroke-width="5" fill="none"></path>
+<path class="mp-canal" d="M0 236 C 60 230, 90 250, 116 240" stroke-width="4" fill="none"></path>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path class="mp-lane" d="M146 240 H261 M146 267 H263 M141 190 H263 M214 176 V277 M161 176 V245 M299 209 H379 M293 189 H374 M302 265 H373 M357 176 V220 M346 176 V219 M18 188 H95 M20 206 H106 M19 212 H101 M69 176 V225 M88 176 V261 M154 579 H189 M143 528 H186 M145 503 H194 M156 486 V570 M165 486 V543 M230 567 H311 M233 538 H307 M222 580 H318 M295 486 V521 M292 486 V547 M4 710 H93 M19 660 H95 M19 732 H107 M45 626 V700 M58 626 V748 M152 651 H323 M141 745 H325 M145 649 H320 M297 626 V699 M298 626 V722 M349 677 H373 M346 648 H381 M347 762 H371 M370 626 V721 M364 626 V687 " stroke-width="3.5"></path>
+<path class="mp-case" d="M0 300 H390 M0 470 H140 M200 470 H390 M0 610 H390 M0 160 H390 M330 0 V844 M210 470 V844 M200 160 V250" stroke-width="9"></path>
+<path class="mp-road" d="M0 300 H390 M0 470 H140 M200 470 H390 M0 610 H390 M0 160 H390 M330 0 V844 M210 470 V844 M200 160 V250" stroke-width="7"></path>
+<path class="mp-case" d="M120 -10 C 126 200, 138 420, 132 860 M276 -10 C 270 260, 258 560, 262 860" stroke-width="12"></path>
+<path class="mp-road" d="M120 -10 C 126 200, 138 420, 132 860 M276 -10 C 270 260, 258 560, 262 860" stroke-width="9.5"></path>
+<path class="mp-majc" d="M56 -10 V 860" stroke-width="13"></path>
+<path class="mp-maj" d="M56 -10 V 860" stroke-width="10"></path>
+<path class="mp-majc" d="M-20 404 C 100 398, 260 386, 410 372" stroke-width="20"></path>
+<path class="mp-maj" d="M-20 404 C 100 398, 260 386, 410 372" stroke-width="16.5"></path>
+</g>
+<path class="mp-alt" d="M160 426 L 128 426 C 126 380 124 330 124 300 L 196 300 L 202 330" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M160 426 L 160 412 C 166 401 182 398 200 396 L 202 342" fill="none" stroke="#9E2400" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"></path>
+<path class="cx-route2" d="M160 426 L 160 412 C 166 401 182 398 200 396 L 202 342" fill="none" stroke="{{accent}}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle cx="202" cy="342" r="4" fill="#FFFFFF" stroke="#9E2400" stroke-width="2"></circle>
+<g class="mp-txt" font-family="Sarabun, sans-serif">
+<text x="300" y="178" font-size="14" font-weight="600" letter-spacing="1.5" text-anchor="middle" class="mp-district">แขวงบางนา</text>
+<text x="300" y="380" font-size="9.5" font-weight="600" transform="rotate(-3.4 300 380)" class="mp-rlbl">ถ.บางนา-ตราด</text>
+<text x="59" y="640" font-size="9.5" font-weight="600" transform="rotate(-90 59 640)" class="mp-rlbl">ถ.ศรีนครินทร์</text>
+<text x="300" y="296" font-size="9" class="mp-slbl">ซ.บางนา-ตราด 25</text>
+<text x="150" y="606" font-size="9" class="mp-slbl">ถ.กิ่งแก้ว</text>
+<text x="18" y="526" font-size="9" font-style="italic" class="mp-wlbl">คลองบางนา</text>
+<text x="340" y="512" font-size="9.5" font-weight="500" text-anchor="middle" class="mp-plbl">สวนสาธารณะ</text>
+<text x="62" y="712" font-size="9.5" font-weight="500" text-anchor="middle" class="mp-plbl">สนามกีฬา</text>
+<text x="208" y="246" font-size="9.5" font-weight="600" text-anchor="middle" class="mp-plbl">ม.รามคำแหง บางนา</text>
+</g>
+<g font-family="Sarabun, sans-serif">
+<circle cx="88" cy="270" r="9" fill="#EA4335" stroke="#FFFFFF" stroke-width="1.5"></circle><text x="88" y="274" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">H</text><text x="101" y="268" font-size="9.5" font-weight="600" class="mp-poi-r">โรงพยาบาล</text>
+<circle cx="88" cy="336" r="9" fill="#E8449A" stroke="#FFFFFF" stroke-width="1.5"></circle><path d="M84 338h8M84 334v6M86.5 335.5h4.5v2.5" stroke="#FFFFFF" stroke-width="1.4" fill="none" stroke-linecap="round"></path><text x="101" y="340" font-size="9.5" font-weight="600" class="mp-poi-p">โรงแรม</text>
+<circle cx="56" cy="440" r="7.5" fill="#1A73E8" stroke="#FFFFFF" stroke-width="1.5"></circle><rect x="52.5" y="436" width="7" height="6" rx="1.2" fill="#FFFFFF"></rect>
+<circle cx="176" cy="214" r="9" fill="#F29900" stroke="#FFFFFF" stroke-width="1.5"></circle><path d="M172 212h6v3a3 3 0 0 1-6 0zM178 213h1.4a1.3 1.3 0 0 1 0 2.6H178" stroke="#FFFFFF" stroke-width="1.3" fill="none"></path><text x="189" y="218" font-size="9.5" font-weight="600" class="mp-poi-o">คาเฟ่</text>
+<circle cx="240" cy="640" r="9" fill="#5E35B1" stroke="#FFFFFF" stroke-width="1.5"></circle><path d="M236 637h8l-1 6h-6zM238 637a2 2 0 0 1 4 0" stroke="#FFFFFF" stroke-width="1.3" fill="none"></path><text x="253" y="644" font-size="9.5" font-weight="600" class="mp-poi-v">ห้างสรรพสินค้า</text>
+<rect x="44" y="396" width="22" height="13" rx="3" fill="#FFFFFF" stroke="#9AA0A6" stroke-width="1"></rect><text x="55" y="406" font-size="8.5" font-weight="700" fill="#3C4043" text-anchor="middle">34</text>
+</g>
+<path d="M160 426 L 142 384 A 45 45 0 0 1 178 384 Z" fill="url(#cxCone)"></path>
+<circle cx="160" cy="426" r="30" fill="rgba(41,98,255,0.10)" stroke="rgba(41,98,255,0.25)" stroke-width="1"></circle>
+</svg>
+<div aria-hidden="true" style="position: absolute; left: 212px; top: 360px; display: flex; flex-direction: column; align-items: flex-start; pointer-events: none">
+<div style="padding: 4px 8px; border-radius: 6px; background: #FFFFFF; box-shadow: 0 2px 6px rgba(0,0,0,0.25); display: flex; flex-direction: column; line-height: 1.2"><span style="display: flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 700; color: #C42D00"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C42D00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M3 13l2-6a2 2 0 0 1 2-1.4h10A2 2 0 0 1 19 7l2 6v4h-2.5M5.5 17H3v-4h18"></path><circle cx="7" cy="17" r="1.6"></circle><circle cx="17" cy="17" r="1.6"></circle></svg>4 นาที</span><span style="font-size: 10.5px; color: #6B6B6B">1.2 กม.</span></div>
+</div>
+<div aria-hidden="true" style="position: absolute; left: 96px; top: 312px; pointer-events: none">
+<div style="padding: 3px 7px; border-radius: 6px; background: #FFFFFF; box-shadow: 0 2px 6px rgba(0,0,0,0.2); display: flex; flex-direction: column; line-height: 1.2"><span style="font-size: 11.5px; font-weight: 700; color: #3A3A3A">7 นาที</span><span style="font-size: 10px; color: #6B6B6B">1.9 กม.</span></div>
+</div>
+
+<div style="position: absolute; left: 160px; top: 426px; width: 40px; height: 40px; margin: -20px 0 0 -20px">
+<div class="cx-pulse" style="position: absolute; inset: 0; border-radius: 50%; background: rgba(41,98,255,0.35)"></div>
+<div style="position: absolute; left: 11px; top: 11px; width: 18px; height: 18px; border-radius: 50%; background: #2962FF; border: 3px solid #FFFFFF; box-sizing: border-box; box-shadow: 0 2px 6px rgba(0,0,0,0.3)"></div>
+</div>
+
+<sc-for list="{{pins}}" as="p" hint-placeholder-count="5">
+<button type="button" onClick="{{p.pick}}" aria-label="{{p.aria}}" aria-pressed="{{p.selStr}}" style="{{p.wrap}}">
+<sc-if value="{{p.sel}}" hint-placeholder-val="{{ false }}"><span class="cx-pinhalo" style="position: absolute; left: 3px; bottom: -7px; width: 30px; height: 10px; border-radius: 50%; background: {{p.halo}}; opacity: 0.35"></span></sc-if>
+<svg aria-hidden="true" width="36" height="46" viewBox="0 0 36 46" style="display: block; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25))"><path d="M18 1C8.6 1 1 8.6 1 18c0 12.4 17 27 17 27s17-14.6 17-27C35 8.6 27.4 1 18 1z" fill="{{p.fill}}" stroke="{{p.stroke}}" stroke-width="2.5"></path><path d="M19.5 9.5 13 19h5l-1 7 6.5-9.5h-5l1-7z" fill="{{p.bolt}}"></path></svg>
+<span style="position: absolute; left: 24px; top: -6px; padding: 1px 6px; border-radius: 8px; background: #FFFFFF; font-size: 11px; font-weight: 700; color: {{p.badgeColor}}; box-shadow: 0 1px 3px rgba(0,0,0,0.2); white-space: nowrap">{{p.badge}}</span>
+</button>
+</sc-for>
+<div aria-label="สถานีอีก 5 แห่งในบริเวณนี้" style="position: absolute; left: 22px; top: 262px; width: 38px; height: 38px; border-radius: 50%; background: {{accent}}; border: 3px solid #FFFFFF; box-sizing: border-box; color: #FFFFFF; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 4px rgba(212,175,55,0.55), 0 4px 10px rgba(0,0,0,0.2)">5</div>
+
+<div style="position: absolute; left: 0; right: 0; top: 0; padding: 56px 16px 22px; display: flex; flex-direction: column; align-items: center; gap: 10px; background: linear-gradient(#FFFFFF 70%, rgba(255,255,255,0))">
+<div style="align-self: stretch; height: 52px; box-sizing: border-box; border-radius: 26px; background: #FFFFFF; border: 1px solid #E6E6E6; box-shadow: 0 6px 18px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 10px; padding: 0 6px 0 18px">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5C5C5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+<input aria-label="ค้นหาสถานีหรือสถานที่" placeholder="ค้นหาสถานีชาร์จ" style="flex: 1; min-width: 0; border: 0; background: transparent; font-family: inherit; font-size: 16px; color: #1F1F1F; outline: none">
+<button type="button" onClick="{{fx.open}}" aria-label="ตัวกรอง" style="position: relative; width: 40px; height: 40px; flex: none; border-radius: 20px; border: 0; background: #1F1F1F; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"></path><circle cx="16" cy="6" r="2"></circle><circle cx="10" cy="12" r="2"></circle><circle cx="18" cy="18" r="2"></circle></svg>
+<sc-if value="{{fx.has}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; padding: 0 4px; box-sizing: border-box; border-radius: 9px; background: {{accent}}; border: 2px solid #FFFFFE; color: #FFFFFF; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center">{{fx.count}}</span></sc-if>
+</button>
+</div>
+<div aria-label="สถานะสถานี" style="display: flex; gap: 14px; font-size: 12px; font-weight: 600; color: #5C5C5C">
+<span style="display: flex; align-items: center; gap: 5px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #1E9E5A"></span>ว่าง</span>
+<span style="display: flex; align-items: center; gap: 5px"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{accent}}"></span>เต็ม</span>
+<span style="display: flex; align-items: center; gap: 5px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #9A9A9A"></span>ปิดปรับปรุง</span>
+</div>
+</div>
+
+<button type="button" aria-label="ชั้นแผนที่" style="position: absolute; left: 16px; bottom: 388px; width: 46px; height: 46px; border-radius: 50%; border: 0; background: #FFFFFF; box-shadow: 0 6px 16px rgba(0,0,0,0.14); display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5zM3 13l9 5 9-5"></path></svg></button>
+<button type="button" aria-label="ไปที่ตำแหน่งของฉัน" style="position: absolute; right: 16px; bottom: 388px; width: 46px; height: 46px; border-radius: 50%; border: 0; background: #FFFFFF; box-shadow: 0 6px 16px rgba(0,0,0,0.14); display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="#2962FF" stroke="#2962FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 21 3l-8 18-2-8-8-2z"></path></svg></button>
+
+<div style="position: absolute; left: 12px; right: 12px; bottom: 100px; background: #FFFFFF; border-radius: 26px; padding: 10px 16px 16px; box-shadow: 0 12px 32px rgba(0,0,0,0.16); display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<span aria-hidden="true" style="width: 36px; height: 4px; border-radius: 2px; background: #E0E0E0"></span>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0">
+<span style="{{st.badgeStyle}}">{{st.badge}}</span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; line-height: 1.3; color: #1F1F1F">{{st.name}}</span>
+<span style="font-size: 13px; color: #6B6B6B">{{st.dist}} · ฿{{st.price}}/kWh · {{st.hours}}</span>
+</div>
+<div style="align-self: stretch; display: grid; grid-template-columns: {{st.cols}}; gap: 8px">
+<sc-for list="{{st.plugs}}" as="g" hint-placeholder-count="3">
+<span style="display: flex; flex-direction: column; align-items: center; gap: 1px; padding: 8px 4px; border-radius: 14px; background: #F6F6F6"><span style="font-size: 12.5px; font-weight: 700; color: #1F1F1F">{{g.name}}</span><span style="font-size: 11.5px; color: #6B6B6B">{{g.kw}} kW</span><span style="font-size: 12px; font-weight: 700; color: {{g.color}}">{{g.text}}</span></span>
+</sc-for>
+</div>
+<div style="align-self: stretch; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<button type="button" onClick="{{nav.open}}" style="height: 50px; box-sizing: border-box; border-radius: 14px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; color: #1F1F1F; font-weight: 600; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 21 3l-8 18-2-8-8-2z"></path></svg>นำทาง</button>
+<a href="{{st.chargeHref}}" aria-disabled="{{st.noChargeStr}}" style="height: 50px; border-radius: 14px; background: {{st.chargeBg}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 16px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; pointer-events: {{st.chargePe}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg>{{st.chargeLabel}}</a>
+</div>
+<a href="{{L.Station}}" style="font-size: 13.5px; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 4px; padding: 2px 8px">ดูข้อมูลสถานี<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></a>
+</div>
+
+<nav style="position: absolute; left: 0; right: 0; bottom: 0; height: 84px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding-bottom: 14px; box-sizing: border-box">
+<div aria-hidden="true" style="position: absolute; inset: 0; overflow: hidden; z-index: 0; filter: drop-shadow(0 -4px 14px rgba(0,0,0,0.08))"><svg class="cx-navbg" width="1170" height="84" viewBox="0 0 1170 84" style="position: absolute; top: 0; left: 0; transform: translateX({{nv.bx}}px); transition: transform .5s cubic-bezier(.65,0,.35,1)"><path d="M0 0 H531 C546 0 550 3 556 14 Q567 40 585 40 Q603 40 614 14 C620 3 624 0 639 0 H1170 V84 H0 Z" fill="#FFFFFF"></path></svg></div>
+<span aria-hidden="true" class="cx-fabhalo" style="display: none; position: absolute; z-index: 1; top: -14px; left: 0; width: 48px; height: 48px; border-radius: 50%; background: {{accent}}; translate: {{nv.cx}}px 0; transition: translate .5s cubic-bezier(.65,0,.35,1)"></span>
+<span aria-hidden="true" class="cx-fab" style="position: absolute; z-index: 1; top: -14px; left: 0; width: 48px; height: 48px; border-radius: 50%; background: {{accent}}; box-shadow: 0 6px 14px rgba(252,57,1,0.28); transform: translateX({{nv.cx}}px); transition: transform .5s cubic-bezier(.65,0,.35,1)"></span>
+<a href="{{L.News}}" onClick="{{nv.go0}}" aria-label="หน้าหลัก" style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; font-size: 11px; font-weight: 500; color: {{nv.c0}}">
+<span style="display: flex; transform: translateY({{nv.y0}}px); transition: transform .5s cubic-bezier(.5,1.6,.4,1)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{nv.ic0}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke .3s"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"></path></svg></span>
+<span style="opacity: {{nv.o0}}; transform: translateY({{nv.ly0}}px); transition: opacity .35s, transform .4s">หน้าหลัก</span></a>
+<a href="{{L.Home}}" onClick="{{nv.go1}}" aria-label="แผนที่" style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; font-size: 11px; font-weight: 500; color: {{nv.c1}}">
+<span style="display: flex; transform: translateY({{nv.y1}}px); transition: transform .5s cubic-bezier(.5,1.6,.4,1)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{nv.ic1}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke .3s"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21zM14.5 9.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 1 1 5 0z"></path></svg></span>
+<span style="opacity: {{nv.o1}}; transform: translateY({{nv.ly1}}px); transition: opacity .35s, transform .4s">แผนที่</span></a>
+<a href="{{L.Scan}}" onClick="{{nv.go2}}" aria-label="การชาร์จ (สแกน QR)" style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; font-size: 11px; font-weight: 500; color: {{nv.c2}}">
+<span class="cx-chg" style="display: flex; width: 46px; height: 46px; margin-top: -20px; border-radius: 50%; align-items: center; justify-content: center; background: linear-gradient(145deg, #FF7A3D 0%, {{accent}} 55%, #C42D00 100%); box-shadow: 0 0 0 4px #FFFFFE, 0 8px 18px rgba(252,57,1,0.45); transform: translateY({{nv.y2}}px); transition: transform .5s cubic-bezier(.5,1.6,.4,1)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{nv.ic2}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke .3s"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg></span>
+<span style="opacity: {{nv.o2}}; transform: translateY({{nv.ly2}}px); transition: opacity .35s, transform .4s">การชาร์จ</span></a>
+<a href="{{L.Wallet}}" onClick="{{nv.go3}}" aria-label="กระเป๋าเงิน" style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; font-size: 11px; font-weight: 500; color: {{nv.c3}}">
+<span style="display: flex; transform: translateY({{nv.y3}}px); transition: transform .5s cubic-bezier(.5,1.6,.4,1)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{nv.ic3}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke .3s"><path d="M6 6h12a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3zM3 10h18M16 15h2"></path></svg></span>
+<span style="opacity: {{nv.o3}}; transform: translateY({{nv.ly3}}px); transition: opacity .35s, transform .4s">กระเป๋าเงิน</span></a>
+<a href="{{L.Profile}}" onClick="{{nv.go4}}" aria-label="โปรไฟล์" style="position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; font-size: 11px; font-weight: 500; color: {{nv.c4}}">
+<span style="display: flex; transform: translateY({{nv.y4}}px); transition: transform .5s cubic-bezier(.5,1.6,.4,1)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{nv.ic4}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke .3s"><path d="M16 8a4 4 0 1 1-8 0a4 4 0 1 1 8 0zM4 21a8 8 0 0 1 16 0"></path></svg></span>
+<span style="opacity: {{nv.o4}}; transform: translateY({{nv.ly4}}px); transition: opacity .35s, transform .4s">โปรไฟล์</span></a>
+<a href="{{L.News}}" ref="{{nv.r0}}" tabindex="-1" aria-hidden="true" style="position: absolute; left: 0; bottom: 0; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none"></a>
+<a href="{{L.Home}}" ref="{{nv.r1}}" tabindex="-1" aria-hidden="true" style="position: absolute; left: 0; bottom: 0; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none"></a>
+<a href="{{L.Scan}}" ref="{{nv.r2}}" tabindex="-1" aria-hidden="true" style="position: absolute; left: 0; bottom: 0; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none"></a>
+<a href="{{L.Wallet}}" ref="{{nv.r3}}" tabindex="-1" aria-hidden="true" style="position: absolute; left: 0; bottom: 0; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none"></a>
+<a href="{{L.Profile}}" ref="{{nv.r4}}" tabindex="-1" aria-hidden="true" style="position: absolute; left: 0; bottom: 0; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none"></a>
+</nav>
+
+<sc-if value="{{nav.isOpen}}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; inset: 0; z-index: 30; display: flex; flex-direction: column; justify-content: flex-end">
+<div onClick="{{nav.close}}" class="cx-fade" style="position: absolute; inset: 0; background: rgba(10,10,12,0.5)"></div>
+<div role="dialog" aria-label="เลือกแอปนำทาง" class="cx-sheet" style="position: relative; background: #FFFFFF; border-radius: 28px 28px 0 0; padding: 12px 20px 32px; display: flex; flex-direction: column; gap: 10px">
+<span style="align-self: center; width: 40px; height: 5px; border-radius: 3px; background: #E0E0E0"></span>
+<span style="margin-top: 6px; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 19px; color: #1F1F1F">นำทางไปยังสถานี</span>
+<span style="margin-top: -6px; font-size: 13.5px; color: #6B6B6B">{{st.name}} · {{st.dist}}</span>
+<sc-for list="{{nav.apps}}" as="m" hint-placeholder-count="3">
+<a href="{{m.url}}" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 16px; border: 1px solid #EFEFEF; background: #FFFFFF; text-decoration: none">
+<span style="width: 40px; height: 40px; flex: none; border-radius: 12px; background: {{m.bg}}; color: #FFFFFF; font-weight: 700; font-size: 16px; display: flex; align-items: center; justify-content: center">{{m.mark}}</span>
+<span style="flex: 1; display: flex; flex-direction: column"><span style="font-weight: 600; font-size: 15px; color: #1F1F1F">{{m.name}}</span><span style="font-size: 12.5px; color: #6B6B6B">{{m.sub}}</span></span>
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+</sc-for>
+<button type="button" onClick="{{nav.close}}" style="margin-top: 4px; height: 50px; border-radius: 16px; border: 0; background: #F4F4F4; font-family: inherit; font-size: 16px; font-weight: 600; color: #3A3A3A; cursor: pointer">ยกเลิก</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{fx.isOpen}}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; inset: 0; z-index: 30; display: flex; flex-direction: column; justify-content: flex-end">
+<div onClick="{{fx.close}}" class="cx-fade" style="position: absolute; inset: 0; background: rgba(10,10,12,0.5)"></div>
+<div role="dialog" aria-label="ตัวกรองสถานี" class="cx-sheet" style="position: relative; background: #FFFFFF; border-radius: 28px 28px 0 0; padding: 12px 20px 30px; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: center; width: 40px; height: 5px; border-radius: 3px; background: #E0E0E0"></span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 20px; color: #1F1F1F">ตัวกรอง</span><button type="button" onClick="{{fx.reset}}" style="border: 0; background: transparent; font-family: inherit; font-size: 14px; font-weight: 600; color: #C42D00; cursor: pointer; padding: 8px 0">ล้างทั้งหมด</button></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; font-weight: 600; color: #3A3A3A">ประเภทหัวชาร์จ</span>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><sc-for list="{{fx.types}}" as="t" hint-placeholder-count="3"><button type="button" onClick="{{t.pick}}" aria-pressed="{{t.on}}" style="{{t.style}}">{{t.label}}</button></sc-for></div></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 13px; font-weight: 600; color: #3A3A3A">กำลังไฟขั้นต่ำ</span>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 4px; border-radius: 14px; background: #F4F4F4"><sc-for list="{{fx.kws}}" as="w" hint-placeholder-count="3"><button type="button" onClick="{{w.pick}}" style="{{w.style}}">{{w.label}}</button></sc-for></div></div>
+<sc-for list="{{fx.toggles}}" as="o" hint-placeholder-count="2">
+<button type="button" role="switch" aria-checked="{{o.on}}" onClick="{{o.pick}}" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 4px 0; border: 0; background: transparent; font-family: inherit; cursor: pointer; text-align: left">
+<span style="display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600; color: #1F1F1F">{{o.label}}</span><span style="font-size: 12.5px; color: #6B6B6B">{{o.sub}}</span></span>
+<span style="width: 50px; height: 30px; flex: none; box-sizing: border-box; border-radius: 15px; padding: 3px; background: {{o.track}}; display: flex; justify-content: {{o.pos}}; transition: background .2s"><span style="width: 24px; height: 24px; border-radius: 50%; background: #FFFFFE; box-shadow: 0 1px 3px rgba(0,0,0,0.25)"></span></span>
+</button>
+</sc-for>
+<button type="button" onClick="{{fx.close}}" style="margin-top: 4px; height: 54px; border-radius: 16px; border: 0; background: {{accent}}; font-family: Sarabun, sans-serif; font-size: 18px; font-weight: 600; color: #FFFFFF; cursor: pointer">แสดง {{fx.shown}} สถานี</button>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+static {
+const P = this.prototype;
+const TR = {"ชาร์จเร็ว DC": "DC fast charging", "หรือ": "or", "ชื่อ": "First name", "ค้นหาสถานี": "Find station", "หน้าหลัก": "Home", "แผนที่": "Map", "การชาร์จ": "Charge", "กระเป๋าเงิน": "Wallet", "โปรไฟล์": "Profile", "การชาร์จ (สแกน QR)": "Charge (scan QR)", "ทั้งหมด": "All", "แขวงบางนา": "Bang Na", "ถ.บางนา-ตราด": "Bang Na-Trat Rd", "ถ.ศรีนครินทร์": "Srinakarin Rd", "ซ.บางนา-ตราด 25": "Soi Bang Na-Trat 25", "ถ.กิ่งแก้ว": "King Kaeo Rd", "คลองบางนา": "Khlong Bang Na", "สวนสาธารณะ": "Park", "สนามกีฬา": "Stadium", "ม.รามคำแหง บางนา": "Ramkhamhaeng U. Bang Na", "โรงพยาบาล": "Hospital", "โรงแรม": "Hotel", "คาเฟ่": "Café", "ห้างสรรพสินค้า": "Mall", "ว่าง": "Available", "เต็ม": "Full", "ปิดปรับปรุง": "Under maintenance", "นำทาง": "Navigate", "ดูข้อมูลสถานี": "Station info", "นำทางไปยังสถานี": "Navigate to station", "ยกเลิก": "Cancel", "ตัวกรอง": "Filters", "ล้างทั้งหมด": "Clear all", "ประเภทหัวชาร์จ": "Connector type", "กำลังไฟขั้นต่ำ": "Minimum power", "สถานีอีก 5 แห่งในบริเวณนี้": "5 more stations in this area", "ค้นหาสถานีหรือสถานที่": "Search stations or places", "ค้นหาสถานีชาร์จ": "Search charging stations", "สถานะสถานี": "Station status", "ชั้นแผนที่": "Map layers", "ไปที่ตำแหน่งของฉัน": "Go to my location", "เลือกแอปนำทาง": "Choose a navigation app", "ตัวกรองสถานี": "Station filters", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "ถ.บางนา-ตราด กม.6 แขวงบางนา เขตบางนา กรุงเทพฯ": "Bang Na-Trat Rd Km 6, Bang Na, Bangkok", "24 ชม.": "24 hrs", "เมกา บางนา (ลานจอด P3)": "Mega Bangna (Car park P3)", "ถ.บางนา-ตราด กม.8 ต.บางแก้ว อ.บางพลี สมุทรปราการ": "Bang Na-Trat Rd Km 8, Bang Kaeo, Bang Phli, Samut Prakan", "ไบเทค บางนา (อาคาร 2)": "BITEC Bangna (Hall 2)", "88 ถ.บางนา-ตราด แขวงบางนา เขตบางนา กรุงเทพฯ": "88 Bang Na-Trat Rd, Bang Na, Bangkok", "[ชื่อสถานี] บางนา-ตราด กม.4": "[Station name] Bang Na-Trat Km 4", "[ที่อยู่สถานี] ถ.บางนา-ตราด กม.4": "[Station address] Bang Na-Trat Rd Km 4", "[ชื่อสถานี] กิ่งแก้ว": "[Station name] King Kaeo", "[ที่อยู่สถานี] ถ.กิ่งแก้ว": "[Station address] King Kaeo Rd", "ว่าง ": "Available ", " จาก ": " of ", "ปิด": "Closed", "ใช้งานเต็ม": "All in use", "เต็ม ": "Full ", "เริ่มชาร์จ": "Start charging", "เต็มอยู่": "Full now", "ปิดอยู่": "Closed now", "นำทางด้วย Google Maps": "Navigate with Google Maps", "สำหรับ iPhone": "For iPhone", "นำทางพร้อมสภาพจราจร": "Navigation with live traffic", "แสดงเฉพาะสถานีที่ว่าง": "Show available stations only", "ซ่อนสถานีที่เต็มหรือปิดปรับปรุง": "Hide full or closed stations", "เปิด 24 ชั่วโมง": "Open 24 hours", "สถานีที่ชาร์จได้ตลอดเวลา": "Stations you can use any time", "กำลังไฟ": "Power", "นาที": "min", "เวลา": "Time", "สแกน QR": "Scan QR", "กม.": "km", "ชม.": "hrs"};
+const PT = [["^แสดง\\ (.+?)\\ สถานี$", "Show {1} stations"]].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["ถ.บางนา-ตราด กม.8 ต.บางแก้ว อ.บางพลี สมุทรปราการ", "ถ.บางนา-ตราด กม.6 แขวงบางนา เขตบางนา กรุงเทพฯ", "88 ถ.บางนา-ตราด แขวงบางนา เขตบางนา กรุงเทพฯ", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "[ที่อยู่สถานี] ถ.บางนา-ตราด กม.4", "ซ่อนสถานีที่เต็มหรือปิดปรับปรุง", "[ชื่อสถานี] บางนา-ตราด กม.4", "สถานีอีก 5 แห่งในบริเวณนี้", "[ที่อยู่สถานี] ถ.กิ่งแก้ว", "สถานีที่ชาร์จได้ตลอดเวลา", "เมกา บางนา (ลานจอด P3)", "ค้นหาสถานีหรือสถานที่", "ไบเทค บางนา (อาคาร 2)", "นำทางด้วย Google Maps", "แสดงเฉพาะสถานีที่ว่าง", "[ชื่อสถานี] กิ่งแก้ว", "นำทางพร้อมสภาพจราจร", "การชาร์จ (สแกน QR)", "ไปที่ตำแหน่งของฉัน", "ม.รามคำแหง บางนา", "ซ.บางนา-ตราด 25", "นำทางไปยังสถานี", "ค้นหาสถานีชาร์จ", "เปิด 24 ชั่วโมง", "ห้างสรรพสินค้า", "ประเภทหัวชาร์จ", "กำลังไฟขั้นต่ำ", "ถ.ศรีนครินทร์", "ดูข้อมูลสถานี", "เลือกแอปนำทาง", "สำหรับ iPhone", "ชาร์จเร็ว DC", "ถ.บางนา-ตราด", "ตัวกรองสถานี", "กระเป๋าเงิน", "ปิดปรับปรุง", "ล้างทั้งหมด", "ค้นหาสถานี", "ถ.กิ่งแก้ว", "สวนสาธารณะ", "สถานะสถานี", "ชั้นแผนที่", "ใช้งานเต็ม", "เริ่มชาร์จ", "แขวงบางนา", "คลองบางนา", "โรงพยาบาล", "หน้าหลัก", "การชาร์จ", "สนามกีฬา", "เต็มอยู่", "โปรไฟล์", "ทั้งหมด", "ตัวกรอง", "ปิดอยู่", "กำลังไฟ", "สแกน QR", "แผนที่", "โรงแรม", "ยกเลิก", "24 ชม.", "คาเฟ่", "นำทาง", "ว่าง ", " จาก ", "เต็ม ", "หรือ", "ชื่อ", "ว่าง", "เต็ม", "นาที", "เวลา", "ปิด", "กม.", "ชม."];
+const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
+const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
+const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
+P.cxLang = function () { if (this.state && (this.state.lang === 'en' || this.state.lang === 'th')) return this.state.lang; const pl = this.props.lang; if (pl === 'English') return 'en'; if (pl === 'ไทย') return 'th'; try { return localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) { return 'th'; } };
+P.cxWalk = function () {
+const r = this._cxRoot; if (!r || typeof document === 'undefined') return;
+const en = this.cxLang() === 'en';
+const O = this._cxOrig || (this._cxOrig = new Map());
+if (!en) { O.forEach((v, node) => { if (v.t != null && node.nodeValue === v.e) node.nodeValue = v.t; if (v.a) for (const a in v.a) { if (node.getAttribute(a) === v.a[a].e) node.setAttribute(a, v.a[a].t); } }); O.clear(); if (this._cxObs) { this._cxObs.disconnect(); this._cxObs = null; } return; }
+const w = document.createTreeWalker(r, 5, { acceptNode: (x) => (x.nodeType === 1 && x.getAttribute('translate') === 'no') ? 2 : 1 });
+let x = w.currentNode;
+while (x) {
+if (x.nodeType === 3) { const v = x.nodeValue; if (THR.test(v)) { const e = tx(v); if (e !== v) { O.set(x, { t: v, e }); x.nodeValue = e; } } }
+else if (x.nodeType === 1) { for (const a of ATTRS) { const v = x.getAttribute(a); if (v && THR.test(v)) { const e = tx(v); if (e !== v) { const rec = O.get(x) || {}; rec.a = rec.a || {}; rec.a[a] = { t: v, e }; O.set(x, rec); x.setAttribute(a, e); } } } }
+x = w.nextNode();
+}
+if (!this._cxObs && typeof MutationObserver !== 'undefined') { this._cxObs = new MutationObserver(() => { if (this._cxQ) return; this._cxQ = true; Promise.resolve().then(() => { this._cxQ = false; this.cxWalk(); }); }); this._cxObs.observe(r, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS }); }
+};
+const cdm = P.componentDidMount, cdu = P.componentDidUpdate, cwu = P.componentWillUnmount, rv = P.renderVals;
+P.componentDidMount = function () { if (cdm) cdm.call(this); this.cxWalk(); setTimeout(() => this.cxWalk(), 60); if (typeof window !== 'undefined') { this._cxL = (e) => { if (!e || !e.key || e.key === 'cx-lang') { this.cxWalk(); } }; window.addEventListener('storage', this._cxL); window.addEventListener('cx-lang', this._cxL); } };
+P.componentDidUpdate = function (a, b) { if (cdu) cdu.call(this, a, b); this.cxWalk(); };
+P.componentWillUnmount = function () { if (this._cxObs) this._cxObs.disconnect(); if (this._cxL && typeof window !== 'undefined') { window.removeEventListener('storage', this._cxL); window.removeEventListener('cx-lang', this._cxL); } if (cwu) cwu.call(this); };
+P.renderVals = function () { const v = rv.call(this) || {}; v.cxRef = (el) => { this._cxRoot = el; }; v.cxLangProp = this.props.lang || 'ตามแอป'; return v; };
+}
+
+static {
+const P2 = this.prototype;
+const rv2 = P2.renderVals;
+P2.componentWillUnmount = ((cw) => function () { clearTimeout(this._navT); if (cw) cw.call(this); })(P2.componentWillUnmount);
+P2.renderVals = function () {
+const v = rv2.call(this) || {};
+const a = (this.state && this.state.navA != null) ? this.state.navA : 1;
+const nv = { bx: 39 + 78 * a - 585, cx: 39 + 78 * a - 24 };
+for (let i = 0; i < 5; i++) {
+const on = i === a;
+nv['y' + i] = on ? -14 : 0;
+nv['ly' + i] = on ? 2 : 0;
+nv['o' + i] = 1;
+nv['ic' + i] = on || i === 2 ? '#FFFFFF' : 'currentColor';
+nv['c' + i] = on || i === 2 ? (v.accent || '#FC3901') : '#6B6B6B';
+nv['r' + i] = (el) => { if (!this._navR) this._navR = []; this._navR[i] = el; };
+nv['go' + i] = (e) => {
+e.preventDefault();
+this.setState({ navA: i });
+clearTimeout(this._navT);
+this._navT = setTimeout(() => { const t = this._navR && this._navR[i]; if (t) t.click(); this._navT = setTimeout(() => this.setState({ navA: 1 }), 700); }, 520);
+};
+}
+v.nv = nv;
+return v;
+};
+}
+static {
+const P = this.prototype;
+const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide','News','Notify','Home','Station','Scan','Confirm','Charging','Complete','Wallet','Topup','Cards','Vehicles','Saved','Prefs','Help','Support','Privacy','Profile'];
+const rv = P.renderVals;
+P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
+}
+constructor(props) { super(props); this.state = { picked: 'all', sel: 's1', nav: false, fx: false, types: [], minKw: 0, onlyFree: false, open24: false }; }
+renderVals() {
+const accent = this.props.accent ?? '#FC3901';
+const d = this.props.theme === 'dark';
+const pre = (n) => n + (d ? 'Dark' : '') + '.dc.html';
+const S = [
+{ id: 's1', name: 'มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา', x: 202, y: 336, status: 'avail', free: 8, total: 10, dist: '1.2 กม.', addr: 'ถ.บางนา-ตราด กม.6 แขวงบางนา เขตบางนา กรุงเทพฯ', hours: '24 ชม.', open24: true, price: '7.5', lat: 13.6669, lng: 100.6447, plugs: [['CCS2', 150, 3, 4], ['Type 2', 22, 4, 4], ['CHAdeMO', 50, 1, 2]] },
+{ id: 's2', name: 'เมกา บางนา (ลานจอด P3)', x: 92, y: 452, status: 'avail', free: 3, total: 4, dist: '2.8 กม.', addr: 'ถ.บางนา-ตราด กม.8 ต.บางแก้ว อ.บางพลี สมุทรปราการ', hours: '10:00–22:00', open24: false, price: '8.0', lat: 13.6467, lng: 100.6800, plugs: [['CCS2', 120, 2, 2], ['Type 2', 22, 1, 2]] },
+{ id: 's3', name: 'ไบเทค บางนา (อาคาร 2)', x: 338, y: 262, status: 'avail', free: 2, total: 6, dist: '3.1 กม.', addr: '88 ถ.บางนา-ตราด แขวงบางนา เขตบางนา กรุงเทพฯ', hours: '08:00–20:00', open24: false, price: '7.9', lat: 13.6694, lng: 100.6113, plugs: [['CCS2', 60, 1, 4], ['Type 2', 22, 1, 2]] },
+{ id: 's4', name: '[ชื่อสถานี] บางนา-ตราด กม.4', x: 318, y: 336, status: 'busy', free: 0, total: 2, dist: '1.9 กม.', addr: '[ที่อยู่สถานี] ถ.บางนา-ตราด กม.4', hours: '24 ชม.', open24: true, price: '7.5', lat: 13.6670, lng: 100.6300, plugs: [['CCS2', 120, 0, 2]] },
+{ id: 's5', name: '[ชื่อสถานี] กิ่งแก้ว', x: 252, y: 448, status: 'off', free: 0, total: 3, dist: '2.2 กม.', addr: '[ที่อยู่สถานี] ถ.กิ่งแก้ว', hours: '24 ชม.', open24: true, price: '6.5', lat: 13.6500, lng: 100.7300, plugs: [['Type 2', 22, 0, 2], ['CHAdeMO', 50, 0, 1]] }
+];
+const st8 = this.state;
+const matches = (s) => {
+if (st8.types.length && !s.plugs.some((g) => st8.types.includes(g[0]))) return false;
+if (st8.minKw && Math.max(...s.plugs.map((g) => g[1])) < st8.minKw) return false;
+if (st8.onlyFree && !(s.status === 'avail' && s.free > 0)) return false;
+if (st8.open24 && !s.open24) return false;
+if (st8.picked === 'dc' && !s.plugs.some((g) => g[1] >= 50)) return false;
+if (st8.picked === 'ac' && !s.plugs.some((g) => g[0] === 'Type 2')) return false;
+if (st8.picked === 'free' && !(s.status === 'avail' && s.free > 0)) return false;
+return true;
+};
+const SC = { avail: '#1E9E5A', busy: accent, off: '#8A8A8A' };
+const pins = S.map((s) => {
+const sel = st8.sel === s.id; const vis = matches(s);
+return {
+sel, selStr: sel ? 'true' : 'false',
+pick: () => this.setState({ sel: s.id }),
+aria: s.name + ' · ' + (s.status === 'avail' ? 'ว่าง ' + s.free + ' จาก ' + s.total : s.status === 'busy' ? 'เต็ม' : 'ปิดปรับปรุง'),
+wrap: 'position: absolute; left: ' + (s.x - 18) + 'px; top: ' + (s.y - 46) + 'px; width: 36px; height: 46px; padding: 0; border: 0; background: transparent; cursor: pointer; transform-origin: 50% 100%; transition: transform .25s cubic-bezier(.3,1.6,.5,1), opacity .25s; transform: scale(' + (sel ? 1.3 : 1) + '); z-index: ' + (sel ? 3 : 2) + '; display: ' + (vis ? 'block' : 'none'),
+fill: s.status === 'avail' ? (sel ? '#1E9E5A' : '#FFFFFF') : s.status === 'busy' ? (sel ? accent : '#FFFFFF') : '#F4F4F4',
+stroke: s.status === 'avail' ? (sel ? '#FFFFFF' : '#1E9E5A') : s.status === 'busy' ? (sel ? '#FFFFFF' : accent) : '#9A9A9A',
+bolt: s.status === 'avail' ? (sel ? '#FFFFFF' : '#1E9E5A') : s.status === 'busy' ? (sel ? '#FFFFFF' : accent) : '#9A9A9A',
+badge: s.status === 'avail' ? s.free + '/' + s.total : s.status === 'busy' ? 'เต็ม' : 'ปิด',
+halo: s.status === 'avail' ? '#1E9E5A' : s.status === 'busy' ? accent : '#9A9A9A',
+badgeColor: s.status === 'avail' ? '#146C3E' : s.status === 'busy' ? '#C42D00' : '#6B6B6B'
+};
+});
+const cur = S.find((s) => s.id === st8.sel) || S[0];
+const canCharge = cur.status === 'avail' && cur.free > 0;
+const st = {
+cols: 'repeat(' + cur.plugs.length + ', minmax(0, 1fr))', name: cur.name, dist: cur.dist, addr: cur.addr, hours: cur.hours, price: cur.price,
+badge: cur.status === 'avail' ? 'ว่าง ' + cur.free + '/' + cur.total : cur.status === 'busy' ? 'ใช้งานเต็ม' : 'ปิดปรับปรุง',
+badgeStyle: 'flex: none; padding: 5px 10px; border-radius: 10px; font-size: 12.5px; font-weight: 700; white-space: nowrap; ' + (cur.status === 'avail' ? 'background: #E7F6EE; color: #146C3E' : cur.status === 'busy' ? 'background: #FFF1EB; color: #C42D00' : 'background: #F4F4F4; color: #6B6B6B'),
+plugs: cur.plugs.map((g) => ({ name: g[0], kw: g[1], text: cur.status === 'off' ? 'ปิด' : (g[2] > 0 ? 'ว่าง ' + g[2] + '/' + g[3] : 'เต็ม ' + g[2] + '/' + g[3]), color: cur.status === 'off' ? '#8A8A8A' : (g[2] > 0 ? '#146C3E' : '#C42D00') })),
+chargeHref: pre('Scan'), chargeBg: canCharge ? accent : '#BDBDBD', chargePe: canCharge ? 'auto' : 'none', noChargeStr: canCharge ? 'false' : 'true',
+chargeLabel: canCharge ? 'เริ่มชาร์จ' : (cur.status === 'busy' ? 'เต็มอยู่' : 'ปิดอยู่')
+};
+const ll = cur.lat + ',' + cur.lng;
+const nav = {
+isOpen: !!st8.nav, open: () => this.setState({ nav: true }), close: () => this.setState({ nav: false }),
+apps: [
+{ name: 'Google Maps', sub: 'นำทางด้วย Google Maps', mark: 'G', bg: '#1A73E8', url: 'https://www.google.com/maps/dir/?api=1&destination=' + ll },
+{ name: 'Apple Maps', sub: 'สำหรับ iPhone', mark: 'A', bg: '#1F1F1F', url: 'https://maps.apple.com/?daddr=' + ll },
+{ name: 'Waze', sub: 'นำทางพร้อมสภาพจราจร', mark: 'W', bg: '#33CCFF', url: 'https://waze.com/ul?ll=' + ll + '&navigate=yes' }
+]
+};
+const count = st8.types.length + (st8.minKw ? 1 : 0) + (st8.onlyFree ? 1 : 0) + (st8.open24 ? 1 : 0);
+const chipStyle = (on) => 'height: 38px; padding: 0 14px; border-radius: 19px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; border: 1.5px solid ' + (on ? accent : '#E0E0E0') + '; background: ' + (on ? '#FFF1EB' : '#FFFFFF') + '; color: ' + (on ? '#C42D00' : '#3A3A3A');
+const fx = {
+isOpen: !!st8.fx, open: () => this.setState({ fx: true }), close: () => this.setState({ fx: false }),
+reset: () => this.setState({ types: [], minKw: 0, onlyFree: false, open24: false }),
+has: count > 0, count, shown: S.filter(matches).length,
+types: ['CCS2', 'Type 2'].map((t) => { const on = st8.types.includes(t); return { label: t, on: on ? 'true' : 'false', style: chipStyle(on), pick: () => this.setState({ types: on ? st8.types.filter((x) => x !== t) : st8.types.concat([t]) }) }; }),
+kws: [[0, 'ทั้งหมด'], [50, '50 kW+'], [120, '120 kW+']].map(([k, label]) => { const on = st8.minKw === k; return { label, pick: () => this.setState({ minKw: k }), style: 'height: 38px; border: 0; border-radius: 11px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; ' + (on ? 'background: #FFFFFF; color: #1F1F1F; box-shadow: 0 2px 6px rgba(0,0,0,0.08)' : 'background: transparent; color: #6B6B6B') }; }),
+toggles: [['onlyFree', 'แสดงเฉพาะสถานีที่ว่าง', 'ซ่อนสถานีที่เต็มหรือปิดปรับปรุง'], ['open24', 'เปิด 24 ชั่วโมง', 'สถานีที่ชาร์จได้ตลอดเวลา']].map(([k, label, sub]) => { const on = !!st8[k]; return { label, sub, on: on ? 'true' : 'false', track: on ? accent : '#CFCFCF', pos: on ? 'flex-end' : 'flex-start', pick: () => this.setState({ [k]: !st8[k] }) }; })
+};
+const list = [
+{ id: 'all', label: 'ทั้งหมด' },
+{ id: 'dc', label: 'ชาร์จเร็ว DC' },
+{ id: 'ac', label: 'AC' },
+{ id: 'free', label: 'ว่าง' }
+];
+const chips = list.map((c) => {
+const on = this.state.picked === c.id;
+return {
+label: c.label,
+pick: () => this.setState({ picked: c.id }),
+style: 'height: 36px; padding: 0 14px; border-radius: 18px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.06); border: 1px solid ' + (on ? accent : '#E0E0E0') + '; background: ' + (on ? accent : '#FFFFFF') + '; color: ' + (on ? '#FFFFFF' : '#3A3A3A')
+};
+});
+return { accent, chips, pins, st, nav, fx };
+}
+}
+</script>
+</body>
+</html>

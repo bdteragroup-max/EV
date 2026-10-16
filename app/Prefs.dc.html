@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>Charge X — การตั้งค่าการชาร์จ</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#C42D00}a:hover{color:#9E2400}
+[data-theme="dark"]{color-scheme:dark}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFFFFF"]{background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F4F4F4"],[style*="background: #F6F6F6"],[style*="background: #F0F0F0"],[style*="background: rgb(244, 244, 244)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FFF1EB"],[style*="background: #FFE4DA"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF7F3"]{background-color:rgba(252,57,1,.1)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #E7F6EE"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #1F1F1F"],[style*="color: #2B2B2B"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #3A3A3A"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #C42D00"],[style*="color: rgb(196, 45, 0)"]){color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #146C3E"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"]){border-color:#35353B!important}
+[data-theme="dark"] [stroke="#1F1F1F"]{stroke:#F3F3F4}
+[data-theme="dark"][data-theme][style]{background-color:#000000!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="margin-top: -24px; background: #FFFFFF"]{background-color:#000000!important}
+[data-theme="dark"][data-theme][style]{color:#F3F3F4!important}
+[data-theme="dark"] :is(button,input,textarea,select,legend,label){color:inherit}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(31, 31, 31)"],[style*="color: rgb(43, 43, 43)"],[style*="color: rgb(0, 0, 0)"],[style*="color: #000"],[style*="color: black"],[style*="color: #1f1f1f"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(58, 58, 58)"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(92, 92, 92)"],[style*="color: rgb(107, 107, 107)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(196, 45, 0)"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(20, 108, 62)"]{color:#5AD49B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 255, 255)"],[style*="background-color: rgb(255, 255, 255)"]){background-color:#1C1C1E!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(244, 244, 244)"],[style*="background: rgb(246, 246, 246)"],[style*="background: rgb(240, 240, 240)"],[style*="background-color: rgb(244, 244, 244)"],[style*="background-color: rgb(246, 246, 246)"]){background-color:#25252A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(31, 31, 31)"]{background-color:#2C2C31!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 241, 235)"],[style*="background: rgb(255, 228, 218)"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(255, 247, 243)"]{background-color:rgba(252,57,1,.12)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(231, 246, 238)"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(230, 230, 230)"],[style*="background: rgb(237, 237, 237)"],[style*="background: rgb(239, 239, 239)"],[style*="background: rgb(217, 217, 217)"],[style*="background: rgb(218, 218, 218)"]){background-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(51, 51, 51)"]{background-color:#3A3A40!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(189, 189, 189)"]{background-color:#55555C!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="linear-gradient(rgb(255, 255, 255)"]{background:linear-gradient(#000000 72%,rgba(0,0,0,0))!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="repeating-linear-gradient(90deg, rgb(218, 218, 218)"]{background:repeating-linear-gradient(90deg,#3A3A40 0 6px,transparent 6px 12px)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(158, 36, 0)"]{color:#FF8A66!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"],[style*="solid rgb(237, 237, 237)"],[style*="solid rgb(239, 239, 239)"],[style*="solid rgb(212, 212, 212)"],[style*="solid rgb(226, 226, 226)"],[style*="solid rgb(253, 211, 195)"]){border-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="margin-top: -24px; background: rgb(255, 255, 255)"]{background-color:#000000!important}
+.cx-scroll{scrollbar-width:none}.cx-scroll>*{flex-shrink:0}.cx-scroll::-webkit-scrollbar{display:none}
+@keyframes cxSheet{from{transform:translateY(100%)}to{transform:none}}
+.cx-sheet{animation:cxSheet .35s cubic-bezier(.2,.9,.3,1) both}
+@keyframes cxFade{from{opacity:0}to{opacity:1}}
+.cx-fade{animation:cxFade .3s ease-out both}
+@keyframes cxSpin{to{transform:rotate(360deg)}}
+.cx-spin{animation:cxSpin .8s linear infinite;transform-origin:center}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #B86A00"],[style*="color: rgb(184, 106, 0)"]){color:#F0A84A!important}
+@media (prefers-reduced-motion: reduce){.cx-sheet,.cx-fade,.cx-spin{animation:none}}
+
+[data-theme="dark"] [style*="background: #FFF4E0"],[data-theme="dark"] [style*="background: rgb(255, 244, 224)"]{background-color:rgba(240,160,48,.16)!important}
+@keyframes cxPlug{0%,100%{opacity:.35}50%{opacity:1}}
+.cx-plugdot{animation:cxPlug 1.2s ease-in-out infinite}
+
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F; color: #FFFFFF"]{background-color:#1C1C1E!important}
+[data-theme="dark"] .cx-qr{background:#FFFFFF!important;border-color:#FFFFFF!important}
+[data-theme="dark"] .cx-qr span[style*="color: #6B6B6B"]{color:#6B6B6B!important}
+[data-theme="dark"] .cx-ring{box-shadow:0 0 0 10px rgba(46,180,110,.2)!important}
+@keyframes cxPop{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.cx-pop{animation:cxPop .55s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes cxRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.cx-rise{animation:cxRise .5s cubic-bezier(.2,.8,.3,1) .2s both}
+@media (prefers-reduced-motion: reduce){.cx-pop,.cx-rise{animation:none}}
+[data-theme="dark"] .cx-pv{box-shadow:0 14px 30px rgba(0,0,0,.6)!important}
+.cx-in2{width:100%;height:52px;box-sizing:border-box;border-radius:14px;border:1.5px solid #E0E0E0;background:#FFFFFF;padding:0 14px;font-family:inherit;font-size:16px;color:#1F1F1F;outline:none}
+.cx-in2:focus{border-color:#FC3901}
+[data-theme="dark"] .cx-in2{background:#1C1C1E;border-color:#35353B;color:#F3F3F4}
+[data-theme="dark"] .cx-in2:focus{border-color:#FC3901}
+.cx-in2::placeholder{color:#9A9A9A}
+@keyframes cxShake{0%,100%{transform:none}20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+.cx-shake{animation:cxShake .45s ease-in-out both}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FDECEC"]){background-color:rgba(229,62,62,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #B42318"]{color:#FF8A80!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF4E0"]{background-color:rgba(240,160,48,.16)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="dashed #D4D4D4"]{border-color:#45454C!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #E7F6EE"]{background-color:rgba(46,180,110,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FDECEC"]{background-color:rgba(229,62,62,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #B42318"]{color:#FF8A80!important}
+[data-theme="dark"] [fill="#E5484D"]{fill:#FF6B6B}
+</style>
+</helmet>
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F6F6F6; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; display: flex; flex-direction: column">
+<div style="padding: 56px 20px 12px; display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; align-items: center; gap: 8px">
+<a href="{{backHref}}" aria-label="ย้อนกลับ" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 14px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a>
+<h1 style="margin: 0; text-align: center; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 19px">การตั้งค่าการชาร์จ</h1>
+<span></span>
+</div>
+<div class="cx-scroll" ref="{{setScroll}}" style="flex: 1; min-height: 0; overflow-y: auto; padding: 4px 16px 20px; display: flex; flex-direction: column; gap: 12px">
+
+<div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: center; gap: 10px"><span style="width: 26px; height: 26px; flex: none; border-radius: 8px; background: #FFF1EB; color: #C42D00; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center">1</span><span style="display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 700; color: #1F1F1F">เป้าหมายการชาร์จเริ่มต้น</span><span style="font-size: 12px; color: #6B6B6B">ใช้เป็นค่าเริ่มต้นในหน้ายืนยันก่อนชาร์จ</span></span></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 4px; border-radius: 14px; background: #F4F4F4">
+<sc-for list="{{modes}}" as="m" hint-placeholder-count="3"><button type="button" onClick="{{m.pick}}" style="{{m.style}}">{{m.label}}</button></sc-for>
+</div>
+<sc-if value="{{hasStep}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; align-items: center; justify-content: center; gap: 14px">
+<button type="button" onClick="{{dec}}" aria-label="ลด" style="width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-size: 21px; font-weight: 600; color: #1F1F1F; cursor: pointer; line-height: 1">−</button>
+<span style="min-width: 110px; text-align: center; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 28px; color: #1F1F1F">{{targetText}}</span>
+<button type="button" onClick="{{inc}}" aria-label="เพิ่ม" style="width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-size: 21px; font-weight: 600; color: #1F1F1F; cursor: pointer; line-height: 1">+</button>
+</div>
+</sc-if>
+<span style="text-align: center; font-size: 12.5px; color: #6B6B6B">{{targetHint}}</span>
+</div>
+
+<div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: center; gap: 10px"><span style="width: 26px; height: 26px; flex: none; border-radius: 8px; background: #FFF1EB; color: #C42D00; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center">2</span><span style="display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 700; color: #1F1F1F">วิธีชำระเงินเริ่มต้น</span><span style="font-size: 12px; color: #6B6B6B">เปลี่ยนได้ทุกครั้งก่อนเริ่มชาร์จ</span></span></div>
+<sc-for list="{{pays}}" as="p" hint-placeholder-count="2">
+<button type="button" role="radio" aria-checked="{{p.on}}" onClick="{{p.pick}}" style="{{p.style}}">
+<span style="width: 38px; height: 38px; flex: none; border-radius: 12px; background: {{p.bg}}; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{p.fg}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{p.icon}}"></path></svg></span>
+<span style="flex: 1; display: flex; flex-direction: column; text-align: left"><span style="font-size: 14.5px; font-weight: 600; color: #1F1F1F">{{p.name}}</span><span style="font-size: 12.5px; color: #6B6B6B">{{p.sub}}</span></span>
+<span style="width: 20px; height: 20px; flex: none; box-sizing: border-box; border-radius: 50%; border: 2px solid {{p.ring}}; display: flex; align-items: center; justify-content: center"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{p.dot}}"></span></span>
+</button>
+</sc-for>
+<a href="{{L.Cards}}" style="align-self: flex-start; font-size: 13px; font-weight: 600; text-decoration: none">จัดการบัตร ›</a>
+</div>
+
+<div ref="{{setAutoRef}}" style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 12px; border: {{autoBorder}}">
+<div style="display: flex; align-items: center; gap: 10px"><div style="flex: 1"><div style="display: flex; align-items: center; gap: 10px"><span style="width: 26px; height: 26px; flex: none; border-radius: 8px; background: #FFF1EB; color: #C42D00; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center">3</span><span style="display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 700; color: #1F1F1F">เติมเงินอัตโนมัติ</span><span style="font-size: 12px; color: #6B6B6B">เติม Wallet ให้เองเมื่อยอดเหลือน้อย</span></span></div></div><button type="button" role="switch" aria-checked="{{autoStr}}" aria-label="เติมเงินอัตโนมัติ" onClick="{{toggleAuto}}" style="width: 50px; height: 30px; flex: none; border-radius: 15px; border: 0; padding: 3px; cursor: pointer; background: {{autoBg}}; display: flex; justify-content: {{autoPos}}; transition: background .2s"><span style="width: 24px; height: 24px; border-radius: 50%; background: #FFFFFE; box-shadow: 0 1px 3px rgba(0,0,0,0.25)"></span></button></div>
+<sc-if value="{{autoOn}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 2px">
+<span style="font-size: 13px; font-weight: 600; color: #3A3A3A">เมื่อยอดคงเหลือต่ำกว่า</span><div style="display: flex; flex-wrap: wrap; gap: 8px"><sc-for list="{{thrChips}}" as="c" hint-placeholder-count="3"><button type="button" role="radio" aria-checked="{{c.on}}" onClick="{{c.pick}}" style="{{c.style}}">{{c.label}}</button></sc-for></div><span style="font-size: 13px; font-weight: 600; color: #3A3A3A">เติมครั้งละ</span><div style="display: flex; flex-wrap: wrap; gap: 8px"><sc-for list="{{amtChips}}" as="c" hint-placeholder-count="3"><button type="button" role="radio" aria-checked="{{c.on}}" onClick="{{c.pick}}" style="{{c.style}}">{{c.label}}</button></sc-for></div>
+<div style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 12px; background: #F4F4F4; font-size: 13px; color: #3A3A3A"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5C5C5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3zM3 10h18M7 15h3"></path></svg><span style="flex: 1; white-space: nowrap">บัตร •••• [0000]</span><span style="font-weight: 700">{{autoSummary}}</span></div>
+</div>
+</sc-if>
+</div>
+
+<div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 12px; gap: 4px">
+<div style="display: flex; align-items: center; gap: 10px"><span style="width: 26px; height: 26px; flex: none; border-radius: 8px; background: #FFF1EB; color: #C42D00; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center">4</span><span style="display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 700; color: #1F1F1F">การแจ้งเตือนระหว่างชาร์จ</span><span style="font-size: 12px; color: #6B6B6B">แจ้งเตือนผ่านแอปและบนหน้าจอล็อก</span></span></div>
+<div style="display: flex; align-items: center; gap: 12px; min-height: 48px"><span style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 14.5px; font-weight: 600; color: #1F1F1F">ใกล้ถึงเป้าหมาย</span><span style="font-size: 12px; color: #6B6B6B">เมื่อชาร์จได้ 90% ของเป้าหมาย</span></span><button type="button" role="switch" aria-checked="{{n1Str}}" aria-label="ใกล้ถึงเป้าหมาย" onClick="{{t1}}" style="width: 50px; height: 30px; flex: none; border-radius: 15px; border: 0; padding: 3px; cursor: pointer; background: {{n1Bg}}; display: flex; justify-content: {{n1Pos}}; transition: background .2s"><span style="width: 24px; height: 24px; border-radius: 50%; background: #FFFFFE; box-shadow: 0 1px 3px rgba(0,0,0,0.25)"></span></button></div>
+<div style="display: flex; align-items: center; gap: 12px; min-height: 48px"><span style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 14.5px; font-weight: 600; color: #1F1F1F">ชาร์จเสร็จ</span><span style="font-size: 12px; color: #6B6B6B">พร้อมสรุปค่าใช้จ่าย</span></span><button type="button" role="switch" aria-checked="{{n2Str}}" aria-label="ชาร์จเสร็จ" onClick="{{t2}}" style="width: 50px; height: 30px; flex: none; border-radius: 15px; border: 0; padding: 3px; cursor: pointer; background: {{n2Bg}}; display: flex; justify-content: {{n2Pos}}; transition: background .2s"><span style="width: 24px; height: 24px; border-radius: 50%; background: #FFFFFE; box-shadow: 0 1px 3px rgba(0,0,0,0.25)"></span></button></div>
+<div style="display: flex; align-items: center; gap: 12px; min-height: 48px"><span style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 14.5px; font-weight: 600; color: #1F1F1F">เตือนก่อนคิดค่าจอดเกินเวลา</span><span style="font-size: 12px; color: #6B6B6B">แจ้งล่วงหน้า 5 นาที (฿5/นาที หลังชาร์จเสร็จ 15 นาที)</span></span><button type="button" role="switch" aria-checked="{{n3Str}}" aria-label="เตือนก่อนคิดค่าจอดเกินเวลา" onClick="{{t3}}" style="width: 50px; height: 30px; flex: none; border-radius: 15px; border: 0; padding: 3px; cursor: pointer; background: {{n3Bg}}; display: flex; justify-content: {{n3Pos}}; transition: background .2s"><span style="width: 24px; height: 24px; border-radius: 50%; background: #FFFFFE; box-shadow: 0 1px 3px rgba(0,0,0,0.25)"></span></button></div>
+<div style="display: flex; align-items: center; gap: 12px; min-height: 48px"><span style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 14.5px; font-weight: 600; color: #1F1F1F">ยอด Wallet ต่ำ</span><span style="font-size: 12px; color: #6B6B6B">เมื่อยอดคงเหลือต่ำกว่า ฿100</span></span><button type="button" role="switch" aria-checked="{{n4Str}}" aria-label="ยอด Wallet ต่ำ" onClick="{{t4}}" style="width: 50px; height: 30px; flex: none; border-radius: 15px; border: 0; padding: 3px; cursor: pointer; background: {{n4Bg}}; display: flex; justify-content: {{n4Pos}}; transition: background .2s"><span style="width: 24px; height: 24px; border-radius: 50%; background: #FFFFFE; box-shadow: 0 1px 3px rgba(0,0,0,0.25)"></span></button></div>
+</div>
+
+<div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: center; gap: 10px"><span style="width: 26px; height: 26px; flex: none; border-radius: 8px; background: #FFF1EB; color: #C42D00; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center">5</span><span style="display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 700; color: #1F1F1F">ตัวกรองแผนที่เริ่มต้น</span><span style="font-size: 12px; color: #6B6B6B">ใช้ทุกครั้งที่เปิดแผนที่ ปรับเพิ่มได้ในหน้าแผนที่</span></span></div>
+<span style="font-size: 13px; font-weight: 600; color: #3A3A3A">ประเภทการชาร์จ</span><div style="display: flex; flex-wrap: wrap; gap: 8px"><sc-for list="{{typeChips}}" as="c" hint-placeholder-count="3"><button type="button" role="radio" aria-checked="{{c.on}}" onClick="{{c.pick}}" style="{{c.style}}">{{c.label}}</button></sc-for></div><span style="font-size: 13px; font-weight: 600; color: #3A3A3A">กำลังไฟขั้นต่ำ</span><div style="display: flex; flex-wrap: wrap; gap: 8px"><sc-for list="{{kwChips}}" as="c" hint-placeholder-count="4"><button type="button" role="radio" aria-checked="{{c.on}}" onClick="{{c.pick}}" style="{{c.style}}">{{c.label}}</button></sc-for></div>
+<div style="display: flex; align-items: center; gap: 12px; min-height: 48px"><span style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 14.5px; font-weight: 600; color: #1F1F1F">แสดงเฉพาะสถานีที่ว่าง</span><span style="font-size: 12px; color: #6B6B6B">ซ่อนสถานีที่ไม่ว่างหรือปิดปรับปรุง</span></span><button type="button" role="switch" aria-checked="{{faStr}}" aria-label="แสดงเฉพาะสถานีที่ว่าง" onClick="{{tFa}}" style="width: 50px; height: 30px; flex: none; border-radius: 15px; border: 0; padding: 3px; cursor: pointer; background: {{faBg}}; display: flex; justify-content: {{faPos}}; transition: background .2s"><span style="width: 24px; height: 24px; border-radius: 50%; background: #FFFFFE; box-shadow: 0 1px 3px rgba(0,0,0,0.25)"></span></button></div>
+</div>
+<button type="button" onClick="{{reset}}" style="align-self: center; border: 0; background: transparent; font-family: inherit; font-size: 13.5px; font-weight: 600; color: #6B6B6B; text-decoration: underline; cursor: pointer; padding: 6px">คืนค่าเริ่มต้นทั้งหมด</button>
+</div>
+<div style="padding: 12px 16px 32px; background: #FFFFFF; border-top: 1px solid #EDEDED">
+<button type="button" onClick="{{save}}" aria-disabled="{{noSaveStr}}" style="width: 100%; height: 56px; border-radius: 16px; border: 0; background: {{saveBg}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; cursor: pointer; pointer-events: {{savePe}}">{{saveLabel}}</button>
+</div>
+<sc-if value="{{showToast}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" role="status" style="position: absolute; left: 16px; right: 16px; bottom: 110px; z-index: 30; padding: 12px 14px; border-radius: 16px; background: #1F1F1F; color: #FFFFFF; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 24px rgba(0,0,0,0.25)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5AD49B" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg>{{toast}}</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+static {
+const P = this.prototype;
+const TR = {"ถัดไป": "Next", "หรือ": "or", "และ": " and ", "ย้อนกลับ": "Back", "ยืนยัน": "Confirm", "แล้ว": "", "เติมเงิน": "Top up", "แผนที่": "Map", "การชาร์จ": "Charge", "กระเป๋าเงิน": "Wallet", "ทั้งหมด": "All", "การแจ้งเตือน": "Notifications", "ว่าง": "Available", "เต็ม": "Full", "ปิดปรับปรุง": "Under maintenance", "ตัวกรอง": "Filters", "กำลังไฟขั้นต่ำ": "Minimum power", "ปิด": "Closed", "เต็ม ": "Full ", "เริ่มชาร์จ": "Start charging", "แสดงเฉพาะสถานีที่ว่าง": "Show available stations only", "เริ่มต้น": "from", "ค่าบริการ": "Rate", "ค่าจอดเกินเวลา": "Idle fee", "เปลี่ยน": "Change", "จัดการบัตร": "Manage cards", "ลด": "Decrease", "เพิ่ม": "Increase", "ตั้ง %": "Set %", "ตามจำนวนเงิน": "By amount", "ชาร์จเต็ม": "Full charge", "กระเป๋าเงิน Charge-X": "Charge-X wallet", "ยอดคงเหลือ ฿": "Balance ฿", "บัตร •••• [0000]": "Card •••• [0000]", "บัตรเครดิต / เดบิต": "Credit / debit card", "หยุดชาร์จอัตโนมัติเมื่อแบตถึง ": "Stop automatically at ", "ชาร์จจนแบตเต็ม 100%": "Charge to 100%", "กำลังไฟ": "Power", "นาที": "min", "ยอดคงเหลือ ฿500": "Balance ฿500", "เติมเงินอัตโนมัติ": "Auto top-up", "ค่าเริ่มต้น": "Default", "เวลา": "Time", "บัตรเครดิต": "Credit card", "บัตร": "Card", "ตั้ง ": "Set ", "เปิดแผนที่": "Open map", "การตั้งค่าการชาร์จ": "Charging settings", "เป้าหมายการชาร์จเริ่มต้น": "Default charging target", "ใช้เป็นค่าเริ่มต้นในหน้ายืนยันก่อนชาร์จ": "Used as the default on the review screen", "วิธีชำระเงินเริ่มต้น": "Default payment method", "เปลี่ยนได้ทุกครั้งก่อนเริ่มชาร์จ": "You can change it before each charge", "จัดการบัตร ›": "Manage cards ›", "เติม Wallet ให้เองเมื่อยอดเหลือน้อย": "Top up your wallet automatically when it runs low", "เมื่อยอดคงเหลือต่ำกว่า": "When balance falls below", "เติมครั้งละ": "Top up by", "การแจ้งเตือนระหว่างชาร์จ": "Charging alerts", "แจ้งเตือนผ่านแอปและบนหน้าจอล็อก": "In the app and on your lock screen", "ใกล้ถึงเป้าหมาย": "Almost at target", "เมื่อชาร์จได้ 90% ของเป้าหมาย": "At 90% of your target", "ชาร์จเสร็จ": "Charging finished", "พร้อมสรุปค่าใช้จ่าย": "With a cost summary", "เตือนก่อนคิดค่าจอดเกินเวลา": "Before idle fees start", "แจ้งล่วงหน้า 5 นาที (฿5/นาที หลังชาร์จเสร็จ 15 นาที)": "5 min warning (฿5/min from 15 min after charging ends)", "ยอด Wallet ต่ำ": "Low wallet balance", "เมื่อยอดคงเหลือต่ำกว่า ฿100": "When balance falls below ฿100", "ตัวกรองแผนที่เริ่มต้น": "Default map filters", "ใช้ทุกครั้งที่เปิดแผนที่ ปรับเพิ่มได้ในหน้าแผนที่": "Applied whenever you open the map; adjust more on the map", "ประเภทการชาร์จ": "Charging type", "ซ่อนสถานีที่ไม่ว่างหรือปิดปรับปรุง": "Hide busy or closed stations", "คืนค่าเริ่มต้นทั้งหมด": "Reset all to defaults", " · แนะนำ 80% เพื่อถนอมแบต": " · 80% recommended for battery health", "หยุดชาร์จเมื่อค่าบริการถึง ": "Stop when the cost reaches ", "ชาร์จจนแบตเต็ม 100% (ใช้เวลานานขึ้นช่วง 80–100%)": "Charge to 100% (slower from 80–100%)", "บัตรหลัก •••• [0000]": "Main card •••• [0000]", "ต่ำกว่า ": "Below ", " → เติม ": " → add ", "DC ชาร์จเร็ว": "DC fast", "ไม่กำหนด": "Any", "บันทึกการตั้งค่า": "Save settings", "บันทึกแล้ว": "Saved", "บันทึกการตั้งค่าแล้ว · ใช้กับการชาร์จครั้งถัดไป": "Settings saved · applies from your next charge", "บันทึก": "Save", "กม.": "km", "ชม.": "hrs"};
+const PT = [].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["แจ้งล่วงหน้า 5 นาที (฿5/นาที หลังชาร์จเสร็จ 15 นาที)", "ใช้ทุกครั้งที่เปิดแผนที่ ปรับเพิ่มได้ในหน้าแผนที่", "ชาร์จจนแบตเต็ม 100% (ใช้เวลานานขึ้นช่วง 80–100%)", "บันทึกการตั้งค่าแล้ว · ใช้กับการชาร์จครั้งถัดไป", "ใช้เป็นค่าเริ่มต้นในหน้ายืนยันก่อนชาร์จ", "เติม Wallet ให้เองเมื่อยอดเหลือน้อย", "ซ่อนสถานีที่ไม่ว่างหรือปิดปรับปรุง", "เปลี่ยนได้ทุกครั้งก่อนเริ่มชาร์จ", "แจ้งเตือนผ่านแอปและบนหน้าจอล็อก", "หยุดชาร์จอัตโนมัติเมื่อแบตถึง ", "เมื่อชาร์จได้ 90% ของเป้าหมาย", "เมื่อยอดคงเหลือต่ำกว่า ฿100", "หยุดชาร์จเมื่อค่าบริการถึง ", "เตือนก่อนคิดค่าจอดเกินเวลา", " · แนะนำ 80% เพื่อถนอมแบต", "เป้าหมายการชาร์จเริ่มต้น", "การแจ้งเตือนระหว่างชาร์จ", "เมื่อยอดคงเหลือต่ำกว่า", "แสดงเฉพาะสถานีที่ว่าง", "ตัวกรองแผนที่เริ่มต้น", "คืนค่าเริ่มต้นทั้งหมด", "กระเป๋าเงิน Charge-X", "วิธีชำระเงินเริ่มต้น", "บัตรหลัก •••• [0000]", "ชาร์จจนแบตเต็ม 100%", "พร้อมสรุปค่าใช้จ่าย", "บัตรเครดิต / เดบิต", "การตั้งค่าการชาร์จ", "เติมเงินอัตโนมัติ", "บัตร •••• [0000]", "บันทึกการตั้งค่า", "ยอดคงเหลือ ฿500", "ใกล้ถึงเป้าหมาย", "กำลังไฟขั้นต่ำ", "ค่าจอดเกินเวลา", "ยอด Wallet ต่ำ", "ประเภทการชาร์จ", "การแจ้งเตือน", "ตามจำนวนเงิน", "ยอดคงเหลือ ฿", "จัดการบัตร ›", "DC ชาร์จเร็ว", "กระเป๋าเงิน", "ปิดปรับปรุง", "ค่าเริ่มต้น", "เติมครั้งละ", "เริ่มชาร์จ", "จัดการบัตร", "บัตรเครดิต", "เปิดแผนที่", "ชาร์จเสร็จ", "บันทึกแล้ว", "ค่าบริการ", "ชาร์จเต็ม", "ย้อนกลับ", "เติมเงิน", "การชาร์จ", "เริ่มต้น", "ต่ำกว่า ", " → เติม ", "ไม่กำหนด", "ทั้งหมด", "ตัวกรอง", "เปลี่ยน", "กำลังไฟ", "ยืนยัน", "แผนที่", "ตั้ง %", "บันทึก", "ถัดไป", "เต็ม ", "เพิ่ม", "ตั้ง ", "หรือ", "ว่าง", "เต็ม", "นาที", "เวลา", "บัตร", "และ", "ปิด", "กม.", "ชม."];
+const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
+const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
+const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
+P.cxLang = function () { if (this.state && (this.state.lang === 'en' || this.state.lang === 'th')) return this.state.lang; const pl = this.props.lang; if (pl === 'English') return 'en'; if (pl === 'ไทย') return 'th'; try { return localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) { return 'th'; } };
+P.cxWalk = function () {
+const r = this._cxRoot; if (!r || typeof document === 'undefined') return;
+const en = this.cxLang() === 'en';
+const O = this._cxOrig || (this._cxOrig = new Map());
+if (!en) { O.forEach((v, node) => { if (v.t != null && node.nodeValue === v.e) node.nodeValue = v.t; if (v.a) for (const a in v.a) { if (node.getAttribute(a) === v.a[a].e) node.setAttribute(a, v.a[a].t); } }); O.clear(); if (this._cxObs) { this._cxObs.disconnect(); this._cxObs = null; } return; }
+const w = document.createTreeWalker(r, 5, { acceptNode: (x) => (x.nodeType === 1 && x.getAttribute('translate') === 'no') ? 2 : 1 });
+let x = w.currentNode;
+while (x) {
+if (x.nodeType === 3) { const v = x.nodeValue; if (THR.test(v)) { const e = tx(v); if (e !== v) { O.set(x, { t: v, e }); x.nodeValue = e; } } }
+else if (x.nodeType === 1) { for (const a of ATTRS) { const v = x.getAttribute(a); if (v && THR.test(v)) { const e = tx(v); if (e !== v) { const rec = O.get(x) || {}; rec.a = rec.a || {}; rec.a[a] = { t: v, e }; O.set(x, rec); x.setAttribute(a, e); } } } }
+x = w.nextNode();
+}
+if (!this._cxObs && typeof MutationObserver !== 'undefined') { this._cxObs = new MutationObserver(() => { if (this._cxQ) return; this._cxQ = true; Promise.resolve().then(() => { this._cxQ = false; this.cxWalk(); }); }); this._cxObs.observe(r, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS }); }
+};
+const cdm = P.componentDidMount, cdu = P.componentDidUpdate, cwu = P.componentWillUnmount, rv = P.renderVals;
+P.componentDidMount = function () { if (cdm) cdm.call(this); this.cxWalk(); setTimeout(() => this.cxWalk(), 60); if (typeof window !== 'undefined') { this._cxL = (e) => { if (!e || !e.key || e.key === 'cx-lang') { this.cxWalk(); } }; window.addEventListener('storage', this._cxL); window.addEventListener('cx-lang', this._cxL); } };
+P.componentDidUpdate = function (a, b) { if (cdu) cdu.call(this, a, b); this.cxWalk(); };
+P.componentWillUnmount = function () { if (this._cxObs) this._cxObs.disconnect(); if (this._cxL && typeof window !== 'undefined') { window.removeEventListener('storage', this._cxL); window.removeEventListener('cx-lang', this._cxL); } if (cwu) cwu.call(this); };
+P.renderVals = function () { const v = rv.call(this) || {}; v.cxRef = (el) => { this._cxRoot = el; }; v.cxLangProp = this.props.lang || 'ตามแอป'; return v; };
+}
+
+static {
+const P = this.prototype;
+const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide','News','Notify','Home','Station','Scan','Confirm','Charging','Complete','Wallet','Topup','Cards','Vehicles','Saved','Prefs','Help','Support','Privacy','Profile'];
+const rv = P.renderVals;
+P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
+}
+constructor(props) {
+super(props);
+let saved = null, from = 'Profile', focus = null;
+try { saved = JSON.parse(localStorage.getItem('cx-prefs') || 'null'); from = localStorage.getItem('cx-prefs-from') || 'Profile'; focus = localStorage.getItem('cx-prefs-focus'); localStorage.removeItem('cx-prefs-from'); localStorage.removeItem('cx-prefs-focus'); } catch (e) {}
+if (['Profile', 'Wallet'].indexOf(from) < 0) from = 'Profile';
+const base = Object.assign(this.defaults(), saved || {});
+this.state = { p: base, saved: JSON.stringify(base), from, focus, toast: '' };
+}
+defaults() { return { mode: 'pct', pct: 80, baht: 300, pay: 'wallet', auto: false, thr: 100, amt: 500, n1: true, n2: true, n3: true, n4: false, type: 'all', kw: 0, fa: false }; }
+componentDidMount() { if (this.state.focus === 'auto') setTimeout(() => { if (this._sc && this._auto) this._sc.scrollTop = this._auto.offsetTop - 8; }, 120); }
+componentWillUnmount() { clearTimeout(this._toast); }
+renderVals() {
+const accent = this.props.accent ?? '#FC3901';
+const st = this.state; const p = st.p;
+const up = (o) => this.setState({ p: Object.assign({}, this.state.p, o) });
+const chip = (on) => 'height: 38px; padding: 0 14px; border-radius: 12px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; ' + (on ? 'border: 1.5px solid ' + accent + '; background: #FFF1EB; color: #C42D00' : 'border: 1px solid #E0E0E0; background: #FFFFFF; color: #3A3A3A');
+const chips = (key, list, fmt) => list.map((v) => ({ label: fmt(v), on: p[key] === v ? 'true' : 'false', pick: () => up({ [key]: v }), style: chip(p[key] === v) }));
+const sw = (k, v) => ({ [k + 'Str']: v ? 'true' : 'false', [k + 'Bg']: v ? accent : '#CFCFCF', [k + 'Pos']: v ? 'flex-end' : 'flex-start' });
+const ICON = { wallet: 'M6 6h12a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3zM3 10h18M16 15h2', card: 'M3 5h18v14H3zM3 10h18M7 15h3' };
+const dirty = JSON.stringify(p) !== st.saved;
+const fmtB = (n) => '฿' + n.toLocaleString('en-US');
+return Object.assign({
+accent,
+backHref: st.from + (this.props.theme === 'dark' ? 'Dark' : '') + '.dc.html',
+setScroll: (el) => { this._sc = el; }, setAutoRef: (el) => { this._auto = el; }, autoBorder: st.focus === 'auto' ? '1.5px solid ' + accent : '1px solid transparent',
+modes: [['pct', 'ตั้ง %'], ['baht', 'ตามจำนวนเงิน'], ['full', 'ชาร์จเต็ม']].map(([id, label]) => ({ label, pick: () => up({ mode: id }),
+style: 'height: 38px; border: 0; border-radius: 11px; font-family: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer; ' + (p.mode === id ? 'background: #FFFFFF; color: #1F1F1F; box-shadow: 0 2px 6px rgba(0,0,0,0.08)' : 'background: transparent; color: #6B6B6B') })),
+hasStep: p.mode !== 'full',
+targetText: p.mode === 'pct' ? p.pct + '%' : fmtB(p.baht),
+targetHint: p.mode === 'pct' ? 'หยุดชาร์จอัตโนมัติเมื่อแบตถึง ' + p.pct + '%' + (p.pct <= 80 ? ' · แนะนำ 80% เพื่อถนอมแบต' : '') : p.mode === 'baht' ? 'หยุดชาร์จเมื่อค่าบริการถึง ' + fmtB(p.baht) : 'ชาร์จจนแบตเต็ม 100% (ใช้เวลานานขึ้นช่วง 80–100%)',
+dec: () => p.mode === 'pct' ? up({ pct: Math.max(50, p.pct - 5) }) : up({ baht: Math.max(50, p.baht - 50) }),
+inc: () => p.mode === 'pct' ? up({ pct: Math.min(100, p.pct + 5) }) : up({ baht: Math.min(2000, p.baht + 50) }),
+pays: [['wallet', 'กระเป๋าเงิน Charge-X', 'ยอดคงเหลือ ฿500'], ['card', 'บัตรหลัก •••• [0000]', 'บัตรเครดิต / เดบิต']].map(([id, name, sub]) => { const on = p.pay === id; return { name, sub, icon: ICON[id], on: on ? 'true' : 'false', pick: () => up({ pay: id }),
+bg: on ? '#FFF1EB' : '#F4F4F4', fg: on ? accent : '#5C5C5C', ring: on ? accent : '#BDBDBD', dot: on ? accent : 'transparent',
+style: 'width: 100%; display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 16px; font-family: inherit; cursor: pointer; background: ' + (on ? '#FFF7F3' : '#FFFFFF') + '; border: ' + (on ? '1.5px solid ' + accent : '1px solid #E6E6E6') }; }),
+autoOn: p.auto, toggleAuto: () => up({ auto: !p.auto }),
+thrChips: chips('thr', [100, 200, 500], fmtB), amtChips: chips('amt', [300, 500, 1000], fmtB),
+autoSummary: 'ต่ำกว่า ' + fmtB(p.thr) + ' → เติม ' + fmtB(p.amt),
+t1: () => up({ n1: !p.n1 }), t2: () => up({ n2: !p.n2 }), t3: () => up({ n3: !p.n3 }), t4: () => up({ n4: !p.n4 }), tFa: () => up({ fa: !p.fa }),
+typeChips: chips('type', ['all', 'dc', 'ac'], (v) => ({ all: 'ทั้งหมด', dc: 'DC ชาร์จเร็ว', ac: 'AC' })[v]),
+kwChips: chips('kw', [0, 50, 100, 150], (v) => v ? '≥ ' + v + ' kW' : 'ไม่กำหนด'),
+reset: () => this.setState({ p: this.defaults() }),
+saveBg: dirty ? accent : '#BDBDBD', savePe: dirty ? 'auto' : 'none', noSaveStr: dirty ? 'false' : 'true', saveLabel: dirty ? 'บันทึกการตั้งค่า' : 'บันทึกแล้ว',
+save: () => { const s = JSON.stringify(this.state.p); try { localStorage.setItem('cx-prefs', s); } catch (e) {} this.setState({ saved: s, toast: 'บันทึกการตั้งค่าแล้ว · ใช้กับการชาร์จครั้งถัดไป' }); clearTimeout(this._toast); this._toast = setTimeout(() => this.setState({ toast: '' }), 2400); },
+showToast: !!st.toast, toast: st.toast
+}, sw('auto', p.auto), sw('n1', p.n1), sw('n2', p.n2), sw('n3', p.n3), sw('n4', p.n4), sw('fa', p.fa));
+}
+}
+</script>
+</body>
+</html>
