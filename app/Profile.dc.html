@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html lang="th">
 <head>
 <meta charset="utf-8">
@@ -136,6 +137,10 @@ nav > a{position:relative;z-index:1}
 <span style="flex: 1; font-size: 15px; font-weight: 500">{{t.lang}}</span>
 <span style="font-size: 14px; color: #5C5C5C">{{t.langVal}}</span>
 <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></a>
+<a href="{{L.Guide}}" onClick="{{replayTutorial}}" style="display: flex; align-items: center; gap: 14px; min-height: 50px; text-decoration: none; color: #1F1F1F; border-bottom: 1px solid #EFEFEF">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6M3.5 15a9 9 0 1 0 2.1-9.4L1 10"></path></svg>
+<span style="flex: 1; font-size: 15px; font-weight: 500">{{t.replayTut}}</span>
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"></path></svg></a>
 <a href="{{L.Help}}" style="display: flex; align-items: center; gap: 14px; min-height: 50px; text-decoration: none; color: #1F1F1F; border-bottom: 1px solid #EFEFEF">
 <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 2h13v-4M9 8h6M9 12h4"></path></svg>
 <span style="flex: 1; font-size: 15px; font-weight: 500">{{t.guide}}</span>
@@ -195,6 +200,21 @@ nav > a{position:relative;z-index:1}
 <span style="font-size: 12.5px; color: #6B6B6B">แตะไอคอนกล้องเพื่อเปลี่ยนรูป</span>
 </div>
 
+<div style="background: #FFFFFF; border: 1px solid #EFEFEF; border-radius: 14px; padding: 4px; display: grid; grid-template-columns: 1fr 1fr; gap: 4px" role="tablist" aria-label="แสดงข้อมูลผู้ใช้งาน">
+<button type="button" role="tab" aria-selected="{{editViewSel}}" onClick="{{toViewTab}}" style="{{viewTabStyle}}">ข้อมูลผู้ใช้งาน</button>
+<button type="button" role="tab" aria-selected="{{editFormSel}}" onClick="{{toEditTab}}" style="{{editTabStyle}}">แก้ไขข้อมูล</button>
+</div>
+
+<sc-if value="{{isEditView}}" hint-placeholder-val="{{ false }}">
+<div style="background: #FFFFFF; border-radius: 22px; padding: 6px 16px; display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 13px 0; border-bottom: 1px solid #EFEFEF"><span style="font-size: 13.5px; color: #6B6B6B; flex: none">ชื่อ-นามสกุล</span><span style="font-size: 14.5px; font-weight: 700; color: #1F1F1F; text-align: right; min-width: 0; overflow-wrap: anywhere">{{dFullName}}</span></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 13px 0; border-bottom: 1px solid #EFEFEF"><span style="font-size: 13.5px; color: #6B6B6B; flex: none">อีเมล</span><span style="font-size: 14.5px; font-weight: 600; color: #1F1F1F; text-align: right; min-width: 0; overflow-wrap: anywhere">{{dEmailShow}}</span></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 13px 0; border-bottom: 1px solid #EFEFEF"><span style="font-size: 13.5px; color: #6B6B6B; flex: none">วัน/เดือน/ปีเกิด</span><span style="font-size: 14.5px; font-weight: 600; color: #1F1F1F; text-align: right">{{dDobShow}}</span></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 13px 0"><span style="font-size: 13.5px; color: #6B6B6B; flex: none">เบอร์โทรศัพท์</span><span style="font-size: 14.5px; font-weight: 600; color: #1F1F1F; text-align: right">{{dPhoneShow}}</span></div>
+</div>
+</sc-if>
+
+<sc-if value="{{isEditForm}}" hint-placeholder-val="{{ true }}">
 <div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
 <span style="font-size: 14px; font-weight: 700">ข้อมูลส่วนตัว</span>
 <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-items: end">
@@ -204,13 +224,19 @@ nav > a{position:relative;z-index:1}
 <label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">เบอร์โทรศัพท์<input class="cx-in3" type="tel" inputmode="numeric" autocomplete="tel" value="{{dPhone}}" aria-invalid="{{phoneBad}}" onInput="{{onPhone}}" placeholder="08X-XXX-XXXX"></label>
 <sc-if value="{{phoneChanged}}" hint-placeholder-val="{{ false }}"><span style="margin-top: -4px; padding: 8px 10px; border-radius: 10px; background: #FFF4E0; color: #B86A00; font-size: 12.5px; font-weight: 600">เปลี่ยนเบอร์โทรต้องยืนยันด้วยรหัส OTP ที่ส่งไปยังเบอร์ใหม่</span></sc-if>
 <label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">อีเมล<input class="cx-in3" type="email" autocomplete="email" value="{{dEmail}}" aria-invalid="{{emailBad}}" onInput="{{onEmail}}" placeholder="name@example.com"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">วัน/เดือน/ปีเกิด<input class="cx-in3" type="date" autocomplete="bday" value="{{dDob}}" aria-invalid="{{dobBad}}" onInput="{{onDob}}"></label>
 </div>
-
+</sc-if>
 
 </div>
 <div style="padding: 12px 16px 32px; background: #FFFFFF; border-top: 1px solid #EDEDED; display: flex; flex-direction: column; gap: 8px">
+<sc-if value="{{isEditForm}}" hint-placeholder-val="{{ true }}">
 <sc-if value="{{hasErr}}" hint-placeholder-val="{{ false }}"><span style="text-align: center; font-size: 12.5px; font-weight: 600; color: #B42318">{{errText}}</span></sc-if>
 <button type="button" onClick="{{save}}" aria-disabled="{{noSaveStr}}" style="height: 56px; border-radius: 16px; border: 0; background: {{saveBg}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; cursor: pointer; pointer-events: {{savePe}}">บันทึก</button>
+</sc-if>
+<sc-if value="{{isEditView}}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{toEditTab}}" style="height: 56px; border-radius: 16px; border: 0; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; cursor: pointer">แก้ไขข้อมูล</button>
+</sc-if>
 </div>
 </div>
 </sc-if>
@@ -239,7 +265,6 @@ nav > a{position:relative;z-index:1}
 <div style="width: 200px; padding: 22px; border-radius: 22px; background: #FFFFFF; display: flex; flex-direction: column; align-items: center; gap: 10px"><svg class="cx-spin" aria-hidden="true" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2.4" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"></path></svg><span style="font-size: 15px; font-weight: 700; color: #1F1F1F">กำลังบันทึก…</span></div>
 </div>
 </sc-if>
-
 
 <sc-if value="{{showLang}}" hint-placeholder-val="{{ false }}">
 <div class="cx-fade" style="position: absolute; inset: 0; z-index: 45; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: flex-end">
@@ -270,9 +295,9 @@ nav > a{position:relative;z-index:1}
 class Component extends DCLogic {
 static {
 const P = this.prototype;
-const TR = {"ความเป็นส่วนตัวและข้อกำหนด": "Privacy & terms", "เปลี่ยนภาษา": "Change language", "และ": " and ", "แก้ไข": "Edit", "ยืนยัน": "Confirm", "ลบ": "Delete", "เบอร์โทรศัพท์": "Phone number", "อีเมล": "Email", "แล้ว": "", "ชื่อ": "First name", "นามสกุล": "Last name", "เริ่มใช้งาน": "Start using the app", "หน้าหลัก": "Home", "แผนที่": "Map", "การชาร์จ": "Charge", "กระเป๋าเงิน": "Wallet", "โปรไฟล์": "Profile", "การชาร์จ (สแกน QR)": "Charge (scan QR)", "การแจ้งเตือน": "Notifications", "ระบบ": "System", "ว่าง": "Available", "ยกเลิก": "Cancel", "ปิด": "Closed", "เปลี่ยน": "Change", "เพิ่ม": "Increase", "ใบเสร็จ": "Receipt", "ลองอีกครั้ง": "Try again", "สแกน QR": "Scan QR", "รหัสไม่ถูกต้อง กรุณาลองอีกครั้ง": "Incorrect code, please try again", "วางรหัสจาก SMS (ตัวอย่าง 123456)": "Paste code from SMS (sample 123456)", "บัตร": "Card", "รถของฉัน": "My vehicles", "เพิ่มรถ": "Add car", "ยังไม่มีรถ": "No car yet", "ยังไม่ระบุทะเบียน": "No plate added", "สถานีที่บันทึกไว้": "Saved stations", "ยังไม่มี": "None yet", "การตั้งค่าการชาร์จ": "Charging settings", "แก้ไขข้อมูล": "Edit details", "แตะไอคอนกล้องเพื่อเปลี่ยนรูป": "Tap the camera icon to change your photo", "ข้อมูลส่วนตัว": "Personal details", "เปลี่ยนเบอร์โทรต้องยืนยันด้วยรหัส OTP ที่ส่งไปยังเบอร์ใหม่": "Changing your number requires an OTP sent to the new number", "บันทึก": "Save", "ยืนยันเบอร์โทรใหม่": "Verify new number", "กำลังบันทึก…": "Saving…", "แก้ไขข้อมูลส่วนตัว": "Edit personal details", "เปลี่ยนรูปโปรไฟล์": "Change profile photo", "จัดการรถ": "Manage", "4 แห่ง": "4 places", "บัตรและการชำระเงิน": "Cards & payment", "2 ใบ": "2 cards", "การแจ้งเตือนการชาร์จ": "Charging alerts", "โหมดมืด": "Dark mode", "ภาษา": "Language", "วิธีใช้งานแอป": "How to use the app", "ช่วยเหลือและติดต่อเรา": "Help & contact us", "ออกจากระบบ": "Sign out", "แก้ไขโปรไฟล์": "Edit profile", "เลือกภาษา": "Choose language", "ภาษาที่เลือกจะใช้กับทุกหน้าในแอป รวมถึงการแจ้งเตือนและใบเสร็จ": "Applies to every screen in the app, including notifications and receipts.", "รถหลัก": "Main car", "เพิ่มรถเพื่อเริ่มใช้งาน": "Add a car to get started", "บันทึกข้อมูลเรียบร้อยแล้ว": "Profile saved", "กรุณากรอกชื่อ": "Please enter your first name", "เบอร์โทรต้องเป็นตัวเลข 10 หลัก ขึ้นต้นด้วย 0": "Phone number must be 10 digits starting with 0", "รูปแบบอีเมลไม่ถูกต้อง": "Invalid email format", "กม.": "km", "ชม.": "hrs", "นาที": "min"};
-const PT = [["^กรอกรหัส\\ 6\\ หลักที่ส่งไปยัง\\ (.+?)$", "Enter the 6-digit code sent to {1}"]].map(([r, e]) => [new RegExp(r), e]);
-const SUB = ["ความเป็นส่วนตัวและข้อกำหนด", "ภาษาที่เลือกจะใช้กับทุกหน้าในแอป รวมถึงการแจ้งเตือนและใบเสร็จ", "เปลี่ยนเบอร์โทรต้องยืนยันด้วยรหัส OTP ที่ส่งไปยังเบอร์ใหม่", "เบอร์โทรต้องเป็นตัวเลข 10 หลัก ขึ้นต้นด้วย 0", "วางรหัสจาก SMS (ตัวอย่าง 123456)", "รหัสไม่ถูกต้อง กรุณาลองอีกครั้ง", "แตะไอคอนกล้องเพื่อเปลี่ยนรูป", "บันทึกข้อมูลเรียบร้อยแล้ว", "เพิ่มรถเพื่อเริ่มใช้งาน", "ช่วยเหลือและติดต่อเรา", "รูปแบบอีเมลไม่ถูกต้อง", "การแจ้งเตือนการชาร์จ", "การชาร์จ (สแกน QR)", "การตั้งค่าการชาร์จ", "ยืนยันเบอร์โทรใหม่", "แก้ไขข้อมูลส่วนตัว", "บัตรและการชำระเงิน", "ยังไม่ระบุทะเบียน", "สถานีที่บันทึกไว้", "เปลี่ยนรูปโปรไฟล์", "เบอร์โทรศัพท์", "ข้อมูลส่วนตัว", "วิธีใช้งานแอป", "กรุณากรอกชื่อ", "การแจ้งเตือน", "กำลังบันทึก…", "แก้ไขโปรไฟล์", "เปลี่ยนภาษา", "เริ่มใช้งาน", "กระเป๋าเงิน", "ลองอีกครั้ง", "แก้ไขข้อมูล", "ยังไม่มีรถ", "ออกจากระบบ", "เลือกภาษา", "หน้าหลัก", "การชาร์จ", "รถของฉัน", "ยังไม่มี", "จัดการรถ", "นามสกุล", "โปรไฟล์", "เปลี่ยน", "ใบเสร็จ", "สแกน QR", "เพิ่มรถ", "โหมดมืด", "ยืนยัน", "แผนที่", "ยกเลิก", "บันทึก", "4 แห่ง", "รถหลัก", "แก้ไข", "อีเมล", "เพิ่ม", "ชื่อ", "ระบบ", "ว่าง", "บัตร", "2 ใบ", "ภาษา", "นาที", "และ", "ปิด", "กม.", "ชม."];
+const TR = {"ความเป็นส่วนตัวและข้อกำหนด": "Privacy & terms", "เปลี่ยนภาษา": "Change language", "และ": " and ", "แก้ไข": "Edit", "ยืนยัน": "Confirm", "ลบ": "Delete", "เบอร์โทรศัพท์": "Phone number", "อีเมล": "Email", "แล้ว": "", "ชื่อ": "First name", "นามสกุล": "Last name", "เริ่มใช้งาน": "Start using the app", "หน้าหลัก": "Home", "แผนที่": "Map", "การชาร์จ": "Charge", "กระเป๋าเงิน": "Wallet", "โปรไฟล์": "Profile", "การชาร์จ (สแกน QR)": "Charge (scan QR)", "การแจ้งเตือน": "Notifications", "ระบบ": "System", "ว่าง": "Available", "ยกเลิก": "Cancel", "ปิด": "Closed", "เปลี่ยน": "Change", "เพิ่ม": "Increase", "ใบเสร็จ": "Receipt", "ลองอีกครั้ง": "Try again", "สแกน QR": "Scan QR", "รหัสไม่ถูกต้อง กรุณาลองอีกครั้ง": "Incorrect code, please try again", "วางรหัสจาก SMS (ตัวอย่าง 123456)": "Paste code from SMS (sample 123456)", "บัตร": "Card", "รถของฉัน": "My vehicles", "เพิ่มรถ": "Add car", "ยังไม่มีรถ": "No car yet", "ยังไม่ระบุทะเบียน": "No plate added", "สถานีที่บันทึกไว้": "Saved stations", "ยังไม่มี": "None yet", "การตั้งค่าการชาร์จ": "Charging settings", "แก้ไขข้อมูล": "Edit details", "ข้อมูลผู้ใช้งาน": "User profile", "แสดงข้อมูลผู้ใช้งาน": "Profile overview", "ชื่อ-นามสกุล": "Full name", "วัน/เดือน/ปีเกิด": "Date of birth", "ยังไม่ระบุ": "Not specified", "รูปแบบวัน/เดือน/ปีเกิดไม่ถูกต้อง": "Invalid date of birth", "แตะไอคอนกล้องเพื่อเปลี่ยนรูป": "Tap the camera icon to change your photo", "ข้อมูลส่วนตัว": "Personal details", "เปลี่ยนเบอร์โทรต้องยืนยันด้วยรหัส OTP ที่ส่งไปยังเบอร์ใหม่": "Changing your number requires an OTP sent to the new number", "บันทึก": "Save", "ยืนยันเบอร์โทรใหม่": "Verify new number", "กำลังบันทึก…": "Saving…", "แก้ไขข้อมูลส่วนตัว": "Edit personal details", "เปลี่ยนรูปโปรไฟล์": "Change profile photo", "จัดการรถ": "Manage", "4 แห่ง": "4 places", "บัตรและการชำระเงิน": "Cards & payment", "2 ใบ": "2 cards", "การแจ้งเตือนการชาร์จ": "Charging alerts", "โหมดมืด": "Dark mode", "ภาษา": "Language", "วิธีใช้งานแอป": "How to use the app", "แสดงการสอนใช้งานอีกครั้ง": "Replay app tutorial", "ช่วยเหลือและติดต่อเรา": "Help & contact us", "ออกจากระบบ": "Sign out", "แก้ไขโปรไฟล์": "Edit profile", "เลือกภาษา": "Choose language", "ภาษาที่เลือกจะใช้กับทุกหน้าในแอป รวมถึงการแจ้งเตือนและใบเสร็จ": "Applies to every screen in the app, including notifications and receipts.", "รถหลัก": "Main car", "เพิ่มรถเพื่อเริ่มใช้งาน": "Add a car to get started", "บันทึกข้อมูลเรียบร้อยแล้ว": "Profile saved", "กรุณากรอกชื่อ": "Please enter your first name", "เบอร์โทรต้องเป็นตัวเลข 10 หลัก ขึ้นต้นด้วย 0": "Phone number must be 10 digits starting with 0", "รูปแบบอีเมลไม่ถูกต้อง": "Invalid email format", "กม.": "km", "ชม.": "hrs", "นาที": "min"};
+const PT = [["^กรอกรหัส\\ 6\\ หลักที่ส่งไปยัง\\ (.+?)$", "Enter the 6-digit code sent to {1}"], ["^(\\d+)\\ แห่ง$", "{1} places"]].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["ภาษาที่เลือกจะใช้กับทุกหน้าในแอป รวมถึงการแจ้งเตือนและใบเสร็จ","เปลี่ยนเบอร์โทรต้องยืนยันด้วยรหัส OTP ที่ส่งไปยังเบอร์ใหม่","เบอร์โทรต้องเป็นตัวเลข 10 หลัก ขึ้นต้นด้วย 0","วางรหัสจาก SMS (ตัวอย่าง 123456)","รูปแบบวัน/เดือน/ปีเกิดไม่ถูกต้อง","รหัสไม่ถูกต้อง กรุณาลองอีกครั้ง","แตะไอคอนกล้องเพื่อเปลี่ยนรูป","ความเป็นส่วนตัวและข้อกำหนด","บันทึกข้อมูลเรียบร้อยแล้ว","เพิ่มรถเพื่อเริ่มใช้งาน","ช่วยเหลือและติดต่อเรา","รูปแบบอีเมลไม่ถูกต้อง","การแจ้งเตือนการชาร์จ","แสดงข้อมูลผู้ใช้งาน","การชาร์จ (สแกน QR)","การตั้งค่าการชาร์จ","ยืนยันเบอร์โทรใหม่","แก้ไขข้อมูลส่วนตัว","บัตรและการชำระเงิน","ยังไม่ระบุทะเบียน","แสดงการสอนใช้งานอีกครั้ง","สถานีที่บันทึกไว้","เปลี่ยนรูปโปรไฟล์","วัน/เดือน/ปีเกิด","ข้อมูลผู้ใช้งาน","เบอร์โทรศัพท์","ข้อมูลส่วนตัว","วิธีใช้งานแอป","กรุณากรอกชื่อ","การแจ้งเตือน","กำลังบันทึก…","แก้ไขโปรไฟล์","ชื่อ-นามสกุล","เปลี่ยนภาษา","เริ่มใช้งาน","กระเป๋าเงิน","ลองอีกครั้ง","แก้ไขข้อมูล","ยังไม่มีรถ","ออกจากระบบ","ยังไม่ระบุ","เลือกภาษา","หน้าหลัก","การชาร์จ","รถของฉัน","ยังไม่มี","จัดการรถ","นามสกุล","โปรไฟล์","เปลี่ยน","ใบเสร็จ","สแกน QR","เพิ่มรถ","โหมดมืด","ยืนยัน","แผนที่","ยกเลิก","บันทึก","4 แห่ง","รถหลัก","แก้ไข","อีเมล","เพิ่ม","ชื่อ","ระบบ","ว่าง","บัตร","2 ใบ","ภาษา","นาที","และ","ปิด","กม.","ชม."];
 const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
 const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
 const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
@@ -331,37 +356,62 @@ const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide
 const rv = P.renderVals;
 P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
 }
-constructor(props) { super(props); let lsl = 'th'; try { lsl = localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) {} this.state = Object.assign({ lang: props.lang === 'English' ? 'en' : props.lang === 'ไทย' ? 'th' : lsl, notif: true, p: { first: 'Sawanya', last: '', phone: '0646350846', email: '', car: 'Chery Q', plate: '', plugs: ['CCS2', 'Type 2'], av: 0 }, otp: '', otpErr: false }, this.screenState(props.screen)); }
+constructor(props) {
+super(props);
+let lsl = 'th', savedProf = null;
+try {
+lsl = localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th';
+savedProf = JSON.parse(localStorage.getItem('cx-profile') || 'null');
+} catch (e) {}
+const baseP = { first: 'Sawanya', last: 'Srisawat', phone: '0646350846', email: 'sawanya.s@example.com', dob: '1996-05-14', car: 'Chery Q', plate: '', plugs: ['CCS2', 'Type 2'], av: 0 };
+if (savedProf && typeof savedProf === 'object') Object.assign(baseP, savedProf);
+this.state = Object.assign({ lang: props.lang === 'English' ? 'en' : props.lang === 'ไทย' ? 'th' : lsl, notif: true, editTab: 'edit', p: baseP, otp: '', otpErr: false }, this.screenState(props.screen));
+}
 componentDidMount() { try { const s = localStorage.getItem('cx-car'); if (s) this.setState({ car: JSON.parse(s) });  } catch (e) {}  this._pl = () => { if (this.props.lang === 'English' || this.props.lang === 'ไทย') return; let l = 'th'; try { l = localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) {} if (l !== this.state.lang) this.setState({ lang: l }); }; if (typeof window !== 'undefined') { window.addEventListener('storage', this._pl); window.addEventListener('cx-lang', this._pl); } }
-screenState(s) { if (s === 'แก้ไขข้อมูล') return { step: 'edit', d: null }; return { step: 'view' }; }
+screenState(s) { if (s === 'แก้ไขข้อมูล') return { step: 'edit', editTab: 'edit', d: null }; return { step: 'view' }; }
 componentDidUpdate(pp) { if (pp.screen !== this.props.screen) this.setState(this.screenState(this.props.screen)); if (pp.lang !== this.props.lang) { let l = 'th'; try { l = localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) {} this.setState({ lang: this.props.lang === 'English' ? 'en' : this.props.lang === 'ไทย' ? 'th' : l }); } }
 componentWillUnmount() { clearTimeout(this._t); clearTimeout(this._toast); }
 renderVals() {
 const accent = this.props.accent ?? '#FC3901';
 const on = this.state.notif;
 const st = this.state; const p = st.p; const d = st.d || p;
+let favN = null;
+try { const raw = JSON.parse(localStorage.getItem('cx-favs') || 'null'); if (Array.isArray(raw)) favN = raw.length; } catch (e) {}
 const TX = {
-th: { title: 'โปรไฟล์', myCar: 'รถของฉัน', manageCars: 'จัดการรถ', saved: 'สถานีที่บันทึกไว้', savedN: '4 แห่ง', cards: 'บัตรและการชำระเงิน', cardsN: '2 ใบ', prefs: 'การตั้งค่าการชาร์จ', notif: 'การแจ้งเตือนการชาร์จ', dark: 'โหมดมืด', lang: 'ภาษา', langVal: 'ไทย', guide: 'วิธีใช้งานแอป', help: 'ช่วยเหลือและติดต่อเรา', logout: 'ออกจากระบบ', nHome: 'หน้าหลัก', nMap: 'แผนที่', nChg: 'การชาร์จ', nWallet: 'กระเป๋าเงิน', aEdit: 'แก้ไขโปรไฟล์', aChg: 'การชาร์จ (สแกน QR)', close: 'ปิด', langTitle: 'เลือกภาษา', langNote: 'ภาษาที่เลือกจะใช้กับทุกหน้าในแอป รวมถึงการแจ้งเตือนและใบเสร็จ', noPlate: 'ยังไม่ระบุทะเบียน', mainCar: 'รถหลัก', addCar: 'เพิ่มรถเพื่อเริ่มใช้งาน', noCar: 'ยังไม่มีรถ', saved1: 'บันทึกข้อมูลเรียบร้อยแล้ว', langChanged: 'เปลี่ยนภาษาเป็นภาษาไทยแล้ว' },
-en: { title: 'Profile', myCar: 'My car', manageCars: 'Manage', saved: 'Saved stations', savedN: '4 places', cards: 'Cards & payment', cardsN: '2 cards', prefs: 'Charging settings', notif: 'Charging alerts', dark: 'Dark mode', lang: 'Language', langVal: 'English', guide: 'How to use the app', help: 'Help & contact us', logout: 'Sign out', nHome: 'Home', nMap: 'Map', nChg: 'Charge', nWallet: 'Wallet', aEdit: 'Edit profile', aChg: 'Charge (scan QR)', close: 'Close', langTitle: 'Choose language', langNote: 'Applies to every screen in the app, including notifications and receipts.', noPlate: 'No plate added', mainCar: 'Main car', addCar: 'Add a car to get started', noCar: 'No car yet', saved1: 'Profile saved', langChanged: 'Language changed to English' }
+th: { title: 'โปรไฟล์', myCar: 'รถของฉัน', manageCars: 'จัดการรถ', saved: 'สถานีที่บันทึกไว้', savedN: (favN != null ? favN : 4) + ' แห่ง', cards: 'บัตรและการชำระเงิน', cardsN: '2 ใบ', prefs: 'การตั้งค่าการชาร์จ', notif: 'การแจ้งเตือนการชาร์จ', dark: 'โหมดมืด', lang: 'ภาษา', langVal: 'ไทย', guide: 'วิธีใช้งานแอป', replayTut: 'แสดงการสอนใช้งานอีกครั้ง', help: 'ช่วยเหลือและติดต่อเรา', logout: 'ออกจากระบบ', nHome: 'หน้าหลัก', nMap: 'แผนที่', nChg: 'การชาร์จ', nWallet: 'กระเป๋าเงิน', aEdit: 'แก้ไขโปรไฟล์', aChg: 'การชาร์จ (สแกน QR)', close: 'ปิด', langTitle: 'เลือกภาษา', langNote: 'ภาษาที่เลือกจะใช้กับทุกหน้าในแอป รวมถึงการแจ้งเตือนและใบเสร็จ', noPlate: 'ยังไม่ระบุทะเบียน', mainCar: 'รถหลัก', addCar: 'เพิ่มรถเพื่อเริ่มใช้งาน', noCar: 'ยังไม่มีรถ', saved1: 'บันทึกข้อมูลเรียบร้อยแล้ว', langChanged: 'เปลี่ยนภาษาเป็นภาษาไทยแล้ว' },
+en: { title: 'Profile', myCar: 'My car', manageCars: 'Manage', saved: 'Saved stations', savedN: (favN != null ? favN : 4) + (favN === 1 ? ' place' : ' places'), cards: 'Cards & payment', cardsN: '2 cards', prefs: 'Charging settings', notif: 'Charging alerts', dark: 'Dark mode', lang: 'Language', langVal: 'English', guide: 'How to use the app', replayTut: 'Replay app tutorial', help: 'Help & contact us', logout: 'Sign out', nHome: 'Home', nMap: 'Map', nChg: 'Charge', nWallet: 'Wallet', aEdit: 'Edit profile', aChg: 'Charge (scan QR)', close: 'Close', langTitle: 'Choose language', langNote: 'Applies to every screen in the app, including notifications and receipts.', noPlate: 'No plate added', mainCar: 'Main car', addCar: 'Add a car to get started', noCar: 'No car yet', saved1: 'Profile saved', langChanged: 'Language changed to English' }
 };
 const t = TX[st.lang] || TX.th;
 
 const AV = [accent, '#1F1F1F', '#C9A227', '#146C3E'];
 const digits = (d.phone || '').replace(/\D/g, '');
 const fmtPhone = (x) => { const g = x.replace(/\D/g, ''); return g.length === 10 ? g.slice(0, 3) + '-' + g.slice(3, 6) + '-' + g.slice(6) : x; };
+const fmtDob = (iso, isEn) => {
+const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec((iso || '').trim());
+if (!m) return 'ยังไม่ระบุ';
+const y = parseInt(m[1], 10), mo = parseInt(m[2], 10), day = parseInt(m[3], 10);
+const TM = ['', 'ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+const EM = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+if (mo < 1 || mo > 12 || day < 1 || day > 31) return 'ยังไม่ระบุ';
+return isEn ? (day + ' ' + EM[mo] + ' ' + y) : (day + ' ' + TM[mo] + ' ' + (y + 543));
+};
 const firstBad = !d.first.trim(); const phoneBad = digits.length !== 10 || digits[0] !== '0';
 const emailBad = !!d.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email);
+const dobBad = !!d.dob && !/^\d{4}-\d{2}-\d{2}$/.test(d.dob);
 const carBad = !d.car.trim();
-const errText = firstBad ? 'กรุณากรอกชื่อ' : phoneBad ? 'เบอร์โทรต้องเป็นตัวเลข 10 หลัก ขึ้นต้นด้วย 0' : emailBad ? 'รูปแบบอีเมลไม่ถูกต้อง' : '';
+const errText = firstBad ? 'กรุณากรอกชื่อ' : phoneBad ? 'เบอร์โทรต้องเป็นตัวเลข 10 หลัก ขึ้นต้นด้วย 0' : emailBad ? 'รูปแบบอีเมลไม่ถูกต้อง' : dobBad ? 'รูปแบบวัน/เดือน/ปีเกิดไม่ถูกต้อง' : '';
 const dirty = JSON.stringify(d) !== JSON.stringify(p);
 const canSave = !errText && dirty;
 const phoneChanged = digits !== p.phone.replace(/\D/g, '');
 const set = (k) => (e) => this.setState({ d: Object.assign({}, this.state.d || this.state.p, { [k]: e.target.value }) });
-const commit = () => { this.setState({ step: 'busy' }); clearTimeout(this._t); this._t = setTimeout(() => { const nd = Object.assign({}, this.state.d || this.state.p); nd.phone = nd.phone.replace(/\D/g, ''); this.setState({ p: nd, d: null, step: 'view', toast: true, toastText: '' }); clearTimeout(this._toast); this._toast = setTimeout(() => this.setState({ toast: false }), 2200); }, 900); };
-const open = (car) => { this.setState({ step: 'edit', d: Object.assign({}, this.state.p, { plugs: this.state.p.plugs.slice() }), focusCar: car }); if (car) setTimeout(() => { if (this._scroll && this._carRef) this._scroll.scrollTop = this._carRef.offsetTop - 8; }, 380); };
+const commit = () => { this.setState({ step: 'busy' }); clearTimeout(this._t); this._t = setTimeout(() => { const nd = Object.assign({}, this.state.d || this.state.p); nd.phone = nd.phone.replace(/\D/g, ''); try { localStorage.setItem('cx-profile', JSON.stringify(nd)); } catch (e) {} this.setState({ p: nd, d: null, step: 'view', toast: true, toastText: '' }); clearTimeout(this._toast); this._toast = setTimeout(() => this.setState({ toast: false }), 2200); }, 900); };
+const open = (car) => { this.setState({ step: 'edit', editTab: 'edit', d: Object.assign({}, this.state.p, { plugs: this.state.p.plugs.slice() }), focusCar: car }); if (car) setTimeout(() => { if (this._scroll && this._carRef) this._scroll.scrollTop = this._carRef.offsetTop - 8; }, 380); };
 const verify = (o) => { if (o !== '123456') { this._t = setTimeout(() => this.setState({ otpErr: true, otp: '' }), 250); return; } this._t = setTimeout(() => commit(), 250); };
 const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'].map((k) => ({ label: k, aria: k === '⌫' ? 'ลบ' : k || 'ว่าง', bg: k ? '#F4F4F4' : 'transparent',
 press: () => { if (!k) return; let o = this.state.otp; o = k === '⌫' ? o.slice(0, -1) : (o + k).slice(0, 6); this.setState({ otp: o, otpErr: false }); if (o.length === 6) verify(o); } }));
+const isEditView = (st.editTab || 'edit') === 'view';
+const isEditForm = !isEditView;
+const tabBtn = (on) => 'height: 36px; border-radius: 10px; border: 0; font-family: inherit; font-size: 13.5px; cursor: pointer; ' + (on ? 'background: #F4F4F4; font-weight: 700; color: #1F1F1F' : 'background: transparent; font-weight: 500; color: #6B6B6B');
 return {
 accent, t,
 toastText: st.toastText || t.saved1,
@@ -376,13 +426,21 @@ initial: (p.first.trim()[0] || '?').toUpperCase(), fullName: p.first + (p.last ?
 carName: st.car ? (st.car.name || t.noCar) : p.car, carSub: st.car ? (st.car.count ? (st.car.plate || t.noPlate) + ' · ' + t.mainCar : t.addCar) : (p.plate || t.noPlate) + ' · ' + t.mainCar, carCount: st.car ? st.car.count : 2,
 openEdit: () => open(false), openCar: () => open(true), closeEdit: () => this.setState({ step: 'view', d: null }),
 showEdit: st.step === 'edit' || st.step === 'otp' || st.step === 'busy', showOtp: st.step === 'otp', showBusy: st.step === 'busy', showToast: !!st.toast,
+isEditView, isEditForm,
+editViewSel: isEditView ? 'true' : 'false', editFormSel: isEditForm ? 'true' : 'false',
+viewTabStyle: tabBtn(isEditView), editTabStyle: tabBtn(isEditForm),
+toViewTab: () => this.setState({ editTab: 'view' }), toEditTab: () => this.setState({ editTab: 'edit' }),
 setScroll: (el) => { this._scroll = el; }, setCarRef: (el) => { this._carRef = el; }, carBorder: st.focusCar ? '1.5px solid ' + accent : '1px solid transparent',
 avBg: AV[d.av % AV.length], dInitial: (d.first.trim()[0] || '?').toUpperCase(),
 cycleAv: () => this.setState({ d: Object.assign({}, d, { av: (d.av + 1) % AV.length }) }),
-dFirst: d.first, dLast: d.last, dPhone: d.phone, dEmail: d.email, dCar: d.car, dPlate: d.plate,
-onFirst: set('first'), onLast: set('last'), onEmail: set('email'), onCar: set('car'), onPlate: set('plate'),
+dFirst: d.first, dLast: d.last, dPhone: d.phone, dEmail: d.email, dDob: d.dob || '', dCar: d.car, dPlate: d.plate,
+dFullName: (d.first || '').trim() + (d.last && d.last.trim() ? ' ' + d.last.trim() : ''),
+dEmailShow: (d.email || '').trim() || 'ยังไม่ระบุ',
+dDobShow: fmtDob(d.dob, st.lang === 'en'),
+dPhoneShow: fmtPhone(d.phone || '') || 'ยังไม่ระบุ',
+onFirst: set('first'), onLast: set('last'), onEmail: set('email'), onDob: set('dob'), onCar: set('car'), onPlate: set('plate'),
 onPhone: (e) => this.setState({ d: Object.assign({}, d, { phone: e.target.value.replace(/[^\d-]/g, '').slice(0, 12) }) }),
-firstBad: firstBad ? 'true' : 'false', phoneBad: phoneBad ? 'true' : 'false', emailBad: emailBad ? 'true' : 'false', carBad: carBad ? 'true' : 'false',
+firstBad: firstBad ? 'true' : 'false', phoneBad: phoneBad ? 'true' : 'false', emailBad: emailBad ? 'true' : 'false', dobBad: dobBad ? 'true' : 'false', carBad: carBad ? 'true' : 'false',
 phoneChanged, hasErr: !!errText && st.step === 'edit', errText,
 saveBg: canSave ? accent : '#BDBDBD', savePe: canSave ? 'auto' : 'none', noSaveStr: canSave ? 'false' : 'true',
 save: () => { if (!canSave) return; if (phoneChanged) this.setState({ step: 'otp', otp: '', otpErr: false }); else commit(); },
@@ -390,13 +448,14 @@ boxes: [0, 1, 2, 3, 4, 5].map((i) => ({ v: st.otp[i] || '', bd: st.otpErr ? '#E5
 keys, otpErr: st.otpErr, autoOtp: () => { this.setState({ otp: '123456' }); verify('123456'); }, cancelOtp: () => this.setState({ step: 'edit', otp: '' }),
 toHelpContact: () => { try { localStorage.setItem('cx-help-focus', 'contact'); } catch (e) {} },
 toCards: () => { try { localStorage.setItem('cx-cards-from', 'Profile'); } catch (e) {} },
+replayTutorial: () => { try { localStorage.removeItem('cx-tutorial-seen'); localStorage.setItem('cx-tutorial-replay', '1'); localStorage.setItem('cx-tutorial-from', 'Profile'); } catch (e) {} },
 notifOn: on ? 'true' : 'false',
 toggle: () => this.setState({ notif: !this.state.notif }),
 trackBg: on ? accent : '#CFCFCF',
 knobPos: on ? 'flex-end' : 'flex-start'
 };
 }
-}
-</script>
+} </script>
+
 </body>
 </html>

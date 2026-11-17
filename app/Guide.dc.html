@@ -66,57 +66,83 @@ body{margin:0}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"],[style*="solid rgb(237, 237, 237)"],[style*="solid rgb(239, 239, 239)"],[style*="solid rgb(212, 212, 212)"],[style*="solid rgb(226, 226, 226)"],[style*="solid rgb(189, 189, 189)"]){border-color:#45454C!important}
 </style>
 </helmet>
-<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #FFFFFF; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif">
-<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none">
-<sc-if value="{{isLight}}" hint-placeholder-val="{{ true }}"><dc-import name="News" lang="{{cxLangProp}}" hint-size="390px,844px"></dc-import></sc-if>
-<sc-if value="{{isDark}}" hint-placeholder-val="{{ false }}"><dc-import name="News" lang="{{cxLangProp}}" theme="dark" hint-size="390px,844px"></dc-import></sc-if>
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #FFFFFF; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; display: flex; flex-direction: column">
+<div style="padding: 50px 20px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<div style="display: flex; align-items: center; gap: 8px">
+<span style="padding: 5px 11px; border-radius: 999px; background: #FFF1EB; color: #C42D00; font-size: 12.5px; font-weight: 700">การสอนใช้งาน</span>
+<sc-if value="{{hasSlides}}" hint-placeholder-val="{{ true }}">
+<span style="font-size: 13px; font-weight: 600; color: #6B6B6B">{{slideBadge}}</span>
+</sc-if>
+</div>
+<div style="display: flex; align-items: center; gap: 8px">
+<sc-if value="{{canAutoPlay}}" hint-placeholder-val="{{ true }}">
+<button type="button" onClick="{{togglePlay}}" style="{{playBtnStyle}}">{{playLabel}}</button>
+</sc-if>
+<a href="{{finishHref}}" onClick="{{markDone}}" style="height: 34px; padding: 0 12px; border-radius: 999px; background: #F4F4F4; color: #3A3A3A; font-size: 13px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center">ข้าม</a>
+</div>
 </div>
 
-<div style="position: absolute; inset: 0; z-index: 5"></div>
-<div aria-hidden="true" class="cx-ringp" style="position: absolute; z-index: 6; left: {{sx}}px; top: {{sy}}px; width: {{sw}}px; height: {{sh}}px; border-radius: {{sr}}px; outline: 2px solid rgba(255,255,255,0.9); outline-offset: 2px; transition: left .5s cubic-bezier(.65,0,.35,1), top .5s cubic-bezier(.65,0,.35,1), width .5s cubic-bezier(.65,0,.35,1), height .5s cubic-bezier(.65,0,.35,1), border-radius .5s; pointer-events: none"></div>
-<div aria-hidden="true" style="position: absolute; z-index: 5; left: {{sx}}px; top: {{sy}}px; width: {{sw}}px; height: {{sh}}px; border-radius: {{sr}}px; box-shadow: 0 0 0 1400px rgba(10,10,12,0.66); transition: left .5s cubic-bezier(.65,0,.35,1), top .5s cubic-bezier(.65,0,.35,1), width .5s cubic-bezier(.65,0,.35,1), height .5s cubic-bezier(.65,0,.35,1), border-radius .5s; pointer-events: none"></div>
+<div style="flex: 1; min-height: 0; padding: 6px 20px 10px; display: flex; flex-direction: column; justify-content: center; gap: 16px">
+<sc-if value="{{isReplayed}}" hint-placeholder-val="{{ false }}">
+<div style="align-self: center; padding: 6px 12px; border-radius: 999px; background: #FFF7F3; border: 1px solid #FDD3C3; font-size: 12px; font-weight: 600; color: #C42D00; display: flex; align-items: center; gap: 6px">
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6M3.5 15a9 9 0 1 0 2.1-9.4L1 10"></path></svg>
+<span>แสดงการสอนใช้งานซ้ำจากเมนูตั้งค่า</span>
+</div>
+</sc-if>
 
-<div style="position: absolute; z-index: 7; top: 50px; right: 16px">
-<a href="{{L.News}}" style="display: flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 18px; background: rgba(255,255,255,0.16); color: #FFFFFF; font-size: 14px; font-weight: 600; text-decoration: none; backdrop-filter: blur(6px)">ข้าม</a>
+<sc-if value="{{hasSlides}}" hint-placeholder-val="{{ true }}">
+<div class="cx-tip" style="background: #FFFFFF; border: 1px solid #E6E6E6; border-radius: 26px; overflow: hidden; box-shadow: 0 16px 36px rgba(0,0,0,0.08); display: flex; flex-direction: column">
+<div style="position: relative; width: 100%; height: 270px; background: #F6F6F6; overflow: hidden">
+<img src="{{curImg}}" alt="{{curTitle}}" style="width: 100%; height: 100%; object-fit: cover; display: block; background: #F6F6F6">
+<span class="cx-badge" style="position: absolute; top: 14px; left: 14px; height: 28px; padding: 0 11px; border-radius: 999px; background: {{accent}}; color: #FFFFFF; font-size: 12.5px; font-weight: 700; display: inline-flex; align-items: center; box-shadow: 0 6px 14px rgba(252,57,1,0.35)">{{pageBadge}}</span>
+</div>
+<div style="padding: 20px 20px 22px; display: flex; flex-direction: column; gap: 8px; min-height: 156px">
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 20px; line-height: 1.35; color: #1F1F1F">{{curTitle}}</span>
+<span style="font-size: 14.5px; line-height: 1.65; color: #5C5C5C">{{curDesc}}</span>
+</div>
 </div>
 
-<sc-for list="{{steps}}" as="s" hint-placeholder-count="4">
-<sc-if value="{{s.active}}" hint-placeholder-val="{{ true }}">
-<div role="dialog" aria-label="{{s.title}}" class="cx-tip" style="position: absolute; z-index: 8; left: 20px; right: 20px; top: {{s.ty}}px; background: #FFFFFF; border-radius: 22px; padding: 18px 18px 16px; box-shadow: 0 18px 40px rgba(0,0,0,0.3); transform-origin: {{s.origin}}">
-<span aria-hidden="true" style="position: absolute; left: {{s.ax}}px; {{s.aside}}: -7px; width: 16px; height: 16px; background: #FFFFFF; transform: rotate(45deg); border-radius: 3px"></span>
-<div style="display: flex; gap: 12px; align-items: flex-start; position: relative">
-<span class="cx-badge" style="width: 34px; height: 34px; flex: none; border-radius: 50%; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 17px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 14px rgba(252,57,1,0.35)">{{s.no}}</span>
-<div style="flex: 1; display: flex; flex-direction: column; gap: 4px">
-<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; line-height: 1.35; color: #1F1F1F">{{s.title}}</span>
-<span style="font-size: 14px; line-height: 1.6; color: #5C5C5C">{{s.desc}}</span>
-</div>
-</div>
-<div style="display: flex; align-items: center; justify-content: space-between; margin-top: 14px; position: relative">
-<span style="font-size: 13px; font-weight: 600; color: #6B6B6B">{{s.no}} / 4</span>
-<div style="display: flex; gap: 8px">
-<sc-if value="{{s.notFirst}}" hint-placeholder-val="{{ false }}">
-<button onClick="{{prev}}" style="height: 40px; padding: 0 14px; border-radius: 12px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 600; color: #3A3A3A; cursor: pointer">ย้อนกลับ</button>
-</sc-if>
-<sc-if value="{{s.notLast}}" hint-placeholder-val="{{ true }}">
-<button onClick="{{next}}" style="height: 40px; padding: 0 18px; border-radius: 12px; border: 0; background: {{accent}}; font-family: inherit; font-size: 15px; font-weight: 600; color: #FFFFFF; cursor: pointer">ถัดไป</button>
-</sc-if>
-<sc-if value="{{s.isLast}}" hint-placeholder-val="{{ false }}">
-<a href="{{L.News}}" style="height: 40px; padding: 0 18px; border-radius: 12px; background: {{accent}}; font-size: 15px; font-weight: 600; color: #FFFFFF; text-decoration: none; display: flex; align-items: center">เริ่มใช้งาน</a>
-</sc-if>
-</div>
-</div>
-</div>
-</sc-if>
+<div style="display: flex; align-items: center; justify-content: center; gap: 7px">
+<sc-for list="{{dots}}" as="d" hint-placeholder-count="4">
+<button type="button" aria-label="{{d.aria}}" onClick="{{d.go}}" style="{{d.style}}"></button>
 </sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{noSlides}}" hint-placeholder-val="{{ false }}">
+<div style="padding: 28px 20px; border-radius: 24px; border: 1px dashed #D4D4D4; background: #F6F6F6; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px">
+<span style="font-size: 16px; font-weight: 700; color: #1F1F1F">ยังไม่มีหน้าการสอนใช้งาน</span>
+<span style="font-size: 13.5px; color: #5C5C5C">กรุณาเพิ่มหน้าสไลด์จาก Back Office แล้วเปิดใหม่อีกครั้ง</span>
+</div>
+</sc-if>
+</div>
+
+<div style="padding: 12px 20px 30px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid #EFEFEF; background: #FFFFFF">
+<sc-if value="{{hasSlides}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; align-items: center; gap: 10px">
+<button type="button" onClick="{{prev}}" style="flex: 1; height: 48px; border-radius: 14px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; color: #3A3A3A; cursor: pointer">‹ ย้อนกลับ</button>
+<sc-if value="{{notLast}}" hint-placeholder-val="{{ true }}">
+<button type="button" onClick="{{next}}" style="flex: 1.4; height: 48px; border-radius: 14px; border: 0; background: {{accent}}; font-family: inherit; font-size: 15.5px; font-weight: 700; color: #FFFFFF; cursor: pointer">ถัดไป ›</button>
+</sc-if>
+<sc-if value="{{isLast}}" hint-placeholder-val="{{ false }}">
+<a href="{{finishHref}}" onClick="{{markDone}}" style="flex: 1.4; height: 48px; border-radius: 14px; background: {{accent}}; font-size: 15.5px; font-weight: 700; color: #FFFFFF; text-decoration: none; display: flex; align-items: center; justify-content: center">เริ่มใช้งาน</a>
+</sc-if>
+</div>
+<button type="button" onClick="{{replay}}" style="align-self: center; height: 32px; padding: 0 12px; border: 0; background: transparent; font-family: inherit; font-size: 13px; font-weight: 600; color: #6B6B6B; cursor: pointer">แสดงซ้ำตั้งแต่หน้าแรก</button>
+</sc-if>
+<sc-if value="{{noSlides}}" hint-placeholder-val="{{ false }}">
+<a href="{{finishHref}}" onClick="{{markDone}}" style="height: 48px; border-radius: 14px; background: {{accent}}; font-size: 15.5px; font-weight: 700; color: #FFFFFF; text-decoration: none; display: flex; align-items: center; justify-content: center">กลับเข้าสู่แอป</a>
+</sc-if>
+</div>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
 class Component extends DCLogic {
 static {
 const P = this.prototype;
-const TR = {"ข้าม": "Skip", "ถัดไป": "Next", "หรือ": "or", "และ": " and ", "ย้อนกลับ": "Back", "แล้ว": "", "เริ่มใช้งาน": "Start using the app", "โปรโมชันและสิทธิพิเศษ": "Promotions and perks", "ปัดซ้ายขวาเพื่อดูโปรโมชันล่าสุดและสิทธิพิเศษสำหรับสมาชิก": "Swipe left or right to see the latest promotions and member perks.", "ค้นหาสถานีหรือสแกนชาร์จ": "Find a station or scan to charge", "กดค้นหาสถานีเพื่อดูแผนที่จุดชาร์จใกล้คุณ หรือกดสแกนเพื่อเริ่มชาร์จทันที": "Tap Find station to see chargers near you on the map, or tap Scan to start charging right away.", "ปุ่มการชาร์จ": "Charge button", "ปุ่มตรงกลางเมนูด้านล่าง กดแล้วเปิดกล้องสแกน QR ที่ตู้ชาร์จได้เลย": "The middle button in the bottom bar opens the camera to scan the QR code on the charger.", "แจ้งเตือนและโหมดมืด": "Alerts and dark mode", "ดูการแจ้งเตือนสถานะการชาร์จ และสลับโหมดสว่าง/มืดได้จากมุมขวาบน": "See charging alerts and switch light/dark mode from the top right.", "ค้นหาสถานี": "Find station", "แผนที่": "Map", "การชาร์จ": "Charge", "โปรโมชัน": "Promotions", "การแจ้งเตือน": "Notifications", "สิทธิพิเศษสำหรับสมาชิก": "Member perk", "ว่าง": "Available", "ปิด": "Closed", "เริ่มชาร์จ": "Start charging", "สแกน QR": "Scan QR", "โหมดมืด": "Dark mode", "กม.": "km", "ชม.": "hrs", "นาที": "min"};
-const PT = [].map(([r, e]) => [new RegExp(r), e]);
-const SUB = ["กดค้นหาสถานีเพื่อดูแผนที่จุดชาร์จใกล้คุณ หรือกดสแกนเพื่อเริ่มชาร์จทันที", "ปุ่มตรงกลางเมนูด้านล่าง กดแล้วเปิดกล้องสแกน QR ที่ตู้ชาร์จได้เลย", "ดูการแจ้งเตือนสถานะการชาร์จ และสลับโหมดสว่าง/มืดได้จากมุมขวาบน", "ปัดซ้ายขวาเพื่อดูโปรโมชันล่าสุดและสิทธิพิเศษสำหรับสมาชิก", "ค้นหาสถานีหรือสแกนชาร์จ", "สิทธิพิเศษสำหรับสมาชิก", "โปรโมชันและสิทธิพิเศษ", "แจ้งเตือนและโหมดมืด", "ปุ่มการชาร์จ", "การแจ้งเตือน", "เริ่มใช้งาน", "ค้นหาสถานี", "เริ่มชาร์จ", "ย้อนกลับ", "การชาร์จ", "โปรโมชัน", "สแกน QR", "โหมดมืด", "แผนที่", "ถัดไป", "ข้าม", "หรือ", "ว่าง", "นาที", "และ", "ปิด", "กม.", "ชม."];
+const TR = {"การสอนใช้งาน": "Tutorial", "ข้าม": "Skip", "ถัดไป ›": "Next ›", "‹ ย้อนกลับ": "‹ Back", "ถัดไป": "Next", "ย้อนกลับ": "Back", "เริ่มใช้งาน": "Start using the app", "กลับเข้าสู่แอป": "Back to app", "เล่นอัตโนมัติ": "Auto Play", "หยุดอัตโนมัติ": "Pause", "แสดงซ้ำตั้งแต่หน้าแรก": "Replay from Slide 1", "แสดงการสอนใช้งานซ้ำจากเมนูตั้งค่า": "Replaying tutorial from Settings", "ยังไม่มีหน้าการสอนใช้งาน": "No tutorial slides yet", "กรุณาเพิ่มหน้าสไลด์จาก Back Office แล้วเปิดใหม่อีกครั้ง": "Add tutorial slides from Back Office and reopen.", "ค้นหาสถานีชาร์จใกล้คุณ": "Find Nearby Chargers", "เปิดแผนที่ดูจุดชาร์จว่าง (หมุดสีเขียว) ตรวจสอบกำลังไฟ ระยะทาง และกดนำทางไปยังสถานีได้ทันที": "Open the map to check free stations (green pins), charger power, distance, and navigate right away.", "สแกน QR ที่ตู้ชาร์จ": "Scan Charger QR Code", "จอดรถ เสียบหัวชาร์จเข้ากับรถ แล้วกดปุ่มชาร์จตรงกลางเมนูด้านล่างเพื่อสแกน QR บนตู้ชาร์จ": "Park, plug into your EV, then tap the center Charge button to scan the QR on the charger.", "ติดตามสถานะชาร์จแบบเรียลไทม์": "Live Charging Monitor", "ตรวจสอบเปอร์เซ็นต์แบตเตอรี่ กำลังไฟ (kW) และค่าบริการตลอดเวลา พร้อมแจ้งเตือนเมื่อใกล้เต็มหรือครบ 5 นาที": "Track battery %, kW power, and cost in real time, with alerts near target and 5-min grace period.", "ชำระเงิน คูปอง และประวัติ": "Wallet, Coupons & History", "ชำระค่าชาร์จผ่าน Charge X Wallet หรือบัตร เลือกใช้คูปองส่วนลด และเรียกดูการสอนใช้งานซ้ำได้จากเมนูตั้งค่า": "Pay with Charge X Wallet or card, apply discount coupons, and replay this tutorial anytime from Settings.", "สไลด์ที่ ": "Slide ", "กม.": "km", "ชม.": "hrs", "นาที": "min"};
+const PT = [["^หน้า\\ (\\d+)\\ /\\ (\\d+)$", "Page {1} / {2}"], ["^หน้าที่\\ (\\d+)$", "Page {1}"]].map(([r, e]) => [new RegExp(r), e]);
+const SUB = Object.keys(TR).filter((k) => /[\u0E01-\u0E3A\u0E40-\u0E5B]/.test(k)).sort((a, b) => b.length - a.length);
 const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
 const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
 const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
@@ -148,38 +174,114 @@ const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide
 const rv = P.renderVals;
 P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
 }
-constructor(props) { super(props); this.state = { step: 0 }; }
+tutImg(kind) {
+  const T = {
+    map: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340"><rect width="640" height="340" fill="#EEF4EC"/><path d="M0 240Q180 180 340 220T640 160L640 340L0 340Z" fill="#DCEBD9"/><path d="M60 80L580 280M120 320L480 40" stroke="#FFFFFF" stroke-width="26" stroke-linecap="round"/><circle cx="240" cy="145" r="32" fill="#146C3E"/><circle cx="240" cy="145" r="12" fill="#FFFFFF"/><circle cx="425" cy="195" r="38" fill="#FC3901"/><path d="M425 172l-13 20h10l-2 15 15-21h-10z" fill="#FFFFFF"/><rect x="30" y="28" width="190" height="44" rx="14" fill="#FFFFFF"/><circle cx="54" cy="50" r="8" fill="#146C3E"/><text x="72" y="55" font-family="sans-serif" font-size="16" font-weight="700" fill="#1F1F1F">Station Nearby</text></svg>',
+    qr: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340"><rect width="640" height="340" fill="#19191D"/><circle cx="320" cy="170" r="140" fill="#FC3901" opacity="0.16"/><rect x="235" y="42" width="170" height="256" rx="28" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="6"/><rect x="265" y="90" width="110" height="110" rx="14" fill="#F6F6F6"/><rect x="280" y="105" width="32" height="32" fill="#1F1F1F"/><rect x="328" y="105" width="32" height="32" fill="#1F1F1F"/><rect x="280" y="153" width="32" height="32" fill="#1F1F1F"/><rect x="326" y="152" width="34" height="34" rx="6" fill="#FC3901"/><path d="M250 145h140" stroke="#FC3901" stroke-width="4" stroke-dasharray="8 6"/><rect x="270" y="224" width="100" height="36" rx="10" fill="#FC3901"/></svg>',
+    charge: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340"><rect width="640" height="340" fill="#FFF7F3"/><circle cx="210" cy="170" r="110" fill="#FFFFFF" stroke="#FC3901" stroke-width="16"/><path d="M218 118l-34 56h28l-6 48 40-58h-28z" fill="#FC3901"/><rect x="355" y="80" width="240" height="78" rx="18" fill="#FFFFFF"/><text x="380" y="128" font-family="sans-serif" font-size="34" font-weight="800" fill="#1F1F1F">80% · 142 kW</text><rect x="355" y="178" width="240" height="78" rx="18" fill="#E7F6EE"/><text x="380" y="226" font-family="sans-serif" font-size="24" font-weight="700" fill="#146C3E">CO2 -21.9 kg</text></svg>',
+    wallet: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340"><rect width="640" height="340" fill="#F4F5F7"/><rect x="90" y="62" width="460" height="216" rx="28" fill="#1F1F1F"/><rect x="124" y="96" width="130" height="32" rx="10" fill="#D4AF37"/><text x="124" y="196" font-family="sans-serif" font-size="44" font-weight="800" fill="#FFFFFF">Charge X Wallet</text><rect x="124" y="220" width="170" height="30" rx="15" fill="#FC3901"/><rect x="310" y="220" width="140" height="30" rx="15" fill="#146C3E"/></svg>'
+  };
+  return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(T[kind] || T.map);
+}
+seedSlides() {
+  return [
+    { id: 't1', title: 'ค้นหาสถานีชาร์จใกล้คุณ', desc: 'เปิดแผนที่ดูจุดชาร์จว่าง (หมุดสีเขียว) ตรวจสอบกำลังไฟ ระยะทาง และกดนำทางไปยังสถานีได้ทันที', img: this.tutImg('map') },
+    { id: 't2', title: 'สแกน QR ที่ตู้ชาร์จ', desc: 'จอดรถ เสียบหัวชาร์จเข้ากับรถ แล้วกดปุ่มชาร์จตรงกลางเมนูด้านล่างเพื่อสแกน QR บนตู้ชาร์จ', img: this.tutImg('qr') },
+    { id: 't3', title: 'ติดตามสถานะชาร์จแบบเรียลไทม์', desc: 'ตรวจสอบเปอร์เซ็นต์แบตเตอรี่ กำลังไฟ (kW) และค่าบริการตลอดเวลา พร้อมแจ้งเตือนเมื่อใกล้เต็มหรือครบ 5 นาที', img: this.tutImg('charge') },
+    { id: 't4', title: 'ชำระเงิน คูปอง และประวัติ', desc: 'ชำระค่าชาร์จผ่าน Charge X Wallet หรือบัตร เลือกใช้คูปองส่วนลด และเรียกดูการสอนใช้งานซ้ำได้จากเมนูตั้งค่า', img: this.tutImg('wallet') }
+  ];
+}
+readSlides() {
+  try {
+    const raw = JSON.parse(localStorage.getItem('cx-tutorial-slides') || 'null');
+    if (Array.isArray(raw)) return raw;
+  } catch (e) {}
+  return this.seedSlides();
+}
+constructor(props) {
+  super(props);
+  let replayed = false, from = 'News';
+  try {
+    replayed = localStorage.getItem('cx-tutorial-replay') === '1';
+    if (replayed) localStorage.removeItem('cx-tutorial-replay');
+    const f = localStorage.getItem('cx-tutorial-from');
+    if (f) { from = f; localStorage.removeItem('cx-tutorial-from'); }
+  } catch (e) {}
+  this.state = { slides: this.readSlides(), step: 0, autoPlay: false, replayed, from };
+}
+componentDidMount() {
+  if (typeof window !== 'undefined') {
+    this._tutS = (e) => {
+      if (e && e.key === 'cx-tutorial-slides') {
+        const slides = this.readSlides();
+        this.setState({ slides, step: Math.min(this.state.step, Math.max(0, slides.length - 1)) });
+      }
+    };
+    window.addEventListener('storage', this._tutS);
+  }
+}
+componentWillUnmount() {
+  clearInterval(this._playT);
+  if (this._tutS && typeof window !== 'undefined') window.removeEventListener('storage', this._tutS);
+}
 renderVals() {
-const accent = this.props.accent ?? '#FC3901';
-const step = this.state.step;
-const T = [
-{ title: 'โปรโมชันและสิทธิพิเศษ', desc: 'ปัดซ้ายขวาเพื่อดูโปรโมชันล่าสุดและสิทธิพิเศษสำหรับสมาชิก', s: [12, 193, 366, 164, 28], ty: 374, below: true, ax: 170 },
-{ title: 'ค้นหาสถานีหรือสแกนชาร์จ', desc: 'กดค้นหาสถานีเพื่อดูแผนที่จุดชาร์จใกล้คุณ หรือกดสแกนเพื่อเริ่มชาร์จทันที', s: [12, 393, 366, 72, 22], ty: 480, below: true, ax: 170 },
-{ title: 'ปุ่มการชาร์จ', desc: 'ปุ่มตรงกลางเมนูด้านล่าง กดแล้วเปิดกล้องสแกน QR ที่ตู้ชาร์จได้เลย', s: [151, 738, 88, 94, 24], ty: 548, below: false, ax: 168 },
-{ title: 'แจ้งเตือนและโหมดมืด', desc: 'ดูการแจ้งเตือนสถานะการชาร์จ และสลับโหมดสว่าง/มืดได้จากมุมขวาบน', s: [276, 51, 100, 56, 18], ty: 124, below: true, ax: 296 }
-];
-const cur = T[step];
-const go = (i) => this.setState({ step: Math.max(0, Math.min(3, i)) });
-const steps = T.map((t, i) => ({
-active: i === step,
-no: i + 1,
-title: t.title,
-desc: t.desc,
-ty: t.ty,
-ax: t.ax,
-aside: t.below ? 'top' : 'bottom',
-origin: t.below ? 'top center' : 'bottom center',
-notFirst: i > 0,
-notLast: i < 3,
-isLast: i === 3
-}));
-return {
-accent,
-steps,
-sx: cur.s[0], sy: cur.s[1], sw: cur.s[2], sh: cur.s[3], sr: cur.s[4],
-next: () => go(this.state.step + 1),
-prev: () => go(this.state.step - 1)
-};
+  const accent = this.props.accent ?? '#FC3901';
+  const dark = this.props.theme === 'dark';
+  const st = this.state;
+  const slides = st.slides || [];
+  const tot = slides.length;
+  const step = tot ? Math.max(0, Math.min(tot - 1, st.step || 0)) : 0;
+  const cur = slides[step] || { title: '', desc: '', img: this.tutImg('map') };
+  const retScreen = ['News', 'Profile', 'Prefs', 'Help'].indexOf(st.from) >= 0 ? st.from : 'News';
+  const finishHref = retScreen + (dark ? 'Dark' : '') + '.dc.html';
+  const markDone = () => {
+    clearInterval(this._playT);
+    try { localStorage.setItem('cx-tutorial-seen', '1'); } catch (e) {}
+  };
+  const go = (i) => {
+    if (!tot) return;
+    clearInterval(this._playT);
+    this.setState({ autoPlay: false, step: Math.max(0, Math.min(tot - 1, i)) });
+  };
+  return {
+    accent,
+    hasSlides: tot > 0,
+    noSlides: tot === 0,
+    canAutoPlay: tot > 1,
+    isReplayed: !!st.replayed,
+    finishHref,
+    markDone,
+    slideBadge: 'หน้า ' + (step + 1) + ' / ' + Math.max(1, tot),
+    pageBadge: 'หน้าที่ ' + (step + 1),
+    curImg: cur.img || this.tutImg('map'),
+    curTitle: cur.title || '',
+    curDesc: cur.desc || '',
+    notLast: step < tot - 1,
+    isLast: tot > 0 && step >= tot - 1,
+    playLabel: st.autoPlay ? 'หยุดอัตโนมัติ' : 'เล่นอัตโนมัติ',
+    playBtnStyle: 'height: 34px; padding: 0 11px; border-radius: 999px; font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer; ' + (st.autoPlay ? 'border: 0; background: ' + accent + '; color: #FFFFFF' : 'border: 1px solid #E0E0E0; background: #FFFFFF; color: #3A3A3A'),
+    togglePlay: () => {
+      if (tot < 2) return;
+      clearInterval(this._playT);
+      const nextOn = !this.state.autoPlay;
+      this.setState({ autoPlay: nextOn });
+      if (nextOn) {
+        this._playT = setInterval(() => {
+          const list = this.state.slides || [];
+          if (!list.length || !this.state.autoPlay) { clearInterval(this._playT); return; }
+          this.setState({ step: ((this.state.step || 0) + 1) % list.length });
+        }, 3200);
+      }
+    },
+    dots: slides.map((_, i) => ({
+      aria: 'สไลด์ที่ ' + (i + 1),
+      go: () => go(i),
+      style: 'width: ' + (i === step ? '22px' : '8px') + '; height: 8px; padding: 0; border: 0; border-radius: 999px; cursor: pointer; background: ' + (i === step ? accent : '#D4D4D4')
+    })),
+    prev: () => go(step > 0 ? step - 1 : tot - 1),
+    next: () => go(step + 1),
+    replay: () => go(0)
+  };
 }
 }
 </script>

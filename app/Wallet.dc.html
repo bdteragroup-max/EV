@@ -18,12 +18,19 @@ a{color:#C42D00}a:hover{color:#9E2400}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F"]{background-color:#2C2C31!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #333333"]{background-color:#3A3A40!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF1EB"]{background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF7F3"]{background-color:rgba(252,57,1,.1)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF4E0"]{background-color:rgba(240,160,48,.16)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FDECEC"]{background-color:rgba(229,62,62,.18)!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #E7F6EE"]{background-color:rgba(46,180,110,.18)!important}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #1F1F1F"],[style*="color: #2B2B2B"]){color:#F3F3F4!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #3A3A3A"]{color:#DCDCE0!important}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #C42D00"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #B86A00"]{color:#F0A84A!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #B42318"]{color:#FF8A80!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #146C3E"]{color:#5AD49B!important}
-:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"]){border-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"]){border-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="dashed #D4D4D4"]{border-color:#45454C!important}
 [data-theme="dark"] [stroke="#1F1F1F"]{stroke:#F3F3F4}
 [data-theme="dark"] a:not([style*="color"]){color:#FF7A4D}
 [data-theme="dark"][data-theme][style]{background-color:#000000!important}
@@ -33,14 +40,27 @@ a{color:#C42D00}a:hover{color:#9E2400}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(58, 58, 58)"]{color:#DCDCE0!important}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: rgb(92, 92, 92)"],[style*="color: rgb(107, 107, 107)"]){color:#A6A6AD!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(196, 45, 0)"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(184, 106, 0)"]{color:#F0A84A!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(20, 108, 62)"]{color:#5AD49B!important}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 255, 255)"],[style*="background-color: rgb(255, 255, 255)"]){background-color:#1C1C1E!important}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(244, 244, 244)"],[style*="background: rgb(246, 246, 246)"],[style*="background: rgb(240, 240, 240)"],[style*="background-color: rgb(244, 244, 244)"],[style*="background-color: rgb(246, 246, 246)"]){background-color:#25252A!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(31, 31, 31)"]{background-color:#2C2C31!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(255, 241, 235)"]{background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(255, 247, 243)"]{background-color:rgba(252,57,1,.12)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(255, 244, 224)"]{background-color:rgba(240,160,48,.16)!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(231, 246, 238)"]{background-color:rgba(46,180,110,.18)!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(51, 51, 51)"]{background-color:#3A3A40!important}
-:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(237, 237, 237)"],[style*="solid rgb(239, 239, 239)"]){border-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"],[style*="solid rgb(237, 237, 237)"],[style*="solid rgb(239, 239, 239)"]){border-color:#35353B!important}
+.cx-scroll{scrollbar-width:none}.cx-scroll>*{flex-shrink:0}.cx-scroll::-webkit-scrollbar{display:none}
+@keyframes cxSheet{from{transform:translateY(100%)}to{transform:none}}
+.cx-sheet{animation:cxSheet .35s cubic-bezier(.2,.9,.3,1) both}
+@keyframes cxFade{from{opacity:0}to{opacity:1}}
+.cx-fade{animation:cxFade .3s ease-out both}
+.cx-in2{width:100%;height:44px;box-sizing:border-box;border-radius:12px;border:1.5px solid #E0E0E0;background:#FFFFFF;padding:0 12px;font-family:inherit;font-size:14px;color:#1F1F1F;outline:none}
+.cx-in2:focus{border-color:#FC3901}
+[data-theme="dark"] .cx-in2{background:#1C1C1E;border-color:#35353B;color:#F3F3F4}
+[data-theme="dark"] .cx-in2:focus{border-color:#FC3901}
+.cx-in2::placeholder{color:#9A9A9A}
 .cx-fablabel{color:#C42D00}
 [data-theme="dark"] .cx-fablabel{color:#FF7A4D}
 [data-theme="dark"] .cx-fab{box-shadow:0 6px 14px rgba(252,57,1,.35)!important}
@@ -57,21 +77,69 @@ nav > a{position:relative;z-index:1}
 </style>
 </helmet>
 <div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; box-sizing: border-box; background: #FFFFFF; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; position: relative; overflow: hidden">
-<div style="padding: 56px 20px 100px; display: flex; flex-direction: column; gap: 20px">
+<div class="cx-scroll" style="height: 100%; box-sizing: border-box; overflow-y: auto; padding: 56px 20px 108px; display: flex; flex-direction: column; gap: 18px">
 <div style="display: flex; justify-content: space-between; align-items: center">
 <h1 style="margin: 0; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 28px">กระเป๋าเงิน</h1>
-<button aria-label="ประวัติธุรกรรม" style="width: 44px; height: 44px; border-radius: 14px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<button type="button" onClick="{{openHist}}" aria-label="ประวัติธุรกรรม" style="width: 44px; height: 44px; border-radius: 14px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer">
 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></button>
 </div>
 
-<div style="background: #1F1F1F; color: #FFFFFF; border-radius: 24px; padding: 22px; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 18px">
+<div style="background: #1F1F1F; color: #FFFFFF; border-radius: 24px; padding: 20px 22px; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 14px">
 <svg aria-hidden="true" width="220" height="220" viewBox="0 0 220 220" style="position: absolute; right: -60px; top: -50px"><circle cx="110" cy="110" r="90" fill="none" stroke="#D4AF37" stroke-width="10" opacity="0.9"></circle><path d="M60 170 175 40" stroke="{{accent}}" stroke-width="14" stroke-linecap="round"></path></svg>
-<div style="display: flex; flex-direction: column; gap: 4px; position: relative"><span style="font-size: 13px; color: #E0BE5A">ยอดเงินคงเหลือ Charge X</span><span style="font-family: Sarabun, sans-serif; font-weight: 600; font-size: 38px; line-height: 1.1">฿500</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px; position: relative"><span style="font-size: 13px; color: #E0BE5A">ยอดเงินคงเหลือ Charge X</span><span style="font-family: Sarabun, sans-serif; font-weight: 600; font-size: 38px; line-height: 1.1">{{balText}}</span></div>
+<sc-if value="{{hasActive}}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{openActiveDetail}}" style="align-self: flex-start; position: relative; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.1); color: #F7D774; border-radius: 999px; padding: 4px 10px; font-family: inherit; font-size: 12px; font-weight: 600; cursor: pointer">{{activeChipText}} ›</button>
+</sc-if>
 <div style="display: flex; gap: 10px; position: relative">
-<a href="{{L.Topup}}" style="flex: 1; height: 48px; border-radius: 14px; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px">
+<a href="{{L.Topup}}" style="flex: 1; height: 46px; border-radius: 14px; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 17px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px">
 <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>เติมเงิน</a>
-<a href="{{L.Prefs}}" onClick="{{toAuto}}" style="flex: 1; height: 48px; border-radius: 14px; background: #333333; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none; display: flex; align-items: center; justify-content: center">เติมเงินอัตโนมัติ</a>
+<a href="{{L.Prefs}}" onClick="{{toAuto}}" style="flex: 1; height: 46px; border-radius: 14px; background: #333333; color: #FFFFFF; font-weight: 600; font-size: 15px; text-decoration: none; display: flex; align-items: center; justify-content: center">เติมเงินอัตโนมัติ</a>
 </div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<h2 style="margin: 0; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px">คูปองส่วนลดและโปรโมชั่น</h2>
+<button type="button" onClick="{{openAllPromos}}" style="border: 0; background: transparent; padding: 4px 0; font-family: inherit; font-size: 13.5px; font-weight: 600; color: #C42D00; cursor: pointer">{{allBtnText}}</button>
+</div>
+<sc-if value="{{hasActive}}" hint-placeholder-val="{{ false }}">
+<div style="background: #FFF7F3; border: 1.5px solid {{accent}}; border-radius: 18px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<div style="display: flex; align-items: center; gap: 6px; min-width: 0">
+<span style="padding: 3px 8px; border-radius: 8px; background: #E7F6EE; color: #146C3E; font-size: 11.5px; font-weight: 700">✓ กำลังใช้งาน</span>
+<span style="padding: 2px 8px; border-radius: 7px; border: 1px dashed #D4D4D4; background: #FFFFFF; font-size: 11.5px; font-weight: 700; color: #C42D00">{{activeCode}}</span>
+</div>
+<button type="button" onClick="{{clearActive}}" style="border: 0; background: transparent; padding: 2px 4px; font-family: inherit; font-size: 12px; font-weight: 600; color: #6B6B6B; cursor: pointer">ยกเลิกใช้</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 15px; font-weight: 700; color: #1F1F1F">{{activeTitle}}</span>
+<span style="font-size: 12.5px; color: #5C5C5C">{{activeEffect}}</span>
+</div>
+<div style="display: flex; gap: 8px; margin-top: 2px">
+<sc-if value="{{activeIsCharge}}" hint-placeholder-val="{{ true }}"><a href="{{L.Scan}}" style="flex: 1; height: 36px; border-radius: 10px; background: {{accent}}; color: #FFFFFF; font-size: 13px; font-weight: 600; text-decoration: none; display: flex; align-items: center; justify-content: center">ไปสแกนชาร์จเลย</a></sc-if>
+<sc-if value="{{activeIsTopup}}" hint-placeholder-val="{{ false }}"><a href="{{L.Topup}}" style="flex: 1; height: 36px; border-radius: 10px; background: {{accent}}; color: #FFFFFF; font-size: 13px; font-weight: 600; text-decoration: none; display: flex; align-items: center; justify-content: center">ไปหน้าเติมเงิน</a></sc-if>
+<button type="button" onClick="{{openActiveDetail}}" style="height: 36px; padding: 0 12px; border-radius: 10px; border: 1px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 12.5px; font-weight: 600; color: #3A3A3A; cursor: pointer">ดูรายละเอียด</button>
+</div>
+</div>
+</sc-if>
+<div style="display: flex; gap: 8px; align-items: center">
+<input class="cx-in2" value="{{codeIn}}" onInput="{{onCodeIn}}" placeholder="กรอกโค้ดส่วนลด เช่น EV50, NEW40" style="flex: 1">
+<button type="button" onClick="{{applyCode}}" style="height: 44px; padding: 0 14px; flex: none; border-radius: 12px; border: 0; background: {{codeBtnBg}}; color: #FFFFFF; font-family: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer">ใช้โค้ด</button>
+</div>
+<sc-if value="{{hasCodeErr}}" hint-placeholder-val="{{ false }}">
+<div role="alert" style="padding: 8px 12px; border-radius: 10px; background: #FDECEC; color: #B42318; font-size: 12.5px; font-weight: 600">{{codeErr}}</div>
+</sc-if>
+<sc-for list="{{topCoupons}}" as="cp" hint-placeholder-count="2">
+<div style="display: flex; align-items: center; gap: 10px; padding: 11px 12px; border: {{cp.border}}; border-radius: 16px; background: {{cp.cardBg}}">
+<span style="width: 40px; height: 40px; flex: none; border-radius: 12px; background: {{cp.iconBg}}; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="{{cp.iconFg}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4V8zM9 9h.01M15 15h.01M15 9l-6 6"></path></svg></span>
+<button type="button" onClick="{{cp.open}}" style="flex: 1; min-width: 0; border: 0; background: transparent; padding: 0; font-family: inherit; text-align: left; cursor: pointer; display: flex; flex-direction: column; gap: 2px">
+<span style="font-weight: 700; font-size: 14px; color: #1F1F1F; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{cp.title}}</span>
+<span style="font-size: 12px; color: #5C5C5C; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{cp.cond}}</span>
+<span style="font-size: 11px; font-weight: 600; color: #C42D00">{{cp.meta}}</span>
+</button>
+<button type="button" onClick="{{cp.act}}" style="{{cp.btnStyle}}">{{cp.btnLabel}}</button>
+</div>
+</sc-for>
 </div>
 
 <div style="display: flex; flex-direction: column; gap: 10px">
@@ -91,20 +159,123 @@ nav > a{position:relative;z-index:1}
 <div style="display: flex; flex-direction: column; gap: 4px">
 <div style="display: flex; justify-content: space-between; align-items: center">
 <h2 style="margin: 0; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px">รายการล่าสุด</h2>
-<a href="#" style="font-size: 14px; font-weight: 600; text-decoration: none; padding: 10px 0">ดูทั้งหมด</a>
+<button type="button" onClick="{{openHist}}" style="border: 0; background: transparent; font-family: inherit; font-size: 14px; font-weight: 600; color: #C42D00; padding: 10px 0; cursor: pointer">ดูทั้งหมด</button>
 </div>
+<sc-for list="{{recentTx}}" as="txi" hint-placeholder-count="2">
 <div style="display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #EFEFEF">
-<span style="width: 40px; height: 40px; border-radius: 50%; background: #FFF1EB; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="#FC3901"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg></span>
-<span style="flex: 1; display: flex; flex-direction: column"><span style="font-weight: 600; font-size: 15px">มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา</span><span style="font-size: 13px; color: rgb(92, 92, 92)">วันนี้ · 48.6 kWh</span></span>
-<span style="font-weight: 600; font-size: 15px">−฿235.68</span>
+<span style="width: 40px; height: 40px; flex: none; border-radius: 50%; background: {{txi.bg}}; display: flex; align-items: center; justify-content: center">
+<sc-if value="{{txi.plus}}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#146C3E" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></sc-if>
+<sc-if value="{{txi.minus}}" hint-placeholder-val="{{ true }}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="#FC3901"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg></sc-if>
+</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column"><span style="font-weight: 600; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{txi.title}}</span><span style="font-size: 13px; color: #5C5C5C">{{txi.sub}}</span></span>
+<span style="font-weight: 600; font-size: 15px; color: {{txi.amtColor}}">{{txi.amt}}</span>
 </div>
-<div style="display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #EFEFEF">
-<span style="width: 40px; height: 40px; border-radius: 50%; background: #E7F6EE; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#146C3E" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
-<span style="flex: 1; display: flex; flex-direction: column"><span style="font-weight: 600; font-size: 15px">เติมเงิน · พร้อมเพย์</span><span style="font-size: 13px; color: #5C5C5C">เมื่อวาน</span></span>
-<span style="font-weight: 600; font-size: 15px; color: #146C3E">+฿735.68</span>
+</sc-for>
+</div>
+</div>
+
+<sc-if value="{{showToast}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" role="status" style="position: absolute; left: 16px; right: 16px; bottom: 98px; z-index: 35; padding: 12px 14px; border-radius: 16px; background: #1F1F1F; color: #FFFFFF; font-size: 13.5px; font-weight: 600; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 24px rgba(0,0,0,0.25)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5AD49B" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg>{{toast}}</div>
+</sc-if>
+
+<sc-if value="{{showAllSheet}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 45; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: flex-end">
+<button type="button" aria-label="ปิด" onClick="{{closeSheets}}" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
+<div class="cx-sheet" role="dialog" aria-label="คูปองส่วนลดและโปรโมชั่นทั้งหมด" style="background: #FFFFFF; border-radius: 26px 26px 0 0; max-height: 85%; display: flex; flex-direction: column; overflow: hidden">
+<div style="padding: 10px 20px 12px; display: flex; flex-direction: column; align-items: center; gap: 10px; border-bottom: 1px solid #EFEFEF">
+<span style="width: 40px; height: 4px; border-radius: 2px; background: #E6E6E6"></span>
+<div style="align-self: stretch; display: flex; align-items: center; justify-content: space-between; gap: 10px">
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; color: #1F1F1F">คูปองส่วนลดและโปรโมชั่น</span>
+<button type="button" onClick="{{closeSheets}}" aria-label="ปิด" style="width: 36px; height: 36px; flex: none; border-radius: 12px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+<div style="align-self: stretch; display: flex; gap: 6px; overflow-x: auto" class="cx-scroll">
+<sc-for list="{{promoTabs}}" as="pt" hint-placeholder-count="4"><button type="button" role="tab" aria-selected="{{pt.on}}" onClick="{{pt.pick}}" style="{{pt.style}}">{{pt.label}}</button></sc-for>
+</div>
+</div>
+<div class="cx-scroll" style="flex: 1; min-height: 0; overflow-y: auto; padding: 12px 20px 28px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; gap: 8px; align-items: center">
+<input class="cx-in2" value="{{codeIn}}" onInput="{{onCodeIn}}" placeholder="กรอกโค้ดส่วนลด เช่น EV50, BONUS100" style="flex: 1">
+<button type="button" onClick="{{applyCode}}" style="height: 44px; padding: 0 14px; flex: none; border-radius: 12px; border: 0; background: {{codeBtnBg}}; color: #FFFFFF; font-family: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer">ใช้โค้ด</button>
+</div>
+<sc-if value="{{hasCodeErr}}" hint-placeholder-val="{{ false }}">
+<div role="alert" style="padding: 8px 12px; border-radius: 10px; background: #FDECEC; color: #B42318; font-size: 12.5px; font-weight: 600">{{codeErr}}</div>
+</sc-if>
+<sc-if value="{{hasFiltered}}" hint-placeholder-val="{{ true }}">
+<sc-for list="{{filteredCoupons}}" as="cp" hint-placeholder-count="4">
+<div style="display: flex; align-items: center; gap: 10px; padding: 12px; border: {{cp.border}}; border-radius: 16px; background: {{cp.cardBg}}">
+<span style="width: 42px; height: 42px; flex: none; border-radius: 12px; background: {{cp.iconBg}}; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="{{cp.iconFg}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4V8zM9 9h.01M15 15h.01M15 9l-6 6"></path></svg></span>
+<button type="button" onClick="{{cp.open}}" style="flex: 1; min-width: 0; border: 0; background: transparent; padding: 0; font-family: inherit; text-align: left; cursor: pointer; display: flex; flex-direction: column; gap: 2px">
+<span style="font-weight: 700; font-size: 14.5px; color: #1F1F1F">{{cp.title}}</span>
+<span style="font-size: 12px; color: #5C5C5C">{{cp.cond}}</span>
+<span style="font-size: 11px; font-weight: 600; color: #C42D00">{{cp.meta}}</span>
+</button>
+<button type="button" onClick="{{cp.act}}" style="{{cp.btnStyle}}">{{cp.btnLabel}}</button>
+</div>
+</sc-for>
+</sc-if>
+<sc-if value="{{noFiltered}}" hint-placeholder-val="{{ false }}">
+<div style="padding: 28px 16px; text-align: center; font-size: 14px; color: #6B6B6B">ยังไม่มีคูปองหรือโปรโมชันในหมวดนี้</div>
+</sc-if>
 </div>
 </div>
 </div>
+</sc-if>
+
+<sc-if value="{{showUseSheet}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 48; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: flex-end">
+<button type="button" aria-label="ปิด" onClick="{{closeUse}}" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
+<div class="cx-sheet" role="dialog" aria-label="รายละเอียดคูปองส่วนลด" style="background: #FFFFFF; border-radius: 26px 26px 0 0; padding: 10px 20px 28px; display: flex; flex-direction: column; gap: 12px">
+<span style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #E6E6E6"></span>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px">
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; color: #1F1F1F">{{selHead}}</span>
+<button type="button" onClick="{{closeUse}}" aria-label="ปิด" style="width: 36px; height: 36px; flex: none; border-radius: 12px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+<div style="background: #FFF7F3; border: 1px dashed #D4D4D4; border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<span style="padding: 3px 8px; border-radius: 8px; background: {{selBadgeBg}}; color: {{selBadgeFg}}; font-size: 11.5px; font-weight: 700">{{selBadge}}</span>
+<span style="font-size: 12px; font-weight: 700; color: #C42D00">{{selCodeText}}</span>
+</div>
+<span style="font-size: 16px; font-weight: 700; color: #1F1F1F">{{selTitle}}</span>
+<span style="font-size: 13px; color: #5C5C5C">{{selCond}}</span>
+<span style="font-size: 12px; color: #6B6B6B">{{selExp}}</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; margin-top: 2px">
+<sc-if value="{{selCanUse}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{selApply}}" style="height: 50px; border-radius: 14px; border: 0; background: {{accent}}; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer">{{selApplyLabel}}</button></sc-if>
+<sc-if value="{{selGoScan}}" hint-placeholder-val="{{ false }}"><a href="{{L.Scan}}" style="height: 50px; border-radius: 14px; background: {{accent}}; color: #FFFFFF; font-size: 15px; font-weight: 600; text-decoration: none; display: flex; align-items: center; justify-content: center">ไปสแกนชาร์จเพื่อใช้คูปอง</a></sc-if>
+<sc-if value="{{selGoTopup}}" hint-placeholder-val="{{ false }}"><a href="{{L.Topup}}" style="height: 50px; border-radius: 14px; background: {{accent}}; color: #FFFFFF; font-size: 15px; font-weight: 600; text-decoration: none; display: flex; align-items: center; justify-content: center">ไปหน้าเติมเงินรับโบนัส</a></sc-if>
+<sc-if value="{{selCanCancel}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{selCancel}}" style="height: 46px; border-radius: 14px; border: 1.5px solid #E0E0E0; background: #FFFFFF; color: #1F1F1F; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer">ยกเลิกการใช้คูปอง</button></sc-if>
+<sc-if value="{{selIsUsed}}" hint-placeholder-val="{{ false }}"><div style="height: 46px; border-radius: 14px; background: #F4F4F4; color: #6B6B6B; font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center">ใช้สิทธิ์คูปองนี้เรียบร้อยแล้ว</div></sc-if>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{showHistSheet}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 45; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: flex-end">
+<button type="button" aria-label="ปิด" onClick="{{closeSheets}}" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
+<div class="cx-sheet" role="dialog" aria-label="ประวัติธุรกรรมทั้งหมด" style="background: #FFFFFF; border-radius: 26px 26px 0 0; max-height: 75%; display: flex; flex-direction: column; overflow: hidden">
+<div style="padding: 10px 20px 12px; display: flex; flex-direction: column; align-items: center; gap: 10px; border-bottom: 1px solid #EFEFEF">
+<span style="width: 40px; height: 4px; border-radius: 2px; background: #E6E6E6"></span>
+<div style="align-self: stretch; display: flex; align-items: center; justify-content: space-between">
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; color: #1F1F1F">ประวัติธุรกรรม</span>
+<button type="button" onClick="{{closeSheets}}" aria-label="ปิด" style="width: 36px; height: 36px; flex: none; border-radius: 12px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+</div>
+<div class="cx-scroll" style="flex: 1; min-height: 0; overflow-y: auto; padding: 8px 20px 28px; display: flex; flex-direction: column; gap: 2px">
+<sc-for list="{{allTx}}" as="txi" hint-placeholder-count="3">
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #EFEFEF">
+<span style="width: 40px; height: 40px; flex: none; border-radius: 50%; background: {{txi.bg}}; display: flex; align-items: center; justify-content: center">
+<sc-if value="{{txi.plus}}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#146C3E" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></sc-if>
+<sc-if value="{{txi.minus}}" hint-placeholder-val="{{ true }}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="#FC3901"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg></sc-if>
+</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column"><span style="font-weight: 600; font-size: 15px">{{txi.title}}</span><span style="font-size: 13px; color: #5C5C5C">{{txi.sub}}</span></span>
+<span style="font-weight: 600; font-size: 15px; color: {{txi.amtColor}}">{{txi.amt}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</sc-if>
 
 <nav style="position: absolute; left: 0; right: 0; bottom: 0; height: 84px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding-bottom: 14px; box-sizing: border-box">
 <div aria-hidden="true" style="position: absolute; inset: 0; overflow: hidden; z-index: 0; filter: drop-shadow(0 -4px 14px rgba(0,0,0,0.08))"><svg class="cx-navbg" width="1170" height="84" viewBox="0 0 1170 84" style="position: absolute; top: 0; left: 0; transform: translateX({{nv.bx}}px); transition: transform .5s cubic-bezier(.65,0,.35,1)"><path d="M0 0 H531 C546 0 550 3 556 14 Q567 40 585 40 Q603 40 614 14 C620 3 624 0 639 0 H1170 V84 H0 Z" fill="#FFFFFF"></path></svg></div>
@@ -133,13 +304,13 @@ nav > a{position:relative;z-index:1}
 </nav>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"screen":{"editor":"enum","options":["กระเป๋าเงิน","คูปองและโปรโมชั่น"],"default":"กระเป๋าเงิน"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
 class Component extends DCLogic {
 static {
 const P = this.prototype;
-const TR = {"เติมเงิน": "Top up", "ดูทั้งหมด": "See all", "หน้าหลัก": "Home", "แผนที่": "Map", "การชาร์จ": "Charge", "กระเป๋าเงิน": "Wallet", "โปรไฟล์": "Profile", "การชาร์จ (สแกน QR)": "Charge (scan QR)", "ทั้งหมด": "All", "วันนี้": "Today", "เมื่อวาน": "Yesterday", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "เริ่มต้น": "from", "จัดการบัตร": "Manage cards", "บัตร •••• [0000]": "Card •••• [0000]", "บัตรเครดิต / เดบิต": "Credit / debit card", "ยอดเงินคงเหลือ Charge X": "Charge X balance", "เติมเงินอัตโนมัติ": "Auto top-up", "ช่องทางการชำระเงิน": "Payment methods", "QR พร้อมเพย์": "PromptPay QR", "เติมเงินได้ทันที": "Instant top-up", "ค่าเริ่มต้น": "Default", "รายการล่าสุด": "Recent activity", "วันนี้ · 48.6 kWh": "Today · 48.6 kWh", "เติมเงิน · พร้อมเพย์": "Top-up · PromptPay", "ประวัติธุรกรรม": "Transaction history", "ช่องทาง": "Method", "สแกน QR": "Scan QR", "บัตรเครดิต": "Credit card", "บัตร": "Card", "กม.": "km", "ชม.": "hrs", "นาที": "min"};
-const PT = [].map(([r, e]) => [new RegExp(r), e]);
-const SUB = ["มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "ยอดเงินคงเหลือ Charge X", "เติมเงิน · พร้อมเพย์", "การชาร์จ (สแกน QR)", "บัตรเครดิต / เดบิต", "ช่องทางการชำระเงิน", "เติมเงินอัตโนมัติ", "วันนี้ · 48.6 kWh", "บัตร •••• [0000]", "เติมเงินได้ทันที", "ประวัติธุรกรรม", "QR พร้อมเพย์", "รายการล่าสุด", "กระเป๋าเงิน", "ค่าเริ่มต้น", "จัดการบัตร", "บัตรเครดิต", "ดูทั้งหมด", "เติมเงิน", "หน้าหลัก", "การชาร์จ", "เมื่อวาน", "เริ่มต้น", "โปรไฟล์", "ทั้งหมด", "ช่องทาง", "สแกน QR", "แผนที่", "วันนี้", "บัตร", "นาที", "กม.", "ชม."];
+const TR = {"เติมเงิน": "Top up", "ดูทั้งหมด": "See all", "หน้าหลัก": "Home", "แผนที่": "Map", "การชาร์จ": "Charge", "กระเป๋าเงิน": "Wallet", "โปรไฟล์": "Profile", "การชาร์จ (สแกน QR)": "Charge (scan QR)", "ทั้งหมด": "All", "วันนี้": "Today", "เมื่อวาน": "Yesterday", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "เริ่มต้น": "from", "จัดการบัตร": "Manage cards", "บัตร •••• [0000]": "Card •••• [0000]", "บัตรเครดิต / เดบิต": "Credit / debit card", "ยอดเงินคงเหลือ Charge X": "Charge X balance", "เติมเงินอัตโนมัติ": "Auto top-up", "ช่องทางการชำระเงิน": "Payment methods", "QR พร้อมเพย์": "PromptPay QR", "เติมเงินได้ทันที": "Instant top-up", "ค่าเริ่มต้น": "Default", "รายการล่าสุด": "Recent activity", "วันนี้ · 48.6 kWh": "Today · 48.6 kWh", "เติมเงิน · พร้อมเพย์": "Top-up · PromptPay", "ประวัติธุรกรรม": "Transaction history", "ช่องทาง": "Method", "สแกน QR": "Scan QR", "บัตรเครดิต": "Credit card", "บัตร": "Card", "กม.": "km", "ชม.": "hrs", "นาที": "min", "คูปองส่วนลดและโปรโมชั่น": "Coupons & promotions", "คูปองส่วนลดและโปรโมชั่นทั้งหมด": "All coupons & promotions", "รายละเอียดคูปองส่วนลด": "Coupon details", "รายละเอียดคูปอง & โปรโมชัน": "Coupon & promotion details", "✓ เปิดใช้คูปองส่วนลดแล้ว": "✓ Coupon applied", "✓ กำลังใช้งาน": "✓ Active", "ยกเลิกใช้": "Remove", "ยกเลิกการใช้คูปอง": "Remove applied coupon", "ยกเลิกการใช้คูปองแล้ว": "Coupon removed", "ไปสแกนชาร์จเลย": "Scan to charge", "ไปสแกนชาร์จเพื่อใช้คูปอง": "Scan charger to use coupon", "ไปหน้าเติมเงินรับโบนัส": "Top up to get bonus", "ไปหน้าเติมเงิน": "Go to top-up", "ดูรายละเอียด": "View details", "กรอกโค้ดส่วนลด เช่น EV50, NEW40": "Enter promo code e.g. EV50, NEW40", "กรอกโค้ดส่วนลด เช่น EV50, BONUS100": "Enter promo code e.g. EV50, BONUS100", "ใช้โค้ด": "Apply", "กรุณากรอกรหัสคูปอง": "Please enter a coupon code", "คูปองนี้ถูกใช้สิทธิ์ไปแล้ว": "This coupon has already been redeemed", "คูปองนี้ถูกปิดใช้งานชั่วคราว": "This coupon is currently disabled", "ไม่พบรหัสคูปองนี้ (ลอง EV50, NEW40, BONUS100)": "Invalid code (try EV50, NEW40, BONUS100)", "กดใช้": "Use", "รับเครดิต": "Claim", "ใช้อยู่ ✓": "Active ✓", "ใช้แล้ว ✓": "Used ✓", "กดใช้คูปองนี้": "Apply this coupon", "ใช้สิทธิ์คูปองนี้เรียบร้อยแล้ว": "Coupon has been redeemed", "ยังไม่มีคูปองหรือโปรโมชันในหมวดนี้": "No coupons or promotions in this tab", "ส่วนลดชาร์จ": "Charging", "โปรโมชันเติมเงิน": "Top-up", "ใช้แล้ว": "Used", "ประวัติธุรกรรมทั้งหมด": "All transactions", "วันนี้ · เครดิตเข้ากระเป๋า": "Today · wallet credit", "ลดค่าชาร์จ ฿50": "฿50 off charging", "ส่วนลดค่าชาร์จ DC 25%": "25% off DC charging", "เติมเงิน ฿300 รับโบนัส ฿50": "Top up ฿300 get ฿50 bonus", "โบนัสสมาชิกใหม่ รับเครดิต ฿30": "New member ฿30 credit", "ลดผู้ใช้ใหม่ 40% สูงสุด ฿80": "New user 40% off (max ฿80)", "ลดค่าชาร์จวันหยุด ฿20": "฿20 off weekend charging", "เติมเงิน ฿500 รับโบนัส ฿100": "Top up ฿500 get ฿100 bonus", "เมื่อชาร์จตั้งแต่ ฿150 ขึ้นไป · ทุกสถานี": "Min spend ฿150 · All stations", "ลดสูงสุด ฿60 · ชาร์จขั้นต่ำ ฿100 สำหรับหัวชาร์จ DC": "Max ฿60 off · Min ฿100 at DC chargers", "รับเครดิตเพิ่มเข้ากระเป๋าเมื่อเติมผ่าน PromptPay / บัตร": "Bonus wallet credit with PromptPay / card", "กดรับเข้ากระเป๋าเงิน Charge X ได้ทันที ไม่มีขั้นต่ำ": "Claim directly to Charge X wallet · No min", "เมื่อชาร์จตั้งแต่ ฿120 ขึ้นไป · ทุกสถานี": "Min spend ฿120 · All stations", "ไม่มีขั้นต่ำ · ใช้ได้ทุกหัวชาร์จ": "No minimum · All connectors", "โปรโมชันพิเศษสำหรับสมาชิก Charge X": "Special promo for Charge X members", "หมดอายุ 31 ธ.ค. 2569": "Valid until 31 Dec 2026", "หมดอายุ 15 ม.ค. 2570": "Valid until 15 Jan 2027", "หมดอายุ 31 ม.ค. 2570": "Valid until 31 Jan 2027", "หมดอายุ 28 ก.พ. 2570": "Valid until 28 Feb 2027", "ส่วนลดค่าชาร์จ": "Charging discount", "เครดิตเข้ากระเป๋า": "Wallet credit", "โปรโมชัน": "Promotion", "ชาร์จขั้นต่ำ ฿150": "min ฿150 spend", "ชาร์จขั้นต่ำ ฿100": "min ฿100 spend", "ชาร์จขั้นต่ำ ฿120": "min ฿120 spend", "เติมขั้นต่ำ ฿300": "min ฿300 top-up", "เติมขั้นต่ำ ฿500": "min ฿500 top-up", "ไม่มีขั้นต่ำ": "no minimum", "คูปองที่ใช้อยู่: ": "Active coupon: ", "จะหักส่วนลด ": "Auto-applies ", " อัตโนมัติ · ": " off · ", "ส่วนลด ": "Save ", "% สูงสุด ": "% max ", "รับโบนัส ": "Bonus ", "โค้ด ": "Code ", "ปิด": "Close"};
+const PT = [["^ดูทั้งหมด\\ \\((\\d+)\\)\\ ›$", "See all ({1}) ›"], ["^รหัส:\\ ([A-Z0-9]+)$", "Code: {1}"], ["^เปิดใช้คูปอง\\ ([A-Z0-9]+)\\ แล้ว$", "Coupon {1} activated"], ["^รับเครดิต\\ \\+฿(\\d+)\\ เข้ากระเป๋าแล้ว$", "+฿{1} wallet credit added"], ["^โบนัสคูปอง\\ ·\\ ([A-Z0-9]+)$", "Coupon bonus · {1}"], ["^กดรับเครดิต\\ \\+฿(\\d+)\\ ทันที$", "Claim +฿{1} credit now"]].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["รับเครดิตเพิ่มเข้ากระเป๋าเมื่อเติมผ่าน PromptPay / บัตร", "กดรับเข้ากระเป๋าเงิน Charge X ได้ทันที ไม่มีขั้นต่ำ", "ลดสูงสุด ฿60 · ชาร์จขั้นต่ำ ฿100 สำหรับหัวชาร์จ DC", "ไม่พบรหัสคูปองนี้ (ลอง EV50, NEW40, BONUS100)", "เมื่อชาร์จตั้งแต่ ฿150 ขึ้นไป · ทุกสถานี", "เมื่อชาร์จตั้งแต่ ฿120 ขึ้นไป · ทุกสถานี", "กรอกโค้ดส่วนลด เช่น EV50, BONUS100", "ยังไม่มีคูปองหรือโปรโมชันในหมวดนี้", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "โปรโมชันพิเศษสำหรับสมาชิก Charge X", "ไม่มีขั้นต่ำ · ใช้ได้ทุกหัวชาร์จ", "กรอกโค้ดส่วนลด เช่น EV50, NEW40", "คูปองส่วนลดและโปรโมชั่นทั้งหมด", "ใช้สิทธิ์คูปองนี้เรียบร้อยแล้ว", "โบนัสสมาชิกใหม่ รับเครดิต ฿30", "คูปองนี้ถูกปิดใช้งานชั่วคราว", "เติมเงิน ฿500 รับโบนัส ฿100", "ลดผู้ใช้ใหม่ 40% สูงสุด ฿80", "เติมเงิน ฿300 รับโบนัส ฿50", "รายละเอียดคูปอง & โปรโมชัน", "คูปองนี้ถูกใช้สิทธิ์ไปแล้ว", "วันนี้ · เครดิตเข้ากระเป๋า", "ไปสแกนชาร์จเพื่อใช้คูปอง", "✓ เปิดใช้คูปองส่วนลดแล้ว", "คูปองส่วนลดและโปรโมชั่น", "ยอดเงินคงเหลือ Charge X", "ไปหน้าเติมเงินรับโบนัส", "ลดค่าชาร์จวันหยุด ฿20", "ส่วนลดค่าชาร์จ DC 25%", "ประวัติธุรกรรมทั้งหมด", "ยกเลิกการใช้คูปองแล้ว", "รายละเอียดคูปองส่วนลด", "หมดอายุ 31 ธ.ค. 2569", "หมดอายุ 15 ม.ค. 2570", "หมดอายุ 31 ม.ค. 2570", "หมดอายุ 28 ก.พ. 2570", "เติมเงิน · พร้อมเพย์", "กรุณากรอกรหัสคูปอง", "การชาร์จ (สแกน QR)", "บัตรเครดิต / เดบิต", "ช่องทางการชำระเงิน", "ยกเลิกการใช้คูปอง", "คูปองที่ใช้อยู่: ", "เครดิตเข้ากระเป๋า", "ชาร์จขั้นต่ำ ฿150", "ชาร์จขั้นต่ำ ฿100", "ชาร์จขั้นต่ำ ฿120", "เติมเงินอัตโนมัติ", "วันนี้ · 48.6 kWh", "เติมขั้นต่ำ ฿300", "เติมขั้นต่ำ ฿500", "บัตร •••• [0000]", "โปรโมชันเติมเงิน", "เติมเงินได้ทันที", "ลดค่าชาร์จ ฿50", "ไปสแกนชาร์จเลย", "ไปหน้าเติมเงิน", "ส่วนลดค่าชาร์จ", "ประวัติธุรกรรม", "✓ กำลังใช้งาน", "กดใช้คูปองนี้", " อัตโนมัติ · ", "จะหักส่วนลด ", "QR พร้อมเพย์", "ดูรายละเอียด", "รายการล่าสุด", "ไม่มีขั้นต่ำ", "ส่วนลดชาร์จ", "กระเป๋าเงิน", "ค่าเริ่มต้น", "จัดการบัตร", "บัตรเครดิต", "ยกเลิกใช้", "รับเครดิต", "ดูทั้งหมด", "ใช้อยู่ ✓", "ใช้แล้ว ✓", "% สูงสุด ", "รับโบนัส ", "โปรโมชัน", "เติมเงิน", "หน้าหลัก", "การชาร์จ", "เมื่อวาน", "เริ่มต้น", "ส่วนลด ", "โปรไฟล์", "ทั้งหมด", "ช่องทาง", "สแกน QR", "ใช้โค้ด", "ใช้แล้ว", "แผนที่", "วันนี้", "กดใช้", "โค้ด ", "บัตร", "นาที", "กม.", "ชม.", "ปิด"];
 const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
 const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
 const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
@@ -198,8 +369,180 @@ const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide
 const rv = P.renderVals;
 P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
 }
+constructor(props) {
+  super(props);
+  let bal = 500, coupons = this.seedCoupons(), activeId = '', tx = this.seedTx();
+  try {
+    const sb = localStorage.getItem('cx-wallet-bal');
+    if (sb !== null && !isNaN(Number(sb))) bal = Number(sb);
+    const sc = JSON.parse(localStorage.getItem('cx-wallet-coupons') || 'null');
+    if (Array.isArray(sc) && sc.length) coupons = sc;
+    const sa = JSON.parse(localStorage.getItem('cx-active-coupon') || 'null');
+    if (sa && sa.id) activeId = sa.id;
+    const stx = JSON.parse(localStorage.getItem('cx-wallet-tx') || 'null');
+    if (Array.isArray(stx) && stx.length) tx = stx;
+  } catch (e) {}
+  this.state = Object.assign({ bal, coupons, activeId, tx, codeIn: '', codeErr: '', toast: '', tab: 'all', histOpen: false, selId: '', appliedNow: false }, this.screenState(props.screen));
+}
+seedCoupons() {
+  return [
+    { id: 'c1', code: 'EV50', kind: 'charge', discType: 'flat', discVal: 50, minSpend: 150, maxDisc: 50, title: 'ลดค่าชาร์จ ฿50', cond: 'เมื่อชาร์จตั้งแต่ ฿150 ขึ้นไป · ทุกสถานี', exp: 'หมดอายุ 31 ธ.ค. 2569', status: 'avail' },
+    { id: 'c2', code: 'DC25', kind: 'charge', discType: 'pct', discVal: 25, minSpend: 100, maxDisc: 60, title: 'ส่วนลดค่าชาร์จ DC 25%', cond: 'ลดสูงสุด ฿60 · ชาร์จขั้นต่ำ ฿100 สำหรับหัวชาร์จ DC', exp: 'หมดอายุ 31 ธ.ค. 2569', status: 'avail' },
+    { id: 'c3', code: 'TOPUP100', kind: 'topup', discType: 'bonus', discVal: 50, minSpend: 300, maxDisc: 50, title: 'เติมเงิน ฿300 รับโบนัส ฿50', cond: 'รับเครดิตเพิ่มเข้ากระเป๋าเมื่อเติมผ่าน PromptPay / บัตร', exp: 'หมดอายุ 15 ม.ค. 2570', status: 'avail' },
+    { id: 'c4', code: 'CASH30', kind: 'credit', discType: 'credit', discVal: 30, minSpend: 0, maxDisc: 30, title: 'โบนัสสมาชิกใหม่ รับเครดิต ฿30', cond: 'กดรับเข้ากระเป๋าเงิน Charge X ได้ทันที ไม่มีขั้นต่ำ', exp: 'หมดอายุ 31 ธ.ค. 2569', status: 'avail' }
+  ];
+}
+seedTx() {
+  return [
+    { id: 't1', title: 'มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา', sub: 'วันนี้ · 48.6 kWh', amt: '−฿235.68', plus: false },
+    { id: 't2', title: 'เติมเงิน · พร้อมเพย์', sub: 'เมื่อวาน', amt: '+฿735.68', plus: true }
+  ];
+}
+screenState(s) { return { allOpen: s === 'คูปองและโปรโมชั่น' }; }
+componentDidUpdate(pp) { if (pp.screen !== this.props.screen) this.setState(this.screenState(this.props.screen)); }
+componentWillUnmount() { clearTimeout(this._toast); }
+sync(bal, coupons, activeId, tx) {
+  bal = bal === undefined ? this.state.bal : bal;
+  coupons = coupons || this.state.coupons;
+  activeId = activeId === undefined ? this.state.activeId : activeId;
+  tx = tx || this.state.tx;
+  try {
+    localStorage.setItem('cx-wallet-bal', String(bal));
+    localStorage.setItem('cx-wallet-coupons', JSON.stringify(coupons));
+    localStorage.setItem('cx-wallet-tx', JSON.stringify(tx));
+    const act = coupons.find((c) => c.id === activeId && c.status === 'avail');
+    if (act) localStorage.setItem('cx-active-coupon', JSON.stringify(act));
+    else localStorage.removeItem('cx-active-coupon');
+  } catch (e) {}
+}
 renderVals() {
-return { accent: this.props.accent ?? '#FC3901', toAuto: () => { try { localStorage.setItem('cx-prefs-from', 'Wallet'); localStorage.setItem('cx-prefs-focus', 'auto'); } catch (e) {} } };
+const accent = this.props.accent ?? '#FC3901';
+const st = this.state;
+const toast = (t) => { this.setState({ toast: t }); clearTimeout(this._toast); this._toast = setTimeout(() => this.setState({ toast: '' }), 2400); };
+const EXTRA = {
+  NEW40: { id: 'r1', code: 'NEW40', kind: 'charge', discType: 'pct', discVal: 40, minSpend: 120, maxDisc: 80, title: 'ลดผู้ใช้ใหม่ 40% สูงสุด ฿80', cond: 'เมื่อชาร์จตั้งแต่ ฿120 ขึ้นไป · ทุกสถานี', exp: 'หมดอายุ 31 ม.ค. 2570', status: 'avail' },
+  WEEKEND20: { id: 'r2', code: 'WEEKEND20', kind: 'charge', discType: 'flat', discVal: 20, minSpend: 0, maxDisc: 20, title: 'ลดค่าชาร์จวันหยุด ฿20', cond: 'ไม่มีขั้นต่ำ · ใช้ได้ทุกหัวชาร์จ', exp: 'หมดอายุ 28 ก.พ. 2570', status: 'avail' },
+  BONUS100: { id: 'r3', code: 'BONUS100', kind: 'topup', discType: 'bonus', discVal: 100, minSpend: 500, maxDisc: 100, title: 'เติมเงิน ฿500 รับโบนัส ฿100', cond: 'โปรโมชันพิเศษสำหรับสมาชิก Charge X', exp: 'หมดอายุ 31 ม.ค. 2570', status: 'avail' }
+};
+const minLabelOf = (c) => {
+  if (!c.minSpend) return 'ไม่มีขั้นต่ำ';
+  return c.kind === 'topup' ? ('เติมขั้นต่ำ ฿' + c.minSpend) : ('ชาร์จขั้นต่ำ ฿' + c.minSpend);
+};
+const effectOf = (c) => {
+  if (c.kind === 'topup') return 'รับโบนัส ฿' + c.discVal + ' · ' + minLabelOf(c);
+  if (c.discType === 'pct') return 'ส่วนลด ' + c.discVal + '% สูงสุด ฿' + c.maxDisc + ' · ' + minLabelOf(c);
+  return 'จะหักส่วนลด ฿' + c.discVal + ' อัตโนมัติ · ' + minLabelOf(c);
+};
+const useCoupon = (c, baseList) => {
+  const list = baseList || st.coupons;
+  if (!c || c.status !== 'avail') return;
+  if (c.kind === 'credit') {
+    const nb = st.bal + c.discVal;
+    const nextList = list.map((x) => x.id === c.id ? Object.assign({}, x, { status: 'used' }) : x);
+    const nextTx = [{ id: 'tx-' + Date.now(), title: 'โบนัสคูปอง · ' + c.code, sub: 'วันนี้ · เครดิตเข้ากระเป๋า', amt: '+฿' + c.discVal.toFixed(2), plus: true }].concat(st.tx);
+    const nextActive = st.activeId === c.id ? '' : st.activeId;
+    this.setState({ bal: nb, coupons: nextList, tx: nextTx, activeId: nextActive, codeIn: '', codeErr: '', appliedNow: false });
+    this.sync(nb, nextList, nextActive, nextTx);
+    toast('รับเครดิต +฿' + c.discVal + ' เข้ากระเป๋าแล้ว');
+    return;
+  }
+  this.setState({ coupons: list, activeId: c.id, selId: c.id, appliedNow: true, allOpen: false, codeIn: '', codeErr: '' });
+  this.sync(st.bal, list, c.id, st.tx);
+  toast('เปิดใช้คูปอง ' + c.code + ' แล้ว');
+};
+const mapCoupon = (c) => {
+  const isAct = st.activeId === c.id && c.status === 'avail';
+  const isUsed = c.status === 'used';
+  const iconBg = c.kind === 'topup' ? '#FFF4E0' : c.kind === 'credit' ? '#E7F6EE' : '#FFF1EB';
+  const iconFg = c.kind === 'topup' ? '#B86A00' : c.kind === 'credit' ? '#146C3E' : accent;
+  const btnLabel = isUsed ? 'ใช้แล้ว ✓' : isAct ? 'ใช้อยู่ ✓' : c.kind === 'credit' ? 'รับเครดิต' : 'กดใช้';
+  const btnStyle = 'height: 34px; padding: 0 12px; flex: none; border-radius: 10px; font-family: inherit; font-size: 12.5px; font-weight: 700; cursor: ' + (isUsed ? 'default' : 'pointer') + '; ' + (isUsed ? 'border: 1px solid #E6E6E6; background: #F4F4F4; color: #6B6B6B' : isAct ? 'border: 1px solid #146C3E; background: #E7F6EE; color: #146C3E' : 'border: 0; background: ' + accent + '; color: #FFFFFF');
+  return {
+    id: c.id, title: c.title, cond: c.cond, meta: 'โค้ด ' + c.code + ' · ' + c.exp,
+    border: isAct ? '1.5px solid ' + accent : '1px solid #E6E6E6',
+    cardBg: isAct ? '#FFF7F3' : '#FFFFFF',
+    iconBg, iconFg, btnLabel, btnStyle,
+    open: () => this.setState({ selId: c.id, appliedNow: false }),
+    act: () => { if (isUsed) return; if (isAct) this.setState({ selId: c.id, appliedNow: false }); else useCoupon(c); }
+  };
+};
+const active = st.coupons.find((c) => c.id === st.activeId && c.status === 'avail') || null;
+const availList = st.coupons.filter((c) => c.status === 'avail');
+const topCoupons = (availList.length ? availList : st.coupons).slice(0, 2).map(mapCoupon);
+const TABS = [['all', 'ทั้งหมด'], ['charge', 'ส่วนลดชาร์จ'], ['topup', 'โปรโมชันเติมเงิน'], ['used', 'ใช้แล้ว']];
+const promoTabs = TABS.map(([id, label]) => {
+  const on = st.tab === id;
+  return { label, on: on ? 'true' : 'false', pick: () => this.setState({ tab: id }), style: 'height: 32px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer; white-space: nowrap; ' + (on ? 'border: 1.5px solid ' + accent + '; background: #FFF1EB; color: #C42D00' : 'border: 1px solid #E0E0E0; background: #FFFFFF; color: #3A3A3A') };
+});
+const filtered = st.coupons.filter((c) => {
+  if (st.tab === 'all') return c.status !== 'disabled';
+  if (st.tab === 'used') return c.status === 'used';
+  if (st.tab === 'charge') return c.status === 'avail' && (c.kind === 'charge' || c.kind === 'credit');
+  return c.status === 'avail' && c.kind === 'topup';
+});
+const sel = st.coupons.find((c) => c.id === st.selId) || null;
+const selIsAct = !!sel && !!active && active.id === sel.id;
+const selIsUsed = !!sel && sel.status === 'used';
+const selIsCharge = !!sel && sel.kind === 'charge';
+const selIsTopup = !!sel && sel.kind === 'topup';
+const mapTx = (t) => ({
+  title: t.title, sub: t.sub, amt: t.amt, plus: !!t.plus, minus: !t.plus,
+  bg: t.plus ? '#E7F6EE' : '#FFF1EB', amtColor: t.plus ? '#146C3E' : '#1F1F1F'
+});
+const fmtBal = (n) => '฿' + (Number.isInteger(n) ? n.toLocaleString('en-US') : n.toFixed(2));
+return {
+accent,
+toAuto: () => { try { localStorage.setItem('cx-prefs-from', 'Wallet'); localStorage.setItem('cx-prefs-focus', 'auto'); } catch (e) {} },
+balText: fmtBal(st.bal),
+hasActive: !!active, activeChipText: active ? ('คูปองที่ใช้อยู่: ' + active.title) : '',
+activeCode: active ? active.code : '', activeTitle: active ? active.title : '',
+activeEffect: active ? effectOf(active) : '',
+activeIsCharge: !!active && active.kind === 'charge', activeIsTopup: !!active && active.kind === 'topup',
+openActiveDetail: () => { if (active) this.setState({ selId: active.id, appliedNow: false }); },
+clearActive: () => { this.setState({ activeId: '', appliedNow: false }); this.sync(st.bal, st.coupons, '', st.tx); toast('ยกเลิกการใช้คูปองแล้ว'); },
+allBtnText: 'ดูทั้งหมด (' + availList.length + ') ›',
+openAllPromos: () => this.setState({ allOpen: true, histOpen: false, selId: '' }),
+openHist: () => this.setState({ histOpen: true, allOpen: false, selId: '' }),
+closeSheets: () => this.setState({ allOpen: false, histOpen: false }),
+showAllSheet: !!st.allOpen, showHistSheet: !!st.histOpen,
+codeIn: st.codeIn, codeBtnBg: st.codeIn.trim() ? accent : '#333333',
+onCodeIn: (e) => this.setState({ codeIn: e.target.value, codeErr: '' }),
+hasCodeErr: !!st.codeErr, codeErr: st.codeErr,
+applyCode: () => {
+  const code = String(st.codeIn || '').trim().toUpperCase();
+  if (!code) { this.setState({ codeErr: 'กรุณากรอกรหัสคูปอง' }); return; }
+  const found = st.coupons.find((c) => c.code === code);
+  if (found) {
+    if (found.status === 'disabled') { this.setState({ codeErr: 'คูปองนี้ถูกปิดใช้งานชั่วคราว' }); return; }
+    if (found.status === 'used') { this.setState({ codeErr: 'คูปองนี้ถูกใช้สิทธิ์ไปแล้ว' }); return; }
+    useCoupon(found);
+    return;
+  }
+  const extra = EXTRA[code];
+  if (!extra) { this.setState({ codeErr: 'ไม่พบรหัสคูปองนี้ (ลอง EV50, NEW40, BONUS100)' }); return; }
+  const added = Object.assign({}, extra);
+  const nextList = [added].concat(st.coupons);
+  useCoupon(added, nextList);
+},
+topCoupons, promoTabs, filteredCoupons: filtered.map(mapCoupon), hasFiltered: filtered.length > 0, noFiltered: filtered.length === 0,
+recentTx: st.tx.slice(0, 3).map(mapTx), allTx: st.tx.map(mapTx),
+showToast: !!st.toast, toast: st.toast,
+showUseSheet: !!sel,
+closeUse: () => this.setState({ selId: '', appliedNow: false }),
+selHead: st.appliedNow ? '✓ เปิดใช้คูปองส่วนลดแล้ว' : 'รายละเอียดคูปอง & โปรโมชัน',
+selBadge: !sel ? '' : sel.kind === 'topup' ? 'โปรโมชัน' : sel.kind === 'credit' ? 'เครดิตเข้ากระเป๋า' : 'ส่วนลดค่าชาร์จ',
+selBadgeBg: !sel ? '#FFF1EB' : sel.kind === 'topup' ? '#FFF4E0' : sel.kind === 'credit' ? '#E7F6EE' : '#FFF1EB',
+selBadgeFg: !sel ? '#C42D00' : sel.kind === 'topup' ? '#B86A00' : sel.kind === 'credit' ? '#146C3E' : '#C42D00',
+selCodeText: sel ? ('รหัส: ' + sel.code) : '', selTitle: sel ? sel.title : '', selCond: sel ? sel.cond : '', selExp: sel ? sel.exp : '',
+selCanUse: !!sel && !selIsUsed && !selIsAct,
+selApplyLabel: sel && sel.kind === 'credit' ? ('กดรับเครดิต +฿' + sel.discVal + ' ทันที') : 'กดใช้คูปองนี้',
+selApply: () => { if (sel) useCoupon(sel); },
+selGoScan: !!sel && selIsAct && selIsCharge,
+selGoTopup: !!sel && selIsAct && selIsTopup,
+selCanCancel: !!sel && selIsAct && !selIsUsed,
+selCancel: () => { this.setState({ activeId: '', appliedNow: false }); this.sync(st.bal, st.coupons, '', st.tx); toast('ยกเลิกการใช้คูปองแล้ว'); },
+selIsUsed: selIsUsed
+};
 }
 }
 </script>

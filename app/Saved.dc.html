@@ -129,7 +129,7 @@ a{color:#C42D00}a:hover{color:#9E2400}
 <div style="margin-top: 40px; background: #FFFFFF; border-radius: 22px; padding: 30px 20px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center">
 <span style="width: 64px; height: 64px; border-radius: 20px; background: #FFF1EB; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg></span>
 <span style="font-size: 16px; font-weight: 700; color: #1F1F1F">ยังไม่มีสถานีที่บันทึกไว้</span>
-<span style="font-size: 13px; line-height: 1.55; color: #6B6B6B">กดรูปหัวใจในหน้ารายละเอียดสถานี เพื่อบันทึกสถานีที่ใช้บ่อย</span>
+<span style="font-size: 13px; line-height: 1.55; color: #6B6B6B">กดรูปหัวใจบนแผนที่ หรือหน้ารายละเอียดสถานี เพื่อบันทึกสถานีที่ใช้บ่อย</span>
 <a href="{{L.Home}}" style="margin-top: 8px; height: 46px; padding: 0 20px; border-radius: 14px; background: {{accent}}; color: #FFFFFF; font-size: 15px; font-weight: 600; text-decoration: none; display: flex; align-items: center">ค้นหาสถานีบนแผนที่</a>
 </div>
 </sc-if>
@@ -144,12 +144,12 @@ a{color:#C42D00}a:hover{color:#9E2400}
 class Component extends DCLogic {
 static {
 const P = this.prototype;
-const TR = {"ย้อนกลับ": "Back", "แล้ว": "", "ชื่อ": "First name", "ค้นหาสถานี": "Find station", "แผนที่": "Map", "ทั้งหมด": "All", "ว่าง": "Available", "ปิดปรับปรุง": "Under maintenance", "นำทาง": "Navigate", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "24 ชม.": "24 hrs", "เมกา บางนา (ลานจอด P3)": "Mega Bangna (Car park P3)", "ไบเทค บางนา (อาคาร 2)": "BITEC Bangna (Hall 2)", "[ชื่อสถานี] บางนา-ตราด กม.4": "[Station name] Bang Na-Trat Km 4", "ว่าง ": "Available ", "ปิด": "Closed", "ว่างตอนนี้": "Available now", "รายละเอียด": "Details", "บันทึกสถานี": "Save station", "ทั้งหมด (": "All (", "ว่างตอนนี้ (": "Available now (", " แล้ว": "", "สถานีที่บันทึกไว้": "Saved stations", "เรียงตามระยะทาง": "Sorted by distance", "ดูสถานี": "View station", "ตอนนี้ไม่มีสถานีที่บันทึกไว้ที่ว่าง": "None of your saved stations are free right now", "ยังไม่มีสถานีที่บันทึกไว้": "No saved stations yet", "กดรูปหัวใจในหน้ารายละเอียดสถานี เพื่อบันทึกสถานีที่ใช้บ่อย": "Tap the heart on a station's page to save the ones you use often.", "ค้นหาสถานีบนแผนที่": "Find stations on the map", "เลิกทำ": "Undo", "เปิดแผนที่": "Open map", "ยังไม่มี": "None yet", " หัว": " connectors", "ไม่ว่าง · ใช้งานครบทุกหัว": "Busy · all connectors in use", "ปิดปรับปรุงชั่วคราว": "Temporarily closed", "เลิกบันทึก ": "Removed ", "บันทึก": "Save", "4 แห่ง": "4 places", "กม.": "km", "ชม.": "hrs", "นาที": "min"};
-const PT = [["^เลิกบันทึก\\ (.+?)$", "Unsave {1}"]].map(([r, e]) => [new RegExp(r), e]);
-const SUB = ["กดรูปหัวใจในหน้ารายละเอียดสถานี เพื่อบันทึกสถานีที่ใช้บ่อย", "ตอนนี้ไม่มีสถานีที่บันทึกไว้ที่ว่าง", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "[ชื่อสถานี] บางนา-ตราด กม.4", "ยังไม่มีสถานีที่บันทึกไว้", "ไม่ว่าง · ใช้งานครบทุกหัว", "เมกา บางนา (ลานจอด P3)", "ไบเทค บางนา (อาคาร 2)", "ปิดปรับปรุงชั่วคราว", "ค้นหาสถานีบนแผนที่", "สถานีที่บันทึกไว้", "เรียงตามระยะทาง", "ว่างตอนนี้ (", "ปิดปรับปรุง", "บันทึกสถานี", "เลิกบันทึก ", "ค้นหาสถานี", "ว่างตอนนี้", "รายละเอียด", "เปิดแผนที่", "ทั้งหมด (", "ย้อนกลับ", "ยังไม่มี", "ทั้งหมด", "ดูสถานี", "แผนที่", "24 ชม.", "เลิกทำ", "บันทึก", "4 แห่ง", "นำทาง", "ว่าง ", "ชื่อ", "ว่าง", " หัว", "นาที", "ปิด", "กม.", "ชม."];
+const TR = {"ย้อนกลับ": "Back", "แล้ว": "", "ชื่อ": "First name", "ค้นหาสถานี": "Find station", "แผนที่": "Map", "ทั้งหมด": "All", "ว่าง": "Available", "ปิดปรับปรุง": "Under maintenance", "นำทาง": "Navigate", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "24 ชม.": "24 hrs", "เมกา บางนา (ลานจอด P3)": "Mega Bangna (Car park P3)", "ไบเทค บางนา (อาคาร 2)": "BITEC Bangna (Hall 2)", "[ชื่อสถานี] บางนา-ตราด กม.4": "[Station name] Bang Na-Trat Km 4", "[ชื่อสถานี] กิ่งแก้ว": "[Station name] King Kaeo", "ว่าง ": "Available ", "ปิด": "Closed", "ว่างตอนนี้": "Available now", "รายละเอียด": "Details", "บันทึกสถานี": "Save station", "ทั้งหมด (": "All (", "ว่างตอนนี้ (": "Available now (", " แล้ว": "", "สถานีที่บันทึกไว้": "Saved stations", "เรียงตามระยะทาง": "Sorted by distance", "ดูสถานี": "View station", "ตอนนี้ไม่มีสถานีที่บันทึกไว้ที่ว่าง": "None of your saved stations are free right now", "ยังไม่มีสถานีที่บันทึกไว้": "No saved stations yet", "กดรูปหัวใจบนแผนที่ หรือหน้ารายละเอียดสถานี เพื่อบันทึกสถานีที่ใช้บ่อย": "Tap the heart on the map or station page to save stations you use often.", "ค้นหาสถานีบนแผนที่": "Find stations on the map", "เลิกทำ": "Undo", "เปิดแผนที่": "Open map", "ยังไม่มี": "None yet", " หัว": " connectors", "ไม่ว่าง · ใช้งานครบทุกหัว": "Busy · all connectors in use", "ปิดปรับปรุงชั่วคราว": "Temporarily closed", "เลิกบันทึก ": "Removed ", "บันทึก": "Save", "4 แห่ง": "4 places", "กม.": "km", "ชม.": "hrs", "นาที": "min"};
+const PT = [["^เลิกบันทึก\\ (.+?)\\ แล้ว$", "Removed {1}"], ["^เลิกบันทึก\\ (.+?)$", "Unsave {1}"]].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["กดรูปหัวใจบนแผนที่ หรือหน้ารายละเอียดสถานี เพื่อบันทึกสถานีที่ใช้บ่อย", "ตอนนี้ไม่มีสถานีที่บันทึกไว้ที่ว่าง", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "[ชื่อสถานี] บางนา-ตราด กม.4", "ยังไม่มีสถานีที่บันทึกไว้", "ไม่ว่าง · ใช้งานครบทุกหัว", "เมกา บางนา (ลานจอด P3)", "ไบเทค บางนา (อาคาร 2)", "[ชื่อสถานี] กิ่งแก้ว", "ปิดปรับปรุงชั่วคราว", "ค้นหาสถานีบนแผนที่", "สถานีที่บันทึกไว้", "เรียงตามระยะทาง", "ว่างตอนนี้ (", "ปิดปรับปรุง", "บันทึกสถานี", "เลิกบันทึก ", "ค้นหาสถานี", "ว่างตอนนี้", "รายละเอียด", "เปิดแผนที่", "ทั้งหมด (", "ย้อนกลับ", "ยังไม่มี", "ทั้งหมด", "ดูสถานี", "แผนที่", "24 ชม.", "เลิกทำ", "บันทึก", "4 แห่ง", "นำทาง", "ว่าง ", "แล้ว", "ชื่อ", "ว่าง", " หัว", "นาที", "ปิด", "กม.", "ชม."];
 const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
 const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
-const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
+const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => tx(m[+i]))); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
 P.cxLang = function () { if (this.state && (this.state.lang === 'en' || this.state.lang === 'th')) return this.state.lang; const pl = this.props.lang; if (pl === 'English') return 'en'; if (pl === 'ไทย') return 'th'; try { return localStorage.getItem('cx-lang') === 'en' ? 'en' : 'th'; } catch (e) { return 'th'; } };
 P.cxWalk = function () {
 const r = this._cxRoot; if (!r || typeof document === 'undefined') return;
@@ -178,18 +178,33 @@ const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide
 const rv = P.renderVals;
 P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
 }
-constructor(props) { super(props); this.state = { saved: props.list === 'ยังไม่มี' ? [] : [1, 2, 3, 4], tab: 'all', last: null }; }
-componentDidUpdate(pp) { if (pp.list !== this.props.list) this.setState({ saved: this.props.list === 'ยังไม่มี' ? [] : [1, 2, 3, 4], tab: 'all' }); }
+constructor(props) {
+super(props);
+let saved = null;
+if (props.list === 'ยังไม่มี') {
+saved = [];
+} else {
+try {
+const raw = JSON.parse(localStorage.getItem('cx-favs') || 'null');
+if (Array.isArray(raw)) saved = raw.map((x) => typeof x === 'number' ? ({ 1: 's1', 2: 's4', 3: 's2', 4: 's3' }[x] || '') : String(x)).filter(Boolean);
+} catch (e) {}
+if (saved === null) saved = ['s1', 's4', 's2', 's3'];
+}
+this.state = { saved, tab: 'all', last: null };
+}
+componentDidUpdate(pp) { if (pp.list !== this.props.list) this.setState({ saved: this.props.list === 'ยังไม่มี' ? [] : ['s1', 's4', 's2', 's3'], tab: 'all' }); }
 componentWillUnmount() { clearTimeout(this._toast); }
 renderVals() {
 const accent = this.props.accent ?? '#FC3901';
 const st = this.state;
 const S = [
-{ id: 1, name: 'มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา', dist: '1.2 กม.', km: 1.2, price: '7.5', hours: '24 ชม.', status: 'avail', free: 8, total: 10, lat: 13.6669, lng: 100.6447, plugs: ['CCS2 150 kW', 'Type 2 22 kW'] },
-{ id: 2, name: '[ชื่อสถานี] บางนา-ตราด กม.4', dist: '1.9 กม.', km: 1.9, price: '7.5', hours: '24 ชม.', status: 'busy', free: 0, total: 2, lat: 13.668, lng: 100.63, plugs: ['CCS2 120 kW'] },
-{ id: 3, name: 'เมกา บางนา (ลานจอด P3)', dist: '2.8 กม.', km: 2.8, price: '8.0', hours: '10:00–22:00', status: 'avail', free: 3, total: 4, lat: 13.6467, lng: 100.68, plugs: ['CCS2 120 kW', 'Type 2 22 kW'] },
-{ id: 4, name: 'ไบเทค บางนา (อาคาร 2)', dist: '3.1 กม.', km: 3.1, price: '7.9', hours: '08:00–20:00', status: 'off', free: 0, total: 6, lat: 13.6694, lng: 100.6113, plugs: ['CCS2 60 kW', 'Type 2 22 kW'] }
+{ id: 's1', name: 'มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา', dist: '1.2 กม.', km: 1.2, price: '7.5', hours: '24 ชม.', status: 'avail', free: 8, total: 10, lat: 13.6669, lng: 100.6447, plugs: ['CCS2 150 kW', 'Type 2 22 kW', 'CHAdeMO 50 kW'] },
+{ id: 's4', name: '[ชื่อสถานี] บางนา-ตราด กม.4', dist: '1.9 กม.', km: 1.9, price: '7.5', hours: '24 ชม.', status: 'busy', free: 0, total: 2, lat: 13.6670, lng: 100.6300, plugs: ['CCS2 120 kW'] },
+{ id: 's5', name: '[ชื่อสถานี] กิ่งแก้ว', dist: '2.2 กม.', km: 2.2, price: '6.5', hours: '24 ชม.', status: 'off', free: 0, total: 3, lat: 13.6500, lng: 100.7300, plugs: ['Type 2 22 kW', 'CHAdeMO 50 kW'] },
+{ id: 's2', name: 'เมกา บางนา (ลานจอด P3)', dist: '2.8 กม.', km: 2.8, price: '8.0', hours: '10:00–22:00', status: 'avail', free: 3, total: 4, lat: 13.6467, lng: 100.6800, plugs: ['CCS2 120 kW', 'Type 2 22 kW'] },
+{ id: 's3', name: 'ไบเทค บางนา (อาคาร 2)', dist: '3.1 กม.', km: 3.1, price: '7.9', hours: '08:00–20:00', status: 'avail', free: 2, total: 6, lat: 13.6694, lng: 100.6113, plugs: ['CCS2 60 kW', 'Type 2 22 kW'] }
 ];
+const saveFavs = (next) => { try { localStorage.setItem('cx-favs', JSON.stringify(next)); } catch (e) {} };
 const B = { avail: ['#E7F6EE', '#146C3E', '#1E9E5A'], busy: ['#FFF4E0', '#B86A00', '#F0A030'], off: ['#F4F4F4', '#6B6B6B', '#9A9A9A'] };
 const saved = S.filter((s) => st.saved.indexOf(s.id) >= 0).sort((a, b) => a.km - b.km);
 const freeN = saved.filter((s) => s.status === 'avail').length;
@@ -206,9 +221,9 @@ badge: s.status === 'avail' ? 'ว่าง ' + s.free + '/' + s.total + ' ห�
 badgeBg: b[0], badgeFg: b[1], dot: b[2], imgFilter: s.status === 'off' ? 'grayscale(1)' : 'none',
 goBg: s.status === 'off' ? '#BDBDBD' : accent,
 nav: 'https://www.google.com/maps/dir/?api=1&destination=' + s.lat + ',' + s.lng,
-unsave: () => { this.setState({ saved: this.state.saved.filter((x) => x !== s.id), last: s.id }); toast('เลิกบันทึก ' + s.name + ' แล้ว'); } }; }),
+unsave: () => { const next = this.state.saved.filter((x) => x !== s.id); saveFavs(next); this.setState({ saved: next, last: s.id }); toast('เลิกบันทึก ' + s.name + ' แล้ว'); } }; }),
 showToast: !!st.toast, toast: st.toast || '',
-undo: () => { if (st.last != null) this.setState({ saved: st.saved.concat([st.last]), last: null, toast: '' }); }
+undo: () => { if (st.last != null) { const next = this.state.saved.concat([st.last]); saveFavs(next); this.setState({ saved: next, last: null, toast: '' }); } }
 };
 }
 }

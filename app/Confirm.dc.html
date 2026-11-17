@@ -24,7 +24,7 @@ a{color:#C42D00}a:hover{color:#9E2400}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #C42D00"],[style*="color: rgb(196, 45, 0)"]){color:#FF7A4D!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #146C3E"]{color:#5AD49B!important}
-:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"]){border-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"],[style*="solid #FDD3C3"]){border-color:#35353B!important}
 [data-theme="dark"] [stroke="#1F1F1F"]{stroke:#F3F3F4}
 [data-theme="dark"][data-theme][style]{background-color:#000000!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="margin-top: -24px; background: #FFFFFF"]{background-color:#000000!important}
@@ -78,38 +78,72 @@ a{color:#C42D00}a:hover{color:#9E2400}
 <span style="flex: none; display: flex"><svg aria-hidden="true" width="48" height="60" viewBox="0 0 40 50"><rect x="1" y="1" width="38" height="48" rx="12" fill="#2B2B2F"></rect><circle cx="20" cy="17" r="13" fill="#3E3E44"></circle><circle cx="14" cy="12" r="2.4" fill="#111"></circle><circle cx="20" cy="10" r="2.4" fill="#111"></circle><circle cx="26" cy="12" r="2.4" fill="#111"></circle><circle cx="14" cy="20" r="2.4" fill="#111"></circle><circle cx="20" cy="18" r="2.4" fill="#111"></circle><circle cx="26" cy="20" r="2.4" fill="#111"></circle><circle cx="20" cy="25" r="1.8" fill="#111"></circle><rect x="7" y="33" width="26" height="12" rx="6" fill="#3E3E44"></rect><circle cx="14" cy="39" r="3" fill="#111"></circle><circle cx="26" cy="39" r="3" fill="#111"></circle></svg></span>
 <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
 <span style="font-size: 12px; font-weight: 600; color: #C42D00">หัวชาร์จที่เลือก</span>
-<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 17px">DC CCS2 · หัว A</span>
-<span style="font-size: 12.5px; color: #6B6B6B">เครื่อง #4041 · มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา</span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 17px">{{conTitle}}</span>
+<span style="font-size: 12.5px; color: #6B6B6B">{{conSub}}</span>
 </div>
 </div>
 <sc-if value="{{plugOk}}" hint-placeholder-val="{{ true }}">
-<div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 14px; background: #E7F6EE"><span style="width: 26px; height: 26px; flex: none; border-radius: 50%; background: #1E9E5A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg></span><span style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 13.5px; font-weight: 700; color: #146C3E">เชื่อมต่อกับรถแล้ว</span><span style="font-size: 12px; color: #146C3E">หัวชาร์จล็อกเรียบร้อย พร้อมเริ่มชาร์จ</span></span><span style="font-size: 12.5px; font-weight: 600; color: #146C3E">Chery Q</span></div>
+<div style="display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 14px; background: #E7F6EE"><span style="width: 26px; height: 26px; flex: none; border-radius: 50%; background: #1E9E5A; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg></span><span style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 13.5px; font-weight: 700; color: #146C3E">เชื่อมต่อกับรถแล้ว</span><span style="font-size: 12px; color: #146C3E">หัวชาร์จล็อกเรียบร้อย พร้อมเริ่มชาร์จ</span></span><span style="font-size: 12.5px; font-weight: 600; color: #146C3E">{{selCar}}</span></div>
+</sc-if>
+<sc-if value="{{acMatched}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 11px 12px; border-radius: 14px; background: #FFF7F3; border: 1px solid #FDD3C3">
+<div style="display: flex; align-items: center; gap: 8px">
+<span style="width: 24px; height: 24px; flex: none; border-radius: 8px; background: #FFF1EB; color: {{accent}}; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg></span>
+<span style="font-size: 13px; font-weight: 700; color: #C42D00">Auto Charge เปิดใช้งาน</span>
+<button type="button" onClick="{{clearAc}}" style="margin-left: auto; height: 28px; padding: 0 11px; border-radius: 999px; border: 1px solid #E0E0E0; background: #FFFFFF; box-shadow: 0 1px 3px rgba(0,0,0,0.06); font-family: inherit; font-size: 11.5px; font-weight: 600; color: #3A3A3A; cursor: pointer; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center">ปิดโหมดนี้</button>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding-left: 32px">
+<span style="font-size: 14px; font-weight: 700; color: #1F1F1F">{{acSavedCar}}</span>
+<span style="font-size: 12.5px; color: #5C5C5C">{{acSavedShort}}</span>
+</div>
+</div>
 </sc-if>
 <sc-if value="{{plugWait}}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column; gap: 10px; padding: 12px; border-radius: 14px; background: #FFF4E0">
-<div style="display: flex; align-items: center; gap: 10px"><span class="cx-plugdot" style="width: 26px; height: 26px; flex: none; border-radius: 50%; background: #F0A030; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0zM12 18v4"></path></svg></span><span style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 13.5px; font-weight: 700; color: #B86A00">ยังไม่ได้เชื่อมต่อกับรถ</span><span style="font-size: 12px; color: #B86A00">เสียบหัวชาร์จ A เข้ากับรถให้แน่น แล้วกดตรวจสอบ</span></span></div>
+<div style="display: flex; align-items: center; gap: 10px"><span class="cx-plugdot" style="width: 26px; height: 26px; flex: none; border-radius: 50%; background: #F0A030; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0zM12 18v4"></path></svg></span><span style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 13.5px; font-weight: 700; color: #B86A00">ยังไม่ได้เชื่อมต่อกับรถ</span><span style="font-size: 12px; color: #B86A00">เสียบหัวชาร์จเข้ากับรถให้แน่น แล้วกดตรวจสอบ</span></span></div>
+<sc-if value="{{acWaitHint}}" hint-placeholder-val="{{ false }}"><span style="font-size: 11.5px; color: #B86A00">พร้อม Auto Charge: เมื่อเสียบหัวชาร์จ ระบบจะดึงข้อมูลรถที่ตั้งค่าไว้</span></sc-if>
 <button type="button" onClick="{{checkPlug}}" style="height: 40px; border-radius: 12px; border: 1.5px solid #F0A030; background: #FFFFFF; font-family: inherit; font-size: 13.5px; font-weight: 600; color: #B86A00; cursor: pointer">ตรวจสอบการเชื่อมต่อ</button>
 </div>
 </sc-if>
 <sc-if value="{{plugChecking}}" hint-placeholder-val="{{ false }}">
-<div style="display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 14px; background: #F4F4F4"><svg class="cx-spin" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2.6" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"></path></svg><span style="display: flex; flex-direction: column"><span style="font-size: 13.5px; font-weight: 700; color: #1F1F1F">กำลังตรวจสอบการเชื่อมต่อ…</span><span style="font-size: 12px; color: #6B6B6B">สื่อสารกับรถผ่านหัวชาร์จ</span></span></div>
+<div style="display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 14px; background: #F4F4F4"><svg class="cx-spin" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FC3901" stroke-width="2.6" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"></path></svg><span style="display: flex; flex-direction: column"><span style="font-size: 13.5px; font-weight: 700; color: #1F1F1F">{{checkingTitle}}</span><span style="font-size: 12px; color: #6B6B6B">{{checkingSub}}</span></span></div>
 </sc-if>
 <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
-<div style="background: #F6F6F6; border-radius: 12px; padding: 8px; display: flex; flex-direction: column; align-items: center"><span style="font-size: 11px; color: #6B6B6B">กำลังไฟสูงสุด</span><span style="font-size: 14px; font-weight: 700">150 kW</span></div>
-<div style="background: #F6F6F6; border-radius: 12px; padding: 8px; display: flex; flex-direction: column; align-items: center"><span style="font-size: 11px; color: #6B6B6B">ค่าบริการ</span><span style="font-size: 14px; font-weight: 700">฿7.5/kWh</span></div>
+<div style="background: #F6F6F6; border-radius: 12px; padding: 8px; display: flex; flex-direction: column; align-items: center"><span style="font-size: 11px; color: #6B6B6B">กำลังไฟสูงสุด</span><span style="font-size: 14px; font-weight: 700">{{conKw}} kW</span></div>
+<div style="background: #F6F6F6; border-radius: 12px; padding: 8px; display: flex; flex-direction: column; align-items: center"><span style="font-size: 11px; color: #6B6B6B">ค่าบริการ</span><span style="font-size: 14px; font-weight: 700">฿{{conPrice}}/kWh</span></div>
 </div>
 </div>
 
+<sc-if value="{{showCarPick}}" hint-placeholder-val="{{ true }}">
 <div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px">
+<span style="font-size: 14px; font-weight: 700">รถที่ใช้ชาร์จ</span>
+<span style="font-size: 12px; color: #6B6B6B">ตั้งค่าครั้งแรก</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{cars}}" as="c" hint-placeholder-count="3"><button type="button" onClick="{{c.pick}}" style="{{c.style}}">{{c.name}}</button></sc-for>
+</div>
+</div>
+</sc-if>
+
+<div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px">
 <span style="font-size: 14px; font-weight: 700">ชาร์จถึงเมื่อไหร่</span>
-<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 4px; border-radius: 14px; background: #F4F4F4">
-<sc-for list="{{modes}}" as="m" hint-placeholder-count="3"><button type="button" onClick="{{m.pick}}" style="{{m.style}}">{{m.label}}</button></sc-for>
+<span style="font-size: 12px; color: #6B6B6B">แบตปัจจุบัน 24%</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 4px; border-radius: 14px; background: #F4F4F4">
+<sc-for list="{{modes}}" as="m" hint-placeholder-count="4"><button type="button" onClick="{{m.pick}}" style="{{m.style}}">{{m.label}}</button></sc-for>
 </div>
 <div style="display: flex; align-items: center; justify-content: center; gap: 14px">
-<button type="button" onClick="{{dec}}" aria-label="ลด" style="width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-size: 22px; font-weight: 600; color: #1F1F1F; cursor: pointer; line-height: 1">−</button>
-<span style="min-width: 120px; text-align: center; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 30px; color: #1F1F1F">{{targetText}}</span>
-<button type="button" onClick="{{inc}}" aria-label="เพิ่ม" style="width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-size: 22px; font-weight: 600; color: #1F1F1F; cursor: pointer; line-height: 1">+</button>
+<button type="button" onClick="{{dec}}" aria-label="ลด" style="width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-size: 22px; font-weight: 600; color: #1F1F1F; cursor: pointer; line-height: 1; opacity: {{stepOp}}">−</button>
+<span style="min-width: 136px; text-align: center; font-family: Sarabun, sans-serif; font-weight: 700; font-size: 28px; color: #1F1F1F; white-space: nowrap">{{targetText}}</span>
+<button type="button" onClick="{{inc}}" aria-label="เพิ่ม" style="width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-size: 22px; font-weight: 600; color: #1F1F1F; cursor: pointer; line-height: 1; opacity: {{stepOp}}">+</button>
 </div>
+<sc-if value="{{hasQuick}}" hint-placeholder-val="{{ true }}">
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{quicks}}" as="q" hint-placeholder-count="4"><button type="button" onClick="{{q.pick}}" style="{{q.style}}">{{q.label}}</button></sc-for>
+</div>
+</sc-if>
 <span style="text-align: center; font-size: 12.5px; color: #6B6B6B">{{targetHint}}</span>
 </div>
 
@@ -132,17 +166,40 @@ a{color:#C42D00}a:hover{color:#9E2400}
 
 <div style="padding: 12px 16px 32px; background: #FFFFFF; border-top: 1px solid #EDEDED; display: flex; flex-direction: column; gap: 8px">
 <sc-if value="{{lowBal}}" hint-placeholder-val="{{ false }}"><span style="text-align: center; font-size: 12.5px; font-weight: 600; color: #C42D00">ยอดเงินในกระเป๋าไม่พอ กรุณาเติมเงินหรือเลือกวิธีชำระอื่น</span></sc-if>
-<a href="{{L.Charging}}" aria-disabled="{{noGoStr}}" style="height: 56px; border-radius: 16px; background: {{goBg}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 19px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; pointer-events: {{goPe}}; transition: background .2s"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg>ยืนยันและเริ่มชาร์จ</a>
+<a href="{{L.Charging}}" onClick="{{confirmTap}}" aria-disabled="{{noGoStr}}" style="height: 56px; border-radius: 16px; background: {{goBg}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 19px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; pointer-events: {{goPe}}; transition: background .2s"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg>ยืนยันและเริ่มชาร์จ</a>
 </div>
+<sc-if value="{{acPrompt}}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; inset: 0; z-index: 40; display: flex; flex-direction: column; justify-content: flex-end">
+<div onClick="{{closePrompt}}" class="cx-fade" style="position: absolute; inset: 0; background: rgba(10,10,12,0.5)"></div>
+<div role="dialog" aria-label="ตั้งค่า Auto Charge" class="cx-sheet" style="position: relative; background: #FFFFFF; border-radius: 28px 28px 0 0; padding: 12px 20px 32px; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: center; width: 40px; height: 5px; border-radius: 3px; background: #E0E0E0"></span>
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="width: 44px; height: 44px; flex: none; border-radius: 14px; background: #FFF1EB; color: {{accent}}; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg></span>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; color: #1F1F1F">ตั้งเป็น Auto Charge หรือไม่?</span>
+<span style="font-size: 13px; color: #6B6B6B">จำรถและค่าชาร์จนี้สำหรับเสียบสายครั้งถัดไป</span>
+</div>
+</div>
+<div style="background: #F6F6F6; border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px"><span style="color: #6B6B6B">รถที่บันทึก</span><span style="font-weight: 700; color: #1F1F1F">{{selCar}}</span></div>
+<div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px"><span style="color: #6B6B6B">ค่าที่ตั้งไว้</span><span style="font-weight: 700; color: #1F1F1F">{{acSavedDesc}}</span></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<a href="{{L.Charging}}" onClick="{{skipAc}}" style="height: 52px; box-sizing: border-box; padding: 0 12px; border-radius: 16px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 600; color: #3A3A3A; text-decoration: none; display: flex; align-items: center; justify-content: center">ไม่ตั้งค่า</a>
+<a href="{{L.Charging}}" onClick="{{acceptAc}}" style="height: 52px; box-sizing: border-box; padding: 0 12px; border-radius: 16px; background: {{accent}}; font-family: inherit; font-size: 16px; font-weight: 600; color: #FFFFFF; text-decoration: none; display: flex; align-items: center; justify-content: center">ตกลง</a>
+</div>
+</div>
+</div>
+</sc-if>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"plug":{"editor":"enum","options":["เชื่อมต่อแล้ว","ยังไม่เสียบ"],"default":"เชื่อมต่อแล้ว"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
 class Component extends DCLogic {
 static {
 const P = this.prototype;
-const TR = {"หรือ": "or", "และ": " and ", "ย้อนกลับ": "Back", "ยืนยัน": "Confirm", "แล้ว": "", "ชื่อ": "First name", "เติมเงิน": "Top up", "กระเป๋าเงิน": "Wallet", "เต็ม": "Full", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "เต็ม ": "Full ", "เริ่มชาร์จ": "Start charging", "สูงสุด": "max", "กำลังไฟสูงสุด": "Max power", "ค่าบริการ": "Rate", "ตรวจสอบก่อนเริ่มชาร์จ": "Review before charging", "หัวชาร์จที่เลือก": "Selected connector", "DC CCS2 · หัว A": "DC CCS2 · Connector A", "เครื่อง #4041 · มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Charger #4041 · Ramkhamhaeng University, Bang Na Campus", "เชื่อมต่อกับรถแล้ว": "Connected to car", "หัวชาร์จล็อกเรียบร้อย พร้อมเริ่มชาร์จ": "Connector locked, ready to charge", "ยังไม่ได้เชื่อมต่อกับรถ": "Not connected to car", "เสียบหัวชาร์จ A เข้ากับรถให้แน่น แล้วกดตรวจสอบ": "Plug connector A firmly into your car, then tap Check", "ตรวจสอบการเชื่อมต่อ": "Check connection", "กำลังตรวจสอบการเชื่อมต่อ…": "Checking connection…", "สื่อสารกับรถผ่านหัวชาร์จ": "Talking to your car through the connector", "ชาร์จถึงเมื่อไหร่": "Charge until", "ชำระเงินด้วย": "Pay with", "จัดการบัตร": "Manage cards", "ฉันตรวจสอบข้อมูลแล้ว และยอมรับเงื่อนไขค่าบริการ": "I've checked the details and accept the pricing terms", "ยอดเงินในกระเป๋าไม่พอ กรุณาเติมเงินหรือเลือกวิธีชำระอื่น": "Not enough wallet balance. Top up or choose another payment method.", "ยืนยันและเริ่มชาร์จ": "Confirm and start charging", "ลด": "Decrease", "เพิ่ม": "Increase", "ยังไม่เสียบ": "Not plugged in", "ตั้ง %": "Set %", "ตามจำนวนเงิน": "By amount", "ชาร์จเต็ม": "Full charge", "กระเป๋าเงิน Charge-X": "Charge-X wallet", "ยอดคงเหลือ ฿": "Balance ฿", "บัตร •••• [0000]": "Card •••• [0000]", "บัตรเครดิต / เดบิต": "Credit / debit card", "หยุดชาร์จอัตโนมัติเมื่อแบตถึง ": "Stop automatically at ", "% (แนะนำ 80% เพื่อถนอมแบต)": "% (80% recommended for battery health)", "หยุดชาร์จเมื่อค่าบริการถึง ฿": "Stop when the cost reaches ฿", "ชาร์จจนแบตเต็ม 100%": "Charge to 100%", "กำลังไฟ": "Power", "เลือกวิธีชำระ": "Choose payment method", "บัตรเครดิต": "Credit card", "บัตร": "Card", "ตั้ง ": "Set ", " แล้ว": "", " หัว": " connectors", "หยุดชาร์จเมื่อค่าบริการถึง ": "Stop when the cost reaches ", "กม.": "km", "ชม.": "hrs", "นาที": "min"};
+const TR = {"หรือ": "or", "และ": " and ", "ย้อนกลับ": "Back", "ยืนยัน": "Confirm", "แล้ว": "", "ชื่อ": "First name", "เติมเงิน": "Top up", "กระเป๋าเงิน": "Wallet", "เต็ม": "Full", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "เต็ม ": "Full ", "เริ่มชาร์จ": "Start charging", "สูงสุด": "max", "กำลังไฟสูงสุด": "Max power", "ค่าบริการ": "Rate", "ตรวจสอบก่อนเริ่มชาร์จ": "Review before charging", "หัวชาร์จที่เลือก": "Selected connector", "DC CCS2 · หัว A": "DC CCS2 · Connector A", "DC CCS2 · หัว B": "DC CCS2 · Connector B", "AC Type 2 · หัว C": "AC Type 2 · Connector C", "AC Type 2 · หัว D": "AC Type 2 · Connector D", "เครื่อง #4041 · มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Charger #4041 · Ramkhamhaeng University, Bang Na Campus", "เครื่อง #4042 · มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Charger #4042 · Ramkhamhaeng University, Bang Na Campus", "เชื่อมต่อกับรถแล้ว": "Connected to car", "หัวชาร์จล็อกเรียบร้อย พร้อมเริ่มชาร์จ": "Connector locked, ready to charge", "ยังไม่ได้เชื่อมต่อกับรถ": "Not connected to car", "เสียบหัวชาร์จเข้ากับรถให้แน่น แล้วกดตรวจสอบ": "Plug connector firmly into your car, then tap Check", "ตรวจสอบการเชื่อมต่อ": "Check connection", "กำลังตรวจสอบการเชื่อมต่อ…": "Checking connection…", "สื่อสารกับรถผ่านหัวชาร์จ": "Talking to your car through the connector", "เครื่องชาร์จส่งข้อมูลรถมาที่ระบบ…": "Charger sending vehicle info…", "กำลังตรวจสอบการลงทะเบียน Auto Charge": "Checking Auto Charge registration", "ชาร์จถึงเมื่อไหร่": "Charge until", "แบตปัจจุบัน 24%": "Current battery 24%", "ชำระเงินด้วย": "Pay with", "จัดการบัตร": "Manage cards", "ฉันตรวจสอบข้อมูลแล้ว และยอมรับเงื่อนไขค่าบริการ": "I've checked the details and accept the pricing terms", "ยอดเงินในกระเป๋าไม่พอ กรุณาเติมเงินหรือเลือกวิธีชำระอื่น": "Not enough wallet balance. Top up or choose another payment method.", "ยืนยันและเริ่มชาร์จ": "Confirm and start charging", "ลด": "Decrease", "เพิ่ม": "Increase", "ยังไม่เสียบ": "Not plugged in", "ตั้ง %": "Set %", "เวลา": "Time", "จำนวนเงิน": "Amount", "ตามจำนวนเงิน": "By amount", "ชาร์จเต็ม": "Full", "กระเป๋าเงิน Charge-X": "Charge-X wallet", "ยอดคงเหลือ ฿": "Balance ฿", "บัตร •••• [0000]": "Card •••• [0000]", "บัตรเครดิต / เดบิต": "Credit / debit card", "หยุดชาร์จเมื่อแบตถึง ": "Stop at ", "หยุดชาร์จเมื่อครบ ": "Stop after ", "% · ประมาณ ": "% · ~", " นาที · ได้แบต ~": " min · ~", " · ประมาณ ": " · ~", " นาที (~฿": " min (~฿", " นาที (~": " min (~", "หยุดชาร์จเมื่อค่าบริการถึง ฿": "Stop when cost reaches ฿", "ชาร์จจนแบตเต็ม 100%": "Charge to 100%", "กำลังไฟ": "Power", "เลือกวิธีชำระ": "Choose payment method", "บัตรเครดิต": "Credit card", "บัตร": "Card", "ตั้ง ": "Set ", " แล้ว": "", " หัว": " connectors", "หยุดชาร์จเมื่อค่าบริการถึง ": "Stop when cost reaches ", "กม.": "km", "ชม.": "hrs", "นาที": "min", "Auto Charge เปิดใช้งาน": "Auto Charge active", "ปิดโหมดนี้": "Turn off", "พร้อม Auto Charge: เมื่อเสียบหัวชาร์จ ระบบจะดึงข้อมูลรถที่ตั้งค่าไว้": "Auto Charge ready: your saved vehicle will load on plug-in", "รถที่ใช้ชาร์จ": "Vehicle", "ตั้งค่าครั้งแรก": "First-time setup", "ตั้งค่า Auto Charge": "Set up Auto Charge", "ตั้งเป็น Auto Charge หรือไม่?": "Set as Auto Charge?", "จำรถและค่าชาร์จนี้สำหรับเสียบสายครั้งถัดไป": "Save this vehicle & preset for your next plug-in", "รถที่บันทึก": "Saved vehicle", "ค่าที่ตั้งไว้": "Preset", "ไม่ตั้งค่า": "Skip", "ตกลง": "Agree", "เป้าหมาย ": "Target "};
 const PT = [].map(([r, e]) => [new RegExp(r), e]);
-const SUB = ["ยอดเงินในกระเป๋าไม่พอ กรุณาเติมเงินหรือเลือกวิธีชำระอื่น", "เครื่อง #4041 · มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "ฉันตรวจสอบข้อมูลแล้ว และยอมรับเงื่อนไขค่าบริการ", "เสียบหัวชาร์จ A เข้ากับรถให้แน่น แล้วกดตรวจสอบ", "หัวชาร์จล็อกเรียบร้อย พร้อมเริ่มชาร์จ", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "หยุดชาร์จอัตโนมัติเมื่อแบตถึง ", "หยุดชาร์จเมื่อค่าบริการถึง ฿", "หยุดชาร์จเมื่อค่าบริการถึง ", "% (แนะนำ 80% เพื่อถนอมแบต)", "กำลังตรวจสอบการเชื่อมต่อ…", "สื่อสารกับรถผ่านหัวชาร์จ", "ยังไม่ได้เชื่อมต่อกับรถ", "ตรวจสอบก่อนเริ่มชาร์จ", "กระเป๋าเงิน Charge-X", "ตรวจสอบการเชื่อมต่อ", "ยืนยันและเริ่มชาร์จ", "ชาร์จจนแบตเต็ม 100%", "เชื่อมต่อกับรถแล้ว", "บัตรเครดิต / เดบิต", "ชาร์จถึงเมื่อไหร่", "หัวชาร์จที่เลือก", "บัตร •••• [0000]", "DC CCS2 · หัว A", "กำลังไฟสูงสุด", "เลือกวิธีชำระ", "ชำระเงินด้วย", "ตามจำนวนเงิน", "ยอดคงเหลือ ฿", "กระเป๋าเงิน", "ยังไม่เสียบ", "เริ่มชาร์จ", "จัดการบัตร", "บัตรเครดิต", "ค่าบริการ", "ชาร์จเต็ม", "ย้อนกลับ", "เติมเงิน", "กำลังไฟ", "ยืนยัน", "สูงสุด", "ตั้ง %", "เต็ม ", "เพิ่ม", "ตั้ง ", "หรือ", "ชื่อ", "เต็ม", "บัตร", " หัว", "นาที", "และ", "กม.", "ชม."];
+const SUB = ["พร้อม Auto Charge: เมื่อเสียบหัวชาร์จ ระบบจะดึงข้อมูลรถที่ตั้งค่าไว้", "ยอดเงินในกระเป๋าไม่พอ กรุณาเติมเงินหรือเลือกวิธีชำระอื่น", "เครื่อง #4041 · มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "เครื่อง #4042 · มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "ฉันตรวจสอบข้อมูลแล้ว และยอมรับเงื่อนไขค่าบริการ", "จำรถและค่าชาร์จนี้สำหรับเสียบสายครั้งถัดไป", "เสียบหัวชาร์จเข้ากับรถให้แน่น แล้วกดตรวจสอบ", "กำลังตรวจสอบการลงทะเบียน Auto Charge", "หัวชาร์จล็อกเรียบร้อย พร้อมเริ่มชาร์จ", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "เครื่องชาร์จส่งข้อมูลรถมาที่ระบบ…", "หยุดชาร์จเมื่อค่าบริการถึง ฿", "หยุดชาร์จเมื่อค่าบริการถึง ", "ตั้งเป็น Auto Charge หรือไม่?", "กำลังตรวจสอบการเชื่อมต่อ…", "สื่อสารกับรถผ่านหัวชาร์จ", "หยุดชาร์จเมื่อแบตถึง ", "ยังไม่ได้เชื่อมต่อกับรถ", "ตรวจสอบก่อนเริ่มชาร์จ", "Auto Charge เปิดใช้งาน", "หยุดชาร์จเมื่อครบ ", "กระเป๋าเงิน Charge-X", "ตรวจสอบการเชื่อมต่อ", "ยืนยันและเริ่มชาร์จ", "ชาร์จจนแบตเต็ม 100%", "ตั้งค่า Auto Charge", "เชื่อมต่อกับรถแล้ว", "บัตรเครดิต / เดบิต", "ชาร์จถึงเมื่อไหร่", "หัวชาร์จที่เลือก", "บัตร •••• [0000]", " นาที · ได้แบต ~", "AC Type 2 · หัว C", "AC Type 2 · หัว D", "DC CCS2 · หัว A", "DC CCS2 · หัว B", "แบตปัจจุบัน 24%", "ตั้งค่าครั้งแรก", "กำลังไฟสูงสุด", "เลือกวิธีชำระ", "รถที่ใช้ชาร์จ", "ชำระเงินด้วย", "ตามจำนวนเงิน", "ยอดคงเหลือ ฿", "ค่าที่ตั้งไว้", "รถที่บันทึก", "% · ประมาณ ", " · ประมาณ ", " นาที (~฿", "จำนวนเงิน", "กระเป๋าเงิน", "ยังไม่เสียบ", "ปิดโหมดนี้", "เริ่มชาร์จ", "จัดการบัตร", "บัตรเครดิต", "ไม่ตั้งค่า", "เป้าหมาย ", "ค่าบริการ", "ชาร์จเต็ม", " นาที (~", "ย้อนกลับ", "เติมเงิน", "กำลังไฟ", "ยืนยัน", "สูงสุด", "ตกลง", "ตั้ง %", "เต็ม ", "เพิ่ม", "ตั้ง ", "หรือ", "ชื่อ", "เต็ม", "เวลา", "บัตร", " หัว", "นาที", "และ", "กม.", "ชม."];
 const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
 const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
 const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
@@ -174,20 +231,88 @@ const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide
 const rv = P.renderVals;
 P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
 }
-constructor(props) { super(props); let pf = {}; try { pf = JSON.parse(localStorage.getItem('cx-prefs') || '{}') || {}; } catch (e) {} this.state = { mode: pf.mode || 'pct', pct: pf.pct || 80, baht: pf.baht || 300, pay: pf.pay || 'wallet', agree: true, plug: props.plug === 'ยังไม่เสียบ' ? 'wait' : 'ok' }; }
+constructor(props) {
+super(props);
+let pf = {}, carObj = null, con = null, prof = null;
+try {
+pf = JSON.parse(localStorage.getItem('cx-prefs') || '{}') || {};
+carObj = JSON.parse(localStorage.getItem('cx-car') || 'null');
+con = JSON.parse(localStorage.getItem('cx-sel-con') || 'null');
+prof = JSON.parse(localStorage.getItem('cx-ac-profile') || 'null');
+} catch (e) {}
+const conInfo = con && con.id ? con : { id: 'a', name: 'DC CCS2', charger: 'เครื่องชาร์จ #4041', pos: 'หัว A · ฝั่งซ้าย', kw: 150, price: '7.5', auto: true };
+const acSupported = conInfo.auto !== false;
+const acActive = !!(prof && prof.enabled && acSupported);
+const defCar = (carObj && carObj.name) || 'Chery Q';
+const defPlate = (carObj && carObj.plate) || '';
+this.state = {
+con: conInfo,
+acActive,
+acPrompt: false,
+defCar,
+defPlate,
+car: acActive && prof.car ? prof.car : defCar,
+plate: acActive && prof.plate != null ? prof.plate : defPlate,
+mode: (acActive && prof.mode) || pf.mode || 'pct',
+pct: Number((acActive && prof.pct) || pf.pct) || 80,
+time: Number((acActive && prof.time) || pf.time) || 30,
+baht: Number((acActive && prof.baht) || pf.baht) || 300,
+pay: (acActive && prof.pay) || pf.pay || 'wallet',
+agree: true,
+plug: props.plug === 'ยังไม่เสียบ' ? 'wait' : 'ok'
+};
+}
 componentDidUpdate(pp) { if (pp.plug !== this.props.plug) this.setState({ plug: this.props.plug === 'ยังไม่เสียบ' ? 'wait' : 'ok' }); }
 renderVals() {
 const accent = this.props.accent ?? '#FC3901';
 const st = this.state;
-const CAP = 52, RATE = 7.5, NOW = 24, BAL = 500;
-let kwh;
-if (st.mode === 'pct') kwh = CAP * (st.pct - NOW) / 100;
-else if (st.mode === 'baht') kwh = st.baht / RATE;
-else kwh = CAP * (100 - NOW) / 100;
+const con = st.con || { id: 'a', name: 'DC CCS2', charger: 'เครื่องชาร์จ #4041', pos: 'หัว A · ฝั่งซ้าย', kw: 150, price: '7.5', auto: true };
+const acSupported = con.auto !== false;
+const acActive = !!st.acActive && acSupported;
+const CAP = 52, RATE = parseFloat(con.price) || 7.5, NOW = 24, BAL = 500, EFF_KW = acSupported ? 60 : (Number(con.kw) || 22);
+const maxKwh = CAP * (100 - NOW) / 100;
+let kwh, estSoc, estMins;
+if (st.mode === 'pct') {
+kwh = CAP * (st.pct - NOW) / 100;
+estSoc = st.pct;
+estMins = Math.max(5, Math.round(kwh / EFF_KW * 60));
+} else if (st.mode === 'time') {
+kwh = Math.min(maxKwh, EFF_KW * st.time / 60);
+estSoc = Math.min(100, Math.round(NOW + (kwh / CAP) * 100));
+estMins = st.time;
+} else if (st.mode === 'baht') {
+kwh = Math.min(maxKwh, st.baht / RATE);
+estSoc = Math.min(100, Math.round(NOW + (kwh / CAP) * 100));
+estMins = Math.max(5, Math.round(kwh / EFF_KW * 60));
+} else {
+kwh = maxKwh;
+estSoc = 100;
+estMins = Math.max(5, Math.round(kwh / EFF_KW * 60));
+}
 const cost = kwh * RATE;
-const modes = [['pct', 'ตั้ง %'], ['baht', 'ตามจำนวนเงิน'], ['full', 'ชาร์จเต็ม']].map(([id, label]) => {
+const estCostInt = Math.round(cost);
+const modes = [['pct', 'ตั้ง %'], ['time', 'เวลา'], ['baht', 'จำนวนเงิน'], ['full', 'ชาร์จเต็ม']].map(([id, label]) => {
 const on = st.mode === id;
-return { label, pick: () => this.setState({ mode: id }), style: 'height: 38px; border: 0; border-radius: 11px; font-family: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer; ' + (on ? 'background: #FFFFFF; color: #1F1F1F; box-shadow: 0 2px 6px rgba(0,0,0,0.08)' : 'background: transparent; color: #6B6B6B') };
+return { label, pick: () => this.setState({ mode: id }), style: 'height: 38px; padding: 0 4px; border: 0; border-radius: 11px; font-family: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer; white-space: nowrap; ' + (on ? 'background: #FFFFFF; color: #1F1F1F; box-shadow: 0 2px 6px rgba(0,0,0,0.08)' : 'background: transparent; color: #6B6B6B') };
+});
+const quickList = st.mode === 'pct'
+? [[60, '60%'], [80, '80%'], [90, '90%'], [100, '100%']]
+: st.mode === 'time'
+? [[15, '15 นาที'], [30, '30 นาที'], [45, '45 นาที'], [60, '60 นาที']]
+: st.mode === 'baht'
+? [[100, '฿100'], [200, '฿200'], [300, '฿300'], [500, '฿500']]
+: [];
+const quicks = quickList.map(([val, label]) => {
+const on = (st.mode === 'pct' && st.pct === val) || (st.mode === 'time' && st.time === val) || (st.mode === 'baht' && st.baht === val);
+return {
+label,
+pick: () => {
+if (st.mode === 'pct') this.setState({ pct: val });
+else if (st.mode === 'time') this.setState({ time: val });
+else if (st.mode === 'baht') this.setState({ baht: val });
+},
+style: 'height: 30px; padding: 0 4px; border-radius: 9px; font-family: inherit; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; ' + (on ? 'background: #FFF1EB; color: #C42D00; border: 1px solid #FDD3C3' : 'background: #F4F4F4; color: #3A3A3A; border: 1px solid transparent')
+};
 });
 const ICON = {
 wallet: 'M6 6h12a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3zM3 10h18M16 15h2',
@@ -200,19 +325,83 @@ return { name, sub, icon: ICON[id], pick: () => { this.setState({ pay: id }); tr
 bg: on ? '#FFF1EB' : '#F4F4F4', fg: on ? accent : '#5C5C5C', ring: on ? accent : '#BDBDBD', dot: on ? accent : 'transparent',
 style: 'width: 100%; display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 16px; font-family: inherit; cursor: pointer; background: ' + (on ? '#FFF7F3' : '#FFFFFF') + '; border: ' + (on ? '1.5px solid ' + accent : '1px solid #E6E6E6') };
 });
+const carOpts = [];
+[st.defCar, 'Chery Q', 'BYD Atto 3', 'Tesla Model 3'].forEach((n) => { if (n && carOpts.indexOf(n) < 0) carOpts.push(n); });
+const cars = carOpts.slice(0, 3).map((name) => {
+const on = st.car === name;
+return {
+name,
+pick: () => this.setState({ car: name, plate: name === st.defCar ? st.defPlate : '' }),
+style: 'flex: 1; min-width: 0; height: 36px; padding: 0 10px; border-radius: 11px; font-family: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; ' + (on ? 'border: 1.5px solid ' + accent + '; background: #FFF7F3; color: #C42D00' : 'border: 1px solid #E6E6E6; background: #FFFFFF; color: #3A3A3A')
+};
+});
+const tgtText = st.mode === 'pct' ? st.pct + '%' : st.mode === 'time' ? st.time + ' นาที' : st.mode === 'baht' ? '฿' + st.baht : 'ชาร์จเต็ม';
+const payText = st.pay === 'card' ? 'บัตร' : 'กระเป๋าเงิน';
+const acSavedShort = tgtText + ' · ' + payText;
+const acSavedDesc = 'เป้าหมาย ' + acSavedShort;
+const saveAcProfile = (enabled) => {
+try {
+localStorage.setItem('cx-autocharge', enabled ? '1' : '0');
+localStorage.setItem('cx-ac-profile', JSON.stringify({ enabled: !!enabled, car: st.car, plate: st.plate || '', mode: st.mode, pct: st.pct, time: st.time, baht: st.baht, pay: st.pay }));
+} catch (e) {}
+};
+const startChg = () => { try { localStorage.setItem('cx-sess', 'กำลังชาร์จ'); localStorage.removeItem('cx-idle-at'); localStorage.setItem('cx-last-chg', JSON.stringify({ car: st.car, kwh: Number(kwh.toFixed(1)), cost: Number(cost.toFixed(2)) })); } catch (e) {} };
 const lowBal = st.pay === 'wallet' && cost > BAL;
 const ok = st.agree && !lowBal && st.plug === 'ok';
+const conShortName = String(con.name || 'DC CCS2').replace(' (Combo 2)', '');
+const conShortPos = String(con.pos || 'หัว A').split(' · ')[0];
+const conChargerCode = String(con.charger || 'เครื่อง #4041').replace('เครื่องชาร์จ ', 'เครื่อง ');
+const acSavedCar = st.plate ? (st.car + ' · ' + st.plate) : st.car;
 return {
-accent, modes, pays, lowBal,
+accent, modes, quicks, hasQuick: quicks.length > 0, stepOp: st.mode === 'full' ? '0.35' : '1', pays, cars, lowBal,
+conTitle: conShortName + ' · ' + conShortPos,
+conSub: conChargerCode + ' · มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา',
+conKw: con.kw || 150,
+conPrice: con.price || '7.5',
+selCar: st.car,
+acMatched: st.plug === 'ok' && acActive,
+acWaitHint: st.plug === 'wait' && acActive,
+acSavedCar,
+acSavedDesc,
+acSavedShort,
+showCarPick: !acActive && acSupported,
+acPrompt: !!st.acPrompt,
+clearAc: () => { saveAcProfile(false); this.setState({ acActive: false }); },
+closePrompt: () => this.setState({ acPrompt: false }),
 plugOk: st.plug === 'ok', plugWait: st.plug === 'wait', plugChecking: st.plug === 'check',
+checkingTitle: acActive ? 'เครื่องชาร์จส่งข้อมูลรถมาที่ระบบ…' : 'กำลังตรวจสอบการเชื่อมต่อ…',
+checkingSub: acActive ? 'กำลังตรวจสอบการลงทะเบียน Auto Charge' : 'สื่อสารกับรถผ่านหัวชาร์จ',
 checkPlug: () => { this.setState({ plug: 'check' }); setTimeout(() => this.setState({ plug: 'ok' }), 1600); },
-targetText: st.mode === 'pct' ? st.pct + '%' : st.mode === 'baht' ? '฿' + st.baht : '100%',
-targetHint: st.mode === 'pct' ? 'หยุดชาร์จอัตโนมัติเมื่อแบตถึง ' + st.pct + '% (แนะนำ 80% เพื่อถนอมแบต)' : st.mode === 'baht' ? 'หยุดชาร์จเมื่อค่าบริการถึง ฿' + st.baht : 'ชาร์จจนแบตเต็ม 100%',
-dec: () => { if (st.mode === 'pct') this.setState({ pct: Math.max(NOW + 5, st.pct - 5) }); else if (st.mode === 'baht') this.setState({ baht: Math.max(50, st.baht - 50) }); },
-inc: () => { if (st.mode === 'pct') this.setState({ pct: Math.min(100, st.pct + 5) }); else if (st.mode === 'baht') this.setState({ baht: Math.min(2000, st.baht + 50) }); },
-kwh: kwh.toFixed(1), cost: cost.toFixed(2), mins: Math.max(5, Math.round(kwh / 120 * 60 + 4)),
+targetText: st.mode === 'pct' ? st.pct + '%' : st.mode === 'time' ? st.time + ' นาที' : st.mode === 'baht' ? '฿' + st.baht : '100%',
+targetHint: st.mode === 'pct'
+? ('หยุดชาร์จเมื่อแบตถึง ' + st.pct + '% · ประมาณ ' + estMins + ' นาที (~฿' + estCostInt + ')')
+: st.mode === 'time'
+? ('หยุดชาร์จเมื่อครบ ' + st.time + ' นาที · ได้แบต ~' + estSoc + '% (~฿' + estCostInt + ')')
+: st.mode === 'baht'
+? ('หยุดชาร์จเมื่อค่าบริการถึง ฿' + st.baht + ' · ประมาณ ' + estMins + ' นาที (~' + estSoc + '%)')
+: ('ชาร์จจนแบตเต็ม 100% · ประมาณ ' + estMins + ' นาที (~฿' + estCostInt + ')'),
+dec: () => {
+if (st.mode === 'pct') this.setState({ pct: Math.max(NOW + 5, st.pct - 5) });
+else if (st.mode === 'time') this.setState({ time: Math.max(5, st.time - 5) });
+else if (st.mode === 'baht') this.setState({ baht: Math.max(50, st.baht - 50) });
+},
+inc: () => {
+if (st.mode === 'pct') this.setState({ pct: Math.min(100, st.pct + 5) });
+else if (st.mode === 'time') this.setState({ time: Math.min(180, st.time + 5) });
+else if (st.mode === 'baht') this.setState({ baht: Math.min(2000, st.baht + 50) });
+},
+kwh: kwh.toFixed(1), cost: cost.toFixed(2), mins: estMins,
 agree: st.agree, agreeStr: st.agree ? 'true' : 'false', toggleAgree: () => this.setState({ agree: !st.agree }),
 boxBg: st.agree ? accent : '#FFFFFF', boxBorder: st.agree ? accent : '#BDBDBD',
+startChg,
+confirmTap: (e) => {
+if (!ok) { if (e && e.preventDefault) e.preventDefault(); return; }
+if (!acActive && acSupported) { if (e && e.preventDefault) e.preventDefault(); this.setState({ acPrompt: true }); return; }
+if (acActive) saveAcProfile(true);
+startChg();
+},
+skipAc: () => { saveAcProfile(false); this.setState({ acActive: false, acPrompt: false }); startChg(); },
+acceptAc: () => { saveAcProfile(true); this.setState({ acActive: true, acPrompt: false }); startChg(); },
 goBg: ok ? accent : '#BDBDBD', goPe: ok ? 'auto' : 'none', noGoStr: ok ? 'false' : 'true'
 };
 }

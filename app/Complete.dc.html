@@ -28,6 +28,8 @@ a{color:#C42D00}a:hover{color:#9E2400}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #F4F4F4; color"]{background-color:#0F0F11!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="repeating-linear-gradient(90deg, #DADADA"]{background:repeating-linear-gradient(90deg,#3A3A40 0 6px,transparent 6px 12px)!important}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #1F1F1F"],[style*="color: #2B2B2B"]){color:#F3F3F4!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #3A3A3A"]{color:#DCDCE0!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #B86A00"],[style*="color: rgb(184, 106, 0)"]){color:#F0A84A!important}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
 [data-theme="dark"] a:not([style*="color"]){color:#FF7A4D}
 [data-theme="dark"][data-theme][style]{background-color:#000000!important}
@@ -58,10 +60,30 @@ a{color:#C42D00}a:hover{color:#9E2400}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #F5C2C0"],[style*="solid rgb(245, 194, 192)"]){border-color:rgba(255,138,128,.45)!important}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #EDEDED"],[style*="solid rgb(237, 237, 237)"]){border-color:#35353B!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #1F1F1F; color: #FFFFFF"]{background-color:#2C2C31!important}
+.cx-grace-note{background:#FFF4E0;color:#9A5200;border:1px solid #F7DFB2}
+.cx-grace-track{background:#F4E4C8}
+.cx-grace-bar{background:linear-gradient(90deg,#F59E0B 0%,#D97706 100%)}
+.cx-idle-note{background:#FDECEC;color:#B42318;border:1px solid #F5C2C0}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #E7F6EE"],[style*="background: rgb(231, 246, 238)"]){background-color:rgba(46,180,110,.18)!important}
+[data-theme="dark"] .cx-grace-note{background-color:rgba(245,158,11,.15)!important;color:#FBBF24!important;border-color:rgba(245,158,11,.35)!important}
+[data-theme="dark"] .cx-grace-track{background-color:#3A3022!important}
+[data-theme="dark"] .cx-idle-note{background-color:rgba(229,62,62,.18)!important;color:#FF8A80!important;border-color:rgba(255,138,128,.45)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF1EB"]{background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: #FFF7F3"]{background-color:rgba(252,57,1,.1)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #C42D00"]{color:#FF7A4D!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #EFEFEF"],[style*="solid rgb(230, 230, 230)"]){border-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="dashed #D4D4D4"]{border-color:#45454C!important}
+.cx-scroll{scrollbar-width:none}.cx-scroll>*{flex-shrink:0}.cx-scroll::-webkit-scrollbar{display:none}
+.cx-in2{width:100%;height:42px;box-sizing:border-box;border-radius:12px;border:1.5px solid #E0E0E0;background:#FFFFFF;padding:0 12px;font-family:inherit;font-size:14px;color:#1F1F1F;outline:none}
+.cx-in2:focus{border-color:#FC3901}
+[data-theme="dark"] .cx-in2{background:#1C1C1E;border-color:#35353B;color:#F3F3F4}
+[data-theme="dark"] .cx-in2:focus{border-color:#FC3901}
+.cx-in2::placeholder{color:#9A9A9A}
 </style>
 </helmet>
-<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; box-sizing: border-box; background: #F4F4F4; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; position: relative; overflow: hidden">
-<div style="flex: none; align-self: stretch; background: {{accent}}; color: #FFFFFF; padding: 58px 24px 78px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; position: relative; overflow: hidden; border-radius: 0 0 32px 32px">
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; box-sizing: border-box; background: #F4F4F4; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; position: relative; overflow: hidden">
+<div class="cx-scroll" style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; overflow-y: auto">
+<div style="flex: none; align-self: stretch; background: {{accent}}; color: #FFFFFF; padding: 48px 24px 70px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; position: relative; overflow: hidden; border-radius: 0 0 32px 32px">
 <svg aria-hidden="true" width="390" height="320" viewBox="0 0 390 320" fill="none" style="position: absolute; left: 50%; top: 0; margin-left: -195px">
 <circle cx="195" cy="90" r="56" stroke="rgba(255,255,255,0.22)" stroke-width="2"></circle>
 <circle cx="195" cy="90" r="82" stroke="rgba(255,255,255,0.14)" stroke-width="2"></circle>
@@ -77,42 +99,48 @@ a{color:#C42D00}a:hover{color:#9E2400}
 <p style="margin: 0; font-size: 15px; font-weight: 500; position: relative; opacity: 0.92">แบตเตอรี่ 92% · ถอดหัวชาร์จได้เลย</p>
 </div>
 
-<div style="flex: none; width: 358px; box-sizing: border-box; margin-top: -54px; background: #FFFFFF; border-radius: 24px; padding: 20px 16px 16px; position: relative; box-shadow: 0 12px 30px rgba(0,0,0,0.08); display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center">
+<div style="flex: none; width: 358px; box-sizing: border-box; margin-top: -50px; background: #FFFFFF; border-radius: 24px; padding: 16px 16px 14px; position: relative; box-shadow: 0 12px 30px rgba(0,0,0,0.08); display: flex; flex-direction: column; align-items: center; gap: 11px; text-align: center">
 <div style="display: flex; flex-direction: column; align-items: center; gap: 2px">
 <sc-if value="{{amtOwe}}" hint-placeholder-val="{{ false }}">
 <span style="font-size: 13px; font-weight: 600; color: #B42318">ยอดค้างชำระ</span>
-<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 40px; line-height: 1.15; color: #B42318">฿235.68</span>
+<sc-if value="{{hasCoupon}}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; color: #6B6B6B; text-decoration: line-through">{{origAmtText}}</span></sc-if>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 38px; line-height: 1.15; color: #B42318">{{netAmtText}}</span>
 <span style="margin-top: 6px; padding: 5px 12px; border-radius: 10px; background: #FDECEC; color: #B42318; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>ตัดบัตร •••• [0000] ไม่สำเร็จ</span>
 </sc-if>
 <sc-if value="{{amtPaid}}" hint-placeholder-val="{{ true }}">
 <span style="font-size: 13px; color: #5C5C5C">ยอดชำระทั้งหมด</span>
-<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 40px; line-height: 1.15; color: #1F1F1F">฿235.68</span>
+<sc-if value="{{hasCoupon}}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; color: #6B6B6B; text-decoration: line-through">{{origAmtText}}</span></sc-if>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 38px; line-height: 1.15; color: #1F1F1F">{{netAmtText}}</span>
 <span style="margin-top: 6px; padding: 5px 12px; border-radius: 10px; background: #F4F4F4; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#146C3E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg>{{paidText}}</span>
 </sc-if>
 </div>
 <div style="align-self: stretch; height: 1px; background: repeating-linear-gradient(90deg, #DADADA 0 6px, transparent 6px 12px)"></div>
-<div style="align-self: stretch; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
-<div style="background: #F6F6F6; border-radius: 16px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center">
-<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg>
+<div style="align-self: stretch; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<div style="background: #F6F6F6; border-radius: 16px; padding: 10px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center">
 <span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 20px; line-height: 1.3; color: #1F1F1F">48.6<span style="font-size: 13px; font-weight: 600; color: #6B6B6B"> kWh</span></span>
 <span style="font-size: 12px; color: #6B6B6B">พลังงานที่ได้รับ</span>
 </div>
-<div style="background: #F6F6F6; border-radius: 16px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center">
-<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2"></path></svg>
+<div style="background: #F6F6F6; border-radius: 16px; padding: 10px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center">
 <span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 20px; line-height: 1.3; color: #1F1F1F">38<span style="font-size: 13px; font-weight: 600; color: #6B6B6B"> นาที</span></span>
 <span style="font-size: 12px; color: #6B6B6B">ระยะเวลา</span>
 </div>
-<div style="background: #F6F6F6; border-radius: 16px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center">
-<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 6h9a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zM20 10v4M9 10v4M12 10v4"></path></svg>
+<div style="background: #F6F6F6; border-radius: 16px; padding: 10px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center">
 <span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 20px; line-height: 1.3; color: #1F1F1F">92<span style="font-size: 13px; font-weight: 600; color: #6B6B6B"> %</span></span>
 <span style="font-size: 12px; color: #6B6B6B">แบตเตอรี่</span>
 </div>
-<div style="background: #F6F6F6; border-radius: 16px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center">
-<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8zM7.5 7.5h0"></path></svg>
+<div style="background: #F6F6F6; border-radius: 16px; padding: 10px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center">
 <span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 20px; line-height: 1.3; color: #1F1F1F">฿7.5<span style="font-size: 13px; font-weight: 600; color: #6B6B6B"> /kWh</span></span>
 <span style="font-size: 12px; color: #6B6B6B">อัตราค่าบริการ</span>
 </div>
 </div>
+<div style="align-self: stretch; background: #E7F6EE; border-radius: 14px; padding: 9px 12px; display: flex; justify-content: space-between; align-items: center; gap: 8px">
+<span style="font-size: 12.5px; font-weight: 600; color: #146C3E">Carbon emission</span>
+<span style="font-family: Sarabun, sans-serif; font-size: 14px; font-weight: 700; color: #146C3E">ลดได้ 21.9 kg CO₂</span>
+</div>
+<button type="button" onClick="{{openCouponSheet}}" aria-label="เลือกคูปองส่วนลด" style="align-self: stretch; height: 38px; padding: 0 12px; border-radius: 12px; border: {{cpBarBorder}}; background: {{cpBarBg}}; display: flex; align-items: center; justify-content: space-between; gap: 8px; font-family: inherit; cursor: pointer">
+<span style="min-width: 0; display: flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{cpIconFg}}" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4V8zM9 9h.01M15 15h.01M15 9l-6 6"></path></svg><span style="font-size: 12.5px; font-weight: 600; color: {{cpBarFg}}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{cpBarLabel}}</span></span>
+<span style="font-size: 12px; font-weight: 700; color: #C42D00; flex: none">{{cpBarAction}}</span>
+</button>
 </div>
 
 <sc-if value="{{isFail}}" hint-placeholder-val="{{ false }}">
@@ -128,27 +156,56 @@ a{color:#C42D00}a:hover{color:#9E2400}
 </div>
 </sc-if>
 <sc-if value="{{isPaying}}" hint-placeholder-val="{{ false }}">
-<div style="flex: none; width: 358px; box-sizing: border-box; margin-top: 16px; padding: 14px; border-radius: 20px; background: #FFFFFF; display: flex; align-items: center; gap: 12px"><svg class="cx-spin" aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2.6" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"></path></svg><span style="display: flex; flex-direction: column"><span style="font-size: 14px; font-weight: 700; color: #1F1F1F">กำลังดำเนินการชำระเงิน…</span><span style="font-size: 12px; color: #6B6B6B">{{payingText}}</span></span></div>
+<div style="flex: none; width: 358px; box-sizing: border-box; margin-top: 12px; padding: 14px; border-radius: 20px; background: #FFFFFF; display: flex; align-items: center; gap: 12px"><svg class="cx-spin" aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2.6" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"></path></svg><span style="display: flex; flex-direction: column"><span style="font-size: 14px; font-weight: 700; color: #1F1F1F">กำลังดำเนินการชำระเงิน…</span><span style="font-size: 12px; color: #6B6B6B">{{payingText}}</span></span></div>
 </sc-if>
 <sc-if value="{{isPaid}}" hint-placeholder-val="{{ true }}">
-<div style="flex: none; width: 358px; margin-top: 16px; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center">
-<span style="width: 36px; height: 36px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21zM14.5 9.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 1 1 5 0z"></path></svg></span>
-<span style="font-weight: 600; font-size: 15px; line-height: 1.45; color: #1F1F1F; text-wrap: balance">มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา</span>
+<div style="flex: none; width: 358px; margin-top: 12px; display: flex; flex-direction: column; align-items: center; gap: 3px; text-align: center">
+<span style="width: 34px; height: 34px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21zM14.5 9.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 1 1 5 0z"></path></svg></span>
+<span style="font-weight: 600; font-size: 15px; line-height: 1.4; color: #1F1F1F; text-wrap: balance">มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา</span>
 <span style="font-size: 13px; color: #6B6B6B">ช่อง 04 · CCS2 · ชาร์จเร็ว DC</span>
 </div>
 </sc-if>
 
-<div style="flex: 1; min-height: 12px"></div>
-<div style="flex: none; width: 358px; padding-bottom: 30px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
-<a href="#" style="height: 56px; box-sizing: border-box; border-radius: 16px; border: 1.5px solid #E0E0E0; background: #FFFFFF; color: #1F1F1F; font-weight: 600; font-size: 16px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px">
+<sc-if value="{{idle.showGrace}}" hint-placeholder-val="{{ true }}">
+<div class="cx-grace-note" style="flex: none; width: 358px; box-sizing: border-box; margin-top: 10px; padding: 10px 12px; border-radius: 16px; display: flex; flex-direction: column; gap: 7px">
+<div style="display: flex; align-items: center; gap: 8px">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+<span style="flex: 1; font-size: 13px; font-weight: 700">กรุณานำรถออกภายใน 5 นาที</span>
+<span style="font-family: Sarabun, sans-serif; font-size: 17px; font-weight: 700; font-variant-numeric: tabular-nums">{{idle.clock}}</span>
+</div>
+<div class="cx-grace-track" style="height: 5px; border-radius: 999px; overflow: hidden"><div class="cx-grace-bar" style="{{idle.barStyle}}"></div></div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 6px; flex-wrap: wrap">
+<span style="font-size: 11.5px; opacity: 0.9">หัวชาร์จตัดแล้ว · เกิน 5 นาทีคิด ฿5/นาที</span>
+<button type="button" onClick="{{idle.sim5m}}" style="height: 24px; padding: 0 9px; border-radius: 999px; border: 1px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 11px; font-weight: 600; color: #B86A00; cursor: pointer">จำลองครบ 5 นาที</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{idle.showOver}}" hint-placeholder-val="{{ false }}">
+<div class="cx-idle-note" role="alert" style="flex: none; width: 358px; box-sizing: border-box; margin-top: 10px; padding: 10px 12px; border-radius: 16px; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: center; gap: 8px">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h0"></path></svg>
+<span style="flex: 1; font-size: 13px; font-weight: 700">เลยกำหนด 5 นาที · คิดค่าบริการ</span>
+<span style="font-family: Sarabun, sans-serif; font-size: 17px; font-weight: 700">{{idle.feeText}}</span>
+</div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 6px">
+<span style="font-size: 11.5px; font-weight: 600">{{idle.overText}}</span>
+<button type="button" onClick="{{idle.resetIdle}}" style="height: 24px; padding: 0 8px; border-radius: 999px; border: 1px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 11px; font-weight: 600; color: #3A3A3A; cursor: pointer">รีเซ็ต 5 นาที</button>
+</div>
+</div>
+</sc-if>
+
+<div style="flex: 1; min-height: 10px"></div>
+<div style="flex: none; width: 358px; padding-bottom: 24px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<a href="#" style="height: 54px; box-sizing: border-box; border-radius: 16px; border: 1.5px solid #E0E0E0; background: #FFFFFF; color: #1F1F1F; font-weight: 600; font-size: 16px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px">
 <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>ใบเสร็จ</a>
-<sc-if value="{{notFail}}" hint-placeholder-val="{{ true }}"><a href="{{L.News}}" aria-disabled="{{payingStr}}" style="height: 56px; border-radius: 16px; background: {{doneBg}}; pointer-events: {{donePe}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; text-decoration: none; display: flex; align-items: center; justify-content: center">เสร็จสิ้น</a></sc-if>
-<sc-if value="{{isFail}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{openSheet}}" style="height: 56px; border-radius: 16px; border: 0; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; cursor: pointer">ชำระ ฿235.68</button></sc-if>
+<sc-if value="{{notFail}}" hint-placeholder-val="{{ true }}"><a href="{{L.News}}" onClick="{{doneHome}}" aria-disabled="{{payingStr}}" style="height: 54px; border-radius: 16px; background: {{doneBg}}; pointer-events: {{donePe}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; text-decoration: none; display: flex; align-items: center; justify-content: center">เสร็จสิ้น</a></sc-if>
+<sc-if value="{{isFail}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{openSheet}}" style="height: 54px; border-radius: 16px; border: 0; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 18px; cursor: pointer">{{payBtnText}}</button></sc-if>
+</div>
 </div>
 <sc-if value="{{showToast}}" hint-placeholder-val="{{ false }}">
 <div class="cx-toast" role="status" style="position: absolute; left: 12px; right: 12px; top: 12px; z-index: 30; padding: 10px 12px; border-radius: 18px; background: #1F1F1F; color: #FFFFFF; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.25)">
 <span style="width: 34px; height: 34px; flex: none; border-radius: 10px; background: {{accent}}; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg></span>
-<span style="flex: 1; min-width: 0; display: flex; flex-direction: column"><span style="font-size: 12px; opacity: 0.7">Charge X · เมื่อสักครู่</span><span style="font-size: 13.5px; font-weight: 600">ตัดบัตรไม่สำเร็จ ยอดค้างชำระ ฿235.68</span></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column"><span style="font-size: 12px; opacity: 0.7">Charge X · เมื่อสักครู่</span><span style="font-size: 13px; font-weight: 600">{{toastBody}}</span></span>
 </div>
 </sc-if>
 <sc-if value="{{sheet}}" hint-placeholder-val="{{ false }}">
@@ -156,7 +213,7 @@ a{color:#C42D00}a:hover{color:#9E2400}
 <button type="button" aria-label="ปิด" onClick="{{closeSheet}}" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
 <div class="cx-sheet" role="dialog" aria-label="เลือกวิธีชำระ" style="background: #FFFFFF; border-radius: 26px 26px 0 0; padding: 10px 16px 30px; display: flex; flex-direction: column; gap: 10px">
 <span style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #DADADA"></span>
-<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; color: #1F1F1F">ชำระยอดค้าง ฿235.68</span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; color: #1F1F1F">{{dueSheetTitle}}</span>
 <sc-for list="{{methods}}" as="m" hint-placeholder-count="3">
 <button type="button" onClick="{{m.pick}}" style="{{m.style}}">
 <span style="width: 38px; height: 38px; flex: none; border-radius: 12px; background: {{m.bg}}; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{m.fg}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{m.icon}}"></path></svg></span>
@@ -169,15 +226,53 @@ a{color:#C42D00}a:hover{color:#9E2400}
 </div>
 </div>
 </sc-if>
+<sc-if value="{{showCouponSheet}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 44; background: rgba(0,0,0,0.45); display: flex; flex-direction: column; justify-content: flex-end">
+<button type="button" aria-label="ปิด" onClick="{{closeCouponSheet}}" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
+<div class="cx-sheet" role="dialog" aria-label="คูปองส่วนลดสำหรับรายการนี้" style="background: #FFFFFF; border-radius: 26px 26px 0 0; max-height: 78%; display: flex; flex-direction: column; overflow: hidden">
+<div style="padding: 10px 18px 12px; display: flex; flex-direction: column; align-items: center; gap: 8px; border-bottom: 1px solid #EFEFEF">
+<span style="width: 40px; height: 4px; border-radius: 2px; background: #DADADA"></span>
+<div style="align-self: stretch; display: flex; align-items: center; justify-content: space-between; gap: 10px">
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; color: #1F1F1F">คูปองส่วนลดสำหรับรายการนี้</span>
+<button type="button" onClick="{{closeCouponSheet}}" aria-label="ปิด" style="width: 34px; height: 34px; flex: none; border-radius: 12px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+</div>
+<div class="cx-scroll" style="flex: 1; min-height: 0; overflow-y: auto; padding: 12px 18px 24px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12.5px; color: #5C5C5C">{{cpSubTotalText}}</span>
+<div style="display: flex; gap: 8px; align-items: center">
+<input class="cx-in2" value="{{cpCodeIn}}" onInput="{{onCpCodeIn}}" placeholder="กรอกโค้ดส่วนลด เช่น EV50, NEW40" style="flex: 1">
+<button type="button" onClick="{{applyCpCode}}" style="height: 42px; padding: 0 14px; flex: none; border-radius: 12px; border: 0; background: {{cpBtnBg}}; color: #FFFFFF; font-family: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer">ใช้โค้ด</button>
+</div>
+<sc-if value="{{hasCpErr}}" hint-placeholder-val="{{ false }}">
+<div role="alert" style="padding: 8px 12px; border-radius: 10px; background: #FDECEC; color: #B42318; font-size: 12.5px; font-weight: 600">{{cpErr}}</div>
+</sc-if>
+<sc-for list="{{coupons}}" as="cp" hint-placeholder-count="2">
+<div style="display: flex; align-items: center; gap: 10px; padding: 11px 12px; border: {{cp.border}}; border-radius: 16px; background: {{cp.cardBg}}">
+<span style="width: 40px; height: 40px; flex: none; border-radius: 12px; background: #FFF1EB; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4V8zM9 9h.01M15 15h.01M15 9l-6 6"></path></svg></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 14px; font-weight: 700; color: #1F1F1F">{{cp.title}}</span>
+<span style="font-size: 12px; color: #5C5C5C">{{cp.cond}}</span>
+<span style="font-size: 11.5px; font-weight: 600; color: #146C3E">{{cp.saveMeta}}</span>
+</span>
+<button type="button" onClick="{{cp.pick}}" style="{{cp.btnStyle}}">{{cp.btnLabel}}</button>
+</div>
+</sc-for>
+<sc-if value="{{hasCoupon}}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{clearCoupon}}" style="height: 44px; border-radius: 14px; border: 1.5px solid #E0E0E0; background: #FFFFFF; color: #1F1F1F; font-family: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer">ไม่ใช้คูปองในรายการนี้</button>
+</sc-if>
+</div>
+</div>
+</div>
+</sc-if>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"method":{"editor":"enum","options":["บัตร","กระเป๋าเงิน"],"default":"บัตร"},"payment":{"editor":"enum","options":["ชำระสำเร็จ","ตัดบัตรไม่สำเร็จ"],"default":"ชำระสำเร็จ"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
 class Component extends DCLogic {
 static {
 const P = this.prototype;
-const TR = {"ชาร์จเร็ว DC": "DC fast charging", "ถัดไป": "Next", "ยืนยัน": "Confirm", "กระเป๋าเงิน": "Wallet", "ทั้งหมด": "All", "ชาร์จเสร็จสมบูรณ์": "Charging complete", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "24 ชม.": "24 hrs", "ปิด": "Closed", "เริ่มชาร์จ": "Start charging", "ค่าบริการ": "Rate", "CCS2 · ชาร์จเร็ว DC": "CCS2 · DC fast charging", "เปลี่ยน": "Change", "จัดการบัตร": "Manage cards", "เพิ่ม": "Increase", "กระเป๋าเงิน Charge-X": "Charge-X wallet", "ยอดคงเหลือ ฿": "Balance ฿", "บัตร •••• [0000]": "Card •••• [0000]", "นาที": "min", "พลังงานที่ได้รับ": "Energy delivered", "แบตเตอรี่ 92% · ถอดหัวชาร์จได้เลย": "Battery 92% · you can unplug now", "ยอดค้างชำระ": "Amount due", "ตัดบัตร •••• [0000] ไม่สำเร็จ": "Card •••• [0000] declined", "ยอดชำระทั้งหมด": "Total paid", "ระยะเวลา": "Duration", "แบตเตอรี่": "Battery", "อัตราค่าบริการ": "Rate", "ตัดบัตรไม่สำเร็จ": "Card payment failed", "ธนาคารปฏิเสธรายการ กรุณาชำระภายใน 24 ชม. จึงจะเริ่มชาร์จครั้งถัดไปได้": "Your bank declined the payment. Please pay within 24 hrs to charge again.", "ลองตัดบัตรอีกครั้ง": "Retry card", "เปลี่ยนวิธีชำระ": "Change payment method", "กำลังดำเนินการชำระเงิน…": "Processing payment…", "ช่อง 04 · CCS2 · ชาร์จเร็ว DC": "Bay 04 · CCS2 · DC fast charging", "ใบเสร็จ": "Receipt", "เสร็จสิ้น": "Done", "ชำระ ฿235.68": "Pay ฿235.68", "Charge X · เมื่อสักครู่": "Charge X · just now", "ตัดบัตรไม่สำเร็จ ยอดค้างชำระ ฿235.68": "Card payment failed · ฿235.68 due", "ชำระยอดค้าง ฿235.68": "Pay ฿235.68 due", "ยืนยันชำระเงิน": "Confirm payment", "เลือกวิธีชำระ": "Choose payment method", "บัตร •••• [1111]": "Card •••• [1111]", "เพิ่มบัตรใหม่": "Add new card", "ยอดคงเหลือ ฿500": "Balance ฿500", "บัตรเดบิตสำรอง": "Backup debit card", "ไปหน้าจัดการบัตรเพื่อผูกบัตร ›": "Go to Manage cards to link a card ›", "ชำระผ่าน": "Paid with ", "ลองตัดบัตร •••• [0000] อีกครั้ง": "Retrying card •••• [0000]", "เวลา": "Time", "สำเร็จ": "Successful", "ไม่สำเร็จ": "Failed", "ตัดบัตร •••• [0000]": "Charging card •••• [0000]", "เพิ่มบัตร": "Add card", "บัตรเดบิต": "Debit card", "บัตร": "Card", "ดำ": "Black", "ชาร์จเสร็จ": "Charging finished", "ชม.": "hrs", "กม.": "km"};
-const PT = [].map(([r, e]) => [new RegExp(r), e]);
-const SUB = ["ธนาคารปฏิเสธรายการ กรุณาชำระภายใน 24 ชม. จึงจะเริ่มชาร์จครั้งถัดไปได้", "ตัดบัตรไม่สำเร็จ ยอดค้างชำระ ฿235.68", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "แบตเตอรี่ 92% · ถอดหัวชาร์จได้เลย", "ลองตัดบัตร •••• [0000] อีกครั้ง", "ไปหน้าจัดการบัตรเพื่อผูกบัตร ›", "ตัดบัตร •••• [0000] ไม่สำเร็จ", "ช่อง 04 · CCS2 · ชาร์จเร็ว DC", "กำลังดำเนินการชำระเงิน…", "Charge X · เมื่อสักครู่", "กระเป๋าเงิน Charge-X", "CCS2 · ชาร์จเร็ว DC", "ชำระยอดค้าง ฿235.68", "ตัดบัตร •••• [0000]", "ลองตัดบัตรอีกครั้ง", "ชาร์จเสร็จสมบูรณ์", "บัตร •••• [0000]", "พลังงานที่ได้รับ", "ตัดบัตรไม่สำเร็จ", "บัตร •••• [1111]", "เปลี่ยนวิธีชำระ", "ยอดคงเหลือ ฿500", "ยอดชำระทั้งหมด", "อัตราค่าบริการ", "ยืนยันชำระเงิน", "บัตรเดบิตสำรอง", "เลือกวิธีชำระ", "เพิ่มบัตรใหม่", "ชาร์จเร็ว DC", "ยอดคงเหลือ ฿", "ชำระ ฿235.68", "กระเป๋าเงิน", "ยอดค้างชำระ", "เริ่มชาร์จ", "จัดการบัตร", "ชาร์จเสร็จ", "ค่าบริการ", "แบตเตอรี่", "เสร็จสิ้น", "ไม่สำเร็จ", "เพิ่มบัตร", "บัตรเดบิต", "ระยะเวลา", "ชำระผ่าน", "ทั้งหมด", "เปลี่ยน", "ใบเสร็จ", "ยืนยัน", "24 ชม.", "สำเร็จ", "ถัดไป", "เพิ่ม", "นาที", "เวลา", "บัตร", "ปิด", "ชม.", "กม."];
+const TR = {"ชาร์จเร็ว DC": "DC fast charging", "ถัดไป": "Next", "ยืนยัน": "Confirm", "กระเป๋าเงิน": "Wallet", "ทั้งหมด": "All", "ชาร์จเสร็จสมบูรณ์": "Charging complete", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "24 ชม.": "24 hrs", "ปิด": "Closed", "เริ่มชาร์จ": "Start charging", "ค่าบริการ": "Rate", "CCS2 · ชาร์จเร็ว DC": "CCS2 · DC fast charging", "เปลี่ยน": "Change", "จัดการบัตร": "Manage cards", "เพิ่ม": "Increase", "กระเป๋าเงิน Charge-X": "Charge-X wallet", "ยอดคงเหลือ ฿": "Balance ฿", "บัตร •••• [0000]": "Card •••• [0000]", "นาที": "min", "พลังงานที่ได้รับ": "Energy delivered", "แบตเตอรี่ 92% · ถอดหัวชาร์จได้เลย": "Battery 92% · you can unplug now", "ยอดค้างชำระ": "Amount due", "ตัดบัตร •••• [0000] ไม่สำเร็จ": "Card •••• [0000] declined", "ยอดชำระทั้งหมด": "Total paid", "ระยะเวลา": "Duration", "แบตเตอรี่": "Battery", "อัตราค่าบริการ": "Rate", "ลดได้ 21.9 kg CO₂": "Saved 21.9 kg CO₂", "ตัดบัตรไม่สำเร็จ": "Card payment failed", "ธนาคารปฏิเสธรายการ กรุณาชำระภายใน 24 ชม. จึงจะเริ่มชาร์จครั้งถัดไปได้": "Your bank declined the payment. Please pay within 24 hrs to charge again.", "ลองตัดบัตรอีกครั้ง": "Retry card", "เปลี่ยนวิธีชำระ": "Change payment method", "กำลังดำเนินการชำระเงิน…": "Processing payment…", "ช่อง 04 · CCS2 · ชาร์จเร็ว DC": "Bay 04 · CCS2 · DC fast charging", "ใบเสร็จ": "Receipt", "เสร็จสิ้น": "Done", "ชำระ ฿235.68": "Pay ฿235.68", "Charge X · เมื่อสักครู่": "Charge X · just now", "ตัดบัตรไม่สำเร็จ ยอดค้างชำระ ฿235.68": "Card payment failed · ฿235.68 due", "ชำระยอดค้าง ฿235.68": "Pay ฿235.68 due", "ยืนยันชำระเงิน": "Confirm payment", "เลือกวิธีชำระ": "Choose payment method", "บัตร •••• [1111]": "Card •••• [1111]", "เพิ่มบัตรใหม่": "Add new card", "ยอดคงเหลือ ฿500": "Balance ฿500", "บัตรเดบิตสำรอง": "Backup debit card", "ไปหน้าจัดการบัตรเพื่อผูกบัตร ›": "Go to Manage cards to link a card ›", "ชำระผ่าน": "Paid with ", "ลองตัดบัตร •••• [0000] อีกครั้ง": "Retrying card •••• [0000]", "เวลา": "Time", "สำเร็จ": "Successful", "ไม่สำเร็จ": "Failed", "ตัดบัตร •••• [0000]": "Charging card •••• [0000]", "เพิ่มบัตร": "Add card", "บัตรเดบิต": "Debit card", "บัตร": "Card", "ดำ": "Black", "ชาร์จเสร็จ": "Charging finished", "ชม.": "hrs", "กม.": "km", "กรุณานำรถออกภายใน 5 นาที": "Please move car within 5 min", "หัวชาร์จตัดแล้ว · เกิน 5 นาทีคิด ฿5/นาที": "Charging stopped · ฿5/min after 5 min", "แจ้งเตือน: เปิด": "Alert: On", "แจ้งเตือน: ปิด": "Alert: Off", "จำลองครบ 5 นาที": "Simulate 5 min", "เลยกำหนด 5 นาที · คิดค่าบริการ": "Over 5 min · Idle fee active", "เลยกำหนด 5 นาที · เริ่มคิดค่าบริการจอดเกิน ฿5/นาที": "Over 5 min · Idle fee ฿5/min started", "หัวชาร์จตัดแล้ว · กรุณานำรถออกภายใน 5 นาที (เกินปรับ ฿5/นาที)": "Charging stopped · Move car in 5 min (฿5/min after)", "เกินเวลา +": "Overtime +", " นาที (฿5/นาที) · กรุณานำรถออก": " min (฿5/min) · Move car now", "รีเซ็ต 5 นาที": "Reset 5 min", "ใช้คูปองส่วนลด / กรอกโค้ด": "Apply coupon / promo code", "เลือกคูปองส่วนลด": "Choose discount coupon", "คูปองส่วนลดสำหรับรายการนี้": "Discount coupons for this session", "กรอกโค้ดส่วนลด เช่น EV50, NEW40": "Enter code e.g. EV50, NEW40", "ใช้โค้ด": "Apply", "เลือกใช้": "Apply", "ใช้อยู่ ✓": "Applied ✓", "ไม่ใช้คูปองในรายการนี้": "Remove coupon from this session", "เปลี่ยน ›": "Change ›", "กรุณากรอกรหัสคูปอง": "Please enter a coupon code", "ไม่พบรหัสคูปองนี้ (ลอง EV50, DC25, NEW40)": "Invalid coupon code (try EV50, DC25, NEW40)", "คูปองนี้ใช้ได้เฉพาะในหน้ากระเป๋าเงิน": "This coupon is only for wallet top-up/credit", "คูปองนี้ถูกใช้สิทธิ์ไปแล้ว": "This coupon has already been redeemed", "คูปองนี้ถูกปิดใช้งานชั่วคราว": "This coupon is currently disabled", "ยังไม่ถึงยอดขั้นต่ำของคูปอง": "Session total is below coupon minimum", "ยกเลิกการใช้คูปองแล้ว": "Coupon removed", "ลดค่าชาร์จ ฿50": "฿50 off charging", "ส่วนลดค่าชาร์จ DC 25%": "25% off DC charging", "ลดผู้ใช้ใหม่ 40% สูงสุด ฿80": "New user 40% off (max ฿80)", "ลดค่าชาร์จวันหยุด ฿20": "฿20 off weekend charging", "เมื่อชาร์จตั้งแต่ ฿150 ขึ้นไป · ทุกสถานี": "Min spend ฿150 · All stations", "ลดสูงสุด ฿60 · ชาร์จขั้นต่ำ ฿100 สำหรับหัวชาร์จ DC": "Max ฿60 off · Min ฿100 at DC chargers", "เมื่อชาร์จตั้งแต่ ฿120 ขึ้นไป · ทุกสถานี": "Min spend ฿120 · All stations", "ไม่มีขั้นต่ำ · ใช้ได้ทุกหัวชาร์จ": "No minimum · All connectors"};
+const PT = [["^ชำระ\\ ฿([0-9.]+)$", "Pay ฿{1}"], ["^ชำระยอดค้าง\\ ฿([0-9.]+)$", "Pay ฿{1} due"], ["^ตัดบัตรไม่สำเร็จ\\ ยอดค้างชำระ\\ ฿([0-9.]+)$", "Card payment failed · ฿{1} due"], ["^ใช้คูปอง\\ ([A-Z0-9]+)\\ ลด\\ ฿([0-9.]+)\\ แล้ว$", "Applied {1} · saved ฿{2}"], ["^คูปอง\\ ([A-Z0-9]+)\\ ·\\ ประหยัด\\ ฿([0-9.]+)$", "Coupon {1} · Save ฿{2}"], ["^รหัส\\ ([A-Z0-9]+)\\ ·\\ ประหยัด\\ ฿([0-9.]+)$", "Code {1} · Save ฿{2}"], ["^ยอดค่าชาร์จก่อนส่วนลด:\\ ฿([0-9.]+)$", "Subtotal before discount: ฿{1}"], ["^ยอดคงเหลือ\\ ฿([0-9.,]+)$", "Balance ฿{1}"], ["^เลือก\\ \\((\\d+)\\)\\ ›$", "Select ({1}) ›"]].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["ธนาคารปฏิเสธรายการ กรุณาชำระภายใน 24 ชม. จึงจะเริ่มชาร์จครั้งถัดไปได้", "หัวชาร์จตัดแล้ว · กรุณานำรถออกภายใน 5 นาที (เกินปรับ ฿5/นาที)", "เลยกำหนด 5 นาที · เริ่มคิดค่าบริการจอดเกิน ฿5/นาที", "ลดสูงสุด ฿60 · ชาร์จขั้นต่ำ ฿100 สำหรับหัวชาร์จ DC", "ไม่พบรหัสคูปองนี้ (ลอง EV50, DC25, NEW40)", "หัวชาร์จตัดแล้ว · เกิน 5 นาทีคิด ฿5/นาที", "คูปองนี้ใช้ได้เฉพาะในหน้ากระเป๋าเงิน", "เมื่อชาร์จตั้งแต่ ฿150 ขึ้นไป · ทุกสถานี", "เมื่อชาร์จตั้งแต่ ฿120 ขึ้นไป · ทุกสถานี", "ตัดบัตรไม่สำเร็จ ยอดค้างชำระ ฿235.68", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "แบตเตอรี่ 92% · ถอดหัวชาร์จได้เลย", "เลยกำหนด 5 นาที · คิดค่าบริการ", " นาที (฿5/นาที) · กรุณานำรถออก", "กรอกโค้ดส่วนลด เช่น EV50, NEW40", "ไม่มีขั้นต่ำ · ใช้ได้ทุกหัวชาร์จ", "ลองตัดบัตร •••• [0000] อีกครั้ง", "ไปหน้าจัดการบัตรเพื่อผูกบัตร ›", "ตัดบัตร •••• [0000] ไม่สำเร็จ", "ลดผู้ใช้ใหม่ 40% สูงสุด ฿80", "คูปองส่วนลดสำหรับรายการนี้", "ใช้คูปองส่วนลด / กรอกโค้ด", "คูปองนี้ถูกปิดใช้งานชั่วคราว", "ยังไม่ถึงยอดขั้นต่ำของคูปอง", "ช่อง 04 · CCS2 · ชาร์จเร็ว DC", "กรุณานำรถออกภายใน 5 นาที", "คูปองนี้ถูกใช้สิทธิ์ไปแล้ว", "กำลังดำเนินการชำระเงิน…", "Charge X · เมื่อสักครู่", "ไม่ใช้คูปองในรายการนี้", "ยกเลิกการใช้คูปองแล้ว", "ลดได้ 21.9 kg CO₂", "ลดค่าชาร์จวันหยุด ฿20", "ส่วนลดค่าชาร์จ DC 25%", "กระเป๋าเงิน Charge-X", "CCS2 · ชาร์จเร็ว DC", "กรุณากรอกรหัสคูปอง", "ชำระยอดค้าง ฿235.68", "ตัดบัตร •••• [0000]", "ลองตัดบัตรอีกครั้ง", "ชาร์จเสร็จสมบูรณ์", "บัตร •••• [0000]", "เลือกคูปองส่วนลด", "พลังงานที่ได้รับ", "จำลองครบ 5 นาที", "ตัดบัตรไม่สำเร็จ", "บัตร •••• [1111]", "เปลี่ยนวิธีชำระ", "ยอดคงเหลือ ฿500", "ยอดชำระทั้งหมด", "แจ้งเตือน: เปิด", "แจ้งเตือน: ปิด", "อัตราค่าบริการ", "ยืนยันชำระเงิน", "บัตรเดบิตสำรอง", "ลดค่าชาร์จ ฿50", "เลือกวิธีชำระ", "รีเซ็ต 5 นาที", "เพิ่มบัตรใหม่", "ชาร์จเร็ว DC", "ยอดคงเหลือ ฿", "ชำระ ฿235.68", "เกินเวลา +", "กระเป๋าเงิน", "ยอดค้างชำระ", "เริ่มชาร์จ", "จัดการบัตร", "ชาร์จเสร็จ", "ค่าบริการ", "แบตเตอรี่", "เสร็จสิ้น", "ไม่สำเร็จ", "เปลี่ยน ›", "ใช้อยู่ ✓", "เพิ่มบัตร", "บัตรเดบิต", "ระยะเวลา", "ชำระผ่าน", "ทั้งหมด", "เปลี่ยน", "ใบเสร็จ", "ใช้โค้ด", "เลือกใช้", "ยืนยัน", "24 ชม.", "สำเร็จ", "ถัดไป", "เพิ่ม", "นาที", "เวลา", "บัตร", "ปิด", "ชม.", "กม."];
 const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
 const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
 const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
@@ -210,31 +305,212 @@ const rv = P.renderVals;
 P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
 }
 constructor(props) { super(props); this.state = this.initState(props, true); }
-initState(p, useSaved) { const f = p.payment === 'ตัดบัตรไม่สำเร็จ'; let m = p.method === 'กระเป๋าเงิน' ? 'wallet' : 'card'; if (useSaved) { try { const s = localStorage.getItem('cx-pay'); if (s === 'wallet' || s === 'card') m = s; } catch (e) {} } if (f) m = 'card'; return { pay: f ? 'fail' : 'ok', sheet: false, method: 'wallet', toast: f, paidVia: m === 'card' ? 'บัตร •••• [0000]' : 'กระเป๋าเงิน Charge-X' }; }
+seedCoupons() {
+  return [
+    { id: 'c1', code: 'EV50', kind: 'charge', discType: 'flat', discVal: 50, minSpend: 150, maxDisc: 50, title: 'ลดค่าชาร์จ ฿50', cond: 'เมื่อชาร์จตั้งแต่ ฿150 ขึ้นไป · ทุกสถานี', exp: 'หมดอายุ 31 ธ.ค. 2569', status: 'avail' },
+    { id: 'c2', code: 'DC25', kind: 'charge', discType: 'pct', discVal: 25, minSpend: 100, maxDisc: 60, title: 'ส่วนลดค่าชาร์จ DC 25%', cond: 'ลดสูงสุด ฿60 · ชาร์จขั้นต่ำ ฿100 สำหรับหัวชาร์จ DC', exp: 'หมดอายุ 31 ธ.ค. 2569', status: 'avail' },
+    { id: 'c3', code: 'TOPUP100', kind: 'topup', discType: 'bonus', discVal: 50, minSpend: 300, maxDisc: 50, title: 'เติมเงิน ฿300 รับโบนัส ฿50', cond: 'รับเครดิตเพิ่มเข้ากระเป๋าเมื่อเติมผ่าน PromptPay / บัตร', exp: 'หมดอายุ 15 ม.ค. 2570', status: 'avail' },
+    { id: 'c4', code: 'CASH30', kind: 'credit', discType: 'credit', discVal: 30, minSpend: 0, maxDisc: 30, title: 'โบนัสสมาชิกใหม่ รับเครดิต ฿30', cond: 'กดรับเข้ากระเป๋าเงิน Charge X ได้ทันที ไม่มีขั้นต่ำ', exp: 'หมดอายุ 31 ธ.ค. 2569', status: 'avail' }
+  ];
+}
+calcSave(c, base) {
+  if (!c || c.kind !== 'charge' || c.status !== 'avail' || base < (c.minSpend || 0)) return 0;
+  return c.discType === 'pct' ? Math.min(c.maxDisc || 999, Math.round(base * c.discVal) / 100) : Math.min(base, c.discVal);
+}
+initState(p, useSaved) {
+const BASE = 235.68;
+const f = p.payment === 'ตัดบัตรไม่สำเร็จ';
+let m = p.method === 'กระเป๋าเงิน' ? 'wallet' : 'card';
+let idleAt = Date.now(), alertOn = true, walBal = 500;
+let coupons = this.seedCoupons(), activeId = '';
+if (useSaved) {
+try {
+const s = localStorage.getItem('cx-pay'); if (s === 'wallet' || s === 'card') m = s;
+const ia = parseInt(localStorage.getItem('cx-idle-at') || '0', 10);
+if (ia > 0) idleAt = ia;
+const pf = JSON.parse(localStorage.getItem('cx-prefs') || 'null');
+if (pf && pf.n3 === false) alertOn = false;
+const sb = localStorage.getItem('cx-wallet-bal');
+if (sb !== null && !isNaN(Number(sb))) walBal = Number(sb);
+const sc = JSON.parse(localStorage.getItem('cx-wallet-coupons') || 'null');
+if (Array.isArray(sc) && sc.length) coupons = sc;
+const sa = JSON.parse(localStorage.getItem('cx-active-coupon') || 'null');
+if (sa && sa.kind === 'charge' && sa.status === 'avail') {
+  if (!coupons.some((x) => x.id === sa.id)) coupons = [sa].concat(coupons);
+  if (BASE >= (sa.minSpend || 0)) activeId = sa.id;
+}
+} catch (e) {}
+}
+if (f) m = 'card';
+const actCp = coupons.find((x) => x.id === activeId && x.status === 'avail') || null;
+const netStr = Math.max(0, BASE - this.calcSave(actCp, BASE)).toFixed(2);
+return { base: BASE, coupons, activeId: actCp ? actCp.id : '', walBal, cpSheet: false, cpCodeIn: '', cpErr: '', pay: f ? 'fail' : 'ok', sheet: false, method: 'wallet', toast: f, toastMsg: f ? ('ตัดบัตรไม่สำเร็จ ยอดค้างชำระ ฿' + netStr) : (alertOn ? 'หัวชาร์จตัดแล้ว · กรุณานำรถออกภายใน 5 นาที (เกินปรับ ฿5/นาที)' : ''), idleAt, now: Date.now(), alertOn, warnedOver: false, paidVia: m === 'card' ? 'บัตร •••• [0000]' : 'กระเป๋าเงิน Charge-X' };
+}
 componentDidUpdate(pp) { if (pp.payment !== this.props.payment || pp.method !== this.props.method) { try { localStorage.removeItem('cx-pay'); } catch (e) {} this.setState(this.initState(this.props, false)); } }
-componentDidMount() { if (this.state.toast) this._t = setTimeout(() => this.setState({ toast: false }), 5200); }
-componentWillUnmount() { clearTimeout(this._t); clearTimeout(this._p); }
+componentDidMount() {
+if (this.state.toast || this.state.toastMsg) {
+if (!this.state.toast && this.state.toastMsg) this.setState({ toast: true });
+this._t = setTimeout(() => this.setState({ toast: false }), 5200);
+}
+this._idleT = setInterval(() => {
+const now = Date.now();
+const elapsed = Math.max(0, Math.floor((now - this.state.idleAt) / 1000));
+if (elapsed >= 300) {
+try { if (localStorage.getItem('cx-sess') === 'รอรับรถ (5 นาที)') localStorage.setItem('cx-sess', 'มีค่าปรับจอดเกิน'); } catch (e) {}
+if (!this.state.warnedOver && this.state.alertOn) {
+clearTimeout(this._t);
+this.setState({ now, warnedOver: true, toast: true, toastMsg: 'เลยกำหนด 5 นาที · เริ่มคิดค่าบริการจอดเกิน ฿5/นาที' });
+this._t = setTimeout(() => this.setState({ toast: false }), 5200);
+return;
+}
+}
+this.setState({ now });
+}, 1000);
+}
+componentWillUnmount() { clearTimeout(this._t); clearTimeout(this._p); clearInterval(this._idleT); }
 renderVals() {
 const accent = this.props.accent ?? '#FC3901';
 const st = this.state;
+const base = st.base || 235.68;
+const actCp = st.coupons.find((c) => c.id === st.activeId && c.kind === 'charge' && c.status === 'avail') || null;
+const saveAmt = this.calcSave(actCp, base);
+const netAmt = Math.max(0, base - saveAmt);
+const netStr = netAmt.toFixed(2);
+const saveStr = saveAmt.toFixed(2);
+const EXTRA = {
+  NEW40: { id: 'r1', code: 'NEW40', kind: 'charge', discType: 'pct', discVal: 40, minSpend: 120, maxDisc: 80, title: 'ลดผู้ใช้ใหม่ 40% สูงสุด ฿80', cond: 'เมื่อชาร์จตั้งแต่ ฿120 ขึ้นไป · ทุกสถานี', exp: 'หมดอายุ 31 ม.ค. 2570', status: 'avail' },
+  WEEKEND20: { id: 'r2', code: 'WEEKEND20', kind: 'charge', discType: 'flat', discVal: 20, minSpend: 0, maxDisc: 20, title: 'ลดค่าชาร์จวันหยุด ฿20', cond: 'ไม่มีขั้นต่ำ · ใช้ได้ทุกหัวชาร์จ', exp: 'หมดอายุ 28 ก.พ. 2570', status: 'avail' }
+};
+const syncCp = (list, act) => {
+  try {
+    localStorage.setItem('cx-wallet-coupons', JSON.stringify(list));
+    if (act && act.kind === 'charge' && act.status === 'avail') localStorage.setItem('cx-active-coupon', JSON.stringify(act));
+    else localStorage.removeItem('cx-active-coupon');
+  } catch (e) {}
+};
+const fireToast = (msg) => {
+  clearTimeout(this._t);
+  this.setState({ toast: true, toastMsg: msg });
+  this._t = setTimeout(() => this.setState({ toast: false }), 3500);
+};
+const pickCoupon = (c, nextList) => {
+  const list = nextList || st.coupons;
+  const sv = this.calcSave(c, base);
+  if (sv <= 0) { this.setState({ cpErr: 'ยังไม่ถึงยอดขั้นต่ำของคูปอง' }); return; }
+  this.setState({ coupons: list, activeId: c.id, cpSheet: false, cpCodeIn: '', cpErr: '' });
+  syncCp(list, c);
+  fireToast('ใช้คูปอง ' + c.code + ' ลด ฿' + sv.toFixed(2) + ' แล้ว');
+};
+const consumeCoupon = () => {
+  if (!actCp) return;
+  const nextList = st.coupons.map((c) => c.id === actCp.id ? Object.assign({}, c, { status: 'used' }) : c);
+  syncCp(nextList, null);
+  this.setState({ coupons: nextList, activeId: '' });
+};
+const chargeCoupons = st.coupons.filter((c) => c.kind === 'charge' && c.status === 'avail');
+const coupons = chargeCoupons.map((c) => {
+  const on = !!actCp && actCp.id === c.id;
+  const sv = this.calcSave(c, base);
+  return {
+    title: c.title, cond: c.cond, saveMeta: 'รหัส ' + c.code + ' · ประหยัด ฿' + sv.toFixed(2),
+    border: on ? '1.5px solid ' + accent : '1px solid #E6E6E6',
+    cardBg: on ? '#FFF7F3' : '#FFFFFF',
+    btnLabel: on ? 'ใช้อยู่ ✓' : 'เลือกใช้',
+    btnStyle: 'height: 34px; padding: 0 12px; flex: none; border-radius: 10px; font-family: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer; ' + (on ? 'border: 1px solid #146C3E; background: #E7F6EE; color: #146C3E' : 'border: 0; background: ' + accent + '; color: #FFFFFF'),
+    pick: () => pickCoupon(c)
+  };
+});
+const elapsed = Math.max(0, Math.floor((st.now - st.idleAt) / 1000));
+const isOver = elapsed >= 300;
+const rem = Math.max(0, 300 - elapsed);
+const mm = String(Math.floor(rem / 60)).padStart(2, '0');
+const ss = String(rem % 60).padStart(2, '0');
+const barPct = Math.max(0, Math.round(rem / 300 * 100));
+const overMin = isOver ? Math.max(1, Math.floor((elapsed - 300) / 60) + 1) : 0;
+const idle = {
+showGrace: !isOver,
+showOver: isOver,
+clock: mm + ':' + ss,
+barStyle: 'width: ' + barPct + '%; height: 100%; border-radius: 999px',
+alertLabel: st.alertOn ? 'แจ้งเตือน: เปิด' : 'แจ้งเตือน: ปิด',
+overText: 'เกินเวลา +' + overMin + ' นาที (฿5/นาที) · กรุณานำรถออก',
+feeText: '฿' + (overMin * 5).toFixed(2),
+toggleAlert: () => {
+const next = !st.alertOn;
+try {
+const pf = JSON.parse(localStorage.getItem('cx-prefs') || '{}') || {};
+pf.n3 = next;
+localStorage.setItem('cx-prefs', JSON.stringify(pf));
+} catch (e) {}
+this.setState({ alertOn: next });
+},
+sim5m: () => {
+const t = Date.now() - 305000;
+try { localStorage.setItem('cx-idle-at', String(t)); localStorage.setItem('cx-sess', 'มีค่าปรับจอดเกิน'); } catch (e) {}
+clearTimeout(this._t);
+this.setState({ idleAt: t, now: Date.now(), warnedOver: true, toast: !!st.alertOn, toastMsg: st.alertOn ? 'เลยกำหนด 5 นาที · เริ่มคิดค่าบริการจอดเกิน ฿5/นาที' : '' });
+if (st.alertOn) this._t = setTimeout(() => this.setState({ toast: false }), 5200);
+},
+resetIdle: () => {
+const t = Date.now();
+try { localStorage.setItem('cx-idle-at', String(t)); localStorage.setItem('cx-sess', 'รอรับรถ (5 นาที)'); } catch (e) {}
+this.setState({ idleAt: t, now: t, warnedOver: false });
+}
+};
 const ICON = { wallet: 'M6 6h12a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3zM3 10h18M16 15h2', card: 'M3 5h18v14H3zM3 10h18M7 15h3', add: 'M12 5v14M5 12h14' };
 const LBL = { wallet: 'กระเป๋าเงิน Charge-X', card2: 'บัตร •••• [1111]', newcard: 'เพิ่มบัตรใหม่' };
-const methods = [['wallet', LBL.wallet, 'ยอดคงเหลือ ฿500', 'wallet'], ['card2', LBL.card2, 'บัตรเดบิตสำรอง', 'card'], ['newcard', LBL.newcard, 'ไปหน้าจัดการบัตรเพื่อผูกบัตร ›', 'add']].map(([id, name, sub, ic]) => {
+const balShow = Number.isInteger(st.walBal) ? st.walBal.toLocaleString('en-US') : st.walBal.toFixed(2);
+const methods = [['wallet', LBL.wallet, 'ยอดคงเหลือ ฿' + balShow, 'wallet'], ['card2', LBL.card2, 'บัตรเดบิตสำรอง', 'card'], ['newcard', LBL.newcard, 'ไปหน้าจัดการบัตรเพื่อผูกบัตร ›', 'add']].map(([id, name, sub, ic]) => {
 const on = st.method === id;
 return { name, sub, icon: ICON[ic], pick: () => { if (id === 'newcard') { try { localStorage.setItem('cx-cards-open', 'add'); localStorage.setItem('cx-cards-from', 'Complete'); } catch (e) {} if (this._cardsA) this._cardsA.click(); return; } this.setState({ method: id }); }, bg: on ? '#FFF1EB' : '#F4F4F4', fg: on ? accent : '#5C5C5C', ring: on ? accent : '#BDBDBD', dot: on ? accent : 'transparent',
 style: 'width: 100%; display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 16px; font-family: inherit; cursor: pointer; background: ' + (on ? '#FFF7F3' : '#FFFFFF') + '; border: ' + (on ? '1.5px solid ' + accent : '1px solid #EDEDED') };
 });
-const go = (via, text) => { this.setState({ pay: 'paying', sheet: false, toast: false, payingText: text }); this._p = setTimeout(() => this.setState({ pay: 'paid', paidVia: via }), 1800); };
+const go = (via, text) => { this.setState({ pay: 'paying', sheet: false, toast: false, payingText: text }); this._p = setTimeout(() => { consumeCoupon(); this.setState({ pay: 'paid', paidVia: via }); }, 1800); };
 const paying = st.pay === 'paying';
+const hasCoupon = !!actCp && saveAmt > 0;
 return {
-accent, methods, setCardsA: (el) => { this._cardsA = el; },
+accent, methods, idle, setCardsA: (el) => { this._cardsA = el; },
 amtOwe: st.pay === 'fail' || paying, amtPaid: st.pay === 'ok' || st.pay === 'paid',
 isFail: st.pay === 'fail', notFail: st.pay !== 'fail', isPaying: paying, isPaid: st.pay === 'ok' || st.pay === 'paid',
 paidText: 'ชำระผ่าน' + st.paidVia, payingText: st.payingText || '',
-showToast: st.toast, sheet: st.sheet,
+hasCoupon, origAmtText: '฿' + base.toFixed(2), netAmtText: '฿' + netStr,
+payBtnText: 'ชำระ ฿' + netStr, dueSheetTitle: 'ชำระยอดค้าง ฿' + netStr,
+cpBarBorder: hasCoupon ? '1px solid #E6E6E6' : '1px dashed #D4D4D4',
+cpBarBg: hasCoupon ? '#E7F6EE' : '#FFF7F3',
+cpBarFg: hasCoupon ? '#146C3E' : '#3A3A3A',
+cpIconFg: hasCoupon ? '#146C3E' : accent,
+cpBarLabel: hasCoupon ? ('คูปอง ' + actCp.code + ' · ประหยัด ฿' + saveStr) : 'ใช้คูปองส่วนลด / กรอกโค้ด',
+cpBarAction: hasCoupon ? 'เปลี่ยน ›' : ('เลือก (' + chargeCoupons.length + ') ›'),
+showCouponSheet: !!st.cpSheet,
+openCouponSheet: () => this.setState({ cpSheet: true, cpErr: '' }),
+closeCouponSheet: () => this.setState({ cpSheet: false, cpErr: '' }),
+cpSubTotalText: 'ยอดค่าชาร์จก่อนส่วนลด: ฿' + base.toFixed(2),
+cpCodeIn: st.cpCodeIn, cpBtnBg: st.cpCodeIn.trim() ? accent : '#3A3A3A',
+onCpCodeIn: (e) => this.setState({ cpCodeIn: e.target.value, cpErr: '' }),
+hasCpErr: !!st.cpErr, cpErr: st.cpErr,
+applyCpCode: () => {
+  const code = String(st.cpCodeIn || '').trim().toUpperCase();
+  if (!code) { this.setState({ cpErr: 'กรุณากรอกรหัสคูปอง' }); return; }
+  const found = st.coupons.find((c) => c.code === code);
+  if (found) {
+    if (found.kind !== 'charge') { this.setState({ cpErr: 'คูปองนี้ใช้ได้เฉพาะในหน้ากระเป๋าเงิน' }); return; }
+    if (found.status === 'disabled') { this.setState({ cpErr: 'คูปองนี้ถูกปิดใช้งานชั่วคราว' }); return; }
+    if (found.status === 'used') { this.setState({ cpErr: 'คูปองนี้ถูกใช้สิทธิ์ไปแล้ว' }); return; }
+    pickCoupon(found);
+    return;
+  }
+  const extra = EXTRA[code];
+  if (!extra) { this.setState({ cpErr: 'ไม่พบรหัสคูปองนี้ (ลอง EV50, DC25, NEW40)' }); return; }
+  const added = Object.assign({}, extra);
+  pickCoupon(added, [added].concat(st.coupons));
+},
+coupons,
+clearCoupon: () => { this.setState({ activeId: '', cpSheet: false, cpErr: '' }); syncCp(st.coupons, null); fireToast('ยกเลิกการใช้คูปองแล้ว'); },
+showToast: st.toast, toastBody: st.toastMsg || '', sheet: st.sheet,
 openSheet: () => this.setState({ sheet: true }), closeSheet: () => this.setState({ sheet: false }),
 retry: () => go('บัตร •••• [0000]', 'ลองตัดบัตร •••• [0000] อีกครั้ง'),
 payNow: () => go(LBL[st.method], 'ชำระผ่าน' + LBL[st.method]),
+doneHome: () => { consumeCoupon(); try { localStorage.setItem('cx-sess', 'ไม่มีการชาร์จ'); localStorage.removeItem('cx-idle-at'); } catch (e) {} },
 doneBg: paying ? '#BDBDBD' : accent, donePe: paying ? 'none' : 'auto', payingStr: paying ? 'true' : 'false'
 };
 }

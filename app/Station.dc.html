@@ -24,7 +24,7 @@ a{color:#C42D00}a:hover{color:#9E2400}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #5C5C5C"],[style*="color: #6B6B6B"],[style*="color: rgb(92, 92, 92)"]){color:#A6A6AD!important}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #C42D00"],[style*="color: rgb(196, 45, 0)"]){color:#FF7A4D!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="color: #146C3E"]{color:#5AD49B!important}
-:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"]){border-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid #E6E6E6"],[style*="solid #E0E0E0"],[style*="solid #EDEDED"],[style*="solid #EFEFEF"],[style*="solid #FDD3C3"]){border-color:#35353B!important}
 [data-theme="dark"] [stroke="#1F1F1F"]{stroke:#F3F3F4}
 [data-theme="dark"][data-theme][style]{background-color:#000000!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="margin-top: -24px; background: #FFFFFF"]{background-color:#000000!important}
@@ -123,26 +123,142 @@ a{color:#C42D00}a:hover{color:#9E2400}
 <sc-if value="{{dt.open}}" hint-placeholder-val="{{ false }}">
 <div style="position: absolute; inset: 0; z-index: 30; display: flex; flex-direction: column; justify-content: flex-end">
 <div onClick="{{dt.close}}" class="cx-fade" style="position: absolute; inset: 0; background: rgba(10,10,12,0.5)"></div>
-<div role="dialog" aria-label="รายละเอียดหัวชาร์จ" class="cx-sheet" style="position: relative; background: #FFFFFF; border-radius: 28px 28px 0 0; padding: 12px 20px 30px; display: flex; flex-direction: column; gap: 14px">
+<div role="dialog" aria-label="รายละเอียดหัวชาร์จ" class="cx-sheet cx-scroll" style="position: relative; max-height: 790px; overflow-y: auto; background: #FFFFFF; border-radius: 28px 28px 0 0; padding: 12px 20px 30px; display: flex; flex-direction: column; gap: 14px">
 <span style="align-self: center; width: 40px; height: 5px; border-radius: 3px; background: #E0E0E0"></span>
 <div style="display: flex; align-items: center; gap: 14px">
 <span style="flex: none; display: flex"><sc-if value="{{dt.isCcs}}" hint-placeholder-val="{{ true }}"><svg aria-hidden="true" width="56" height="70" viewBox="0 0 40 50"><rect x="1" y="1" width="38" height="48" rx="12" fill="#2B2B2F"></rect><circle cx="20" cy="17" r="13" fill="#3E3E44"></circle><circle cx="14" cy="12" r="2.4" fill="#111"></circle><circle cx="20" cy="10" r="2.4" fill="#111"></circle><circle cx="26" cy="12" r="2.4" fill="#111"></circle><circle cx="14" cy="20" r="2.4" fill="#111"></circle><circle cx="20" cy="18" r="2.4" fill="#111"></circle><circle cx="26" cy="20" r="2.4" fill="#111"></circle><circle cx="20" cy="25" r="1.8" fill="#111"></circle><rect x="7" y="33" width="26" height="12" rx="6" fill="#3E3E44"></rect><circle cx="14" cy="39" r="3" fill="#111"></circle><circle cx="26" cy="39" r="3" fill="#111"></circle></svg></sc-if><sc-if value="{{dt.isT2}}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="56" height="70" viewBox="0 0 40 50"><rect x="1" y="1" width="38" height="48" rx="12" fill="#2B2B2F"></rect><path d="M6 20a14 14 0 0 0 28 0V14H6z" fill="#3E3E44"></path><circle cx="13" cy="17" r="2.6" fill="#111"></circle><circle cx="20" cy="15" r="2.6" fill="#111"></circle><circle cx="27" cy="17" r="2.6" fill="#111"></circle><circle cx="15" cy="25" r="2.6" fill="#111"></circle><circle cx="25" cy="25" r="2.6" fill="#111"></circle><circle cx="17" cy="9" r="1.6" fill="#111"></circle><circle cx="23" cy="9" r="1.6" fill="#111"></circle><rect x="15" y="37" width="10" height="8" rx="2" fill="#3E3E44"></rect></svg></sc-if></span>
 <div style="flex: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0">
 <span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 19px; color: #1F1F1F">{{dt.name}}</span>
 <span style="font-size: 13px; color: #6B6B6B">{{dt.charger}} · {{dt.pos}}</span>
-<span style="align-self: flex-start; {{dt.badge}}">{{dt.statusText}}</span>
+<span style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap">
+<span style="{{dt.badge}}">{{dt.statusText}}</span>
+<sc-if value="{{dt.auto}}" hint-placeholder-val="{{ false }}"><span style="padding: 4px 8px; border-radius: 8px; font-size: 11.5px; font-weight: 700; {{dt.acStyle}}">{{dt.acTag}}</span></sc-if>
+</span>
+</div>
+<button type="button" onClick="{{dt.close}}" aria-label="ปิด" style="width: 32px; height: 32px; flex: none; align-self: flex-start; border-radius: 50%; border: 0; background: #F4F4F4; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+</button>
+</div>
+<sc-if value="{{dt.isInfo}}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{dt.acActive}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 12px; border-radius: 16px; background: #FFF7F3; border: 1px solid #FDD3C3">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: center; gap: 8px">
+<span style="width: 24px; height: 24px; flex: none; border-radius: 8px; background: #FFF1EB; color: {{accent}}; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg></span>
+<span style="font-size: 13px; font-weight: 700; color: #C42D00">Auto Charge เปิดใช้งาน</span>
+<button type="button" onClick="{{dt.disableAc}}" style="margin-left: auto; height: 28px; padding: 0 11px; border-radius: 999px; border: 1px solid #E0E0E0; background: #FFFFFF; box-shadow: 0 1px 3px rgba(0,0,0,0.06); font-family: inherit; font-size: 11.5px; font-weight: 600; color: #3A3A3A; cursor: pointer; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center">ปิดโหมดนี้</button>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding-left: 32px">
+<span style="font-size: 13.5px; font-weight: 700; color: #1F1F1F">{{dt.acCar}}</span>
+<span style="font-size: 12px; color: #5C5C5C">{{dt.acShortDesc}}</span>
 </div>
 </div>
+<sc-if value="{{dt.acIdle}}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{dt.plugTest}}" style="height: 38px; border-radius: 11px; border: 1px solid #FDD3C3; background: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 600; color: #C42D00; cursor: pointer">เสียบหัวชาร์จเพื่อชาร์จอัตโนมัติ</button>
+</sc-if>
+<sc-if value="{{dt.acFlowShow}}" hint-placeholder-val="{{ false }}">
+<div style="background: #FFFFFF; border: 1px solid #EFEFEF; border-radius: 12px; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{dt.acSteps}}" as="s" hint-placeholder-count="4">
+<div style="display: flex; align-items: flex-start; gap: 8px">
+<span style="{{s.dotStyle}}">{{s.badgeText}}</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column"><span style="font-size: 12.5px; font-weight: 700; color: {{s.titleColor}}">{{s.title}}</span><span style="font-size: 11.5px; color: #6B6B6B">{{s.sub}}</span></span>
+</div>
+</sc-for>
+<div style="display: flex; justify-content: space-between; align-items: center; padding-top: 4px; border-top: 1px solid #EDEDED">
+<button type="button" onClick="{{dt.cancelPlug}}" style="border: 0; background: transparent; padding: 4px 2px; font-family: inherit; font-size: 12px; font-weight: 600; color: #6B6B6B; cursor: pointer">ยกเลิก</button>
+<a href="{{L.Charging}}" ref="{{dt.setChgRef}}" onClick="{{dt.goCharge}}" style="font-size: 12.5px; font-weight: 700; color: #C42D00; text-decoration: none; pointer-events: {{dt.flowPe}}">{{dt.goChargeLabel}}</a>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-if>
+<sc-if value="{{dt.acFirst}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 12px; border-radius: 16px; background: #F6F6F6">
+<div style="display: flex; align-items: center; gap: 10px">
+<span style="width: 30px; height: 30px; flex: none; border-radius: 9px; background: #FFFFFF; color: {{accent}}; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px"><span style="font-size: 12.5px; font-weight: 700; color: #1F1F1F">โหมด Auto Charge (ยังไม่ตั้งค่า)</span><span style="font-size: 11.5px; color: #6B6B6B">หากเสียบหัวชาร์จตอนนี้ แอปจะยังไม่เริ่มจนกว่าจะสแกน QR code</span></span>
+</div>
+<sc-if value="{{dt.acIdleFirst}}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{dt.plugTest}}" style="height: 36px; border-radius: 11px; border: 1px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 12.5px; font-weight: 600; color: #3A3A3A; cursor: pointer">เสียบหัวชาร์จ</button>
+</sc-if>
+<sc-if value="{{dt.noAcPlugged}}" hint-placeholder-val="{{ false }}">
+<div style="background: #FFFFFF; border: 1px solid #E6E6E6; border-radius: 12px; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12.5px; font-weight: 700; color: #1F1F1F">เสียบหัวชาร์จแล้ว · ยังไม่ลงทะเบียน Auto Charge</span>
+<span style="font-size: 11.5px; color: #6B6B6B">ไม่เกิดการทำงานอัตโนมัติในแอป จนกว่าจะสแกน QR code ที่ตู้ชาร์จ</span>
+<a href="{{L.Scan}}" style="align-self: flex-start; margin-top: 2px; padding: 6px 12px; border-radius: 10px; background: {{accent}}; color: #FFFFFF; font-size: 12px; font-weight: 600; text-decoration: none">สแกน QR code</a>
+</div>
+</sc-if>
+</div>
+</sc-if>
 <sc-if value="{{dt.charging}}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px; border-radius: 14px; background: #FFF7F3"><span style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px"><span style="font-size: 13px; font-weight: 600; color: #C42D00">มีผู้ใช้กำลังชาร์จ</span><span style="font-size: 13px; font-weight: 700; color: #C42D00">แบตเตอรี่ {{dt.soc}}%</span></span><span style="height: 6px; border-radius: 3px; background: #EFEFEF; overflow: hidden"><span style="display: block; width: {{dt.soc}}%; height: 100%; border-radius: 3px; background: {{accent}}; transition: width .6s"></span></span></div>
 </sc-if>
 <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
 <sc-for list="{{dt.specs}}" as="x" hint-placeholder-count="8"><div style="padding: 10px 12px; border-radius: 14px; background: #F6F6F6; display: flex; flex-direction: column; gap: 1px"><span style="font-size: 11.5px; color: #6B6B6B">{{x.k}}</span><span style="font-size: 14px; font-weight: 700; color: #1F1F1F">{{x.v}}</span></div></sc-for>
 </div>
-<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 10px">
-<button type="button" onClick="{{dt.close}}" style="height: 52px; border-radius: 16px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 600; color: #3A3A3A; cursor: pointer">ปิด</button>
-<a href="{{L.Confirm}}" aria-disabled="{{dt.noStr}}" style="height: 52px; border-radius: 16px; background: {{dt.btnBg}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 16px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; pointer-events: {{dt.pe}}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg><span>{{dt.btnLabel}}</span></a>
+<sc-if value="{{dt.isAvail}}" hint-placeholder-val="{{ true }}">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 10px">
+<button type="button" onClick="{{dt.openBook}}" style="height: 52px; border-radius: 16px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 15.5px; font-weight: 600; color: #1F1F1F; cursor: pointer">จองล่วงหน้า</button>
+<a href="{{L.Confirm}}" onClick="{{dt.pickStart}}" style="height: 52px; border-radius: 16px; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 15.5px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg><span>{{dt.btnLabel}}</span></a>
 </div>
+</sc-if>
+<sc-if value="{{dt.isCharging}}" hint-placeholder-val="{{ false }}">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 10px">
+<button type="button" onClick="{{dt.close}}" style="height: 52px; border-radius: 16px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 15.5px; font-weight: 600; color: #3A3A3A; cursor: pointer">ปิด</button>
+<button type="button" onClick="{{dt.openBook}}" style="height: 52px; border-radius: 16px; border: 0; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 15.5px; cursor: pointer">จองคิวรอบถัดไป</button>
+</div>
+</sc-if>
+<sc-if value="{{dt.isOff}}" hint-placeholder-val="{{ false }}">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 10px">
+<button type="button" onClick="{{dt.close}}" style="height: 52px; border-radius: 16px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 15.5px; font-weight: 600; color: #3A3A3A; cursor: pointer">ปิด</button>
+<span aria-disabled="true" style="height: 52px; border-radius: 16px; background: #BDBDBD; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 15.5px; display: flex; align-items: center; justify-content: center">ปิดปรับปรุง</span>
+</div>
+</sc-if>
+</sc-if>
+<sc-if value="{{dt.bkOpen}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; font-weight: 600; color: #3A3A3A">รถที่ใช้งาน</span>
+<div class="cx-scroll" style="display: flex; flex-wrap: wrap; gap: 8px; max-height: 92px; overflow-y: auto">
+<sc-for list="{{dt.bkCars}}" as="bkc" hint-placeholder-count="2"><button type="button" onClick="{{bkc.pick}}" style="{{bkc.style}}">{{bkc.label}}</button></sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; font-weight: 600; color: #3A3A3A">เลือกช่วงเวลาวันนี้</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{dt.bkSlots}}" as="bks" hint-placeholder-count="4"><button type="button" onClick="{{bks.pick}}" style="{{bks.style}}">{{bks.label}}</button></sc-for>
+</div>
+</div>
+<div style="padding: 10px 12px; border-radius: 12px; background: #F6F6F6; display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 13px">
+<span style="color: #6B6B6B">ค่าจองล่วงหน้า</span>
+<span style="font-weight: 700; color: #146C3E">ฟรี · ถือสิทธิ์นาน 15 นาที</span>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 10px; margin-top: 2px">
+<button type="button" onClick="{{dt.cancelBook}}" style="height: 50px; border-radius: 16px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; color: #3A3A3A; cursor: pointer">ย้อนกลับ</button>
+<button type="button" onClick="{{dt.confirmBook}}" style="height: 50px; border-radius: 16px; border: 0; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 15.5px; cursor: pointer">ยืนยันการจอง</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{dt.bkDone}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 0 2px; text-align: center">
+<span style="width: 44px; height: 44px; border-radius: 50%; background: #E7F6EE; color: #146C3E; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg></span>
+<span style="font-size: 17px; font-weight: 700; color: #1F1F1F">จองหัวชาร์จสำเร็จ</span>
+<span style="font-size: 12.5px; color: #6B6B6B">รหัสการจอง #{{dt.bkId}}</span>
+</div>
+<div style="border: 1px solid #EFEFEF; border-radius: 14px; padding: 2px 14px; display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid #EFEFEF; font-size: 13px"><span style="color: #6B6B6B">สถานี</span><span style="font-weight: 600; color: #1F1F1F; text-align: right">มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid #EFEFEF; font-size: 13px"><span style="color: #6B6B6B">หัวชาร์จ</span><span style="font-weight: 600; color: #1F1F1F; text-align: right">{{dt.bkConText}}</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid #EFEFEF; font-size: 13px"><span style="color: #6B6B6B">ช่วงเวลาจอง</span><span style="font-weight: 600; color: #1F1F1F; text-align: right">{{dt.bkSlotText}}</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid #EFEFEF; font-size: 13px"><span style="color: #6B6B6B">รถที่ใช้งาน</span><span style="font-weight: 600; color: #1F1F1F; text-align: right">{{dt.bkCar}}</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; font-size: 13px"><span style="color: #6B6B6B">ค่าจอง</span><span style="font-weight: 700; color: #146C3E; text-align: right">ฟรี · ถือสิทธิ์นาน 15 นาที</span></div>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 10px">
+<button type="button" onClick="{{dt.close}}" style="height: 50px; border-radius: 16px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; color: #3A3A3A; cursor: pointer">ปิด</button>
+<a href="{{L.Notify}}" onClick="{{dt.goBookings}}" style="height: 50px; border-radius: 16px; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-weight: 600; font-size: 15px; text-decoration: none; display: flex; align-items: center; justify-content: center">ดูประวัติการจอง</a>
+</div>
+</div>
+</sc-if>
 </div>
 </div>
 </sc-if>
@@ -152,9 +268,9 @@ a{color:#C42D00}a:hover{color:#9E2400}
 class Component extends DCLogic {
 static {
 const P = this.prototype;
-const TR = {"แบตเตอรี่": "Battery", "มีผู้ใช้กำลังชาร์จ": "Someone is charging", "แบตปัจจุบัน": "Current battery", "สแกนเพื่อชาร์จ": "Scan to charge", "แล้ว": "", "แผนที่": "Map", "ทั้งหมด": "All", "ถ.บางนา-ตราด": "Bang Na-Trat Rd", "ว่าง": "Available", "ปิดปรับปรุง": "Under maintenance", "นำทาง": "Navigate", "ประเภทหัวชาร์จ": "Connector type", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "24 ชม.": "24 hrs", " จาก ": " of ", "ปิด": "Closed", "เริ่มชาร์จ": "Start charging", "พร้อมใช้งาน": "Available", "เปิด 24 ชม.": "Open 24 hrs", "ถ.บางนา-ตราด กม.6 · 1.2 กม. (ขับรถ 4 นาที)": "Bang Na-Trat Rd Km 6 · 1.2 km (4 min drive)", "สูงสุด": "max", "เริ่มต้น": "from", "ว่างตอนนี้": "Available now", "รายละเอียด": "Details", "หมายเหตุ: อัตราค่าบริการอาจเปลี่ยนแปลงได้ กรุณาตรวจสอบราคาก่อนเริ่มชาร์จทุกครั้ง": "Note: rates may change. Please check the price before each charge.", "มีผู้ใช้กำลังชาร์จ · คาดว่าว่างในอีก ~15 นาที": "In use · expected free in ~15 min", "สถานีชาร์จ TERA Charge-X": "TERA Charge-X charging station", "กลับไปที่แผนที่": "Back to map", "บันทึกสถานี": "Save station", "นำทางไปสถานี": "Navigate to station", "ดูบนแผนที่": "View on map", "รายละเอียดหัวชาร์จ": "Connector details", "เครื่องชาร์จ #4041": "Charger #4041", "DC · กระแสสูงสุด 200A · 2 หัวชาร์จ": "DC · max 200A · 2 connectors", "หัว A · ฝั่งซ้าย": "Connector A · left side", "5 ม.": "5 m", "35 นาทีที่แล้ว": "35 min ago", "หัว B · ฝั่งขวา": "Connector B · right side", "กำลังใช้งาน": "In use", "เครื่องชาร์จ #4042": "Charger #4042", "AC · กระแสสูงสุด 32A · 2 หัวชาร์จ": "AC · max 32A · 2 connectors", "หัว C · ช่องจอด 5": "Connector C · bay 5", "7 ม.": "7 m", "2 ชม. ที่แล้ว": "2 hrs ago", "หัว D · ช่องจอด 6": "Connector D · bay 6", "กำลังชาร์จ": "Charging", "ทั้งหมด (": "All (", "ว่างตอนนี้ (": "Available now (", "กำลังไฟสูงสุด": "Max power", "กระแส / แรงดัน": "Current / voltage", "ความยาวสาย": "Cable length", "ค่าบริการ": "Rate", "ค่าจอดเกินเวลา": "Idle fee", "฿5/นาที หลัง 15 นาที": "฿5/min after 15 min", "รหัสหัวชาร์จ": "Connector ID", "เครื่องชาร์จ ": "Charger ", "ใช้งานล่าสุด": "Last used", "เริ่มชาร์จที่หัวนี้": "Charge with this connector", "หัวนี้ไม่ว่าง": "Connector busy", "เปลี่ยน": "Change", "กำลังไฟ": "Power", "นาที": "min", "อัตราค่าบริการ": "Rate", "เวลา": "Time", " หัว": " connectors", "บันทึก": "Save", "กม.": "km", "ชม.": "hrs"};
+const TR = {"แบตเตอรี่": "Battery", "มีผู้ใช้กำลังชาร์จ": "Someone is charging", "แบตปัจจุบัน": "Current battery", "สแกนเพื่อชาร์จ": "Scan to charge", "แล้ว": "", "แผนที่": "Map", "ทั้งหมด": "All", "ถ.บางนา-ตราด": "Bang Na-Trat Rd", "ว่าง": "Available", "ปิดปรับปรุง": "Under maintenance", "นำทาง": "Navigate", "ประเภทหัวชาร์จ": "Connector type", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "24 ชม.": "24 hrs", " จาก ": " of ", "ปิด": "Closed", "เริ่มชาร์จ": "Start charging", "พร้อมใช้งาน": "Available", "เปิด 24 ชม.": "Open 24 hrs", "ถ.บางนา-ตราด กม.6 · 1.2 กม. (ขับรถ 4 นาที)": "Bang Na-Trat Rd Km 6 · 1.2 km (4 min drive)", "สูงสุด": "max", "เริ่มต้น": "from", "ว่างตอนนี้": "Available now", "รายละเอียด": "Details", "หมายเหตุ: อัตราค่าบริการอาจเปลี่ยนแปลงได้ กรุณาตรวจสอบราคาก่อนเริ่มชาร์จทุกครั้ง": "Note: rates may change. Please check the price before each charge.", "มีผู้ใช้กำลังชาร์จ · คาดว่าว่างในอีก ~15 นาที": "In use · expected free in ~15 min", "สถานีชาร์จ TERA Charge-X": "TERA Charge-X charging station", "กลับไปที่แผนที่": "Back to map", "บันทึกสถานี": "Save station", "นำทางไปสถานี": "Navigate to station", "ดูบนแผนที่": "View on map", "รายละเอียดหัวชาร์จ": "Connector details", "เครื่องชาร์จ #4041": "Charger #4041", "DC · กระแสสูงสุด 200A · 2 หัวชาร์จ": "DC · max 200A · 2 connectors", "หัว A · ฝั่งซ้าย": "Connector A · left side", "5 ม.": "5 m", "35 นาทีที่แล้ว": "35 min ago", "หัว B · ฝั่งขวา": "Connector B · right side", "กำลังใช้งาน": "In use", "เครื่องชาร์จ #4042": "Charger #4042", "AC · กระแสสูงสุด 32A · 2 หัวชาร์จ": "AC · max 32A · 2 connectors", "หัว C · ช่องจอด 5": "Connector C · bay 5", "7 ม.": "7 m", "2 ชม. ที่แล้ว": "2 hrs ago", "หัว D · ช่องจอด 6": "Connector D · bay 6", "กำลังชาร์จ": "Charging", "ทั้งหมด (": "All (", "ว่างตอนนี้ (": "Available now (", "กำลังไฟสูงสุด": "Max power", "กระแส / แรงดัน": "Current / voltage", "ความยาวสาย": "Cable length", "ค่าบริการ": "Rate", "ค่าจอดเกินเวลา": "Idle fee", "฿5/นาที หลังตัดชาร์จ 5 นาที": "฿5/min 5 min after stop", "รหัสหัวชาร์จ": "Connector ID", "เครื่องชาร์จ ": "Charger ", "ใช้งานล่าสุด": "Last used", "เริ่มชาร์จที่หัวนี้": "Charge with this connector", "หัวนี้ไม่ว่าง": "Connector busy", "เปลี่ยน": "Change", "กำลังไฟ": "Power", "นาที": "min", "อัตราค่าบริการ": "Rate", "เวลา": "Time", " หัว": " connectors", "บันทึก": "Save", "กม.": "km", "ชม.": "hrs", "รองรับ Auto Charge": "Auto Charge ready", "Auto Charge เปิดอยู่": "Auto Charge active", "Auto Charge เปิดใช้งาน": "Auto Charge active", "เริ่มชาร์จด้วย Auto Charge": "Start with Auto Charge", "โหมด Auto Charge (เปิดใช้งาน)": "Auto Charge mode (Active)", "ปิดโหมดนี้": "Turn off", "โหมด Auto Charge (ยังไม่ตั้งค่า)": "Auto Charge mode (Not set up)", "เป้าหมาย ": "Target ", "ชาร์จเต็ม": "Full charge", "กระเป๋าเงิน": "Wallet", "บัตร": "Card", "เสียบหัวชาร์จเพื่อชาร์จอัตโนมัติ": "Plug in to auto-charge", "ยกเลิก": "Cancel", "หากเสียบหัวชาร์จตอนนี้ แอปจะยังไม่เริ่มจนกว่าจะสแกน QR code": "Plugging in won't auto-start until you scan QR code", "เสียบหัวชาร์จ": "Plug in connector", "เสียบหัวชาร์จแล้ว · ยังไม่ลงทะเบียน Auto Charge": "Plugged in · Auto Charge not registered", "ไม่เกิดการทำงานอัตโนมัติในแอป จนกว่าจะสแกน QR code ที่ตู้ชาร์จ": "No action in the app until you scan the charger QR code", "สแกน QR code": "Scan QR code", "กำลังตรวจสอบระบบ…": "Checking system…", "กำลังเริ่มชาร์จ · ดูหน้าชาร์จ": "Starting · View charging", "เชื่อมต่อสาย DC CCS2 กับรถแล้ว": "DC CCS2 cable connected to car", "เครื่องชาร์จส่งข้อมูลรถมาที่ระบบ": "Charger sends vehicle info to system", "ส่งข้อมูลรถจากตู้ #4041 แล้ว": "Vehicle info received from #4041", "ตู้ #4041 กำลังส่งรหัสรถ…": "Charger #4041 sending vehicle ID…", "ตรวจพบว่าลงทะเบียน Auto Charge": "Auto Charge registration matched", "พบรถ ": "Matched ", "กำลังตรวจสอบการลงทะเบียน…": "Verifying registration…", "รอข้อมูลรถจากเครื่องชาร์จ": "Waiting for vehicle info", "เริ่มชาร์จอัตโนมัติ": "Start charging automatically", "กำลังเข้าสู่หน้ากำลังชาร์จ…": "Opening charging screen…", "รอการยืนยัน Auto Charge": "Waiting for Auto Charge match", "จองล่วงหน้า": "Book ahead", "จองคิวรอบถัดไป": "Book next slot", "จองหัวชาร์จ": "Reserve connector", "รถที่ใช้งาน": "Vehicle", "เลือกช่วงเวลาวันนี้": "Select time today", "ค่าจองล่วงหน้า": "Booking fee", "ฟรี · ถือสิทธิ์นาน 15 นาที": "Free · 15 min hold", "ย้อนกลับ": "Back", "ยืนยันการจอง": "Confirm booking", "จองหัวชาร์จสำเร็จ": "Booking confirmed", "รหัสการจอง": "Booking ID", "สถานี": "Station", "หัวชาร์จ": "Charger", "ช่วงเวลาจอง": "Reserved time", "ค่าจอง": "Fee", "ดูประวัติการจอง": "View bookings", "วันนี้": "Today", "หัว A": "Connector A", "หัว B": "Connector B", "หัว C": "Connector C", "หัว D": "Connector D"};
 const PT = [["^อัปเดต\\ (.+?)\\ น\\.$", "Updated {1}"], ["^(.+?)\\ จาก\\ 4$", "{1} of 4"]].map(([r, e]) => [new RegExp(r), e]);
-const SUB = ["แบตเตอรี่", "มีผู้ใช้กำลังชาร์จ", "แบตปัจจุบัน", "หมายเหตุ: อัตราค่าบริการอาจเปลี่ยนแปลงได้ กรุณาตรวจสอบราคาก่อนเริ่มชาร์จทุกครั้ง", "มีผู้ใช้กำลังชาร์จ · คาดว่าว่างในอีก ~15 นาที", "ถ.บางนา-ตราด กม.6 · 1.2 กม. (ขับรถ 4 นาที)", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "DC · กระแสสูงสุด 200A · 2 หัวชาร์จ", "AC · กระแสสูงสุด 32A · 2 หัวชาร์จ", "สถานีชาร์จ TERA Charge-X", "฿5/นาที หลัง 15 นาที", "เริ่มชาร์จที่หัวนี้", "รายละเอียดหัวชาร์จ", "เครื่องชาร์จ #4041", "เครื่องชาร์จ #4042", "หัว C · ช่องจอด 5", "หัว D · ช่องจอด 6", "หัว A · ฝั่งซ้าย", "กลับไปที่แผนที่", "หัว B · ฝั่งขวา", "สแกนเพื่อชาร์จ", "ประเภทหัวชาร์จ", "35 นาทีที่แล้ว", "กระแส / แรงดัน", "ค่าจอดเกินเวลา", "อัตราค่าบริการ", "2 ชม. ที่แล้ว", "กำลังไฟสูงสุด", "เครื่องชาร์จ ", "หัวนี้ไม่ว่าง", "ถ.บางนา-ตราด", "นำทางไปสถานี", "ว่างตอนนี้ (", "รหัสหัวชาร์จ", "ใช้งานล่าสุด", "ปิดปรับปรุง", "พร้อมใช้งาน", "เปิด 24 ชม.", "บันทึกสถานี", "กำลังใช้งาน", "เริ่มชาร์จ", "ว่างตอนนี้", "รายละเอียด", "ดูบนแผนที่", "กำลังชาร์จ", "ความยาวสาย", "ทั้งหมด (", "ค่าบริการ", "เริ่มต้น", "ทั้งหมด", "เปลี่ยน", "กำลังไฟ", "แผนที่", "24 ชม.", "สูงสุด", "บันทึก", "นำทาง", " จาก ", "ว่าง", "5 ม.", "7 ม.", "นาที", "เวลา", " หัว", "ปิด", "กม.", "ชม."];
+const SUB = ["หมายเหตุ: อัตราค่าบริการอาจเปลี่ยนแปลงได้ กรุณาตรวจสอบราคาก่อนเริ่มชาร์จทุกครั้ง","ไม่เกิดการทำงานอัตโนมัติในแอป จนกว่าจะสแกน QR code ที่ตู้ชาร์จ","หากเสียบหัวชาร์จตอนนี้ แอปจะยังไม่เริ่มจนกว่าจะสแกน QR code","เสียบหัวชาร์จแล้ว · ยังไม่ลงทะเบียน Auto Charge","มีผู้ใช้กำลังชาร์จ · คาดว่าว่างในอีก ~15 นาที","ถ.บางนา-ตราด กม.6 · 1.2 กม. (ขับรถ 4 นาที)","มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา","DC · กระแสสูงสุด 200A · 2 หัวชาร์จ","AC · กระแสสูงสุด 32A · 2 หัวชาร์จ","เครื่องชาร์จส่งข้อมูลรถมาที่ระบบ","เสียบหัวชาร์จเพื่อชาร์จอัตโนมัติ","โหมด Auto Charge (ยังไม่ตั้งค่า)","เชื่อมต่อสาย DC CCS2 กับรถแล้ว","ตรวจพบว่าลงทะเบียน Auto Charge","โหมด Auto Charge (เปิดใช้งาน)","กำลังเริ่มชาร์จ · ดูหน้าชาร์จ","ส่งข้อมูลรถจากตู้ #4041 แล้ว","฿5/นาที หลังตัดชาร์จ 5 นาที","กำลังเข้าสู่หน้ากำลังชาร์จ…","เริ่มชาร์จด้วย Auto Charge","ฟรี · ถือสิทธิ์นาน 15 นาที","กำลังตรวจสอบการลงทะเบียน…","ตู้ #4041 กำลังส่งรหัสรถ…","รอข้อมูลรถจากเครื่องชาร์จ","สถานีชาร์จ TERA Charge-X","รอการยืนยัน Auto Charge","Auto Charge เปิดใช้งาน","Auto Charge เปิดอยู่","เริ่มชาร์จที่หัวนี้","เลือกช่วงเวลาวันนี้","เริ่มชาร์จอัตโนมัติ","รายละเอียดหัวชาร์จ","รองรับ Auto Charge","เครื่องชาร์จ #4041","เครื่องชาร์จ #4042","มีผู้ใช้กำลังชาร์จ","กำลังตรวจสอบระบบ…","จองหัวชาร์จสำเร็จ","หัว C · ช่องจอด 5","หัว D · ช่องจอด 6","หัว A · ฝั่งซ้าย","ดูประวัติการจอง","หัว B · ฝั่งขวา","กลับไปที่แผนที่","จองคิวรอบถัดไป","35 นาทีที่แล้ว","กระแส / แรงดัน","ประเภทหัวชาร์จ","ค่าจอดเกินเวลา","ค่าจองล่วงหน้า","อัตราค่าบริการ","สแกนเพื่อชาร์จ","2 ชม. ที่แล้ว","กำลังไฟสูงสุด","เครื่องชาร์จ ","เสียบหัวชาร์จ","หัวนี้ไม่ว่าง","ถ.บางนา-ตราด","สแกน QR code","นำทางไปสถานี","ใช้งานล่าสุด","ว่างตอนนี้ (","รหัสหัวชาร์จ","ยืนยันการจอง","ปิดปรับปรุง","พร้อมใช้งาน","เปิด 24 ชม.","บันทึกสถานี","กำลังใช้งาน","แบตปัจจุบัน","จองหัวชาร์จ","จองล่วงหน้า","กระเป๋าเงิน","ช่วงเวลาจอง","รถที่ใช้งาน","ดูบนแผนที่","ปิดโหมดนี้","ความยาวสาย","รายละเอียด","กำลังชาร์จ","ว่างตอนนี้","เริ่มชาร์จ","รหัสการจอง","ทั้งหมด (","ค่าบริการ","เป้าหมาย ","ชาร์จเต็ม","แบตเตอรี่","ย้อนกลับ","หัวชาร์จ","เริ่มต้น","ทั้งหมด","เปลี่ยน","กำลังไฟ","24 ชม.","แผนที่","สูงสุด","บันทึก","ยกเลิก","ค่าจอง","วันนี้","นำทาง"," จาก ","พบรถ ","สถานี","หัว A","หัว B","หัว C","หัว D","5 ม.","7 ม.","นาที","เวลา"," หัว","บัตร","ว่าง","ปิด","กม.","ชม."];
 const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
 const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
 const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
@@ -186,16 +302,49 @@ const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide
 const rv = P.renderVals;
 P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
 }
-constructor(props) { super(props); this.state = { fav: false, tab: 'all', detail: null, updated: '13:19', spin: false }; }
-componentWillUnmount() { clearInterval(this._soc); }
-componentDidMount() { this._soc = setInterval(() => { const s = this.state.soc != null ? this.state.soc : 72; if (s < 99) this.setState({ soc: s + 1 }); }, 4000); }
+constructor(props) {
+super(props);
+let fav = false, acProf = null, carName = 'Chery Q';
+try {
+const raw = JSON.parse(localStorage.getItem('cx-favs') || 'null');
+if (Array.isArray(raw)) fav = raw.indexOf('s1') >= 0 || raw.indexOf(1) >= 0;
+const p = JSON.parse(localStorage.getItem('cx-ac-profile') || 'null');
+if (p && p.enabled) acProf = p;
+const c = JSON.parse(localStorage.getItem('cx-car') || 'null');
+if (c && c.name) carName = c.name;
+} catch (e) {}
+this.state = { fav, acProf, carName, tab: 'all', detail: null, acStep: 0, noAcPlug: false, bkMode: 0, bkCar: '', bkSlot: '16:30–17:00', bkId: '', updated: '13:19', spin: false };
+}
+_clearAcTimers() { clearTimeout(this._ac1); clearTimeout(this._ac2); clearTimeout(this._ac3); }
+componentWillUnmount() {
+clearInterval(this._soc); clearTimeout(this._rt); this._clearAcTimers();
+if (this._onStor && typeof window !== 'undefined') window.removeEventListener('storage', this._onStor);
+}
+componentDidMount() {
+this._soc = setInterval(() => { const s = this.state.soc != null ? this.state.soc : 72; if (s < 99) this.setState({ soc: s + 1 }); }, 4000);
+if (typeof window !== 'undefined') {
+this._onStor = (e) => {
+if (!e || !e.key || e.key === 'cx-ac-profile' || e.key === 'cx-car') {
+try {
+const p = JSON.parse(localStorage.getItem('cx-ac-profile') || 'null');
+const c = JSON.parse(localStorage.getItem('cx-car') || 'null');
+this.setState({ acProf: p && p.enabled ? p : null, carName: (c && c.name) || 'Chery Q' });
+} catch (err) {}
+}
+};
+window.addEventListener('storage', this._onStor);
+}
+}
 renderVals() {
 const accent = this.props.accent ?? '#FC3901';
+const acProf = this.state.acProf;
+const acOn = !!(acProf && acProf.enabled);
+const carName = (acProf && acProf.car) || this.state.carName || 'Chery Q';
 const C = [
-{ id: 'a', type: 'ccs', name: 'DC CCS2 (Combo 2)', charger: 'เครื่องชาร์จ #4041', chargerSub: 'DC · กระแสสูงสุด 200A · 2 หัวชาร์จ', pos: 'หัว A · ฝั่งซ้าย', kw: 150, price: '7.5', status: 'avail', amp: '200A / 1000V', cable: '5 ม.', last: '35 นาทีที่แล้ว' },
-{ id: 'b', type: 'ccs', name: 'DC CCS2 (Combo 2)', charger: 'เครื่องชาร์จ #4041', chargerSub: '', pos: 'หัว B · ฝั่งขวา', kw: 150, price: '7.5', status: 'charging', amp: '200A / 1000V', cable: '5 ม.', last: 'กำลังใช้งาน', soc: 72 },
-{ id: 'c', type: 't2', name: 'AC Type 2', charger: 'เครื่องชาร์จ #4042', chargerSub: 'AC · กระแสสูงสุด 32A · 2 หัวชาร์จ', pos: 'หัว C · ช่องจอด 5', kw: 22, price: '6.5', status: 'avail', amp: '32A / 400V', cable: '7 ม.', last: '2 ชม. ที่แล้ว' },
-{ id: 'd', type: 't2', name: 'AC Type 2', charger: 'เครื่องชาร์จ #4042', chargerSub: '', pos: 'หัว D · ช่องจอด 6', kw: 22, price: '6.5', status: 'off', amp: '32A / 400V', cable: '7 ม.', last: '—' }
+{ id: 'a', type: 'ccs', auto: true, name: 'DC CCS2 (Combo 2)', charger: 'เครื่องชาร์จ #4041', chargerSub: 'DC · กระแสสูงสุด 200A · 2 หัวชาร์จ', pos: 'หัว A · ฝั่งซ้าย', kw: 150, price: '7.5', status: 'avail', amp: '200A / 1000V', cable: '5 ม.', last: '35 นาทีที่แล้ว' },
+{ id: 'b', type: 'ccs', auto: true, name: 'DC CCS2 (Combo 2)', charger: 'เครื่องชาร์จ #4041', chargerSub: '', pos: 'หัว B · ฝั่งขวา', kw: 150, price: '7.5', status: 'charging', amp: '200A / 1000V', cable: '5 ม.', last: 'กำลังใช้งาน', soc: 72 },
+{ id: 'c', type: 't2', auto: false, name: 'AC Type 2', charger: 'เครื่องชาร์จ #4042', chargerSub: 'AC · กระแสสูงสุด 32A · 2 หัวชาร์จ', pos: 'หัว C · ช่องจอด 5', kw: 22, price: '6.5', status: 'avail', amp: '32A / 400V', cable: '7 ม.', last: '2 ชม. ที่แล้ว' },
+{ id: 'd', type: 't2', auto: false, name: 'AC Type 2', charger: 'เครื่องชาร์จ #4042', chargerSub: '', pos: 'หัว D · ช่องจอด 6', kw: 22, price: '6.5', status: 'off', amp: '32A / 400V', cable: '7 ม.', last: '—' }
 ];
 const ST = {
 avail: { t: 'พร้อมใช้งาน', b: 'padding: 4px 10px; border-radius: 8px; font-size: 12px; font-weight: 700; white-space: nowrap; background: #E7F6EE; color: #146C3E' },
@@ -213,8 +362,8 @@ return Object.assign({}, c, {
 isCcs: c.type === 'ccs', isT2: c.type === 't2',
 showHead: head, chargerSub: base.chargerSub,
 statusText: c.status === 'charging' ? ST[c.status].t + ' · ' + soc + '%' : ST[c.status].t, badge: ST[c.status].b,
-open: () => this.setState({ detail: c.id }),
-card: 'width: 100%; display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 18px; border: 1px solid #EFEFEF; background: #FFFFFF; box-shadow: 0 4px 14px rgba(0,0,0,0.05); font-family: inherit; cursor: pointer; opacity: ' + (c.status === 'off' ? '0.6' : '1')
+open: () => { this._clearAcTimers(); this.setState({ detail: c.id, acStep: 0, noAcPlug: false, bkMode: 0, bkId: '', bkSlot: c.status === 'charging' ? '17:00–17:30' : '16:30–17:00' }); },
+card: 'width: 100%; display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 18px; border: 1px solid #EFEFEF; background: #FFFFFF; box-shadow: 0 4px 14px rgba(0,0,0,0.05); font-family: inherit; cursor: pointer; opacity: ' + (c.status === 'off' ? '0.58' : '1')
 });
 });
 const free = C.filter((c) => c.status === 'avail').length;
@@ -223,9 +372,126 @@ const on = tab === id;
 return { label, pick: () => this.setState({ tab: id }), style: 'height: 38px; padding: 0 16px; border-radius: 19px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; ' + (on ? 'border: 0; background: ' + accent + '; color: #FFFFFF' : 'border: 1px solid #E0E0E0; background: #FFFFFF; color: #3A3A3A') };
 });
 const cur = C.find((c) => c.id === this.state.detail);
+const tgtText = acProf ? (acProf.mode === 'full' ? 'ชาร์จเต็ม' : acProf.mode === 'time' ? (acProf.time || 30) + ' นาที' : acProf.mode === 'baht' ? '฿' + (acProf.baht || 300) : (acProf.pct || 80) + '%') : '80%';
+const payText = acProf && acProf.pay === 'card' ? 'บัตร' : 'กระเป๋าเงิน';
+const acStep = this.state.acStep || 0;
+const mkStep = (num, state, title, sub) => ({
+badgeText: state === 'done' ? '✓' : String(num),
+title,
+sub,
+titleColor: state === 'wait' ? '#6B6B6B' : '#1F1F1F',
+dotStyle: 'width: 20px; height: 20px; flex: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; margin-top: 1px; ' + (state === 'done' ? 'background: #1E9E5A; color: #FFFFFF' : state === 'active' ? 'background: ' + accent + '; color: #FFFFFF' : 'background: #E6E6E6; color: #6B6B6B')
+});
+const acSteps = [
+mkStep(1, acStep >= 1 ? 'done' : 'wait', 'เสียบหัวชาร์จ', 'เชื่อมต่อสาย DC CCS2 กับรถแล้ว'),
+mkStep(2, acStep >= 2 ? 'done' : acStep === 1 ? 'active' : 'wait', 'เครื่องชาร์จส่งข้อมูลรถมาที่ระบบ', acStep >= 2 ? 'ส่งข้อมูลรถจากตู้ #4041 แล้ว' : 'ตู้ #4041 กำลังส่งรหัสรถ…'),
+mkStep(3, acStep >= 3 ? 'done' : acStep === 2 ? 'active' : 'wait', 'ตรวจพบว่าลงทะเบียน Auto Charge', acStep >= 3 ? ('พบรถ ' + carName + ' · ' + tgtText) : acStep === 2 ? 'กำลังตรวจสอบการลงทะเบียน…' : 'รอข้อมูลรถจากเครื่องชาร์จ'),
+mkStep(4, acStep >= 3 ? 'done' : 'wait', 'เริ่มชาร์จอัตโนมัติ', acStep >= 3 ? 'กำลังเข้าสู่หน้ากำลังชาร์จ…' : 'รอการยืนยัน Auto Charge')
+];
+const saveSelCon = () => {
+if (!cur) return;
+try { localStorage.setItem('cx-sel-con', JSON.stringify({ id: cur.id, name: cur.name, charger: cur.charger, pos: cur.pos, kw: cur.kw, price: cur.price, auto: !!cur.auto })); } catch (e) {}
+};
+let carPool = ['Chery Q', 'BYD Atto 3'];
+try {
+const sc = JSON.parse(localStorage.getItem('cx-cars') || 'null');
+if (Array.isArray(sc) && sc.length) {
+carPool = [];
+sc.forEach((x) => { const n = typeof x === 'string' ? x : (x && x.name); if (n && carPool.indexOf(n) < 0) carPool.push(n); });
+}
+} catch (e) {}
+if (carName && carPool.indexOf(carName) < 0) carPool.unshift(carName);
+const bkCar = carPool.indexOf(this.state.bkCar) >= 0 ? this.state.bkCar : (carPool.indexOf(carName) >= 0 ? carName : carPool[0]);
+const bkSlotsRaw = cur && cur.status === 'charging' ? ['17:00–17:30', '17:30–18:00', '18:00–18:30', '19:00–19:30'] : ['16:30–17:00', '17:00–17:30', '17:30–18:00', '18:00–18:30'];
+const bkSlot = bkSlotsRaw.indexOf(this.state.bkSlot) >= 0 ? this.state.bkSlot : bkSlotsRaw[0];
+const bkCars = carPool.map((name) => {
+const on = bkCar === name;
+return {
+label: name,
+pick: () => this.setState({ bkCar: name }),
+style: 'height: 36px; padding: 0 13px; flex: none; border-radius: 12px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; ' + (on ? 'border: 1.5px solid ' + accent + '; background: #FFF7F3; color: #C42D00' : 'border: 1px solid #E0E0E0; background: #FFFFFF; color: #3A3A3A')
+};
+});
+const bkSlots = bkSlotsRaw.map((slot) => {
+const on = bkSlot === slot;
+return {
+label: slot,
+pick: () => this.setState({ bkSlot: slot }),
+style: 'height: 40px; border-radius: 12px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; ' + (on ? 'border: 1.5px solid ' + accent + '; background: #FFF7F3; color: #C42D00' : 'border: 1px solid #E0E0E0; background: #FFFFFF; color: #3A3A3A')
+};
+});
+const bkConText = cur ? ((cur.type === 'ccs' ? 'DC CCS2' : 'AC Type 2') + ' · ' + cur.pos.split(' · ')[0]) : '';
 const dt = cur ? {
-open: true, isCcs: cur.type === 'ccs', isT2: cur.type === 't2',
+open: true, isCcs: cur.type === 'ccs', isT2: cur.type === 't2', auto: !!cur.auto,
 name: cur.name, charger: cur.charger, pos: cur.pos, statusText: ST[cur.status].t, badge: ST[cur.status].b,
+isInfo: (this.state.bkMode || 0) === 0,
+bkOpen: this.state.bkMode === 1,
+bkDone: this.state.bkMode === 2,
+isAvail: cur.status === 'avail',
+isCharging: cur.status === 'charging',
+isOff: cur.status === 'off',
+bkCars, bkSlots, bkCar, bkConText,
+bkSlotText: 'วันนี้ · ' + bkSlot,
+bkId: this.state.bkId || '',
+openBook: () => { this._clearAcTimers(); this.setState({ bkMode: 1, acStep: 0, noAcPlug: false }); },
+cancelBook: () => this.setState({ bkMode: 0 }),
+confirmBook: () => {
+const id = 'CX-' + String(8500 + (Date.now() % 1400));
+const rec = { id, status: 'upcoming', station: 'มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา', charger: bkConText, slot: 'วันนี้ · ' + bkSlot, car: bkCar, fee: 'ฟรีค่าจอง', feeDetail: 'ฟรี · ถือสิทธิ์นาน 15 นาที' };
+const SEED = [
+{ id: 'CX-8421', status: 'upcoming', station: 'มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา', charger: 'DC CCS2 · หัว A', slot: 'วันนี้ · 16:30–17:00', car: 'Chery Q', fee: 'ฟรีค่าจอง', feeDetail: 'ฟรี · ถือสิทธิ์นาน 15 นาที' },
+{ id: 'CX-8390', status: 'done', station: 'มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา', charger: 'DC CCS2 · ช่อง 04', slot: 'วันนี้ · 10:15–10:42', car: 'Chery Q', fee: 'หักเข้าค่าชาร์จ', feeDetail: 'ฟรี · หักเข้าค่าชาร์จอัตโนมัติ' },
+{ id: 'CX-8344', status: 'done', station: 'มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา', charger: 'DC CCS2 · ช่อง 02', slot: 'เมื่อวาน · 18:45–19:20', car: 'BYD Atto 3', fee: 'ฟรีค่าจอง', feeDetail: 'ฟรี · เข้าชาร์จตรงเวลา' },
+{ id: 'CX-8291', status: 'cancel', station: 'เมกา บางนา (ลานจอด P3)', charger: 'AC Type 2 · หัว C', slot: '14 พ.ย. · 13:00–13:30', car: 'Chery Q', fee: 'ยกเลิกก่อนเวลา', feeDetail: 'ไม่มีค่าธรรมเนียมยกเลิก' },
+{ id: 'CX-8210', status: 'done', station: 'ไบเทค บางนา (อาคาร 2)', charger: 'DC CCS2 · หัว B', slot: '11 พ.ย. · 09:30–10:10', car: 'BYD Atto 3', fee: 'ฟรีค่าจอง', feeDetail: 'ฟรี · เข้าชาร์จตรงเวลา' }
+];
+try {
+const curBks = JSON.parse(localStorage.getItem('cx-bookings') || 'null');
+const base = Array.isArray(curBks) ? curBks : SEED;
+localStorage.setItem('cx-bookings', JSON.stringify([rec].concat(base)));
+} catch (e) {}
+this.setState({ bkMode: 2, bkId: id });
+},
+goBookings: () => { try { localStorage.setItem('cx-notify-tab', 'booking'); } catch (e) {} },
+acTag: acOn ? 'Auto Charge เปิดอยู่' : 'รองรับ Auto Charge',
+acStyle: acOn ? 'background: #FFF1EB; color: #C42D00' : 'background: #F4F4F4; color: #6B6B6B',
+acActive: !!cur.auto && acOn,
+acFirst: !!cur.auto && !acOn,
+acIdle: cur.status === 'avail' && acStep === 0,
+acFlowShow: cur.status === 'avail' && acStep > 0,
+acIdleFirst: cur.status === 'avail' && !this.state.noAcPlug,
+noAcPlugged: cur.status === 'avail' && !!this.state.noAcPlug,
+acSteps,
+flowPe: acStep >= 3 ? 'auto' : 'none',
+goChargeLabel: acStep >= 3 ? 'กำลังเริ่มชาร์จ · ดูหน้าชาร์จ' : 'กำลังตรวจสอบระบบ…',
+setChgRef: (el) => { this._chgRef = el; },
+plugTest: () => {
+this._clearAcTimers();
+if (!acOn) { this.setState({ noAcPlug: true }); return; }
+saveSelCon();
+this.setState({ acStep: 1 });
+this._ac1 = setTimeout(() => { this.setState({ acStep: 2 }); }, 700);
+this._ac2 = setTimeout(() => {
+try { localStorage.setItem('cx-sess', 'กำลังชาร์จ'); } catch (e) {}
+this.setState({ acStep: 3 });
+this._ac3 = setTimeout(() => { if (this._chgRef) this._chgRef.click(); }, 950);
+}, 1500);
+},
+cancelPlug: () => { this._clearAcTimers(); this.setState({ acStep: 0 }); },
+goCharge: () => { this._clearAcTimers(); saveSelCon(); try { localStorage.setItem('cx-sess', 'กำลังชาร์จ'); } catch (e) {} },
+acCar: carName,
+acShortDesc: tgtText + ' · ' + payText,
+acDesc: carName + ' · เป้าหมาย ' + tgtText + ' · ' + payText,
+disableAc: () => {
+this._clearAcTimers();
+try {
+localStorage.setItem('cx-autocharge', '0');
+const p = JSON.parse(localStorage.getItem('cx-ac-profile') || 'null');
+if (p && typeof p === 'object') { p.enabled = false; localStorage.setItem('cx-ac-profile', JSON.stringify(p)); }
+else localStorage.removeItem('cx-ac-profile');
+} catch (e) {}
+this.setState({ acProf: null, acStep: 0, noAcPlug: false });
+},
 charging: cur.status === 'charging', soc,
 specs: [
 { k: 'ประเภทหัวชาร์จ', v: cur.type === 'ccs' ? 'CCS2 · DC' : 'Type 2 · AC' },
@@ -233,22 +499,32 @@ specs: [
 { k: 'กระแส / แรงดัน', v: cur.amp },
 { k: 'ความยาวสาย', v: cur.cable },
 { k: 'ค่าบริการ', v: '฿' + cur.price + '/kWh' },
-{ k: 'ค่าจอดเกินเวลา', v: '฿5/นาที หลัง 15 นาที' },
+{ k: 'ค่าจอดเกินเวลา', v: '฿5/นาที หลังตัดชาร์จ 5 นาที' },
 { k: 'รหัสหัวชาร์จ', v: cur.charger.replace('เครื่องชาร์จ ', '') + '-' + cur.id.toUpperCase() },
 cur.status === 'charging' ? { k: 'แบตปัจจุบัน', v: soc + '%' } : { k: 'ใช้งานล่าสุด', v: cur.last }
 ],
 btnBg: cur.status === 'avail' ? accent : '#BDBDBD', pe: cur.status === 'avail' ? 'auto' : 'none', noStr: cur.status === 'avail' ? 'false' : 'true',
-btnLabel: cur.status === 'avail' ? 'เริ่มชาร์จที่หัวนี้' : (cur.status === 'charging' ? 'หัวนี้ไม่ว่าง' : 'ปิดปรับปรุง'),
-close: () => this.setState({ detail: null })
-} : { open: false, close: () => this.setState({ detail: null }) };
+btnLabel: cur.status === 'avail' ? (acOn && cur.auto ? 'เริ่มชาร์จด้วย Auto Charge' : 'เริ่มชาร์จที่หัวนี้') : (cur.status === 'charging' ? 'หัวนี้ไม่ว่าง' : 'ปิดปรับปรุง'),
+pickStart: saveSelCon,
+close: () => { this._clearAcTimers(); this.setState({ detail: null, acStep: 0, noAcPlug: false, bkMode: 0, bkId: '' }); }
+} : { open: false, isInfo: false, bkOpen: false, bkDone: false, isAvail: false, isCharging: false, isOff: false, acSteps: [], bkCars: [], bkSlots: [], bkCar: '', bkConText: '', bkSlotText: '', bkId: '', close: () => { this._clearAcTimers(); this.setState({ detail: null, acStep: 0, noAcPlug: false, bkMode: 0, bkId: '' }); } };
 return {
 accent, cons, tabs, dt,
 freeCount: free,
 updated: this.state.updated,
 spinCls: this.state.spin ? 'cx-spin' : '',
-refresh: () => { this.setState({ spin: true }); clearTimeout(this._rt); this._rt = setTimeout(() => { const d = new Date(); this.setState({ spin: false, updated: String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0') }); }, 900); },
+refresh: () => { this.setState({ spin: true }); clearTimeout(this._rt); this._rt = setTimeout(() => { const dt2 = new Date(); this.setState({ spin: false, updated: String(dt2.getHours()).padStart(2, '0') + ':' + String(dt2.getMinutes()).padStart(2, '0') }); }, 900); },
 navUrl: 'https://www.google.com/maps/dir/?api=1&destination=13.6669,100.6447',
-toggleFav: () => this.setState({ fav: !this.state.fav }),
+toggleFav: () => {
+const nextFav = !this.state.fav;
+try {
+const raw = JSON.parse(localStorage.getItem('cx-favs') || 'null');
+const list = Array.isArray(raw) ? raw.map((x) => typeof x === 'number' ? ({ 1: 's1', 2: 's4', 3: 's2', 4: 's3' }[x] || '') : String(x)).filter(Boolean) : [];
+const nextList = nextFav ? (list.indexOf('s1') >= 0 ? list : list.concat(['s1'])) : list.filter((x) => x !== 's1');
+localStorage.setItem('cx-favs', JSON.stringify(nextList));
+} catch (e) {}
+this.setState({ fav: nextFav });
+},
 favFill: this.state.fav ? accent : 'none',
 favStroke: this.state.fav ? accent : '#1F1F1F'
 };

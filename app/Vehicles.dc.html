@@ -78,6 +78,11 @@ a{color:#C42D00}a:hover{color:#9E2400}
 [data-theme="dark"] .cx-in2{background:#1C1C1E;border-color:#35353B;color:#F3F3F4}
 [data-theme="dark"] .cx-in2:focus{border-color:#FC3901}
 .cx-in2::placeholder{color:#9A9A9A}
+.cx-ta{width:100%;min-height:76px;box-sizing:border-box;border-radius:14px;border:1.5px solid #E0E0E0;background:#FFFFFF;padding:10px 14px;font-family:inherit;font-size:15px;line-height:1.45;color:#1F1F1F;outline:none;resize:none}
+.cx-ta:focus{border-color:#FC3901}
+[data-theme="dark"] .cx-ta{background:#1C1C1E;border-color:#35353B;color:#F3F3F4}
+[data-theme="dark"] .cx-ta:focus{border-color:#FC3901}
+.cx-ta::placeholder{color:#9A9A9A}
 @keyframes cxShake{0%,100%{transform:none}20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
 .cx-shake{animation:cxShake .45s ease-in-out both}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #FDECEC"]){background-color:rgba(229,62,62,.18)!important}
@@ -103,8 +108,19 @@ a{color:#C42D00}a:hover{color:#9E2400}
 <button type="button" onClick="{{v.edit}}" aria-label="แก้ไข {{v.name}}" style="width: 38px; height: 38px; flex: none; border-radius: 12px; border: 0; background: #F4F4F4; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#5C5C5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4"></path></svg></button>
 <button type="button" onClick="{{v.ask}}" aria-label="ลบ {{v.name}}" style="width: 38px; height: 38px; flex: none; border-radius: 12px; border: 0; background: #F4F4F4; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#5C5C5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg></button>
 </div>
-<sc-if value="{{v.isMain}}" hint-placeholder-val="{{ true }}"><span style="align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: #FFF1EB; color: #C42D00; font-size: 12px; font-weight: 700">✓ รถหลัก</span></sc-if>
-<sc-if value="{{v.notMain}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{v.makeMain}}" style="align-self: flex-start; height: 32px; padding: 0 12px; border-radius: 10px; border: 1px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 600; color: #3A3A3A; cursor: pointer">ตั้งเป็นรถหลัก</button></sc-if>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding-top: 8px; border-top: 1px solid #EFEFEF">
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 11.5px; color: #6B6B6B">ยี่ห้อรถ</span><span style="font-size: 13.5px; font-weight: 700; color: #1F1F1F; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{v.brand}}</span></div>
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 11.5px; color: #6B6B6B">รุ่นรถ</span><span style="font-size: 13.5px; font-weight: 700; color: #1F1F1F; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{v.model}}</span></div>
+</div>
+<button type="button" onClick="{{v.openTax}}" aria-label="จัดการข้อมูลออกใบกำกับภาษี {{v.name}}" style="width: 100%; border: 0; border-top: 1px solid #EFEFEF; background: transparent; padding: 8px 0 0; display: flex; align-items: center; justify-content: space-between; gap: 10px; font-family: inherit; text-align: left; cursor: pointer">
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 11.5px; color: #6B6B6B">ข้อมูลออกใบกำกับภาษี</span><span style="font-size: 13px; font-weight: 600; color: {{v.taxColor}}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{v.taxSummary}}</span></span>
+<span style="font-size: 12.5px; font-weight: 600; color: #C42D00; flex: none">{{v.taxAction}}</span>
+</button>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<sc-if value="{{v.isMain}}" hint-placeholder-val="{{ true }}"><span style="padding: 4px 10px; border-radius: 8px; background: #FFF1EB; color: #C42D00; font-size: 12px; font-weight: 700">✓ รถหลัก</span></sc-if>
+<sc-if value="{{v.notMain}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{v.makeMain}}" style="height: 32px; padding: 0 12px; border-radius: 10px; border: 1px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 600; color: #3A3A3A; cursor: pointer">ตั้งเป็นรถหลัก</button></sc-if>
+<sc-if value="{{v.taxOn}}" hint-placeholder-val="{{ false }}"><span style="padding: 4px 10px; border-radius: 8px; background: #E7F6EE; color: #146C3E; font-size: 12px; font-weight: 700">✓ ใบกำกับภาษี</span></sc-if>
+</div>
 </div>
 </sc-for>
 </sc-if>
@@ -137,6 +153,51 @@ a{color:#C42D00}a:hover{color:#9E2400}
 </div>
 </sc-if>
 
+<sc-if value="{{showTaxSheet}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 48; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: flex-end">
+<button type="button" aria-label="ปิด" onClick="{{closeTax}}" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
+<div class="cx-sheet" role="dialog" aria-label="ข้อมูลออกใบกำกับภาษี" style="background: #FFFFFF; border-radius: 26px 26px 0 0; max-height: 82%; display: flex; flex-direction: column; overflow: hidden">
+<div style="padding: 10px 20px 10px; display: flex; flex-direction: column; align-items: center; gap: 6px; border-bottom: 1px solid #EFEFEF">
+<span style="width: 40px; height: 4px; border-radius: 2px; background: #DADADA"></span>
+<div style="align-self: stretch; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 4px">
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 18px; color: #1F1F1F">ข้อมูลออกใบกำกับภาษี</span>
+<span style="font-size: 13px; color: #6B6B6B; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{txCarName}}</span>
+</div>
+<button type="button" onClick="{{closeTax}}" aria-label="ปิด" style="width: 36px; height: 36px; flex: none; border-radius: 12px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+</div>
+<div class="cx-scroll" style="flex: 1; min-height: 0; overflow-y: auto; padding: 14px 20px; display: flex; flex-direction: column; gap: 12px">
+<button type="button" role="switch" aria-checked="{{txOnStr}}" onClick="{{toggleTxOn}}" style="width: 100%; border: 1px solid #EFEFEF; border-radius: 16px; background: #F6F6F6; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-family: inherit; text-align: left; cursor: pointer">
+<span style="min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14.5px; font-weight: 700; color: #1F1F1F">ใช้ข้อมูลออกใบกำกับภาษี</span><span style="font-size: 12px; color: #6B6B6B">ใช้สำหรับออกใบกำกับภาษีเต็มรูปอัตโนมัติ</span></span>
+<span style="width: 44px; height: 26px; flex: none; border-radius: 999px; background: {{txSwitchBg}}; padding: 3px; box-sizing: border-box; display: flex; align-items: center; justify-content: {{txSwitchAlign}}"><span style="width: 20px; height: 20px; border-radius: 50%; background: #FDFDFD"></span></span>
+</button>
+<sc-if value="{{txOn}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<span style="font-size: 13px; font-weight: 600; color: #3A3A3A">ประเภทผู้เสียภาษี</span>
+<button type="button" onClick="{{prefillTx}}" style="height: 28px; padding: 0 10px; border-radius: 999px; border: 1px solid #E0E0E0; background: #FFF7F3; color: #C42D00; font-family: inherit; font-size: 12px; font-weight: 600; cursor: pointer">ดึงข้อมูลจากโปรไฟล์</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{txTypes}}" as="tt" hint-placeholder-count="2"><button type="button" role="radio" aria-checked="{{tt.on}}" onClick="{{tt.pick}}" style="{{tt.style}}">{{tt.label}}</button></sc-for>
+</div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">{{txNameLabel}}<input class="cx-in2" value="{{txName}}" onInput="{{onTxName}}" placeholder="{{txNamePh}}"></label>
+<sc-if value="{{txIsCo}}" hint-placeholder-val="{{ false }}"><label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">สาขา<input class="cx-in2" value="{{txBranch}}" onInput="{{onTxBranch}}" placeholder="เช่น สำนักงานใหญ่ หรือ 00001"></label></sc-if>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">เลขประจำตัวผู้เสียภาษี (13 หลัก)<input class="cx-in2" inputmode="numeric" maxlength="13" value="{{txId}}" onInput="{{onTxId}}" placeholder="ตัวเลข 13 หลัก"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">ที่อยู่สำหรับออกใบกำกับภาษี<textarea class="cx-ta" value="{{txAddr}}" onInput="{{onTxAddr}}" placeholder="บ้านเลขที่ ถนน แขวง/ตำบล เขต/อำเภอ จังหวัด รหัสไปรษณีย์"></textarea></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">อีเมลรับใบกำกับภาษี (ไม่บังคับ)<input class="cx-in2" inputmode="email" value="{{txEmail}}" onInput="{{onTxEmail}}" placeholder="เช่น name@example.com"></label>
+</sc-if>
+<sc-if value="{{hasTxErr}}" hint-placeholder-val="{{ false }}">
+<div role="alert" style="padding: 10px 12px; border-radius: 12px; background: #FDECEC; color: #B42318; font-size: 13px; font-weight: 600">{{txErr}}</div>
+</sc-if>
+</div>
+<div style="padding: 10px 20px 28px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; border-top: 1px solid #EDEDED; background: #FFFFFF">
+<button type="button" onClick="{{closeTax}}" style="height: 50px; border-radius: 14px; border: 1.5px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 600; color: #1F1F1F; cursor: pointer">ยกเลิก</button>
+<button type="button" onClick="{{saveTax}}" style="height: 50px; border-radius: 14px; border: 0; background: {{accent}}; font-family: inherit; font-size: 15px; font-weight: 600; color: #FFFFFF; cursor: pointer">บันทึก</button>
+</div>
+</div>
+</div>
+</sc-if>
+
 <sc-if value="{{showForm}}" hint-placeholder-val="{{ false }}">
 <div class="cx-sheet" role="dialog" aria-label="{{formTitle}}" style="position: absolute; inset: 0; z-index: 45; background: #F6F6F6; display: flex; flex-direction: column">
 <div style="padding: 56px 20px 8px; display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; align-items: center; gap: 8px">
@@ -150,12 +211,18 @@ a{color:#C42D00}a:hover{color:#9E2400}
 <span style="margin-top: 14px; font-size: 15px; font-weight: 700; color: #1F1F1F">{{pvName}}</span>
 </div>
 <div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
-<span style="font-size: 13px; font-weight: 600; color: #3A3A3A">ยี่ห้อ</span>
+<span style="font-size: 13px; font-weight: 600; color: #3A3A3A">ยี่ห้อรถ</span>
 <div style="display: flex; flex-wrap: wrap; gap: 8px">
 <sc-for list="{{brands}}" as="b" hint-placeholder-count="9"><button type="button" role="radio" aria-checked="{{b.on}}" onClick="{{b.pick}}" style="{{b.style}}">{{b.label}}</button></sc-for>
 </div>
-<sc-if value="{{isOther}}" hint-placeholder-val="{{ false }}"><label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">ระบุยี่ห้อ<input class="cx-in2" value="{{fOther}}" onInput="{{onOther}}" placeholder="ยี่ห้อรถ"></label></sc-if>
-<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">รุ่น<input class="cx-in2" value="{{fModel}}" onInput="{{onModel}}" placeholder="เช่น Atto 3, ZS EV, Model Y"></label>
+<sc-if value="{{isOther}}" hint-placeholder-val="{{ false }}"><label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">ระบุยี่ห้อรถ<input class="cx-in2" value="{{fOther}}" onInput="{{onOther}}" placeholder="ยี่ห้อรถ"></label></sc-if>
+<span style="font-size: 13px; font-weight: 600; color: #3A3A3A">รุ่นรถ</span>
+<sc-if value="{{hasModelPresets}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{modelPresets}}" as="mp" hint-placeholder-count="5"><button type="button" role="radio" aria-checked="{{mp.on}}" onClick="{{mp.pick}}" style="{{mp.style}}">{{mp.label}}</button></sc-for>
+</div>
+</sc-if>
+<input class="cx-in2" aria-label="รุ่นรถ" value="{{fModel}}" onInput="{{onModel}}" placeholder="เช่น Atto 3, ZS EV, Model Y">
 <label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">ทะเบียนรถ (ไม่บังคับ)<input class="cx-in2" value="{{fPlate}}" onInput="{{onPlate}}" placeholder="เช่น 1กข 1234 กรุงเทพฯ"></label>
 <span style="font-size: 13px; font-weight: 600; color: #3A3A3A">สีรถ</span>
 <div style="display: flex; gap: 10px">
@@ -165,6 +232,29 @@ a{color:#C42D00}a:hover{color:#9E2400}
 <span style="width: 22px; height: 22px; flex: none; box-sizing: border-box; border-radius: 7px; border: 2px solid {{mainBorder}}; background: {{mainBg}}; display: flex; align-items: center; justify-content: center"><sc-if value="{{fMain}}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg></sc-if></span>
 <span style="font-size: 14px; color: #3A3A3A">ตั้งเป็นรถหลัก</span>
 </button>
+</div>
+<div style="background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<button type="button" role="switch" aria-checked="{{fTaxOnStr}}" onClick="{{toggleFTax}}" style="width: 100%; border: 0; background: transparent; padding: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-family: inherit; text-align: left; cursor: pointer">
+<span style="min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 700; color: #1F1F1F">ข้อมูลออกใบกำกับภาษี (ไม่บังคับ)</span><span style="font-size: 12px; color: #6B6B6B">ใช้สำหรับออกใบกำกับภาษีเต็มรูปอัตโนมัติ</span></span>
+<span style="width: 44px; height: 26px; flex: none; border-radius: 999px; background: {{fTaxSwitchBg}}; padding: 3px; box-sizing: border-box; display: flex; align-items: center; justify-content: {{fTaxSwitchAlign}}"><span style="width: 20px; height: 20px; border-radius: 50%; background: #FDFDFD"></span></span>
+</button>
+<sc-if value="{{fTaxOn}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 8px; border-top: 1px solid #EFEFEF">
+<span style="font-size: 13px; font-weight: 600; color: #3A3A3A">ประเภทผู้เสียภาษี</span>
+<button type="button" onClick="{{prefillFTax}}" style="height: 28px; padding: 0 10px; border-radius: 999px; border: 1px solid #E0E0E0; background: #FFF7F3; color: #C42D00; font-family: inherit; font-size: 12px; font-weight: 600; cursor: pointer">ดึงข้อมูลจากโปรไฟล์</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{fTaxTypes}}" as="ft" hint-placeholder-count="2"><button type="button" role="radio" aria-checked="{{ft.on}}" onClick="{{ft.pick}}" style="{{ft.style}}">{{ft.label}}</button></sc-for>
+</div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">{{fTaxNameLabel}}<input class="cx-in2" value="{{fTaxName}}" onInput="{{onFTaxName}}" placeholder="{{fTaxNamePh}}"></label>
+<sc-if value="{{fTaxIsCo}}" hint-placeholder-val="{{ false }}"><label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">สาขา<input class="cx-in2" value="{{fTaxBranch}}" onInput="{{onFTaxBranch}}" placeholder="เช่น สำนักงานใหญ่ หรือ 00001"></label></sc-if>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">เลขประจำตัวผู้เสียภาษี (13 หลัก)<input class="cx-in2" inputmode="numeric" maxlength="13" value="{{fTaxId}}" onInput="{{onFTaxId}}" placeholder="ตัวเลข 13 หลัก"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">ที่อยู่สำหรับออกใบกำกับภาษี<textarea class="cx-ta" value="{{fTaxAddr}}" onInput="{{onFTaxAddr}}" placeholder="บ้านเลขที่ ถนน แขวง/ตำบล เขต/อำเภอ จังหวัด รหัสไปรษณีย์"></textarea></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A3A3A">อีเมลรับใบกำกับภาษี (ไม่บังคับ)<input class="cx-in2" inputmode="email" value="{{fTaxEmail}}" onInput="{{onFTaxEmail}}" placeholder="เช่น name@example.com"></label>
+<sc-if value="{{hasFTaxErr}}" hint-placeholder-val="{{ false }}">
+<div role="alert" style="padding: 10px 12px; border-radius: 12px; background: #FDECEC; color: #B42318; font-size: 13px; font-weight: 600">{{fTaxErr}}</div>
+</sc-if>
+</sc-if>
 </div>
 </div>
 <div style="padding: 12px 16px 32px; background: #FFFFFF; border-top: 1px solid #EDEDED">
@@ -178,9 +268,9 @@ a{color:#C42D00}a:hover{color:#9E2400}
 class Component extends DCLogic {
 static {
 const P = this.prototype;
-const TR = {"ถัดไป": "Next", "และ": " and ", "ย้อนกลับ": "Back", "แก้ไข": "Edit", "ยืนยัน": "Confirm", "ลบ": "Delete", "แล้ว": "", "รถของคุณ": "Your car", "การชาร์จ": "Charge", "ทั้งหมด": "All", "ระบบ": "System", "ยกเลิก": "Cancel", "ปิด": "Closed", "เริ่มชาร์จ": "Start charging", "เริ่มต้น": "from", "ทั้งหมด (": "All (", "เพิ่ม": "Increase", "ค่าเริ่มต้น": "Default", "ตั้ง ": "Set ", "รถของฉัน": "My vehicles", "✓ รถหลัก": "✓ Main car", "ตั้งเป็นรถหลัก": "Set as main car", "ยังไม่มีรถในบัญชี": "No cars in your account", "เพิ่มรถของคุณ เพื่อให้แอปแนะนำสถานีและหัวชาร์จที่เหมาะสม": "Add your car so we can suggest the right stations and connectors.", "เพิ่มรถ": "Add car", "ลบรถ": "Remove car", "ยี่ห้อ": "Make", "ระบุยี่ห้อ": "Enter make", "รุ่น": "Model", "ทะเบียนรถ (ไม่บังคับ)": "Licence plate (optional)", "สีรถ": "Colour", "ยืนยันการลบรถ": "Confirm car removal", "ยี่ห้อรถ": "Car make", "เช่น Atto 3, ZS EV, Model Y": "e.g. Atto 3, ZS EV, Model Y", "เช่น 1กข 1234 กรุงเทพฯ": "e.g. 1กข 1234 Bangkok", "ยังไม่มีรถ": "No car yet", "ขาว": "White", "ดำ": "Black", "เทา": "Grey", "น้ำเงิน": "Blue", "แดง": "Red", "ทอง": "Gold", "ยังไม่ระบุทะเบียน": "No plate added", " เป็นรถหลักแล้ว": " is now your main car", "อื่นๆ": "Other", "คันนี้เป็นรถหลัก ระบบจะตั้งรถคันถัดไปเป็นรถหลักแทน": "This is your main car. Your next car will become the main car.", "ประวัติการชาร์จของรถคันนี้ยังคงอยู่ในบัญชี": "Charging history for this car stays in your account.", "ลบรถเรียบร้อยแล้ว": "Car removed", "แก้ไขข้อมูลรถ": "Edit car", "บันทึกการแก้ไข": "Save changes", "บันทึกข้อมูลรถแล้ว": "Car saved", "เพิ่ม ": "Added ", " แล้ว": "", "ยังไม่มี": "None yet", "แก้ไขข้อมูล": "Edit details", "บันทึก": "Save", "รถหลัก": "Main car", "กม.": "km", "ชม.": "hrs", "นาที": "min"};
-const PT = [["^รถทั้งหมด\\ \\((.+?)\\ คัน\\)\\ ·\\ รถหลักใช้เป็นค่าเริ่มต้นตอนเริ่มชาร์จ$", "All cars ({1}) · your main car is used by default when charging"], ["^ลบ\\ (.+?)\\ ออกจากบัญชี\\?$", "Remove {1} from your account?"], ["^แก้ไข\\ (.+?)$", "Edit {1}"], ["^ลบ\\ (.+?)$", "Remove {1}"]].map(([r, e]) => [new RegExp(r), e]);
-const SUB = ["เพิ่มรถของคุณ เพื่อให้แอปแนะนำสถานีและหัวชาร์จที่เหมาะสม", "คันนี้เป็นรถหลัก ระบบจะตั้งรถคันถัดไปเป็นรถหลักแทน", "ประวัติการชาร์จของรถคันนี้ยังคงอยู่ในบัญชี", "เช่น Atto 3, ZS EV, Model Y", "เช่น 1กข 1234 กรุงเทพฯ", "ทะเบียนรถ (ไม่บังคับ)", "บันทึกข้อมูลรถแล้ว", "ยังไม่มีรถในบัญชี", "ยังไม่ระบุทะเบียน", "ลบรถเรียบร้อยแล้ว", " เป็นรถหลักแล้ว", "ตั้งเป็นรถหลัก", "บันทึกการแก้ไข", "ยืนยันการลบรถ", "แก้ไขข้อมูลรถ", "ค่าเริ่มต้น", "แก้ไขข้อมูล", "เริ่มชาร์จ", "ระบุยี่ห้อ", "ยังไม่มีรถ", "ทั้งหมด (", "ย้อนกลับ", "รถของคุณ", "การชาร์จ", "เริ่มต้น", "รถของฉัน", "✓ รถหลัก", "ยี่ห้อรถ", "ยังไม่มี", "ทั้งหมด", "เพิ่มรถ", "น้ำเงิน", "ยืนยัน", "ยกเลิก", "ยี่ห้อ", "เพิ่ม ", "บันทึก", "รถหลัก", "ถัดไป", "แก้ไข", "เพิ่ม", "ตั้ง ", "อื่นๆ", "ระบบ", "ลบรถ", "รุ่น", "สีรถ", "นาที", "และ", "ปิด", "ขาว", "เทา", "แดง", "ทอง", "กม.", "ชม."];
+const TR = {"ถัดไป": "Next", "และ": " and ", "ย้อนกลับ": "Back", "แก้ไข": "Edit", "ยืนยัน": "Confirm", "ลบ": "Delete", "แล้ว": "", "รถของคุณ": "Your car", "การชาร์จ": "Charge", "ทั้งหมด": "All", "ระบบ": "System", "ยกเลิก": "Cancel", "ปิด": "Closed", "เริ่มชาร์จ": "Start charging", "เริ่มต้น": "from", "ทั้งหมด (": "All (", "เพิ่ม": "Increase", "ค่าเริ่มต้น": "Default", "ตั้ง ": "Set ", "รถของฉัน": "My vehicles", "✓ รถหลัก": "✓ Main car", "ตั้งเป็นรถหลัก": "Set as main car", "ยังไม่มีรถในบัญชี": "No cars in your account", "เพิ่มรถของคุณ เพื่อให้แอปแนะนำสถานีและหัวชาร์จที่เหมาะสม": "Add your car so we can suggest the right stations and connectors.", "เพิ่มรถ": "Add car", "ลบรถ": "Remove car", "ยี่ห้อ": "Make", "ระบุยี่ห้อ": "Enter make", "ระบุยี่ห้อรถ": "Enter car make", "รุ่น": "Model", "รุ่นรถ": "Car model", "ทะเบียนรถ (ไม่บังคับ)": "Licence plate (optional)", "สีรถ": "Colour", "ยืนยันการลบรถ": "Confirm car removal", "ยี่ห้อรถ": "Car make", "เช่น Atto 3, ZS EV, Model Y": "e.g. Atto 3, ZS EV, Model Y", "เช่น 1กข 1234 กรุงเทพฯ": "e.g. 1AB 1234 Bangkok", "ยังไม่มีรถ": "No car yet", "ขาว": "White", "ดำ": "Black", "เทา": "Grey", "น้ำเงิน": "Blue", "แดง": "Red", "ทอง": "Gold", "ยังไม่ระบุทะเบียน": "No plate added", " เป็นรถหลักแล้ว": " is now your main car", "อื่นๆ": "Other", "คันนี้เป็นรถหลัก ระบบจะตั้งรถคันถัดไปเป็นรถหลักแทน": "This is your main car. Your next car will become the main car.", "ประวัติการชาร์จของรถคันนี้ยังคงอยู่ในบัญชี": "Charging history for this car stays in your account.", "ลบรถเรียบร้อยแล้ว": "Car removed", "แก้ไขข้อมูลรถ": "Edit car", "บันทึกการแก้ไข": "Save changes", "บันทึกข้อมูลรถแล้ว": "Car saved", "เพิ่ม ": "Added ", " แล้ว": "", "ยังไม่มี": "None yet", "แก้ไขข้อมูล": "Edit details", "บันทึก": "Save", "รถหลัก": "Main car", "กม.": "km", "ชม.": "hrs", "นาที": "min", "ข้อมูลออกใบกำกับภาษี (ไม่บังคับ)": "Tax invoice details (optional)", "ข้อมูลออกใบกำกับภาษี": "Tax invoice details", "ใช้สำหรับออกใบกำกับภาษีเต็มรูปอัตโนมัติ": "Used automatically for full tax invoices", "ใช้ข้อมูลออกใบกำกับภาษี": "Enable tax invoice details", "✓ ใบกำกับภาษี": "✓ Tax invoice", "ยังไม่ตั้งค่าใบกำกับภาษี": "Tax invoice not set", "แก้ไข ›": "Edit ›", "ตั้งค่า ›": "Set up ›", "บุคคลธรรมดา": "Individual", "นิติบุคคล": "Corporate", "ประเภทผู้เสียภาษี": "Taxpayer type", "ดึงข้อมูลจากโปรไฟล์แล้ว": "Profile details applied", "ดึงข้อมูลจากโปรไฟล์": "Use profile details", "ชื่อ-นามสกุล": "Full name", "ชื่อบริษัท / นิติบุคคล": "Company / legal name", "เช่น Sawanya Srisawat": "e.g. Sawanya Srisawat", "เช่น บริษัท เทร่า ชาร์จ จำกัด": "e.g. Tera Charge Co., Ltd.", "สาขา": "Branch", "สำนักงานใหญ่": "Head Office", "เช่น สำนักงานใหญ่ หรือ 00001": "e.g. Head Office or 00001", "เลขประจำตัวผู้เสียภาษี (13 หลัก)": "Tax ID (13 digits)", "ตัวเลข 13 หลัก": "13-digit number", "ที่อยู่สำหรับออกใบกำกับภาษี": "Tax invoice address", "บ้านเลขที่ ถนน แขวง/ตำบล เขต/อำเภอ จังหวัด รหัสไปรษณีย์": "House no., road, sub-district, district, province, postcode", "อีเมลรับใบกำกับภาษี (ไม่บังคับ)": "Tax invoice email (optional)", "เช่น name@example.com": "e.g. name@example.com", "กรุณากรอกชื่อบริษัท / นิติบุคคล": "Please enter the company or legal name", "กรุณากรอกชื่อ-นามสกุลผู้เสียภาษี": "Please enter the taxpayer full name", "เลขประจำตัวผู้เสียภาษีต้องเป็นตัวเลข 13 หลัก": "Tax ID must be 13 digits", "กรุณากรอกที่อยู่สำหรับออกใบกำกับภาษี": "Please enter the tax invoice address", "รูปแบบอีเมลไม่ถูกต้อง": "Invalid email address format", "บันทึกข้อมูลใบกำกับภาษีแล้ว": "Tax invoice saved", "ปิดการใช้ใบกำกับภาษีแล้ว": "Tax invoice turned off", "99 ถ.บางนา-ตราด แขวงบางนา เขตบางนา กรุงเทพฯ 10260": "99 Bang Na-Trat Rd, Bang Na, Bangkok 10260"};
+const PT = [["^รถทั้งหมด\\ \\((.+?)\\ คัน\\)\\ ·\\ รถหลักใช้เป็นค่าเริ่มต้นตอนเริ่มชาร์จ$", "All cars ({1}) · your main car is used by default when charging"], ["^จัดการข้อมูลออกใบกำกับภาษี\\ (.+?)$", "Manage tax invoice for {1}"], ["^ลบ\\ (.+?)\\ ออกจากบัญชี\\?$", "Remove {1} from your account?"], ["^แก้ไข\\ (.+?)$", "Edit {1}"], ["^ลบ\\ (.+?)$", "Remove {1}"]].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["เพิ่มรถของคุณ เพื่อให้แอปแนะนำสถานีและหัวชาร์จที่เหมาะสม", "บ้านเลขที่ ถนน แขวง/ตำบล เขต/อำเภอ จังหวัด รหัสไปรษณีย์", "คันนี้เป็นรถหลัก ระบบจะตั้งรถคันถัดไปเป็นรถหลักแทน", "99 ถ.บางนา-ตราด แขวงบางนา เขตบางนา กรุงเทพฯ 10260", "เลขประจำตัวผู้เสียภาษีต้องเป็นตัวเลข 13 หลัก", "ประวัติการชาร์จของรถคันนี้ยังคงอยู่ในบัญชี", "ใช้สำหรับออกใบกำกับภาษีเต็มรูปอัตโนมัติ", "กรุณากรอกที่อยู่สำหรับออกใบกำกับภาษี", "กรุณากรอกชื่อ-นามสกุลผู้เสียภาษี", "ข้อมูลออกใบกำกับภาษี (ไม่บังคับ)", "เลขประจำตัวผู้เสียภาษี (13 หลัก)", "กรุณากรอกชื่อบริษัท / นิติบุคคล", "อีเมลรับใบกำกับภาษี (ไม่บังคับ)", "เช่น บริษัท เทร่า ชาร์จ จำกัด", "เช่น สำนักงานใหญ่ หรือ 00001", "ที่อยู่สำหรับออกใบกำกับภาษี", "บันทึกข้อมูลใบกำกับภาษีแล้ว", "เช่น Atto 3, ZS EV, Model Y", "ปิดการใช้ใบกำกับภาษีแล้ว", "ยังไม่ตั้งค่าใบกำกับภาษี", "ใช้ข้อมูลออกใบกำกับภาษี", "ดึงข้อมูลจากโปรไฟล์แล้ว", "เช่น 1กข 1234 กรุงเทพฯ", "ชื่อบริษัท / นิติบุคคล", "ทะเบียนรถ (ไม่บังคับ)", "รูปแบบอีเมลไม่ถูกต้อง", "เช่น Sawanya Srisawat", "เช่น name@example.com", "ข้อมูลออกใบกำกับภาษี", "ดึงข้อมูลจากโปรไฟล์", "บันทึกข้อมูลรถแล้ว", "ยังไม่มีรถในบัญชี", "ยังไม่ระบุทะเบียน", "ลบรถเรียบร้อยแล้ว", "ประเภทผู้เสียภาษี", " เป็นรถหลักแล้ว", "ตั้งเป็นรถหลัก", "บันทึกการแก้ไข", "ตัวเลข 13 หลัก", "ยืนยันการลบรถ", "แก้ไขข้อมูลรถ", "✓ ใบกำกับภาษี", "ระบุยี่ห้อรถ", "สำนักงานใหญ่", "ชื่อ-นามสกุล", "บุคคลธรรมดา", "ค่าเริ่มต้น", "แก้ไขข้อมูล", "ยังไม่มีรถ", "เริ่มชาร์จ", "ระบุยี่ห้อ", "นิติบุคคล", "ทั้งหมด (", "ตั้งค่า ›", "ย้อนกลับ", "รถของคุณ", "การชาร์จ", "เริ่มต้น", "รถของฉัน", "✓ รถหลัก", "ยี่ห้อรถ", "ยังไม่มี", "ทั้งหมด", "เพิ่มรถ", "น้ำเงิน", "แก้ไข ›", "ยืนยัน", "ยกเลิก", "ยี่ห้อ", "เพิ่ม ", "บันทึก", "รถหลัก", "รุ่นรถ", "ถัดไป", "แก้ไข", "เพิ่ม", "ตั้ง ", "อื่นๆ", "ระบบ", "ลบรถ", "รุ่น", "สีรถ", "สาขา", "นาที", "และ", "ปิด", "ขาว", "เทา", "แดง", "ทอง", "กม.", "ชม."];
 const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
 const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
 const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
@@ -212,35 +302,113 @@ const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide
 const rv = P.renderVals;
 P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
 }
-constructor(props) { super(props); this.state = Object.assign({ cars: this.seed(props.cars), main: props.cars === 'ยังไม่มีรถ' ? null : 1, del: null, toast: '', f: null }, this.screenState(props.screen)); }
-seed(k) { return k === 'ยังไม่มีรถ' ? [] : [{ id: 1, brand: 'Chery', model: 'Q', plate: '', color: '#FFFFFF' }, { id: 2, brand: 'BYD', model: 'Atto 3', plate: '', color: '#2E5E8C' }]; }
-screenState(s) { return s === 'เพิ่มรถ' ? { f: { id: null, brand: 'BYD', other: '', model: '', plate: '', color: '#FFFFFF', main: false } } : { f: null }; }
+constructor(props) {
+  super(props);
+  let cars = this.seed(props.cars);
+  let main = props.cars === 'ยังไม่มีรถ' ? null : 1;
+  if (props.cars !== 'ยังไม่มีรถ') {
+    try {
+      const saved = JSON.parse(localStorage.getItem('cx-vehicles') || 'null');
+      if (saved && Array.isArray(saved.cars)) {
+        cars = saved.cars.map((c) => Object.assign({}, c, { tax: this.normTax(c.tax) }));
+        main = saved.main !== undefined ? saved.main : (cars[0] ? cars[0].id : null);
+      }
+    } catch (e) {}
+  }
+  this.state = Object.assign({ cars, main, del: null, toast: '', f: null, tx: null }, this.screenState(props.screen));
+}
+normTax(t) { return Object.assign({ on: false, type: 'personal', name: '', branch: 'สำนักงานใหญ่', taxId: '', addr: '', email: '' }, t || {}); }
+blankForm(isMain) { return { id: null, brand: 'BYD', other: '', model: '', plate: '', color: '#FFFFFF', main: !!isMain, taxOn: false, taxType: 'personal', taxName: '', taxBranch: 'สำนักงานใหญ่', taxId: '', taxAddr: '', taxEmail: '', taxErr: '' }; }
+seed(k) {
+  return k === 'ยังไม่มีรถ' ? [] : [
+    { id: 1, brand: 'Chery', model: 'Q', plate: '', color: '#FFFFFF', tax: { on: true, type: 'personal', name: 'Sawanya Srisawat', branch: 'สำนักงานใหญ่', taxId: '1100201458921', addr: '99 ถ.บางนา-ตราด แขวงบางนา เขตบางนา กรุงเทพฯ 10260', email: 'sawanya.s@example.com' } },
+    { id: 2, brand: 'BYD', model: 'Atto 3', plate: '', color: '#2E5E8C', tax: { on: false, type: 'company', name: '', branch: 'สำนักงานใหญ่', taxId: '', addr: '', email: '' } }
+  ];
+}
+screenState(s) { return s === 'เพิ่มรถ' ? { f: this.blankForm(false), tx: null, del: null } : { f: null, tx: null }; }
 componentDidMount() { this.sync(); }
 componentDidUpdate(pp) {
 if (pp.screen !== this.props.screen) this.setState(this.screenState(this.props.screen));
-if (pp.cars !== this.props.cars) this.setState({ cars: this.seed(this.props.cars), main: this.props.cars === 'ยังไม่มีรถ' ? null : 1 });
+if (pp.cars !== this.props.cars) this.setState({ cars: this.seed(this.props.cars), main: this.props.cars === 'ยังไม่มีรถ' ? null : 1, tx: null, del: null });
 }
 componentWillUnmount() { clearTimeout(this._toast); }
-sync(cars, main) { cars = cars || this.state.cars; main = main === undefined ? this.state.main : main; const m = cars.find((c) => c.id === main); try { localStorage.setItem('cx-car', JSON.stringify(m ? { name: m.brand + ' ' + m.model, plate: m.plate, count: cars.length } : { name: '', plate: '', count: 0 })); } catch (e) {} }
+sync(cars, main) {
+  cars = cars || this.state.cars;
+  main = main === undefined ? this.state.main : main;
+  const m = cars.find((c) => c.id === main);
+  try {
+    localStorage.setItem('cx-car', JSON.stringify(m ? { name: m.brand + ' ' + m.model, plate: m.plate, count: cars.length } : { name: '', plate: '', count: 0 }));
+    localStorage.setItem('cx-cars', JSON.stringify(cars.map((c) => c.brand + ' ' + c.model)));
+    localStorage.setItem('cx-vehicles', JSON.stringify({ cars, main }));
+    const t = m && m.tax && m.tax.on ? m.tax : (cars.find((c) => c.tax && c.tax.on) || {}).tax;
+    if (t && t.on) localStorage.setItem('cx-tax-invoice', JSON.stringify(t));
+    else localStorage.removeItem('cx-tax-invoice');
+  } catch (e) {}
+}
 renderVals() {
 const accent = this.props.accent ?? '#FC3901';
 const st = this.state;
 const COLORS = [['#FFFFFF', 'ขาว'], ['#1F1F1F', 'ดำ'], ['#A9ADB3', 'เทา'], ['#2E5E8C', 'น้ำเงิน'], ['#C42D00', 'แดง'], ['#C9A227', 'ทอง']];
+const BR = ['BYD', 'MG', 'Tesla', 'ORA', 'NETA', 'Chery', 'Volvo', 'BMW', 'อื่นๆ'];
+const MODELS = { BYD: ['Atto 3', 'Dolphin', 'Seal', 'Sealion 6', 'M6'], MG: ['MG4', 'ZS EV', 'EP Plus', 'ES', 'Maxus 9'], Tesla: ['Model 3', 'Model Y'], ORA: ['Good Cat', '07'], NETA: ['V-II', 'X', 'S'], Chery: ['Q', 'OMODA C5', 'JAECOO 6'], Volvo: ['EX30', 'EX40', 'EC40'], BMW: ['iX1', 'iX3', 'i4', 'i5'] };
 const toast = (t) => { this.setState({ toast: t }); clearTimeout(this._toast); this._toast = setTimeout(() => this.setState({ toast: '' }), 2200); };
 const nameOf = (c) => c.brand + ' ' + c.model;
 const strokeOf = (hex) => hex === '#FFFFFF' ? '#BDBDBD' : 'rgba(0,0,0,0.25)';
-const cars = st.cars.map((c) => { const isMain = st.main === c.id; return {
-name: nameOf(c), plate: c.plate || 'ยังไม่ระบุทะเบียน', color: c.color, stroke: strokeOf(c.color), isMain, notMain: !isMain,
-border: isMain ? '1.5px solid ' + accent : '1px solid transparent',
-makeMain: () => { this.setState({ main: c.id }); this.sync(null, c.id); toast('ตั้ง ' + nameOf(c) + ' เป็นรถหลักแล้ว'); },
-edit: () => { const known = BR.indexOf(c.brand) >= 0; this.setState({ f: { id: c.id, brand: known ? c.brand : 'อื่นๆ', other: known ? '' : c.brand, model: c.model, plate: c.plate, color: c.color, main: isMain } }); },
-ask: () => this.setState({ del: c.id }) }; });
-const BR = ['BYD', 'MG', 'Tesla', 'ORA', 'NETA', 'Chery', 'Volvo', 'BMW', 'อื่นๆ'];
+const pillStyle = (on, h) => 'height: ' + (h || 38) + 'px; padding: 0 14px; border-radius: 12px; font-family: inherit; font-size: ' + (h ? 13 : 14) + 'px; font-weight: 600; cursor: pointer; ' + (on ? 'border: 1.5px solid ' + accent + '; background: #FFF1EB; color: #C42D00' : 'border: 1px solid #E0E0E0; background: #FFFFFF; color: #3A3A3A');
+const readProf = () => {
+  const fb = { name: 'Sawanya Srisawat', email: 'sawanya.s@example.com' };
+  try {
+    const p = JSON.parse(localStorage.getItem('cx-profile') || 'null');
+    if (!p) return fb;
+    const full = (((p.first || p.firstName || '') + ' ' + (p.last || p.lastName || '')).trim());
+    return { name: full || fb.name, email: (p.email || '').trim() || fb.email };
+  } catch (e) { return fb; }
+};
+const valTax = (t) => {
+  if (!t || !t.on) return '';
+  if (!String(t.name || '').trim()) return t.type === 'company' ? 'กรุณากรอกชื่อบริษัท / นิติบุคคล' : 'กรุณากรอกชื่อ-นามสกุลผู้เสียภาษี';
+  if (String(t.taxId || '').replace(/\D/g, '').length !== 13) return 'เลขประจำตัวผู้เสียภาษีต้องเป็นตัวเลข 13 หลัก';
+  if (!String(t.addr || '').trim()) return 'กรุณากรอกที่อยู่สำหรับออกใบกำกับภาษี';
+  const em = String(t.email || '').trim();
+  if (em && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return 'รูปแบบอีเมลไม่ถูกต้อง';
+  return '';
+};
+const taxTypes = (cur, pickFn) => [['personal', 'บุคคลธรรมดา'], ['company', 'นิติบุคคล']].map(([k, label]) => {
+  const on = (cur || 'personal') === k;
+  return { label, on: on ? 'true' : 'false', pick: () => pickFn(k), style: pillStyle(on) };
+});
+const cars = st.cars.map((c) => {
+  const isMain = st.main === c.id;
+  const t = this.normTax(c.tax);
+  const taxOn = !!t.on;
+  const taxSummary = taxOn ? ((t.type === 'company' ? 'นิติบุคคล' : 'บุคคลธรรมดา') + ' · ' + t.taxId + (t.name ? ' · ' + t.name : '')) : 'ยังไม่ตั้งค่าใบกำกับภาษี';
+  return {
+    name: nameOf(c), brand: c.brand, model: c.model, plate: c.plate || 'ยังไม่ระบุทะเบียน', color: c.color, stroke: strokeOf(c.color), isMain, notMain: !isMain,
+    taxOn, taxSummary, taxColor: taxOn ? '#1F1F1F' : '#6B6B6B', taxAction: taxOn ? 'แก้ไข ›' : 'ตั้งค่า ›',
+    border: isMain ? '1.5px solid ' + accent : '1px solid transparent',
+    makeMain: () => { this.setState({ main: c.id }); this.sync(null, c.id); toast('ตั้ง ' + nameOf(c) + ' เป็นรถหลักแล้ว'); },
+    openTax: () => this.setState({ tx: { carId: c.id, carName: nameOf(c), on: taxOn, type: t.type, name: t.name, branch: t.branch || 'สำนักงานใหญ่', taxId: t.taxId, addr: t.addr, email: t.email, err: '' } }),
+    edit: () => {
+      const known = BR.indexOf(c.brand) >= 0;
+      this.setState({ f: { id: c.id, brand: known ? c.brand : 'อื่นๆ', other: known ? '' : c.brand, model: c.model, plate: c.plate, color: c.color, main: isMain, taxOn, taxType: t.type, taxName: t.name, taxBranch: t.branch || 'สำนักงานใหญ่', taxId: t.taxId, taxAddr: t.addr, taxEmail: t.email, taxErr: '' } });
+    },
+    ask: () => this.setState({ del: c.id })
+  };
+});
 const f = st.f;
+const tx = st.tx;
 const delCar = st.cars.find((c) => c.id === st.del);
 const fBrand = f ? (f.brand === 'อื่นๆ' ? f.other.trim() : f.brand) : '';
 const valid = !!f && !!fBrand && !!f.model.trim();
-const setF = (k) => (e) => this.setState({ f: Object.assign({}, this.state.f, { [k]: e.target.value }) });
+const setF = (k) => (e) => this.setState({ f: Object.assign({}, this.state.f, { [k]: e.target.value, taxErr: '' }) });
+const setTx = (k) => (e) => this.setState({ tx: Object.assign({}, this.state.tx, { [k]: e.target.value, err: '' }) });
+const presetList = (f && f.brand !== 'อื่นๆ' && MODELS[f.brand]) ? MODELS[f.brand] : [];
+const modelPresets = presetList.map((m) => {
+  const on = !!f && f.model.trim() === m;
+  return { label: m, on: on ? 'true' : 'false', pick: () => this.setState({ f: Object.assign({}, this.state.f, { model: m }) }), style: pillStyle(on, 34) };
+});
+const fTaxIsCo = !!f && f.taxType === 'company';
+const txIsCo = !!tx && tx.type === 'company';
 return {
 accent, cars, count: st.cars.length, hasCars: st.cars.length > 0, noCars: st.cars.length === 0,
 showToast: !!st.toast, toast: st.toast,
@@ -248,22 +416,64 @@ showDel: !!delCar, delName: delCar ? nameOf(delCar) : '',
 delHint: delCar && st.main === delCar.id && st.cars.length > 1 ? 'คันนี้เป็นรถหลัก ระบบจะตั้งรถคันถัดไปเป็นรถหลักแทน' : 'ประวัติการชาร์จของรถคันนี้ยังคงอยู่ในบัญชี',
 cancelDel: () => this.setState({ del: null }),
 doDel: () => { const rest = st.cars.filter((c) => c.id !== st.del); const nm = st.main === st.del ? (rest[0] ? rest[0].id : null) : st.main; this.setState({ cars: rest, del: null, main: nm }); this.sync(rest, nm); toast('ลบรถเรียบร้อยแล้ว'); },
-openAdd: () => this.setState({ f: { id: null, brand: 'BYD', other: '', model: '', plate: '', color: '#FFFFFF', main: st.cars.length === 0 } }),
+showTaxSheet: !!tx, txCarName: tx ? tx.carName : '',
+txOn: !!tx && !!tx.on, txOnStr: tx && tx.on ? 'true' : 'false',
+txSwitchBg: tx && tx.on ? accent : '#BDBDBD', txSwitchAlign: tx && tx.on ? 'flex-end' : 'flex-start',
+closeTax: () => this.setState({ tx: null }),
+toggleTxOn: () => this.setState({ tx: Object.assign({}, this.state.tx, { on: !this.state.tx.on, err: '' }) }),
+prefillTx: () => { const pr = readProf(); this.setState({ tx: Object.assign({}, this.state.tx, { name: pr.name, email: pr.email, err: '' }) }); toast('ดึงข้อมูลจากโปรไฟล์แล้ว'); },
+txTypes: taxTypes(tx ? tx.type : 'personal', (k) => this.setState({ tx: Object.assign({}, this.state.tx, { type: k, err: '' }) })),
+txIsCo, txNameLabel: txIsCo ? 'ชื่อบริษัท / นิติบุคคล' : 'ชื่อ-นามสกุล', txNamePh: txIsCo ? 'เช่น บริษัท เทร่า ชาร์จ จำกัด' : 'เช่น Sawanya Srisawat',
+txName: tx ? tx.name : '', txBranch: tx ? tx.branch : '', txId: tx ? tx.taxId : '', txAddr: tx ? tx.addr : '', txEmail: tx ? tx.email : '',
+onTxName: setTx('name'), onTxBranch: setTx('branch'),
+onTxId: (e) => this.setState({ tx: Object.assign({}, this.state.tx, { taxId: String(e.target.value || '').replace(/\D/g, '').slice(0, 13), err: '' }) }),
+onTxAddr: setTx('addr'), onTxEmail: setTx('email'),
+hasTxErr: !!(tx && tx.err), txErr: tx ? tx.err : '',
+saveTax: () => {
+  const tx0 = this.state.tx;
+  if (!tx0) return;
+  const taxObj = { on: !!tx0.on, type: tx0.type || 'personal', name: (tx0.name || '').trim(), branch: tx0.type === 'company' ? ((tx0.branch || '').trim() || 'สำนักงานใหญ่') : 'สำนักงานใหญ่', taxId: String(tx0.taxId || '').replace(/\D/g, '').slice(0, 13), addr: (tx0.addr || '').trim(), email: (tx0.email || '').trim() };
+  if (taxObj.on) {
+    const err = valTax(taxObj);
+    if (err) { this.setState({ tx: Object.assign({}, tx0, { err }) }); return; }
+  }
+  const list = st.cars.map((c) => c.id === tx0.carId ? Object.assign({}, c, { tax: taxObj }) : c);
+  this.setState({ cars: list, tx: null });
+  this.sync(list, st.main);
+  toast(taxObj.on ? 'บันทึกข้อมูลใบกำกับภาษีแล้ว' : 'ปิดการใช้ใบกำกับภาษีแล้ว');
+},
+openAdd: () => this.setState({ f: this.blankForm(st.cars.length === 0) }),
 closeForm: () => this.setState({ f: null }),
 showForm: !!f, formTitle: f && f.id ? 'แก้ไขข้อมูลรถ' : 'เพิ่มรถ', saveLabel: f && f.id ? 'บันทึกการแก้ไข' : 'เพิ่มรถ',
-brands: BR.map((b) => { const on = !!f && f.brand === b; return { label: b, on: on ? 'true' : 'false', pick: () => this.setState({ f: Object.assign({}, this.state.f, { brand: b }) }),
-style: 'height: 38px; padding: 0 14px; border-radius: 12px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; ' + (on ? 'border: 1.5px solid ' + accent + '; background: #FFF1EB; color: #C42D00' : 'border: 1px solid #E0E0E0; background: #FFFFFF; color: #3A3A3A') }; }),
+brands: BR.map((b) => { const on = !!f && f.brand === b; return { label: b, on: on ? 'true' : 'false', pick: () => this.setState({ f: Object.assign({}, this.state.f, { brand: b }) }), style: pillStyle(on) }; }),
+hasModelPresets: modelPresets.length > 0, modelPresets,
 isOther: !!f && f.brand === 'อื่นๆ', fOther: f ? f.other : '', fModel: f ? f.model : '', fPlate: f ? f.plate : '',
 onOther: setF('other'), onModel: setF('model'), onPlate: setF('plate'),
 colors: COLORS.map(([hex, name]) => { const on = !!f && f.color === hex; return { hex, name, on: on ? 'true' : 'false', pick: () => this.setState({ f: Object.assign({}, this.state.f, { color: hex }) }),
 bd: hex === '#FFFFFF' ? '1px solid #D4D4D4' : '1px solid transparent', ring: on ? '0 0 0 3px #FFFFFF, 0 0 0 5px ' + accent : 'none' }; }),
-preview: f ? [{ color: f.color, stroke: strokeOf(f.color) }] : [], pvName: f ? ((fBrand || 'ยี่ห้อ') + ' ' + (f.model || 'รุ่น')) : '',
+preview: f ? [{ color: f.color, stroke: strokeOf(f.color) }] : [], pvName: f ? ((fBrand || 'ยี่ห้อรถ') + ' ' + (f.model || 'รุ่นรถ')) : '',
 fMain: !!f && f.main, mainStr: f && f.main ? 'true' : 'false', mainBg: f && f.main ? accent : '#FFFFFF', mainBorder: f && f.main ? accent : '#BDBDBD',
 toggleMain: () => this.setState({ f: Object.assign({}, this.state.f, { main: !this.state.f.main }) }),
+fTaxOn: !!(f && f.taxOn), fTaxOnStr: f && f.taxOn ? 'true' : 'false',
+fTaxSwitchBg: f && f.taxOn ? accent : '#BDBDBD', fTaxSwitchAlign: f && f.taxOn ? 'flex-end' : 'flex-start',
+toggleFTax: () => this.setState({ f: Object.assign({}, this.state.f, { taxOn: !this.state.f.taxOn, taxErr: '' }) }),
+prefillFTax: () => { const pr = readProf(); this.setState({ f: Object.assign({}, this.state.f, { taxName: pr.name, taxEmail: pr.email, taxErr: '' }) }); toast('ดึงข้อมูลจากโปรไฟล์แล้ว'); },
+fTaxTypes: taxTypes(f ? f.taxType : 'personal', (k) => this.setState({ f: Object.assign({}, this.state.f, { taxType: k, taxErr: '' }) })),
+fTaxIsCo, fTaxNameLabel: fTaxIsCo ? 'ชื่อบริษัท / นิติบุคคล' : 'ชื่อ-นามสกุล', fTaxNamePh: fTaxIsCo ? 'เช่น บริษัท เทร่า ชาร์จ จำกัด' : 'เช่น Sawanya Srisawat',
+fTaxName: f ? f.taxName : '', fTaxBranch: f ? f.taxBranch : '', fTaxId: f ? f.taxId : '', fTaxAddr: f ? f.taxAddr : '', fTaxEmail: f ? f.taxEmail : '',
+onFTaxName: setF('taxName'), onFTaxBranch: setF('taxBranch'),
+onFTaxId: (e) => this.setState({ f: Object.assign({}, this.state.f, { taxId: String(e.target.value || '').replace(/\D/g, '').slice(0, 13), taxErr: '' }) }),
+onFTaxAddr: setF('taxAddr'), onFTaxEmail: setF('taxEmail'),
+hasFTaxErr: !!(f && f.taxErr), fTaxErr: f ? f.taxErr : '',
 saveBg: valid ? accent : '#BDBDBD', savePe: valid ? 'auto' : 'none', noSaveStr: valid ? 'false' : 'true',
 saveCar: () => {
 if (!valid) return;
-const rec = { brand: fBrand, model: f.model.trim(), plate: f.plate.trim(), color: f.color };
+const taxObj = { on: !!f.taxOn, type: f.taxType || 'personal', name: (f.taxName || '').trim(), branch: f.taxType === 'company' ? ((f.taxBranch || '').trim() || 'สำนักงานใหญ่') : 'สำนักงานใหญ่', taxId: String(f.taxId || '').replace(/\D/g, '').slice(0, 13), addr: (f.taxAddr || '').trim(), email: (f.taxEmail || '').trim() };
+if (taxObj.on) {
+  const err = valTax(taxObj);
+  if (err) { this.setState({ f: Object.assign({}, this.state.f, { taxErr: err }) }); return; }
+}
+const rec = { brand: fBrand, model: f.model.trim(), plate: f.plate.trim(), color: f.color, tax: taxObj };
 let list, id;
 if (f.id) { id = f.id; list = st.cars.map((c) => c.id === id ? Object.assign({ id }, rec) : c); }
 else { id = Date.now(); list = st.cars.concat([Object.assign({ id }, rec)]); }

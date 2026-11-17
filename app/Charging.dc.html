@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html lang="th">
 <head>
 <meta charset="utf-8">
@@ -139,25 +140,10 @@ a{color:#C42D00}a:hover{color:#9E2400}
 .cx-boost .cx-eyes{animation:none;opacity:1}
 @media (prefers-reduced-motion: reduce){.cx-head,.cx-kick,.cx-ear,.cx-plugled,.cx-disp,.cx-eyes,.cx-fillp,.cx-boltb{animation:none}.cx-eyes{opacity:0}}
 [data-theme="dark"] [stroke="#E6DCD8"]{stroke:#3A3A40}
-@keyframes bmBub{0%{transform:translateY(0);opacity:0}15%{opacity:.9}100%{transform:translateY(-190px);opacity:0}}
-.cx-bub2{animation:bmBub 3s ease-in infinite}
-@keyframes bmSheen{0%{transform:skewX(-12deg) translateX(0)}100%{transform:skewX(-12deg) translateX(160px)}}
-.cx-sheen{animation:bmSheen 3.2s ease-in-out infinite}
-@keyframes bmLed{0%,100%{opacity:.5}50%{opacity:1}}
-.cx-capled{animation:bmLed 1.6s ease-in-out infinite}
-@keyframes bmCar{0%,100%{opacity:.4}50%{opacity:.7}}
-.cx-car{animation:bmCar 3s ease-in-out infinite}
-@media (prefers-reduced-motion: reduce){.cx-bub2,.cx-sheen,.cx-capled,.cx-car{animation:none}}
-@keyframes bmSlosh{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.8)}}
-.cx-slosh2{transform-box:fill-box;transform-origin:center;animation:bmSlosh 2.4s ease-in-out infinite}
-.cx-bub2 circle{}
-@media (prefers-reduced-motion: reduce){.cx-slosh2{animation:none}}
 [data-theme="dark"] [stroke="#1F1F1F"][stroke-opacity="0.18"]{stroke:#FFFFFF}
 @keyframes bmHaloP{0%,100%{opacity:.5}50%{opacity:.85}}
 .cx-halo2{animation:bmHaloP 2.4s ease-in-out infinite}
-@keyframes bmNeonP{0%,100%{opacity:.75}50%{opacity:1}}
-.cx-neon{animation:bmNeonP 1.8s ease-in-out infinite}
-@media (prefers-reduced-motion: reduce){.cx-halo2,.cx-neon{animation:none}}
+@media (prefers-reduced-motion: reduce){.cx-halo2{animation:none}}
 [data-theme="dark"] [fill="#EFEFEF"]{fill:#0B0B0D}
 [data-theme="dark"] [stroke="#DADADA"]{stroke:#3A3A40}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F7EFD6"],[style*="background: rgb(247, 239, 214)"]){background-color:rgba(212,175,55,.2)!important}
@@ -194,6 +180,41 @@ a{color:#C42D00}a:hover{color:#9E2400}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(189, 189, 189)"]{background-color:#55555C!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(247, 239, 214)"]{background-color:rgba(212,175,55,.2)!important}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"]){border-color:#35353B!important}
+@keyframes dwWave1{from{transform:translateX(0)}to{transform:translateX(-80px)}}
+@keyframes dwWave2{from{transform:translateX(0)}to{transform:translateX(80px)}}
+@keyframes dwBubUp{0%{transform:translateY(0) scale(.75);opacity:0}18%{opacity:.92}82%{opacity:.8}100%{transform:translateY(-80px) scale(1);opacity:0}}
+@keyframes dwOrbFloat{0%{transform:translateY(10px) scale(.8);opacity:0}22%{opacity:.95}78%{opacity:.85}100%{transform:translateY(-36px) scale(.95);opacity:0}}
+.dw-wave1{animation:dwWave1 2.7s linear infinite}
+.dw-wave2{animation:dwWave2 3.8s linear infinite}
+.dw-bub{animation:dwBubUp 3.2s ease-in infinite}
+.dw-orb{animation:dwOrbFloat 3.4s ease-out infinite}
+.db1{animation-delay:-.4s;animation-duration:3.1s}.db2{animation-delay:-1.7s;animation-duration:2.6s}.db3{animation-delay:-2.5s;animation-duration:3.6s}
+.do1{animation-delay:-.3s;animation-duration:3.2s}.do2{animation-delay:-1.9s;animation-duration:3.7s}.do3{animation-delay:-1.1s;animation-duration:2.9s}
+@media (prefers-reduced-motion: reduce){.dw-wave1,.dw-wave2,.dw-bub,.dw-orb{animation:none}}
+.cx-bat-card{background:#FFFFFF;border:1px solid #F0ECEA;box-shadow:0 10px 28px rgba(31,31,31,0.06)}
+.cx-bat-vdiv{background:#E8E2DF}
+.cx-bat-foot{border-top:1px solid #F2EEEC;color:#524A47}
+.cx-bat-frame{fill:none;stroke:#2A221F}
+.cx-bat-cap{fill:#2A221F}
+.cx-bat-cavity{fill:#FFF7F3}
+.cx-bat-ok-pill{background:#FFF1EB;color:#C42D00}
+.cx-bat-ok-dot{background:#FC3901}
+.cx-bat-full-pill{background:#E7F6EE;color:#146C3E}
+.cx-bat-full-dot{background:#1E9E5A}
+.cx-bat-theme-txt{color:#C42D00}
+.cx-bat-full-txt{color:#146C3E}
+[data-theme="dark"] .cx-bat-card{background-color:#1C1C1E!important;border-color:#2E2E33!important;box-shadow:0 12px 30px rgba(0,0,0,0.45)!important}
+[data-theme="dark"] .cx-bat-vdiv{background-color:#35353B!important}
+[data-theme="dark"] .cx-bat-foot{border-top-color:#2E2E33!important;color:#A6A6AD!important}
+[data-theme="dark"] .cx-bat-frame{stroke:#F3F3F4}
+[data-theme="dark"] .cx-bat-cap{fill:#F3F3F4}
+[data-theme="dark"] .cx-bat-cavity{fill:#140E0C}
+[data-theme="dark"] .cx-bat-ok-pill{background-color:rgba(252,57,1,.18)!important;color:#FF7A4D!important}
+[data-theme="dark"] .cx-bat-ok-dot{background-color:#FC3901!important}
+[data-theme="dark"] .cx-bat-full-pill{background-color:rgba(46,180,110,.18)!important;color:#5AD49B!important}
+[data-theme="dark"] .cx-bat-full-dot{background-color:#5AD49B!important}
+[data-theme="dark"] .cx-bat-theme-txt{color:#FF7A4D!important}
+[data-theme="dark"] .cx-bat-full-txt{color:#5AD49B!important}
 </style>
 </helmet>
 <div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; box-sizing: border-box; background: #FFFFFF; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; display: flex; flex-direction: column; padding: 56px 20px 34px">
@@ -208,79 +229,78 @@ a{color:#C42D00}a:hover{color:#9E2400}
 </div>
 
 <div style="margin-top: 14px">
-<div role="img" aria-label="แบตเตอรี่ {{charge}} เปอร์เซ็นต์ กำลังไฟ 142 kW เหลือเวลาประมาณ 18 นาที" style="position: relative; width: 350px; height: 318px; border-radius: 24px; overflow: hidden; background: #FFFFFF; box-shadow: 0 10px 28px rgba(31,31,31,0.06)">
-<div aria-hidden="true" style="position: absolute; inset: 0; background: radial-gradient(55% 45% at 50% 62%, rgba(252,57,1,0.16) 0%, rgba(252,57,1,0) 100%)"></div>
-<svg aria-hidden="true" width="350" height="318" viewBox="0 0 350 318" style="position: absolute; inset: 0">
+<div class="cx-bat-card" role="img" aria-label="{{bat.aria}}" style="width: 350px; box-sizing: border-box; border-radius: 24px; padding: 16px 18px 14px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: center">
+<span class="{{bat.pillCls}}" style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 600"><span class="cx-live {{bat.dotCls}}" style="width: 7px; height: 7px; border-radius: 50%"></span>{{bat.status}}</span>
+</div>
+
+<div style="display: flex; justify-content: center">
+<svg aria-hidden="true" width="96" height="170" viewBox="0 0 96 170" style="display: block">
 <defs>
-<linearGradient id="bmMetal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1E1E22"></stop><stop offset="0.18" stop-color="#5A5A62"></stop><stop offset="0.34" stop-color="#B4B4BC"></stop><stop offset="0.5" stop-color="#55555D"></stop><stop offset="0.82" stop-color="#2E2E33"></stop><stop offset="1" stop-color="#141417"></stop></linearGradient><linearGradient id="bmMetalTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D6D6DC"></stop><stop offset="0.5" stop-color="#7A7A82"></stop><stop offset="1" stop-color="#3A3A40"></stop></linearGradient>
-<linearGradient id="bmLiq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF8A4C"></stop><stop offset="0.5" stop-color="{{accent}}"></stop><stop offset="1" stop-color="#B82A00"></stop></linearGradient>
-<linearGradient id="bmGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.5"></stop><stop offset="0.14" stop-color="#FFFFFF" stop-opacity="0.08"></stop><stop offset="0.8" stop-color="#FFFFFF" stop-opacity="0"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0.3"></stop></linearGradient>
-<linearGradient id="bmShade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3A0A00" stop-opacity="0.55"></stop><stop offset="0.18" stop-color="#3A0A00" stop-opacity="0.08"></stop><stop offset="0.36" stop-color="#FFFFFF" stop-opacity="0.18"></stop><stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0"></stop><stop offset="0.82" stop-color="#3A0A00" stop-opacity="0.15"></stop><stop offset="1" stop-color="#3A0A00" stop-opacity="0.6"></stop></linearGradient>
-<linearGradient id="bmTopGlow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB08A" stop-opacity="0.6"></stop><stop offset="1" stop-color="#FFB08A" stop-opacity="0"></stop></linearGradient>
-<radialGradient id="bmSurf" cx="0.42" cy="0.4" r="0.7"><stop offset="0" stop-color="#FFC4A4"></stop><stop offset="0.6" stop-color="#FF7A3D"></stop><stop offset="1" stop-color="#D93A06"></stop></radialGradient>
-<linearGradient id="bmCapShadow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000000" stop-opacity="0.28"></stop><stop offset="1" stop-color="#000000" stop-opacity="0"></stop></linearGradient>
-<filter id="bmNeon" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur in="SourceGraphic" stdDeviation="2" result="a"></feGaussianBlur><feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="b"></feMergeNode><feMergeNode in="a"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter><filter id="bmHalo" x="-80%" y="-40%" width="260%" height="180%"><feGaussianBlur stdDeviation="16"></feGaussianBlur></filter>
-<clipPath id="bmBody"><path d="M121 96 V282 A54 9 0 0 0 229 282 V96 Z"></path></clipPath>
-<clipPath id="bmLiqC"><rect x="120" y="{{bm.y}}" width="110" height="220"></rect></clipPath>
-<filter id="bmGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.5" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
+<linearGradient id="dwWaveFrontTheme" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFCA99"></stop><stop offset="0.45" stop-color="#FF7338"></stop><stop offset="1" stop-color="{{accent}}"></stop></linearGradient>
+<radialGradient id="dwOrbTheme" cx="0.35" cy="0.3" r="0.7"><stop offset="0" stop-color="#FFF0E2"></stop><stop offset="0.55" stop-color="#FF8C5A"></stop><stop offset="1" stop-color="#D93A06"></stop></radialGradient>
+<filter id="dwHalo" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="10"></feGaussianBlur></filter>
+<clipPath id="dwInner"><rect x="8" y="24" width="80" height="134" rx="14"></rect></clipPath>
+<clipPath id="dwLiqClip"><rect x="8" y="{{bat.y}}" width="80" height="145"></rect></clipPath>
 </defs>
-<path class="cx-car" d="M14 268 Q12 246 34 238 L78 228 Q104 206 136 196 M214 194 Q258 194 288 214 L318 232 Q338 238 338 256 V268 M14 268 H40 M100 268 H250 M310 268 H338 M40 268 A30 30 0 0 1 100 268 M250 268 A30 30 0 0 1 310 268" fill="none" stroke="{{accent}}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" filter="url(#bmNeon)"></path>
-<circle cx="70" cy="268" r="20" fill="none" stroke="{{accent}}" stroke-width="2" opacity="0.7" filter="url(#bmNeon)"></circle>
-<circle cx="280" cy="268" r="20" fill="none" stroke="{{accent}}" stroke-width="2" opacity="0.7" filter="url(#bmNeon)"></circle>
-<ellipse class="cx-halo2" cx="175" cy="308" rx="96" ry="12" fill="{{accent}}" opacity="0.55" filter="url(#bmHalo)"></ellipse><ellipse cx="175" cy="304" rx="58" ry="4" fill="#000000" opacity="0.35" filter="url(#bmGlow)"></ellipse>
-<rect class="cx-halo2" x="112" y="{{bm.y}}" width="126" height="{{bm.h}}" rx="30" fill="{{accent}}" opacity="0.7" filter="url(#bmHalo)"></rect>
-<path d="M119 96 V282 A56 10 0 0 0 231 282 V96 Z" fill="#FC3901" fill-opacity="0.06"></path>
-<g clip-path="url(#bmBody)">
-<g class="cx-rise"><g transform="translate(0 {{bm.y}})">
-<rect x="115" y="0" width="120" height="200" fill="url(#bmLiq)"></rect>
-<rect x="115" y="0" width="120" height="200" fill="url(#bmShade)"></rect>
-<rect x="115" y="0" width="120" height="26" fill="url(#bmTopGlow)"></rect>
+<ellipse class="cx-halo2" cx="48" cy="164" rx="34" ry="4.5" fill="{{accent}}" opacity="0.2" filter="url(#dwHalo)"></ellipse>
+<rect class="cx-bat-cap" x="31" y="8" width="34" height="7.5" rx="3.75"></rect>
+<rect class="cx-bat-cavity" x="8" y="24" width="80" height="134" rx="14"></rect>
+<g clip-path="url(#dwInner)">
+<g class="cx-rise"><g transform="translate(0 {{bat.y}})">
+<g class="dw-wave2">
+<path d="M -72 3 Q -52 8.5 -32 3 T 8 3 T 48 3 T 88 3 T 128 3 T 168 3 V 150 H -72 Z" fill="#FF9D72" fill-opacity="0.58"></path>
+</g>
+<g class="dw-wave1">
+<path d="M 8 0 Q 28 -5.5 48 0 T 88 0 T 128 0 T 168 0 T 208 0 T 248 0 V 150 H 8 Z" fill="url(#dwWaveFrontTheme)"></path>
+</g>
 </g></g>
-<g clip-path="url(#bmLiqC)"><g class="cx-bub2" style="animation-delay: -2.00s; animation-duration: 3.92s"><circle cx="171" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="169.6" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -1.83s; animation-duration: 3.16s"><circle cx="207" cy="276" r="2.6" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="206.2" cy="275.1" r="0.8" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.99s; animation-duration: 4.59s"><circle cx="171" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="169.5" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.36s; animation-duration: 4.02s"><circle cx="147" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="146.0" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -1.26s; animation-duration: 3.06s"><circle cx="173" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="171.7" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -1.16s; animation-duration: 2.74s"><circle cx="201" cy="276" r="1.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="200.9" cy="275.6" r="0.4" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.07s; animation-duration: 3.40s"><circle cx="170" cy="276" r="1.6" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="169.6" cy="275.4" r="0.5" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.39s; animation-duration: 3.37s"><circle cx="138" cy="276" r="1.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="137.7" cy="275.6" r="0.4" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.83s; animation-duration: 4.29s"><circle cx="184" cy="276" r="2.6" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="182.7" cy="275.1" r="0.8" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -0.00s; animation-duration: 3.02s"><circle cx="217" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="215.7" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.64s; animation-duration: 3.54s"><circle cx="189" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="187.4" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.92s; animation-duration: 3.39s"><circle cx="131" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="130.2" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -0.29s; animation-duration: 3.86s"><circle cx="136" cy="276" r="1.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="135.3" cy="275.6" r="0.4" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.11s; animation-duration: 3.14s"><circle cx="147" cy="276" r="1.6" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="146.6" cy="275.4" r="0.5" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -0.35s; animation-duration: 3.27s"><circle cx="184" cy="276" r="2.6" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="183.1" cy="275.1" r="0.8" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -3.86s; animation-duration: 4.12s"><circle cx="159" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="158.2" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -0.47s; animation-duration: 3.09s"><circle cx="206" cy="276" r="3.2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="204.7" cy="274.9" r="1.0" fill="#FFFFFF" opacity="0.9"></circle></g><g class="cx-bub2" style="animation-delay: -0.40s; animation-duration: 2.72s"><circle cx="151" cy="276" r="2" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFE2D3" stroke-opacity="0.75" stroke-width="0.8"></circle><circle cx="150.3" cy="275.3" r="0.6" fill="#FFFFFF" opacity="0.9"></circle></g><rect class="cx-sheen" x="100" y="80" width="26" height="210" fill="#FFFFFF" opacity="0.18" transform="skewX(-12)"></rect></g>
-<path d="M226 116 h-6" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path><path d="M226 134 h-6" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path><path d="M226 153 h-6" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path><path d="M226 171 h-6" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path><path d="M226 189 h-11" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path><path d="M226 207 h-6" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path><path d="M226 225 h-6" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path><path d="M226 244 h-6" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path><path d="M226 262 h-6" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"></path>
+<g clip-path="url(#dwLiqClip)" opacity="{{bat.orbOpacity}}">
+<g class="dw-bub db1"><circle cx="28" cy="148" r="2.1" fill="url(#dwOrbTheme)"></circle></g>
+<g class="dw-bub db2"><circle cx="48" cy="150" r="3.1" fill="url(#dwOrbTheme)"></circle></g>
+<g class="dw-bub db3"><circle cx="66" cy="146" r="1.8" fill="url(#dwOrbTheme)"></circle></g>
 </g>
-<g class="cx-rise"><g transform="translate(0 {{bm.y}})"><ellipse class="cx-slosh2" cx="175" cy="0" rx="53.5" ry="8.5" fill="url(#bmSurf)"></ellipse><ellipse cx="175" cy="0" rx="53.5" ry="8.5" fill="none" stroke="#FFD2BC" stroke-opacity="0.7" stroke-width="1"></ellipse></g></g>
-<ellipse cx="175" cy="96" rx="56" ry="10" fill="none" stroke="#1F1F1F" stroke-opacity="0.18" stroke-width="1"></ellipse>
-<rect x="119" y="96" width="112" height="14" fill="url(#bmCapShadow)"></rect>
-<path d="M119 96 V282 A56 10 0 0 0 231 282 V96 Z" fill="url(#bmGlass)" opacity="0.55"></path>
-<g class="cx-neon" filter="url(#bmNeon)" fill="none" stroke-linecap="round">
-<path d="M119.5 98 V282" stroke="{{accent}}" stroke-width="2"></path>
-<path d="M230.5 98 V282" stroke="{{accent}}" stroke-width="2"></path>
-<path d="M119 282 A56 10 0 0 0 231 282" stroke="{{accent}}" stroke-width="2"></path>
-<ellipse cx="175" cy="96" rx="56" ry="10" stroke="#FF8A5C" stroke-width="1.4"></ellipse>
+<g transform="translate(0 {{bat.y}})" opacity="{{bat.orbOpacity}}">
+<g class="dw-orb do1"><circle cx="26" cy="4" r="2.4" fill="url(#dwOrbTheme)"></circle></g>
+<g class="dw-orb do2"><circle cx="49" cy="2" r="3.0" fill="url(#dwOrbTheme)"></circle></g>
+<g class="dw-orb do3"><circle cx="68" cy="6" r="2.0" fill="url(#dwOrbTheme)"></circle></g>
 </g>
-
-<path d="M121.5 100 V280" stroke="#FFFFFF" stroke-opacity="0.75" stroke-width="3.5" stroke-linecap="round"></path>
-<path d="M131 104 V274" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="5" stroke-linecap="round"></path>
-<path d="M228.5 100 V280" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="2.5" stroke-linecap="round"></path>
-<path d="M119 96 V282 M231 96 V282" stroke="#1F1F1F" stroke-opacity="0.22" stroke-width="1.2"></path>
-<path d="M115 280 A60 10 0 0 0 235 280 V296 A60 10 0 0 1 115 296 Z" fill="url(#bmMetal)"></path><path d="M115 285 A60 10 0 0 0 235 285" fill="none" stroke="#FFFFFF" stroke-opacity="0.14" stroke-width="0.8"></path><path d="M117 297 A58 9 0 0 0 233 297" fill="none" stroke="#000000" stroke-opacity="0.3" stroke-width="1.2"></path>
-<path d="M115 280 A60 10 0 0 0 235 280" fill="none" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="1"></path>
-<path class="cx-capled" d="M116 291 A60 10 0 0 0 234 291" fill="none" stroke="#FF5A1F" stroke-width="3" stroke-linecap="round" filter="url(#bmNeon)"></path>
-<path d="M115 78 V96 A60 10 0 0 0 235 96 V78 Z" fill="url(#bmMetal)"></path><path d="M115 82 A60 10 0 0 0 235 82" fill="none" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="0.8"></path><path d="M115 86 A60 10 0 0 0 235 86" fill="none" stroke="#000000" stroke-opacity="0.15" stroke-width="0.8"></path>
-<path class="cx-capled" d="M116 90 A60 10 0 0 0 234 90" fill="none" stroke="#FF5A1F" stroke-width="3" stroke-linecap="round" filter="url(#bmNeon)"></path>
-<ellipse cx="175" cy="78" rx="60" ry="10" fill="url(#bmMetalTop)"></ellipse>
-<ellipse cx="175" cy="78" rx="60" ry="10" fill="none" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="0.8"></ellipse><ellipse cx="175" cy="78" rx="52" ry="8.4" fill="none" stroke="#000000" stroke-opacity="0.18" stroke-width="0.8"></ellipse><ellipse cx="175" cy="78" rx="34" ry="5.6" fill="none" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="0.8"></ellipse>
-<ellipse cx="175" cy="78" rx="44" ry="6.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="1"></ellipse>
-<path d="M155 62 V76 A20 4.5 0 0 0 195 76 V62 Z" fill="url(#bmMetal)"></path>
-<ellipse cx="175" cy="62" rx="20" ry="4.5" fill="url(#bmMetalTop)"></ellipse>
-<path d="M150 54 h4 M152 52 v4" stroke="#C9A02E" stroke-width="1.4" stroke-linecap="round" opacity="0"></path>
+</g>
+<rect class="cx-bat-frame" x="4" y="20" width="88" height="142" rx="18" stroke-width="2"></rect>
 </svg>
-<div style="position: absolute; left: 18px; top: 16px; display: flex; flex-direction: column; gap: 0">
-<span style="font-size: 12.5px; color: #6B6B6B">กำลังไฟ</span>
-<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 24px; line-height: 1.2; color: #1F1F1F">142 <span style="font-size: 14px; color: #C42D00">kW</span></span>
 </div>
-<div style="position: absolute; right: 18px; top: 16px; display: flex; flex-direction: column; align-items: flex-end; gap: 0">
-<span style="font-size: 12.5px; color: #6B6B6B">เหลือเวลา</span>
-<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 24px; line-height: 1.2; color: #1F1F1F">18 <span style="font-size: 14px; color: #C42D00">นาที</span></span>
+
+<div style="display: grid; grid-template-columns: 1fr 1px 1fr; align-items: center; padding: 2px 0">
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 3px">
+<div style="display: flex; align-items: baseline; gap: 2px">
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 38px; line-height: 1; letter-spacing: -1px; color: #1F1F1F">{{charge}}</span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 16px; line-height: 1" class="{{bat.pctCls}}">%</span>
 </div>
-<div aria-hidden="true" style="position: absolute; left: 119px; top: 176px; width: 112px; text-align: center; pointer-events: none">
-<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 38px; line-height: 1; letter-spacing: -1px; color: #FFFFFF; text-shadow: 0 0 8px rgba(255,138,92,0.9), 0 0 22px rgba(252,57,1,0.8), 0 2px 6px rgba(122,26,0,0.5)">{{charge}}<span style="font-size: 18px">%</span></span>
+<span style="font-size: 12px; color: #5C5C5C">แบตเตอรี่ขณะนี้</span>
+</div>
+<span class="cx-bat-vdiv" style="width: 1px; height: 38px"></span>
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 3px">
+<sc-if value="{{bat.notFull}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; align-items: baseline; gap: 4px">
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 38px; line-height: 1; letter-spacing: -1px; color: #1F1F1F">{{bat.remMin}}</span>
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 15px; line-height: 1" class="{{bat.pctCls}}">นาที</span>
+</div>
+</sc-if>
+<sc-if value="{{bat.isFull}}" hint-placeholder-val="{{ false }}">
+<span style="font-family: Sarabun, sans-serif; font-weight: 700; font-size: 26px; line-height: 1.46" class="cx-bat-full-txt">เต็มแล้ว</span>
+</sc-if>
+<span style="font-size: 12px; color: #5C5C5C">{{bat.goalText}}</span>
+</div>
+</div>
+
+<div class="cx-bat-foot" style="display: flex; align-items: center; justify-content: center; gap: 6px; padding-top: 9px; font-size: 12px; font-weight: 500">
+<svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="{{bat.shieldStroke}}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+<span>{{bat.safetyNote}}</span>
 </div>
 </div>
 </div>
 
-<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 24px">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 20px">
 <div style="background: #F6F6F6; border-radius: 18px; padding: 14px 12px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2px">
 <span style="font-size: 12px; color: #5C5C5C">กำลังไฟขณะนี้</span>
 <span style="font-family: Sarabun, sans-serif; font-weight: 600; font-size: 24px">142 <span style="font-size: 15px; color: #C42D00">kW</span></span>
@@ -330,9 +350,9 @@ a{color:#C42D00}a:hover{color:#9E2400}
 class Component extends DCLogic {
 static {
 const P = this.prototype;
-const TR = {"ย้อนกลับ": "Back", "แล้ว": "", "การชาร์จ": "Charge", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "กำลังชาร์จ": "Charging", "ค่าบริการ": "Rate", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา · ช่อง 04": "Ramkhamhaeng University, Bang Na Campus · bay 04", "กำลังไฟ": "Power", "เหลือเวลา": "Time left", "นาที": "min", "กำลังไฟขณะนี้": "Current power", "พลังงานที่ได้รับ": "Energy delivered", "เวลาที่ชาร์จแล้ว": "Time charging", "ค่าบริการขณะนี้": "Cost so far", "แจ้งเตือนที่ 80%": "Alert at 80%", "สรุปการชาร์จ": "Charging summary", "เลื่อนเพื่อหยุดชาร์จ (กด Enter เพื่อหยุด)": "Slide to stop charging (press Enter to stop)", "เลื่อนเพื่อหยุดชาร์จ": "Slide to stop charging", "แบตเตอรี่": "Battery", "เวลา": "Time", "กม.": "km", "ชม.": "hrs"};
-const PT = [["^แบตเตอรี่\\ (.+?)\\ เปอร์เซ็นต์\\ กำลังไฟ\\ 142\\ kW\\ เหลือเวลาประมาณ\\ 18\\ นาที$", "Battery {1} percent, 142 kW, about 18 min left"]].map(([r, e]) => [new RegExp(r), e]);
-const SUB = ["มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา · ช่อง 04", "เลื่อนเพื่อหยุดชาร์จ (กด Enter เพื่อหยุด)", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "เลื่อนเพื่อหยุดชาร์จ", "พลังงานที่ได้รับ", "เวลาที่ชาร์จแล้ว", "แจ้งเตือนที่ 80%", "ค่าบริการขณะนี้", "กำลังไฟขณะนี้", "สรุปการชาร์จ", "กำลังชาร์จ", "ค่าบริการ", "เหลือเวลา", "แบตเตอรี่", "ย้อนกลับ", "การชาร์จ", "กำลังไฟ", "นาที", "เวลา", "กม.", "ชม."];
+const TR = {"ย้อนกลับ": "Back", "แล้ว": "", "การชาร์จ": "Charge", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "กำลังชาร์จ": "Charging", "ค่าบริการ": "Rate", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา · ช่อง 04": "Ramkhamhaeng University, Bang Na Campus · bay 04", "กำลังไฟ": "Power", "เหลือเวลา": "Time left", "นาที": "min", "กำลังไฟขณะนี้": "Current power", "พลังงานที่ได้รับ": "Energy delivered", "เวลาที่ชาร์จแล้ว": "Time charging", "ค่าบริการขณะนี้": "Cost so far", "แจ้งเตือนที่ 80%": "Alert at 80%", "สรุปการชาร์จ": "Charging summary", "เลื่อนเพื่อหยุดชาร์จ (กด Enter เพื่อหยุด)": "Slide to stop charging (press Enter to stop)", "เลื่อนเพื่อหยุดชาร์จ": "Slide to stop charging", "แบตเตอรี่": "Battery", "เวลา": "Time", "กม.": "km", "ชม.": "hrs", "กำลังชาร์จ · ช่วงเริ่มต้น": "Charging · Starting", "กำลังชาร์จปกติ · ปลอดภัย": "Charging normally · Safe", "ถึง 80% แล้ว · ถนอมแบต": "Reached 80% · Battery care", "ชาร์จเต็ม 100% แล้ว": "Fully charged (100%)", "ชาร์จเร็ว DC": "DC Fast Charge", "ชาร์จถนอมแบต": "Battery-care mode", "แบตเตอรี่ขณะนี้": "Current battery", "เหลืออีก": "Est.", "เต็มแล้ว": "Full", "ชาร์จเต็มแล้ว": "Fully charged", "เหลือถึงเป้าหมาย 80%": "Left to 80% target", "เหลือถึงเป้าหมาย 100%": "Left to 100% target", "พร้อมออกเดินทางแล้ว": "Ready to drive", "วิ่งได้ประมาณ": "Est. range", "เป้าหมายชาร์จ": "Charge target", "80% (แนะนำ)": "80% (Rec.)", "ระบบควบคุมอุณหภูมิปกติ · เร่งชาร์จอย่างปลอดภัย": "Temperature normal · Ramping up safely", "อุณหภูมิแบตปกติ · จ่ายไฟเสถียรและปลอดภัย": "Battery temp normal · Stable & safe power", "ถึงระดับถนอมแบต 80% แล้ว · ชะลอไฟเพื่อรักษาอายุแบต": "80% battery-care reached · Tapering gently", "ชาร์จครบ 100% เรียบร้อย · ถอดหัวชาร์จได้ทันที": "100% complete · Safe to unplug anytime"};
+const PT = [["^แบตเตอรี่\\ (.+?)\\ เปอร์เซ็นต์\\ กำลังไฟ\\ 142\\ kW\\ เหลือเวลาประมาณ\\ (.+?)\\ นาที$", "Battery {1} percent, 142 kW, about {2} min left"]].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["ถึงระดับถนอมแบต 80% แล้ว · ชะลอไฟเพื่อรักษาอายุแบต", "ระบบควบคุมอุณหภูมิปกติ · เร่งชาร์จอย่างปลอดภัย", "อุณหภูมิแบตปกติ · จ่ายไฟเสถียรและปลอดภัย", "ชาร์จครบ 100% เรียบร้อย · ถอดหัวชาร์จได้ทันที", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา · ช่อง 04", "เลื่อนเพื่อหยุดชาร์จ (กด Enter เพื่อหยุด)", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "กำลังชาร์จปกติ · ปลอดภัย", "กำลังชาร์จ · ช่วงเริ่มต้น", "เหลือถึงเป้าหมาย 100%", "เหลือถึงเป้าหมาย 80%", "ถึง 80% แล้ว · ถนอมแบต", "ชาร์จเร็ว DC", "เลื่อนเพื่อหยุดชาร์จ", "ชาร์จเต็ม 100% แล้ว", "พร้อมออกเดินทางแล้ว", "พลังงานที่ได้รับ", "เวลาที่ชาร์จแล้ว", "แบตเตอรี่ขณะนี้", "ค่าบริการขณะนี้", "แจ้งเตือนที่ 80%", "วิ่งได้ประมาณ", "เป้าหมายชาร์จ", "กำลังไฟขณะนี้", "ชาร์จถนอมแบต", "ชาร์จเต็มแล้ว", "เต็มแล้ว", "80% (แนะนำ)", "สรุปการชาร์จ", "กำลังชาร์จ", "ค่าบริการ", "เหลือเวลา", "เหลืออีก", "แบตเตอรี่", "ย้อนกลับ", "การชาร์จ", "กำลังไฟ", "นาที", "เวลา", "กม.", "ชม."];
 const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
 const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
 const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
@@ -369,8 +389,10 @@ super(props);
 this.state = { x: 0, dragging: false, done: false };
 this.MAX = 350 - 12 - 48;
 }
+componentDidMount() { try { localStorage.setItem('cx-sess', 'กำลังชาร์จ'); localStorage.removeItem('cx-idle-at'); } catch (e) {} }
 componentWillUnmount() { clearTimeout(this._t); }
 finish() {
+try { localStorage.setItem('cx-sess', 'รอรับรถ (5 นาที)'); localStorage.setItem('cx-idle-at', String(Date.now())); } catch (e) {}
 this.setState({ x: this.MAX, dragging: false, done: true });
 clearTimeout(this._t);
 this._t = setTimeout(() => {
@@ -380,28 +402,33 @@ this._t = setTimeout(() => this.setState({ x: 0, done: false }), 600);
 }
 renderVals() {
 const charge = Math.max(0, Math.min(100, this.props.charge ?? 68));
-const c = 741.4;
+const isDark = this.props.theme === 'dark';
+const isLow = charge < 20;
+const isOver80 = charge >= 80;
+const isFull = charge >= 100;
+const remMin = isFull ? 0 : (isOver80 ? Math.max(1, Math.round((100 - charge) * 1.8)) : Math.max(1, Math.round((80 - charge) * 1.5)));
+const fillY = charge === 0 ? 165 : (isFull ? 20 : Math.round(24 + 134 * (1 - charge / 100)));
+const bat = {
+y: fillY,
+orbOpacity: charge > 0 ? '1' : '0',
+shieldStroke: isDark ? '#5AD49B' : '#1E9E5A',
+pillCls: isFull ? 'cx-bat-full-pill' : 'cx-bat-ok-pill',
+dotCls: isFull ? 'cx-bat-full-dot' : 'cx-bat-ok-dot',
+pctCls: isFull ? 'cx-bat-full-txt' : 'cx-bat-theme-txt',
+status: isFull ? 'ชาร์จเต็ม 100% แล้ว' : (isOver80 ? 'ถึง 80% แล้ว · ถนอมแบต' : (isLow ? 'กำลังชาร์จ · ช่วงเริ่มต้น' : 'กำลังชาร์จปกติ · ปลอดภัย')),
+isFull,
+notFull: !isFull,
+remMin,
+goalText: isFull ? 'พร้อมออกเดินทางแล้ว' : (isOver80 ? 'เหลือถึงเป้าหมาย 100%' : 'เหลือถึงเป้าหมาย 80%'),
+safetyNote: isFull ? 'ชาร์จครบ 100% เรียบร้อย · ถอดหัวชาร์จได้ทันที' : (isOver80 ? 'ถึงระดับถนอมแบต 80% แล้ว · ชะลอไฟเพื่อรักษาอายุแบต' : (isLow ? 'ระบบควบคุมอุณหภูมิปกติ · เร่งชาร์จอย่างปลอดภัย' : 'อุณหภูมิแบตปกติ · จ่ายไฟเสถียรและปลอดภัย')),
+aria: 'แบตเตอรี่ ' + charge + ' เปอร์เซ็นต์ กำลังไฟ 142 kW เหลือเวลาประมาณ ' + remMin + ' นาที'
+};
 const x = this.state.x;
 const p = x / this.MAX;
 return {
 accent: this.props.accent ?? '#FC3901',
 charge,
-offset: (c * (1 - charge / 100)).toFixed(1),
-liquidY: Math.round(222 - 152 * charge / 100),
-glowH: Math.max(30, Math.round(240 * charge / 100)),
-packW: Math.max(2, Math.round(82 * charge / 100)),
-cy: Math.round(22 + 178 * (1 - charge / 100)),
-rbw: Math.max(3, Math.round(64 * charge / 100)),
-bm: { y: Math.round(98 + 182 * (1 - charge / 100)), h: Math.max(20, Math.round(182 * charge / 100) + 10) },
-cyl: (() => { const t = (this.state && this.state.tilt) || 0; return {
-tilt: t.toFixed(1), counter: (-t * 1.4).toFixed(1),
-tr: (this.state && this.state.dragT) ? '.12s ease-out' : '.9s cubic-bezier(.3,1.6,.4,1)',
-boost: (this.state && this.state.boost) ? 'cx-boost' : '',
-move: (e) => { const r = e.currentTarget.getBoundingClientRect(); const dx = (e.clientX - (r.left + r.width * 0.3)) / (r.width * 0.5); this.setState({ tilt: Math.max(-12, Math.min(12, dx * 12)), dragT: true }); },
-leave: () => this.setState({ tilt: 0, dragT: false }),
-tap: () => { this.setState({ boost: true, tilt: ((this.state && this.state.tilt) || 0) > 0 ? -10 : 10, dragT: false }); clearTimeout(this._bt); this._bt = setTimeout(() => this.setState({ boost: false, tilt: 0 }), 900); }
-}; })(),
-g: (() => { const cum = [40.3, 65.3, 80.6, 90.3, 96, 100]; const o = { off: (100 - charge).toFixed(1), kp: Math.max(0.001, charge / 100).toFixed(3) }; let prev = 0; cum.forEach((c, i) => { const done = charge >= c; const now = !done && charge > prev; o['o' + (i + 1)] = done ? (0.22 - i * 0.02).toFixed(2) : (now ? '0.18' : '0'); o['k' + (i + 1)] = now ? 'cx-sqnow' : ''; prev = c; }); return o; })(),
+bat,
 thumbX: 6 + x,
 fillW: x + 60,
 labelOpacity: Math.max(0, 1 - p * 1.6).toFixed(2),
@@ -438,7 +465,7 @@ if (e.detail === 0 && !this.state.done) this.finish();
 }
 };
 }
-}
-</script>
+} </script>
+
 </body>
 </html>

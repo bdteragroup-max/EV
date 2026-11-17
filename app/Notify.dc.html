@@ -14,8 +14,14 @@ body{margin:0}
 a{color:#C42D00}
 @keyframes cxIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .cx-item{animation:cxIn .45s cubic-bezier(.2,.8,.3,1) both}
-.cx-scroll{scrollbar-width:none}.cx-scroll::-webkit-scrollbar{display:none}
-@media (prefers-reduced-motion: reduce){.cx-item{animation:none}}
+@keyframes cxSheet{from{transform:translateY(100%)}to{transform:none}}
+.cx-sheet{animation:cxSheet .3s cubic-bezier(.2,.9,.3,1) both}
+@keyframes cxFade{from{opacity:0}to{opacity:1}}
+.cx-fade{animation:cxFade .22s ease-out both}
+.cx-in{width:100%;height:42px;box-sizing:border-box;border-radius:12px;border:1px solid #E0E0E0;background:#F6F6F6;padding:0 12px;font-family:inherit;font-size:14px;color:#1F1F1F;outline:none}
+.cx-in:focus{border-color:#FC3901}
+.cx-scroll{scrollbar-width:none}.cx-scroll>*{flex-shrink:0}.cx-scroll::-webkit-scrollbar{display:none}
+@media (prefers-reduced-motion: reduce){.cx-item,.cx-sheet,.cx-fade{animation:none}}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F7EFD6"],[style*="background: rgb(247, 239, 214)"]){background-color:rgba(212,175,55,.2)!important}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #7A5C0E"],[style*="color: rgb(122, 92, 14)"]){color:#E0BE5A!important}
 [data-theme="dark"] [stroke="#7A5C0E"]{stroke:#E0BE5A}
@@ -63,19 +69,20 @@ a{color:#C42D00}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: #F7EFD6"],[style*="background: rgb(247, 239, 214)"]){background-color:rgba(212,175,55,.2)!important}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="color: #7A5C0E"],[style*="color: rgb(122, 92, 14)"]){color:#E0BE5A!important}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(255, 241, 235)"],[style*="background: rgb(255, 228, 218)"]){background-color:rgba(252,57,1,.18)!important}
+:is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(231, 246, 238)"]{background-color:rgba(46,180,110,.18)!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(255, 247, 243)"]{background-color:rgba(252,57,1,.12)!important}
 :is([data-theme="dark"],[data-theme="dark"] *):is([style*="background: rgb(230, 230, 230)"],[style*="background: rgb(237, 237, 237)"],[style*="background: rgb(239, 239, 239)"],[style*="background: rgb(217, 217, 217)"],[style*="background: rgb(218, 218, 218)"]){background-color:#35353B!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="background: rgb(51, 51, 51)"]{background-color:#3A3A40!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="linear-gradient(rgb(255, 255, 255)"]{background:linear-gradient(#000000 72%,rgba(0,0,0,0))!important}
 :is([data-theme="dark"],[data-theme="dark"] *)[style*="color: rgb(158, 36, 0)"]{color:#FF8A66!important}
-:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"],[style*="solid rgb(237, 237, 237)"],[style*="solid rgb(239, 239, 239)"],[style*="solid rgb(212, 212, 212)"],[style*="solid rgb(226, 226, 226)"]){border-color:#35353B!important}
+:is([data-theme="dark"],[data-theme="dark"] *):is([style*="solid rgb(230, 230, 230)"],[style*="solid rgb(224, 224, 224)"],[style*="solid rgb(237, 237, 237)"],[style*="solid rgb(239, 239, 239)"],[style*="solid rgb(212, 212, 212)"],[style*="solid rgb(226, 226, 226)"],[style*="solid rgb(253, 211, 195)"]){border-color:#35353B!important}
 [data-theme="dark"] .cx-fablabel{color:#FF7A4D}
 [data-theme="dark"] .cx-fab{box-shadow:0 6px 14px rgba(252,57,1,.35)!important}
 [data-theme="dark"] .cx-navbg path{fill:#1C1C1E}
 [data-theme="dark"] .cx-chg{animation-name:cxChgPD}
 </style>
 </helmet>
-<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; box-sizing: border-box; background: #F6F6F6; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+<div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 390px; height: 844px; position: relative; box-sizing: border-box; background: #F6F6F6; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; display: flex; flex-direction: column; overflow: hidden">
 <div style="padding: 56px 16px 10px; display: flex; flex-direction: column; gap: 14px">
 <div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; align-items: center; gap: 10px">
 <a href="{{L.News}}" aria-label="ย้อนกลับ" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 14px; border: 1px solid #E6E6E6; background: #FFFFFF; display: flex; align-items: center; justify-content: center">
@@ -86,43 +93,269 @@ a{color:#C42D00}
 </div>
 <button onClick="{{readAll}}" disabled="{{noUnread}}" style="height: 36px; padding: 0 4px; border: 0; background: transparent; font-family: inherit; font-size: 14px; font-weight: 600; color: {{readAllColor}}; cursor: pointer">อ่านทั้งหมด</button>
 </div>
-<div class="cx-scroll" role="tablist" aria-label="ประเภทการแจ้งเตือน" style="display: flex; gap: 8px; overflow-x: auto">
-<sc-for list="{{tabs}}" as="t" hint-placeholder-count="4">
-<button role="tab" aria-selected="{{t.sel}}" onClick="{{t.pick}}" style="{{t.style}}">{{t.label}}</button>
-</sc-for>
+<div style="display: flex; align-items: center; gap: 8px">
+<div style="flex: 1; min-width: 0; height: 40px; box-sizing: border-box; background: #FFFFFF; border: 1px solid #EFEFEF; border-radius: 14px; padding: 0 11px; display: flex; align-items: center; gap: 7px">
+<svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5C5C5C" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+<input type="search" value="{{qText}}" onInput="{{setQText}}" placeholder="ค้นหารายการชาร์จ การจอง สถานี..." style="flex: 1; min-width: 0; height: 100%; border: 0; background: transparent; font-family: inherit; font-size: 13px; color: #1F1F1F; outline: none">
+<sc-if value="{{hasQText}}" hint-placeholder-val="{{ false }}"><button type="button" aria-label="ล้างคำค้นหา" onClick="{{clearQText}}" style="width: 20px; height: 20px; border: 0; border-radius: 50%; background: #F4F4F4; display: flex; align-items: center; justify-content: center; cursor: pointer; flex: none"><svg aria-hidden="true" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#3A3A3A" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></button></sc-if>
 </div>
+<button type="button" onClick="{{openFilter}}" aria-label="ตัวกรอง" style="{{filterBtnStyle}}">
+<svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"></path></svg>
+<span>ตัวกรอง</span>
+<sc-if value="{{hasActiveFilters}}" hint-placeholder-val="{{ false }}"><span style="min-width: 18px; height: 18px; padding: 0 5px; box-sizing: border-box; border-radius: 999px; background: {{accent}}; color: #FFFFFF; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center">{{activeFilterCount}}</span></sc-if>
+</button>
 </div>
-
-<div class="cx-scroll" style="flex: 1; overflow-y: auto; padding: 4px 16px 34px; display: flex; flex-direction: column; gap: 8px">
-<sc-for list="{{items}}" as="n" hint-placeholder-count="6">
-<sc-if value="{{n.showHead}}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; font-weight: 600; color: #6B6B6B; margin: 10px 4px 2px">{{n.head}}</span></sc-if>
-<a href="{{n.href}}" onClick="{{n.read}}" class="cx-item" style="{{n.cardStyle}}">
-<span style="width: 44px; height: 44px; flex: none; border-radius: 14px; background: {{n.tileBg}}; display: flex; align-items: center; justify-content: center">
-<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{n.tileFg}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{n.icon}}"></path></svg></span>
-<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
-<span style="display: flex; align-items: baseline; gap: 8px"><span style="flex: 1; font-weight: 700; font-size: 15px; line-height: 1.35; color: #1F1F1F">{{n.title}}</span><span style="font-size: 12px; color: #6B6B6B; flex: none">{{n.time}}</span></span>
-<span style="font-size: 13.5px; line-height: 1.55; color: #5C5C5C">{{n.body}}</span>
-</span>
-<sc-if value="{{n.unread}}" hint-placeholder-val="{{ true }}"><span aria-label="ยังไม่ได้อ่าน" style="position: absolute; top: 16px; right: 14px; width: 8px; height: 8px; border-radius: 50%; background: {{accent}}"></span></sc-if>
-</a>
-</sc-for>
-<sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
-<div style="margin-top: 80px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
-<span style="width: 72px; height: 72px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg></span>
-<span style="font-weight: 600; font-size: 16px; color: #1F1F1F">ยังไม่มีการแจ้งเตือน</span>
-<span style="font-size: 14px; color: #6B6B6B">การแจ้งเตือนในหมวดนี้จะแสดงที่นี่</span>
+<sc-if value="{{hasAnyFilter}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 0 2px">
+<span style="font-size: 12px; color: #6B6B6B">{{filterResultText}}</span>
+<button type="button" onClick="{{resetFilters}}" style="border: 0; background: transparent; padding: 2px 4px; font-family: inherit; font-size: 12px; font-weight: 700; color: #C42D00; cursor: pointer">ล้างตัวกรอง</button>
 </div>
 </sc-if>
 </div>
+
+<div class="cx-scroll" style="flex: 1; overflow-y: auto; padding: 4px 16px 34px; display: flex; flex-direction: column; gap: 8px">
+<sc-if value="{{showCarPanel}}" hint-placeholder-val="{{ true }}">
+<div style="margin: 2px 0 4px; flex: none; background: #FFFFFF; border: 1px solid #EFEFEF; border-radius: 16px; overflow: hidden">
+<button type="button" onClick="{{openCarPicker}}" aria-label="เลือกรถที่ใช้งาน" style="width: 100%; padding: 11px 14px; border: 0; border-bottom: 1px solid #EFEFEF; background: transparent; display: flex; align-items: center; justify-content: space-between; gap: 8px; cursor: pointer; font-family: inherit; text-align: left">
+<span style="min-width: 0; display: flex; align-items: center; gap: 8px">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B6B6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M5 17h14M3 13l2-6a2 2 0 0 1 2-1.4h10A2 2 0 0 1 19 7l2 6v4h-2.5M5.5 17H3v-4h18"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
+<span style="font-size: 14px; font-weight: 700; color: #1F1F1F; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{carBtnTitle}}</span>
+<sc-if value="{{carIsAll}}" hint-placeholder-val="{{ true }}"><span style="font-size: 12px; font-weight: 500; color: #6B6B6B; flex: none">{{carCountText}}</span></sc-if>
+</span>
+<span style="display: flex; align-items: center; gap: 3px; font-size: 12.5px; font-weight: 600; color: #6B6B6B; flex: none">
+<span>เปลี่ยน</span>
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B6B6B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+</span>
+</button>
+<div style="padding: 10px 8px; display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr; align-items: center; text-align: center">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: Sarabun, sans-serif; font-size: 14.5px; font-weight: 700; color: #1F1F1F">{{carSum.countText}}</span><span style="font-size: 11px; color: #6B6B6B">การชาร์จ</span></div>
+<div style="width: 1px; height: 24px; background: #EFEFEF"></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: Sarabun, sans-serif; font-size: 14.5px; font-weight: 700; color: #1F1F1F">{{carSum.kwhText}}</span><span style="font-size: 11px; color: #6B6B6B">พลังงาน</span></div>
+<div style="width: 1px; height: 24px; background: #EFEFEF"></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: Sarabun, sans-serif; font-size: 14.5px; font-weight: 700; color: #1F1F1F">{{carSum.costText}}</span><span style="font-size: 11px; color: #6B6B6B">ยอดชำระ</span></div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{showNotifList}}" hint-placeholder-val="{{ true }}">
+<sc-for list="{{items}}" as="n" hint-placeholder-count="6">
+<sc-if value="{{n.showHead}}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; font-weight: 600; color: #6B6B6B; margin: 10px 4px 2px">{{n.head}}</span></sc-if>
+<div class="cx-item" style="{{n.cardStyle}}">
+<a href="{{n.href}}" onClick="{{n.read}}" style="flex: 1; min-width: 0; display: flex; align-items: flex-start; gap: 12px; text-decoration: none; color: inherit">
+<span style="width: 44px; height: 44px; flex: none; border-radius: 14px; background: {{n.tileBg}}; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{n.tileFg}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{n.icon}}"></path></svg></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+<span style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px">
+<span style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 6px"><sc-if value="{{n.unread}}" hint-placeholder-val="{{ true }}"><span aria-label="ยังไม่ได้อ่าน" style="width: 7px; height: 7px; flex: none; border-radius: 50%; background: {{accent}}"></span></sc-if><span style="font-weight: 700; font-size: 15px; line-height: 1.35; color: #1F1F1F; min-width: 0">{{n.title}}</span></span>
+<span style="font-size: 12px; color: #6B6B6B; flex: none; max-width: 44%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{n.meta}}</span>
+</span>
+<span style="font-size: 13.5px; line-height: 1.55; color: #5C5C5C">{{n.body}}</span>
+</span>
+</a>
+<button type="button" onClick="{{n.del}}" aria-label="{{n.delAria}}" style="width: 28px; height: 28px; flex: none; border: 0; border-radius: 9px; background: #F4F4F4; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5C5C5C" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg></button>
+</div>
+</sc-for>
+<sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 64px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<span style="width: 72px; height: 72px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg></span>
+<span style="font-weight: 600; font-size: 16px; color: #1F1F1F">{{emptyTitle}}</span>
+<span style="font-size: 14px; color: #6B6B6B">{{emptySub}}</span>
+</div>
+</sc-if>
+</sc-if>
+<sc-if value="{{showBookingView}}" hint-placeholder-val="{{ false }}">
+<div style="margin: 2px 0 2px; flex: none; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 0 2px">
+<div style="display: flex; align-items: baseline; gap: 6px">
+<span style="font-size: 14px; font-weight: 700; color: #1F1F1F">ประวัติการจองทั้งหมด</span>
+<span style="font-size: 12px; color: #6B6B6B">{{bkCountText}}</span>
+</div>
+<button type="button" onClick="{{openCarPicker}}" aria-label="เลือกรถที่ใช้งาน" style="height: 28px; padding: 0 10px; border-radius: 999px; border: 1px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 12px; font-weight: 600; color: #3A3A3A; display: flex; align-items: center; gap: 4px; cursor: pointer; flex: none">
+<span>{{carBtnTitle}}</span>
+<svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6B6B6B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+</button>
+</div>
+<div class="cx-scroll" role="tablist" aria-label="ตัวกรองสถานะการจอง" style="flex: none; display: flex; gap: 6px; overflow-x: auto; margin-bottom: 2px">
+<sc-for list="{{bkTabs}}" as="s" hint-placeholder-count="4"><button type="button" role="tab" aria-selected="{{s.sel}}" onClick="{{s.pick}}" style="{{s.style}}">{{s.label}}</button></sc-for>
+</div>
+<sc-for list="{{bookings}}" as="b" hint-placeholder-count="5">
+<button type="button" onClick="{{b.open}}" class="cx-item" style="{{b.cardStyle}}">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%">
+<span style="flex: 1; min-width: 0; font-size: 14.5px; font-weight: 700; color: #1F1F1F; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{b.station}}</span>
+<span style="{{b.badgeStyle}}">{{b.badge}}</span>
+</div>
+<span style="font-size: 13px; color: #5C5C5C; text-align: left">{{b.when}}</span>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; font-size: 12px; color: #6B6B6B">
+<span>{{b.meta}}</span>
+<span>{{b.fee}}</span>
+</div>
+</button>
+</sc-for>
+<sc-if value="{{bkEmpty}}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 64px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center">
+<span style="width: 72px; height: 72px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path></svg></span>
+<span style="font-weight: 600; font-size: 16px; color: #1F1F1F">ไม่พบประวัติการจอง</span>
+<span style="font-size: 14px; color: #6B6B6B">ประวัติการจองตามเงื่อนไขที่เลือกจะแสดงที่นี่</span>
+</div>
+</sc-if>
+</sc-if>
+</div>
+
+<sc-if value="{{showToast}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" role="status" style="position: absolute; left: 16px; right: 16px; bottom: 24px; z-index: 35; padding: 11px 14px; border-radius: 16px; background: #1F1F1F; color: #FFFFFF; font-size: 13.5px; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 10px; box-shadow: 0 10px 24px rgba(0,0,0,0.25)">
+<span style="display: flex; align-items: center; gap: 8px; min-width: 0"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5AD49B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="m5 12 5 5L20 7"></path></svg><span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{toastText}}</span></span>
+<sc-if value="{{hasUndoDel}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{undoDel}}" style="border: 0; background: transparent; padding: 2px 6px; font-family: inherit; font-size: 13.5px; font-weight: 700; color: {{accent}}; cursor: pointer; flex: none">เลิกทำ</button></sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{showCarPicker}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 40; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: flex-end">
+<button type="button" aria-label="ปิด" onClick="{{closeCarPicker}}" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
+<div class="cx-sheet" role="dialog" aria-label="เลือกรถที่ใช้งาน" style="max-height: 75%; background: #FFFFFF; border-radius: 24px 24px 0 0; padding: 10px 16px 26px; display: flex; flex-direction: column; gap: 10px; box-sizing: border-box">
+<span style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #DADADA; flex: none"></span>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 2px 4px">
+<div style="display: flex; align-items: baseline; gap: 6px">
+<span style="font-size: 17px; font-weight: 700; color: #1F1F1F">เลือกรถที่ใช้งาน</span>
+<span style="font-size: 12.5px; color: #6B6B6B">{{carCountText}}</span>
+</div>
+<button type="button" aria-label="ปิด" onClick="{{closeCarPicker}}" style="width: 32px; height: 32px; border-radius: 50%; border: 0; background: #F4F4F4; display: flex; align-items: center; justify-content: center; cursor: pointer; flex: none">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A3A3A" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+</button>
+</div>
+<sc-if value="{{showCarSearch}}" hint-placeholder-val="{{ false }}">
+<input type="search" class="cx-in" placeholder="ค้นหาชื่อรถ..." value="{{carQuery}}" onInput="{{setCarQuery}}">
+</sc-if>
+<div class="cx-scroll" style="flex: 0 1 auto; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 4px">
+<sc-for list="{{pickerCars}}" as="c" hint-placeholder-count="3">
+<button type="button" onClick="{{c.pick}}" style="{{c.rowStyle}}">
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; text-align: left">
+<span style="font-size: 15px; font-weight: 700; color: #1F1F1F; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{c.label}}</span>
+<span style="font-size: 12.5px; color: #6B6B6B">{{c.sub}}</span>
+</span>
+<sc-if value="{{c.on}}" hint-placeholder-val="{{ false }}">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="m5 12 5 5L20 7"></path></svg>
+</sc-if>
+</button>
+</sc-for>
+<sc-if value="{{carSearchEmpty}}" hint-placeholder-val="{{ false }}">
+<span style="padding: 24px 0; text-align: center; font-size: 13.5px; color: #6B6B6B">ไม่พบรถที่ค้นหา</span>
+</sc-if>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{showBookSheet}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 40; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: flex-end">
+<button type="button" aria-label="ปิด" onClick="{{closeBookSheet}}" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
+<div class="cx-sheet" role="dialog" aria-label="รายละเอียดการจอง" style="background: #FFFFFF; border-radius: 24px 24px 0 0; padding: 10px 18px 28px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box">
+<span style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #DADADA; flex: none"></span>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<div style="display: flex; align-items: center; gap: 8px">
+<span style="font-size: 17px; font-weight: 700; color: #1F1F1F">รายละเอียดการจอง</span>
+<span style="{{detailBook.badgeStyle}}">{{detailBook.badge}}</span>
+</div>
+<button type="button" aria-label="ปิด" onClick="{{closeBookSheet}}" style="width: 32px; height: 32px; border-radius: 50%; border: 0; background: #F4F4F4; display: flex; align-items: center; justify-content: center; cursor: pointer; flex: none">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A3A3A" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 15.5px; font-weight: 700; color: #1F1F1F">{{detailBook.station}}</span>
+<span style="font-size: 12.5px; color: #6B6B6B">รหัสการจอง #{{detailBook.id}}</span>
+</div>
+<div style="border: 1px solid #EFEFEF; border-radius: 14px; padding: 2px 14px; display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid #EFEFEF; font-size: 13.5px"><span style="color: #6B6B6B">หัวชาร์จ</span><span style="font-weight: 600; color: #1F1F1F; text-align: right">{{detailBook.charger}}</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid #EFEFEF; font-size: 13.5px"><span style="color: #6B6B6B">ช่วงเวลาจอง</span><span style="font-weight: 600; color: #1F1F1F; text-align: right">{{detailBook.slot}}</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid #EFEFEF; font-size: 13.5px"><span style="color: #6B6B6B">รถที่ใช้งาน</span><span style="font-weight: 600; color: #1F1F1F; text-align: right">{{detailBook.car}}</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; font-size: 13.5px"><span style="color: #6B6B6B">ค่าจอง</span><span style="font-weight: 600; color: #1F1F1F; text-align: right">{{detailBook.feeDetail}}</span></div>
+</div>
+<sc-if value="{{detailBook.isUpcoming}}" hint-placeholder-val="{{ false }}">
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 2px">
+<button type="button" onClick="{{cancelBook}}" style="height: 48px; border-radius: 14px; border: 0; background: #F4F4F4; color: #3A3A3A; font-family: inherit; font-size: 14.5px; font-weight: 600; cursor: pointer">ยกเลิกการจอง</button>
+<a href="{{L.Station}}" style="height: 48px; border-radius: 14px; background: {{accent}}; color: #FFFFFF; font-size: 14.5px; font-weight: 600; text-decoration: none; display: flex; align-items: center; justify-content: center">ไปที่สถานี</a>
+</div>
+</sc-if>
+<sc-if value="{{detailBook.notUpcoming}}" hint-placeholder-val="{{ true }}">
+<a href="{{L.Station}}" style="height: 48px; border-radius: 14px; background: {{accent}}; color: #FFFFFF; font-size: 14.5px; font-weight: 600; text-decoration: none; display: flex; align-items: center; justify-content: center; margin-top: 2px">จองใหม่อีกครั้ง</a>
+</sc-if>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{showFilterSheet}}" hint-placeholder-val="{{ false }}">
+<div class="cx-fade" style="position: absolute; inset: 0; z-index: 40; background: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: flex-end">
+<button type="button" aria-label="ปิด" onClick="{{closeFilter}}" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
+<div class="cx-sheet" role="dialog" aria-label="ตัวกรอง" style="max-height: 82%; background: #FFFFFF; border-radius: 24px 24px 0 0; padding: 10px 18px 26px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box">
+<span style="align-self: center; width: 40px; height: 4px; border-radius: 2px; background: #DADADA; flex: none"></span>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<span style="font-size: 17px; font-weight: 700; color: #1F1F1F">ตัวกรอง</span>
+<div style="display: flex; align-items: center; gap: 8px">
+<button type="button" onClick="{{resetFilters}}" style="border: 0; background: transparent; padding: 4px 6px; font-family: inherit; font-size: 12.5px; font-weight: 600; color: #C42D00; cursor: pointer">ล้างทั้งหมด</button>
+<button type="button" aria-label="ปิด" onClick="{{closeFilter}}" style="width: 32px; height: 32px; border-radius: 50%; border: 0; background: #F4F4F4; display: flex; align-items: center; justify-content: center; cursor: pointer; flex: none">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A3A3A" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+</button>
+</div>
+</div>
+<div class="cx-scroll" style="flex: 0 1 auto; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 7px">
+<span style="font-size: 13px; font-weight: 600; color: #3A3A3A">หมวดหมู่</span>
+<div role="tablist" aria-label="ประเภทการแจ้งเตือน" style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="5"><button type="button" role="tab" aria-selected="{{t.sel}}" onClick="{{t.pick}}" style="{{t.style}}">{{t.label}}</button></sc-for>
+</div>
+</div>
+<sc-if value="{{showCarOrBook}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 7px">
+<span style="font-size: 13px; font-weight: 600; color: #3A3A3A">รถที่ใช้งาน</span>
+<div class="cx-scroll" style="display: flex; flex-wrap: wrap; gap: 6px; max-height: 86px; overflow-y: auto">
+<sc-for list="{{fCarTabs}}" as="fc" hint-placeholder-count="3"><button type="button" onClick="{{fc.pick}}" style="{{fc.style}}">{{fc.label}}</button></sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{showCarPanel}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 7px">
+<span style="font-size: 13px; font-weight: 600; color: #3A3A3A">ประเภทรายการ</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{fTypeTabs}}" as="ft" hint-placeholder-count="4"><button type="button" onClick="{{ft.pick}}" style="{{ft.style}}">{{ft.label}}</button></sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 7px">
+<span style="font-size: 13px; font-weight: 600; color: #3A3A3A">สถานที่ / ช่องชาร์จ</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{fLocTabs}}" as="fl" hint-placeholder-count="4"><button type="button" onClick="{{fl.pick}}" style="{{fl.style}}">{{fl.label}}</button></sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{showBookingView}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 7px">
+<span style="font-size: 13px; font-weight: 600; color: #3A3A3A">สถานะการจอง</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{fBkTabs}}" as="fb" hint-placeholder-count="4"><button type="button" onClick="{{fb.pick}}" style="{{fb.style}}">{{fb.label}}</button></sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{showNotifList}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 7px">
+<span style="font-size: 13px; font-weight: 600; color: #3A3A3A">ช่วงเวลา</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{fPeriodTabs}}" as="fp" hint-placeholder-count="4"><button type="button" onClick="{{fp.pick}}" style="{{fp.style}}">{{fp.label}}</button></sc-for>
+</div>
+</div>
+<button type="button" onClick="{{toggleUnreadOnly}}" style="{{unreadBtnStyle}}">
+<span style="font-size: 13.5px; font-weight: 600; color: #1F1F1F">เฉพาะรายการที่ยังไม่ได้อ่าน</span>
+<span style="{{unreadBoxStyle}}"><sc-if value="{{fUnread}}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"></path></svg></sc-if></span>
+</button>
+</sc-if>
+</div>
+<button type="button" onClick="{{closeFilter}}" style="height: 48px; flex: none; border-radius: 14px; border: 0; background: {{accent}}; color: #FFFFFF; font-family: Sarabun, sans-serif; font-size: 15.5px; font-weight: 600; cursor: pointer">{{applyBtnText}}</button>
+</div>
+</div>
+</sc-if>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FC3901","options":["#FC3901","#E23200","#FF5A1F"]},"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"lang":{"editor":"enum","options":["ตามแอป","ไทย","English"],"default":"ตามแอป"},"$preview":{"width":390,"height":844}}'>
 class Component extends DCLogic {
 static {
 const P = this.prototype;
-const TR = {"ย้อนกลับ": "Back", "แล้ว": "", "ชื่อ": "First name", "เติมเงิน": "Top up", "การชาร์จ": "Charge", "กระเป๋าเงิน": "Wallet", "ทั้งหมด": "All", "โปรโมชัน": "Promotions", "แจ้งปิดปรับปรุงระบบชั่วคราว": "Scheduled system maintenance", "[วันที่ · เวลา]": "[date · time]", "สถานีใหม่": "New station", "[วันที่]": "[date]", "การแจ้งเตือน": "Notifications", "อ่านทั้งหมด": "Mark all read", "ยังไม่มีการแจ้งเตือน": "No notifications yet", "การแจ้งเตือนในหมวดนี้จะแสดงที่นี่": "Notifications in this category will appear here", "ประเภทการแจ้งเตือน": "Notification type", "ยังไม่ได้อ่าน": "Unread", "วันนี้": "Today", "ชาร์จเสร็จสมบูรณ์": "Charging complete", "Chery Q ชาร์จถึง 80% ที่มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา · 32.4 kWh": "Chery Q reached 80% at Ramkhamhaeng University, Bang Na Campus · 32.4 kWh", "หักเงินจากกระเป๋าเงิน": "Wallet payment", "−฿235.68 ค่าชาร์จช่อง 04 · ยอดคงเหลือ ฿264.32": "−฿235.68 for bay 04 · balance ฿264.32", "แบตเตอรี่ถึง 68% แล้ว": "Battery at 68%", "เต็มในอีกประมาณ 18 นาที แตะเพื่อดูสถานะการชาร์จ": "Full in about 18 min. Tap to see charging status.", "เมื่อวาน": "Yesterday", "สิทธิพิเศษสำหรับสมาชิก": "Member perk", "รับส่วนลด 10% ทุกการชาร์จ DC ช่วง 22:00–06:00 [รายละเอียดโปรโมชัน]": "10% off every DC charge between 22:00–06:00 [promotion details]", "เติมเงินสำเร็จ": "Top-up successful", "+฿735.68 ผ่านพร้อมเพย์ เข้ากระเป๋าเงิน Charge-X": "+฿735.68 via PromptPay to your Charge-X wallet", "ก่อนหน้านี้": "Earlier", "สถานีใหม่ใกล้คุณ": "New station near you", "[ชื่อสถานี] เปิดให้บริการแล้ว ห่างจากคุณ 2.4 กม. มีหัวชาร์จ DC 150 kW": "[Station name] is now open, 2.4 km from you, with 150 kW DC chargers", "ระบบชำระเงินจะปิดปรับปรุง [วันที่ · เวลา] ประมาณ 30 นาที": "Payments will be down for maintenance on [date · time] for about 30 min", "ระบบ": "System", "เต็ม": "Full", "ปิดปรับปรุง": "Under maintenance", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "ปิด": "Closed", "รายละเอียด": "Details", "ลด": "Decrease", "กระเป๋าเงิน Charge-X": "Charge-X wallet", "ยอดคงเหลือ ฿": "Balance ฿", "นาที": "min", "แบตเตอรี่": "Battery", "เวลา": "Time", "สำเร็จ": "Successful", " แล้ว": "", "ยังไม่มี": "None yet", "ชาร์จเสร็จ": "Charging finished", "กม.": "km", "ชม.": "hrs"};
-const PT = [].map(([r, e]) => [new RegExp(r), e]);
-const SUB = ["Chery Q ชาร์จถึง 80% ที่มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา · 32.4 kWh", "[ชื่อสถานี] เปิดให้บริการแล้ว ห่างจากคุณ 2.4 กม. มีหัวชาร์จ DC 150 kW", "รับส่วนลด 10% ทุกการชาร์จ DC ช่วง 22:00–06:00 [รายละเอียดโปรโมชัน]", "ระบบชำระเงินจะปิดปรับปรุง [วันที่ · เวลา] ประมาณ 30 นาที", "เต็มในอีกประมาณ 18 นาที แตะเพื่อดูสถานะการชาร์จ", "+฿735.68 ผ่านพร้อมเพย์ เข้ากระเป๋าเงิน Charge-X", "−฿235.68 ค่าชาร์จช่อง 04 · ยอดคงเหลือ ฿264.32", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา", "การแจ้งเตือนในหมวดนี้จะแสดงที่นี่", "แจ้งปิดปรับปรุงระบบชั่วคราว", "สิทธิพิเศษสำหรับสมาชิก", "หักเงินจากกระเป๋าเงิน", "แบตเตอรี่ถึง 68% แล้ว", "ยังไม่มีการแจ้งเตือน", "กระเป๋าเงิน Charge-X", "ประเภทการแจ้งเตือน", "ชาร์จเสร็จสมบูรณ์", "สถานีใหม่ใกล้คุณ", "[วันที่ · เวลา]", "เติมเงินสำเร็จ", "ยังไม่ได้อ่าน", "การแจ้งเตือน", "ยอดคงเหลือ ฿", "กระเป๋าเงิน", "อ่านทั้งหมด", "ก่อนหน้านี้", "ปิดปรับปรุง", "รายละเอียด", "ชาร์จเสร็จ", "สถานีใหม่", "แบตเตอรี่", "ย้อนกลับ", "เติมเงิน", "การชาร์จ", "โปรโมชัน", "[วันที่]", "เมื่อวาน", "ยังไม่มี", "ทั้งหมด", "วันนี้", "สำเร็จ", "ชื่อ", "ระบบ", "เต็ม", "นาที", "เวลา", "ปิด", "กม.", "ชม."];
+const TR = {"ย้อนกลับ": "Back", "แล้ว": "", "ชื่อ": "First name", "เติมเงิน": "Top up", "การชาร์จ": "Charge", "กระเป๋าเงิน": "Wallet", "ทั้งหมด": "All", "โปรโมชัน": "Promotions", "แจ้งปิดปรับปรุงระบบชั่วคราว": "Scheduled system maintenance", "[วันที่ · เวลา]": "[date · time]", "สถานีใหม่": "New station", "[วันที่]": "[date]", "การแจ้งเตือน": "Notifications", "อ่านทั้งหมด": "Mark all read", "ยังไม่มีการแจ้งเตือน": "No notifications yet", "การแจ้งเตือนในหมวดนี้จะแสดงที่นี่": "Notifications in this category will appear here", "ประเภทการแจ้งเตือน": "Notification type", "ยังไม่ได้อ่าน": "Unread", "วันนี้": "Today", "ชาร์จเสร็จสมบูรณ์": "Charging complete", "Chery Q ชาร์จถึง 80% ที่มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา · 32.4 kWh": "Chery Q reached 80% at Ramkhamhaeng University, Bang Na Campus · 32.4 kWh", "หักเงินจากกระเป๋าเงิน": "Wallet payment", "−฿235.68 ค่าชาร์จช่อง 04 · ยอดคงเหลือ ฿264.32": "−฿235.68 for bay 04 · balance ฿264.32", "แบตเตอรี่ถึง 68% แล้ว": "Battery at 68%", "เต็มในอีกประมาณ 18 นาที แตะเพื่อดูสถานะการชาร์จ": "Full in about 18 min. Tap to see charging status.", "เมื่อวาน": "Yesterday", "สิทธิพิเศษสำหรับสมาชิก": "Member perk", "รับส่วนลด 10% ทุกการชาร์จ DC ช่วง 22:00–06:00 [รายละเอียดโปรโมชัน]": "10% off every DC charge between 22:00–06:00 [promotion details]", "เติมเงินสำเร็จ": "Top-up successful", "+฿735.68 ผ่านพร้อมเพย์ เข้ากระเป๋าเงิน Charge-X": "+฿735.68 via PromptPay to your Charge-X wallet", "ก่อนหน้านี้": "Earlier", "สถานีใหม่ใกล้คุณ": "New station near you", "[ชื่อสถานี] เปิดให้บริการแล้ว ห่างจากคุณ 2.4 กม. มีหัวชาร์จ DC 150 kW": "[Station name] is now open, 2.4 km from you, with 150 kW DC chargers", "ระบบชำระเงินจะปิดปรับปรุง [วันที่ · เวลา] ประมาณ 30 นาที": "Payments will be down for maintenance on [date · time] for about 30 min", "ระบบ": "System", "เต็ม": "Full", "ปิดปรับปรุง": "Under maintenance", "มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "Ramkhamhaeng University, Bang Na Campus", "ปิด": "Closed", "รายละเอียด": "Details", "ลด": "Decrease", "กระเป๋าเงิน Charge-X": "Charge-X wallet", "ยอดคงเหลือ ฿": "Balance ฿", "นาที": "min", "แบตเตอรี่": "Battery", "เวลา": "Time", "สำเร็จ": "Successful", " แล้ว": "", "ยังไม่มี": "None yet", "ชาร์จเสร็จ": "Charging finished", "กม.": "km", "ชม.": "hrs", "กรุณานำรถออกภายใน 5 นาที": "Move car within 5 min", "หัวชาร์จตัดแล้ว · เหลือเวลาฟรี ": "Charging stopped · ", " ก่อนเริ่มคิดค่าบริการ ฿5/นาที": " free left before ฿5/min fee", "เมื่อสักครู่": "Just now", "เลย 5 นาที · เริ่มคิดค่าบริการ ฿5/นาที": "Over 5 min · ฿5/min fee active", "เกินเวลามา +": "Overtime +", " (ค่าปรับ ": " (fine ", ") · กรุณานำรถออกทันที": ") · Please move your car now", "ข้อมูลการชาร์จแยกตามรถ": "Charging by vehicle", "ทุกคัน": "All cars", "รถทุกคัน": "All cars", "เปลี่ยน": "Change", "เลือกรถที่ใช้งาน": "Select vehicle", "ค้นหาชื่อรถ...": "Search vehicle...", "ไม่พบรถที่ค้นหา": "No matching vehicle", "พลังงานรวม": "Total energy", "ยอดชำระรวม": "Total paid", "ลดคาร์บอน": "CO₂ saved", "พลังงาน": "Energy", "ยอดชำระ": "Paid", " ครั้ง": " charges", "BYD Atto 3 ชาร์จ 41.0 kWh ที่มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา": "BYD Atto 3 charged 41.0 kWh at Ramkhamhaeng University, Bang Na Campus", "−฿307.50 ค่าชาร์จช่อง 02 · ยอดคงเหลือ ฿571.82": "−฿307.50 for bay 02 · balance ฿571.82", "กำลังชาร์จ · ช่อง 04": "Active charging · Bay 04", "กำลังดำเนินการชาร์จ ": "Charging ", " · เป้าหมาย ": " · Target ", "การจอง": "Bookings", "ประวัติการจองทั้งหมด": "All booking history", "รอเข้าชาร์จ": "Upcoming", "ยกเลิก": "Cancelled", "ไม่พบประวัติการจอง": "No booking history", "ประวัติการจองตามเงื่อนไขที่เลือกจะแสดงที่นี่": "Bookings matching your filter will appear here", "รายละเอียดการจอง": "Booking details", "รหัสการจอง": "Booking ID", "หัวชาร์จ": "Charger", "ช่วงเวลาจอง": "Reserved time", "รถที่ใช้งาน": "Vehicle", "ค่าจอง": "Booking fee", "ไปที่สถานี": "Go to station", "ยกเลิกการจอง": "Cancel booking", "จองใหม่อีกครั้ง": "Book again", "ตัวกรองสถานะการจอง": "Booking status filter", "การจองหัวชาร์จกำลังจะถึงเวลา": "Upcoming charger booking", "เมกา บางนา (ลานจอด P3)": "Mega Bangna (Parking P3)", "ไบเทค บางนา (อาคาร 2)": "BITEC Bangna (Building 2)", "หัว A": "Connector A", "หัว B": "Connector B", "หัว C": "Connector C", "ช่อง 04": "Bay 04", "ช่อง 02": "Bay 02", "พ.ย.": "Nov", "ฟรีค่าจอง": "Free booking", "หักเข้าค่าชาร์จ": "Applied to charge", "ยกเลิกก่อนเวลา": "Cancelled in advance", "ฟรี · ถือสิทธิ์นาน 15 นาที": "Free · 15 min hold", "ฟรี · หักเข้าค่าชาร์จอัตโนมัติ": "Free · Auto-applied to bill", "ฟรี · เข้าชาร์จตรงเวลา": "Free · Checked in on time", "ไม่มีค่าธรรมเนียมยกเลิก": "No cancellation fee", "ค้นหารายการชาร์จ สถานี ช่องจอด...": "Search charges, station, bay...", "ค้นหารายการชาร์จ การจอง สถานี...": "Search charges, bookings, station...", "หมวดหมู่": "Category", "สถานะการจอง": "Booking status", "ล้างคำค้นหา": "Clear search", "ตัวกรอง": "Filter", "ล้างตัวกรอง": "Clear filters", "ตัวกรองรายการชาร์จ": "Filter charging items", "ล้างทั้งหมด": "Reset all", "ประเภทรายการ": "Item type", "สถานะชาร์จ": "Charging", "หักเงินค่าชาร์จ": "Charge payment", "ช่วงเวลา": "Time period", "สถานที่ / ช่องชาร์จ": "Station / Bay", "ม.รามคำแหง": "Ramkhamhaeng U.", "เฉพาะรายการที่ยังไม่ได้อ่าน": "Unread items only", "ไม่พบรายการที่ตรงกับตัวกรอง": "No matching items", "ลองปรับคำค้นหาหรือล้างตัวกรองดูอีกครั้ง": "Try adjusting your search or clearing filters", "ลบรายการ: ": "Delete: ", "ลบการแจ้งเตือนแล้ว": "Notification deleted", "กู้คืนรายการแล้ว": "Notification restored", "เลิกทำ": "Undo", "ล่าสุด": "Recent"};
+const PT = [["^การชาร์จ\\ ·\\ พบ\\ (\\d+)\\ รายการ$", "Charge · Found {1} items"], ["^การจอง\\ ·\\ พบ\\ (\\d+)\\ รายการ$", "Bookings · Found {1} items"], ["^โปรโมชัน\\ ·\\ พบ\\ (\\d+)\\ รายการ$", "Promotions · Found {1} items"], ["^ระบบ\\ ·\\ พบ\\ (\\d+)\\ รายการ$", "System · Found {1} items"], ["^พบ\\ (\\d+)\\ รายการ$", "Found {1} items"], ["^ดู\\ (\\d+)\\ รายการ$", "Show {1} items"], ["^\\((\\d+)\\ รายการ\\)$", "({1} items)"], ["^\\((\\d+)\\ คัน\\)$", "({1} cars)"], ["^(\\d+)\\ ครั้ง$", "{1} charges"]].map(([r, e]) => [new RegExp(r), e]);
+const SUB = ["Chery Q ชาร์จถึง 80% ที่มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา · 32.4 kWh","[ชื่อสถานี] เปิดให้บริการแล้ว ห่างจากคุณ 2.4 กม. มีหัวชาร์จ DC 150 kW","รับส่วนลด 10% ทุกการชาร์จ DC ช่วง 22:00–06:00 [รายละเอียดโปรโมชัน]","BYD Atto 3 ชาร์จ 41.0 kWh ที่มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา","ระบบชำระเงินจะปิดปรับปรุง [วันที่ · เวลา] ประมาณ 30 นาที","เต็มในอีกประมาณ 18 นาที แตะเพื่อดูสถานะการชาร์จ","+฿735.68 ผ่านพร้อมเพย์ เข้ากระเป๋าเงิน Charge-X","−฿235.68 ค่าชาร์จช่อง 04 · ยอดคงเหลือ ฿264.32","−฿307.50 ค่าชาร์จช่อง 02 · ยอดคงเหลือ ฿571.82","ประวัติการจองตามเงื่อนไขที่เลือกจะแสดงที่นี่","เลย 5 นาที · เริ่มคิดค่าบริการ ฿5/นาที","มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา","การแจ้งเตือนในหมวดนี้จะแสดงที่นี่","หัวชาร์จตัดแล้ว · เหลือเวลาฟรี "," ก่อนเริ่มคิดค่าบริการ ฿5/นาที","ฟรี · หักเข้าค่าชาร์จอัตโนมัติ","การจองหัวชาร์จกำลังจะถึงเวลา","แจ้งปิดปรับปรุงระบบชั่วคราว","ฟรี · ถือสิทธิ์นาน 15 นาที","กรุณานำรถออกภายใน 5 นาที","ไม่มีค่าธรรมเนียมยกเลิก","ข้อมูลการชาร์จแยกตามรถ","สิทธิพิเศษสำหรับสมาชิก","เมกา บางนา (ลานจอด P3)","ฟรี · เข้าชาร์จตรงเวลา",") · กรุณานำรถออกทันที","หักเงินจากกระเป๋าเงิน","แบตเตอรี่ถึง 68% แล้ว","ไบเทค บางนา (อาคาร 2)","กำลังชาร์จ · ช่อง 04","ยังไม่มีการแจ้งเตือน","กระเป๋าเงิน Charge-X","ประวัติการจองทั้งหมด","กำลังดำเนินการชาร์จ ","ประเภทการแจ้งเตือน","ตัวกรองสถานะการจอง","ไม่พบประวัติการจอง","ลบการแจ้งเตือนแล้ว","ชาร์จเสร็จสมบูรณ์","สถานีใหม่ใกล้คุณ","กู้คืนรายการแล้ว","เลือกรถที่ใช้งาน","รายละเอียดการจอง","ไม่พบรถที่ค้นหา","[วันที่ · เวลา]","จองใหม่อีกครั้ง","หักเข้าค่าชาร์จ","เติมเงินสำเร็จ","ค้นหาชื่อรถ...","ยกเลิกก่อนเวลา","ยังไม่ได้อ่าน","เกินเวลามา +","การแจ้งเตือน","ยอดคงเหลือ ฿","ยกเลิกการจอง","เมื่อสักครู่"," · เป้าหมาย ","กระเป๋าเงิน","อ่านทั้งหมด","ก่อนหน้านี้","ปิดปรับปรุง","ช่วงเวลาจอง","รอเข้าชาร์จ","รถที่ใช้งาน","พลังงานรวม","ยอดชำระรวม","รายละเอียด","ลบรายการ: "," (ค่าปรับ ","ชาร์จเสร็จ","ไปที่สถานี","รหัสการจอง","สถานีใหม่","ลดคาร์บอน","แบตเตอรี่","ฟรีค่าจอง","ย้อนกลับ","เติมเงิน","การชาร์จ","โปรโมชัน","รถทุกคัน","หัวชาร์จ","[วันที่]","เมื่อวาน","ยังไม่มี","ทั้งหมด","พลังงาน","ยอดชำระ","เปลี่ยน","ช่อง 04","ช่อง 02","ทุกคัน","วันนี้","สำเร็จ"," ครั้ง","ค่าจอง","ยกเลิก","การจอง","เลิกทำ","ล่าสุด","หัว A","หัว B","หัว C","ชื่อ","ระบบ","เต็ม","นาที","เวลา","พ.ย.","ปิด","กม.","ชม."];
 const THR = /[\u0E01-\u0E3A\u0E40-\u0E5B]/;
 const ATTRS = ['aria-label', 'placeholder', 'title', 'alt'];
 const tx = (s) => { if (!s || !THR.test(s)) return s; const k = s.trim(); if (Object.prototype.hasOwnProperty.call(TR, k)) return s.replace(k, TR[k]); for (const [re, en] of PT) { const m = k.match(re); if (m) return s.replace(k, en.replace(/\{(\d)\}/g, (_, i) => m[+i])); } let o = s; for (const key of SUB) { if (o.indexOf(key) >= 0) o = o.split(key).join(TR[key]); if (!THR.test(o)) break; } return o; };
@@ -145,6 +378,7 @@ const cdm = P.componentDidMount, cdu = P.componentDidUpdate, cwu = P.componentWi
 P.componentDidMount = function () { if (cdm) cdm.call(this); this.cxWalk(); setTimeout(() => this.cxWalk(), 60); if (typeof window !== 'undefined') { this._cxL = (e) => { if (!e || !e.key || e.key === 'cx-lang') { this.cxWalk(); } }; window.addEventListener('storage', this._cxL); window.addEventListener('cx-lang', this._cxL); } };
 P.componentDidUpdate = function (a, b) { if (cdu) cdu.call(this, a, b); this.cxWalk(); };
 P.componentWillUnmount = function () { if (this._cxObs) this._cxObs.disconnect(); if (this._cxL && typeof window !== 'undefined') { window.removeEventListener('storage', this._cxL); window.removeEventListener('cx-lang', this._cxL); } if (cwu) cwu.call(this); };
+P._cxTx = tx;
 P.renderVals = function () { const v = rv.call(this) || {}; v.cxRef = (el) => { this._cxRoot = el; }; v.cxLangProp = this.props.lang || 'ตามแอป'; return v; };
 }
 
@@ -154,7 +388,26 @@ const N = ['Main','Onboarding','Login','Otp','Member','Forgot','Register','Guide
 const rv = P.renderVals;
 P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props.theme === 'dark'; v.theme = d ? 'dark' : 'light'; v.isDark = d; v.isLight = !d; v.darkStr = d ? 'true' : 'false'; const L = {}, F = {}; N.forEach((n) => { L[n] = n + (d ? 'Dark' : '') + '.dc.html'; F[n] = n + (d ? '' : 'Dark') + '.dc.html'; }); v.L = L; v.F = F; return v; };
 }
-constructor(props) { super(props); this.state = { tab: 'all', read: {} }; }
+constructor(props) {
+super(props);
+let initTab = 'all', deleted = {};
+try {
+const nt = localStorage.getItem('cx-notify-tab');
+if (nt === 'booking' || nt === 'charge' || nt === 'promo' || nt === 'system') { initTab = nt; localStorage.removeItem('cx-notify-tab'); }
+const sd = JSON.parse(localStorage.getItem('cx-notify-deleted') || 'null');
+if (sd && typeof sd === 'object' && !Array.isArray(sd)) deleted = sd;
+} catch (e) {}
+this.state = { tab: initTab, car: 'all', carOpen: false, carQuery: '', qText: '', filterOpen: false, fType: 'all', fPeriod: 'all', fLoc: 'all', fUnread: false, bkStatus: 'all', bookId: null, bkList: null, read: {}, deleted, toast: '', undoId: '', now: Date.now() };
+}
+componentDidMount() {
+this._t = setInterval(() => {
+try {
+const s = localStorage.getItem('cx-sess');
+if (s === 'รอรับรถ (5 นาที)' || s === 'มีค่าปรับจอดเกิน') this.setState({ now: Date.now() });
+} catch (e) {}
+}, 1000);
+}
+componentWillUnmount() { clearInterval(this._t); clearTimeout(this._toastT); }
 renderVals() {
 const accent = this.props.accent ?? '#FC3901';
 const d = this.props.theme === 'dark';
@@ -166,7 +419,8 @@ wallet: 'M6 6h12a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3zM
 plus: 'M12 5v14M5 12h14',
 gift: 'M3 8h18v4H3zM12 8v13M5 12v9h14v-9M12 8H8a2.5 2.5 0 1 1 0-5c2.5 0 4 5 4 5zM12 8h4a2.5 2.5 0 1 0 0-5c-2.5 0-4 5-4 5z',
 alert: 'M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h0',
-pin: 'M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21zM14.5 9.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 1 1 5 0z'
+pin: 'M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21zM14.5 9.5a2.5 2.5 0 1 1-5 0a2.5 2.5 0 1 1 5 0z',
+cal: 'M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z'
 };
 const T = {
 charge: { bg: '#FFF1EB', fg: accent },
@@ -175,42 +429,317 @@ topup: { bg: '#E7F6EE', fg: '#146C3E' },
 promo: { bg: '#F7EFD6', fg: '#7A5C0E' },
 system: { bg: '#F4F4F4', fg: '#3A3A3A' }
 };
-const all = [
-{ id: 'n1', cat: 'charge', t: 'charge', head: 'วันนี้', icon: IC.done, title: 'ชาร์จเสร็จสมบูรณ์', body: 'Chery Q ชาร์จถึง 80% ที่มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา · 32.4 kWh', time: '10:42', to: 'Complete', unread: true },
-{ id: 'n2', cat: 'charge', t: 'wallet', head: 'วันนี้', icon: IC.wallet, title: 'หักเงินจากกระเป๋าเงิน', body: '−฿235.68 ค่าชาร์จช่อง 04 · ยอดคงเหลือ ฿264.32', time: '10:43', to: 'Wallet', unread: true },
-{ id: 'n3', cat: 'charge', t: 'charge', head: 'วันนี้', icon: IC.charge, title: 'แบตเตอรี่ถึง 68% แล้ว', body: 'เต็มในอีกประมาณ 18 นาที แตะเพื่อดูสถานะการชาร์จ', time: '10:24', to: 'Charging', unread: true },
+const liveItems = [];
+let activeCar = 'Chery Q', lastChg = null, savedCars = null, savedBookings = null;
+try {
+const ac = JSON.parse(localStorage.getItem('cx-ac-profile') || 'null');
+const c = JSON.parse(localStorage.getItem('cx-car') || 'null');
+savedCars = JSON.parse(localStorage.getItem('cx-cars') || 'null');
+savedBookings = JSON.parse(localStorage.getItem('cx-bookings') || 'null');
+lastChg = JSON.parse(localStorage.getItem('cx-last-chg') || 'null');
+if (lastChg && lastChg.car) activeCar = lastChg.car;
+else if (ac && ac.enabled && ac.car) activeCar = ac.car;
+else if (c && c.name) activeCar = c.name;
+const sess = localStorage.getItem('cx-sess');
+const ia = parseInt(localStorage.getItem('cx-idle-at') || '0', 10) || 0;
+const pf = JSON.parse(localStorage.getItem('cx-prefs') || 'null');
+const alertOn = !pf || pf.n3 !== false;
+if (sess === 'กำลังชาร์จ') {
+liveItems.push({ id: 'n_live_chg', car: activeCar, cat: 'charge', t: 'charge', head: 'วันนี้', icon: IC.charge, title: 'กำลังชาร์จ · ช่อง 04', body: 'กำลังดำเนินการชาร์จ ' + activeCar + (lastChg && lastChg.kwh ? ' · เป้าหมาย ' + lastChg.kwh + ' kWh' : ''), time: 'เมื่อสักครู่', to: 'Charging', unread: true });
+} else if (alertOn && (sess === 'รอรับรถ (5 นาที)' || sess === 'มีค่าปรับจอดเกิน')) {
+const elapsed = ia > 0 ? Math.max(0, Math.floor((this.state.now - ia) / 1000)) : 0;
+const isOver = sess === 'มีค่าปรับจอดเกิน' || elapsed >= 300;
+if (isOver) {
+const overMin = Math.max(1, Math.floor(Math.max(0, elapsed - 300) / 60) + 1);
+const fee = (overMin * 5).toFixed(2);
+liveItems.push({ id: 'n_idle', car: activeCar, cat: 'charge', t: 'charge', head: 'วันนี้', icon: IC.alert, title: 'เลย 5 นาที · เริ่มคิดค่าบริการ ฿5/นาที', body: 'เกินเวลามา +' + overMin + ' นาที (ค่าปรับ ฿' + fee + ') · กรุณานำรถออกทันที', time: 'เมื่อสักครู่', to: 'Complete', unread: true });
+} else {
+const rem = Math.max(0, 300 - elapsed);
+const clk = String(Math.floor(rem / 60)).padStart(2, '0') + ':' + String(rem % 60).padStart(2, '0');
+liveItems.push({ id: 'n_grace', car: activeCar, cat: 'charge', t: 'charge', head: 'วันนี้', icon: IC.alert, title: 'กรุณานำรถออกภายใน 5 นาที', body: 'หัวชาร์จตัดแล้ว · เหลือเวลาฟรี ' + clk + ' นาที ก่อนเริ่มคิดค่าบริการ ฿5/นาที', time: 'เมื่อสักครู่', to: 'Complete', unread: true });
+}
+}
+} catch (e) {}
+const sessions = [
+{ car: 'Chery Q', count: 2, kwh: 48.6, cost: 357.18 },
+{ car: 'BYD Atto 3', count: 1, kwh: 41.0, cost: 307.50 }
+];
+if (Array.isArray(savedCars)) {
+savedCars.forEach((sc) => {
+const nm = typeof sc === 'string' ? sc : (sc && sc.name);
+if (nm && !sessions.some((s) => s.car === nm)) sessions.push({ car: nm, count: 0, kwh: 0, cost: 0 });
+});
+}
+if (lastChg && lastChg.car) {
+const found = sessions.find((s) => s.car === lastChg.car);
+if (found) { found.count += 1; found.kwh += Number(lastChg.kwh) || 0; found.cost += Number(lastChg.cost) || 0; }
+else sessions.unshift({ car: lastChg.car, count: 1, kwh: Number(lastChg.kwh) || 0, cost: Number(lastChg.cost) || 0 });
+}
+if (activeCar && !sessions.some((s) => s.car === activeCar)) sessions.push({ car: activeCar, count: 0, kwh: 0, cost: 0 });
+const carList = ['all'].concat(sessions.map((s) => s.car));
+const carSel = carList.indexOf(this.state.car) >= 0 ? this.state.car : 'all';
+const allCount = sessions.reduce((a, b) => a + b.count, 0);
+const allKwh = sessions.reduce((a, b) => a + b.kwh, 0);
+const allCost = sessions.reduce((a, b) => a + b.cost, 0);
+const carTabs = carList.map((id) => {
+const on = carSel === id;
+const s = id === 'all' ? { count: allCount, kwh: allKwh, cost: allCost } : (sessions.find((x) => x.car === id) || { count: 0, kwh: 0, cost: 0 });
+return {
+id, label: id === 'all' ? 'รถทุกคัน' : id, on,
+sub: s.count + ' ครั้ง · ' + s.kwh.toFixed(1) + ' kWh · ฿' + s.cost.toFixed(2),
+pick: () => this.setState({ car: id, carOpen: false, carQuery: '' }),
+rowStyle: 'width: 100%; padding: 11px 12px; border-radius: 14px; font-family: inherit; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 10px; box-sizing: border-box; ' + (on ? 'background: #FFF7F3; border: 1px solid #FDD3C3' : 'background: transparent; border: 1px solid transparent')
+};
+});
+const q = (this.state.carQuery || '').trim().toLowerCase();
+const pickerCars = q ? carTabs.filter((c) => c.label.toLowerCase().indexOf(q) >= 0) : carTabs;
+const showCarSearch = sessions.length >= 5;
+const matchedSess = carSel === 'all' ? sessions : sessions.filter((s) => s.car === carSel);
+const sumCount = matchedSess.reduce((a, b) => a + b.count, 0);
+const sumKwh = matchedSess.reduce((a, b) => a + b.kwh, 0);
+const sumCost = matchedSess.reduce((a, b) => a + b.cost, 0);
+const carSum = {
+countText: sumCount + ' ครั้ง',
+kwhText: sumKwh.toFixed(1) + ' kWh',
+costText: '฿' + sumCost.toFixed(2),
+co2Text: (sumKwh * 0.45).toFixed(1) + ' kg'
+};
+let boNotifs = [];
+try {
+  const bn = JSON.parse(localStorage.getItem('cx-bo-news') || 'null');
+  if (Array.isArray(bn)) {
+    const nowMs = Date.now();
+    bn.forEach((n) => {
+      if (!n || n.status !== 'published') return;
+      if (n.sendMode === 'scheduled') {
+        const dm = /^(\d{4})-(\d{2})-(\d{2})$/.exec(n.schedDate || '');
+        const tm = /^(\d{2}):(\d{2})$/.exec(n.schedTime || '00:00');
+        if (!dm || !tm) return;
+        const sms = new Date(parseInt(dm[1], 10), parseInt(dm[2], 10) - 1, parseInt(dm[3], 10), parseInt(tm[1], 10), parseInt(tm[2], 10)).getTime();
+        if (!isFinite(sms) || sms > nowMs) return;
+      }
+      const isPromo = n.tag === 'โปรโมชัน';
+      const isStation = n.tag === 'สถานีใหม่';
+      boNotifs.push({
+        id: 'bo_' + n.id,
+        cat: isPromo ? 'promo' : 'system',
+        t: isPromo ? 'promo' : (isStation ? 'charge' : 'system'),
+        head: 'วันนี้',
+        icon: isPromo ? IC.gift : (isStation ? IC.pin : IC.alert),
+        title: n.title,
+        body: n.body || n.title,
+        time: n.schedTime || 'ล่าสุด',
+        to: 'News',
+        unread: true
+      });
+    });
+  }
+} catch (e) {}
+const rawAll = liveItems.concat(boNotifs, [
+{ id: 'n1', car: 'Chery Q', cat: 'charge', t: 'charge', head: 'วันนี้', icon: IC.done, title: 'ชาร์จเสร็จสมบูรณ์', body: 'Chery Q ชาร์จถึง 80% ที่มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา · 32.4 kWh', time: '10:42', to: 'Complete', unread: true },
+{ id: 'n2', car: 'Chery Q', cat: 'charge', t: 'wallet', head: 'วันนี้', icon: IC.wallet, title: 'หักเงินจากกระเป๋าเงิน', body: '−฿235.68 ค่าชาร์จช่อง 04 · ยอดคงเหลือ ฿264.32', time: '10:43', to: 'Wallet', unread: true },
+{ id: 'n3', car: 'Chery Q', cat: 'charge', t: 'charge', head: 'วันนี้', icon: IC.charge, title: 'แบตเตอรี่ถึง 68% แล้ว', body: 'เต็มในอีกประมาณ 18 นาที แตะเพื่อดูสถานะการชาร์จ', time: '10:24', to: 'Charging', unread: true },
+{ id: 'n_bk1', car: 'Chery Q', cat: 'booking', t: 'charge', head: 'วันนี้', bkId: 'CX-8421', icon: IC.cal, title: 'การจองหัวชาร์จกำลังจะถึงเวลา', body: 'Chery Q · วันนี้ 16:30–17:00 · มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา (#CX-8421)', time: '15:45', to: '#booking', unread: false },
+{ id: 'n_byd1', car: 'BYD Atto 3', cat: 'charge', t: 'charge', head: 'เมื่อวาน', icon: IC.done, title: 'ชาร์จเสร็จสมบูรณ์', body: 'BYD Atto 3 ชาร์จ 41.0 kWh ที่มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา', time: '19:20', to: 'Complete', unread: false },
+{ id: 'n_byd2', car: 'BYD Atto 3', cat: 'charge', t: 'wallet', head: 'เมื่อวาน', icon: IC.wallet, title: 'หักเงินจากกระเป๋าเงิน', body: '−฿307.50 ค่าชาร์จช่อง 02 · ยอดคงเหลือ ฿571.82', time: '19:21', to: 'Wallet', unread: false },
 { id: 'n4', cat: 'promo', t: 'promo', head: 'เมื่อวาน', icon: IC.gift, title: 'สิทธิพิเศษสำหรับสมาชิก', body: 'รับส่วนลด 10% ทุกการชาร์จ DC ช่วง 22:00–06:00 [รายละเอียดโปรโมชัน]', time: '18:05', to: 'News', unread: false },
 { id: 'n5', cat: 'charge', t: 'topup', head: 'เมื่อวาน', icon: IC.plus, title: 'เติมเงินสำเร็จ', body: '+฿735.68 ผ่านพร้อมเพย์ เข้ากระเป๋าเงิน Charge-X', time: '09:12', to: 'Wallet', unread: false },
 { id: 'n6', cat: 'system', t: 'charge', head: 'ก่อนหน้านี้', icon: IC.pin, title: 'สถานีใหม่ใกล้คุณ', body: '[ชื่อสถานี] เปิดให้บริการแล้ว ห่างจากคุณ 2.4 กม. มีหัวชาร์จ DC 150 kW', time: '[วันที่]', to: 'Home', unread: false },
 { id: 'n7', cat: 'system', t: 'system', head: 'ก่อนหน้านี้', icon: IC.alert, title: 'แจ้งปิดปรับปรุงระบบชั่วคราว', body: 'ระบบชำระเงินจะปิดปรับปรุง [วันที่ · เวลา] ประมาณ 30 นาที', time: '[วันที่]', to: 'News', unread: false }
-];
+]);
+const all = rawAll.filter((n) => !this.state.deleted[n.id]);
+const fireToast = (msg, undoId) => {
+clearTimeout(this._toastT);
+this.setState({ toast: msg, undoId: undoId || '' });
+this._toastT = setTimeout(() => this.setState({ toast: '', undoId: '' }), 3500);
+};
+const txx = this._cxTx || ((s) => s);
 const isUnread = (n) => n.unread && !this.state.read[n.id];
 const tab = this.state.tab;
-const list = all.filter((n) => tab === 'all' || n.cat === tab);
+const showCarPanel = tab === 'all' || tab === 'charge';
+const showBookingView = tab === 'booking';
+const showNotifList = !showBookingView;
+const qStr = (this.state.qText || '').trim();
+const qLower = qStr.toLowerCase();
+const fType = this.state.fType || 'all';
+const fPeriod = this.state.fPeriod || 'all';
+const fLoc = this.state.fLoc || 'all';
+const fUnread = !!this.state.fUnread;
+const bkStatus = this.state.bkStatus || 'all';
+const activeFilterCount = (tab !== 'all' ? 1 : 0) + (showBookingView ? (bkStatus !== 'all' ? 1 : 0) : ((showCarPanel ? (fType !== 'all' ? 1 : 0) + (fLoc !== 'all' ? 1 : 0) : 0) + (fPeriod !== 'all' ? 1 : 0) + (fUnread ? 1 : 0)));
+const hasActiveFilters = activeFilterCount > 0;
+const hasAnyFilter = !!qStr || hasActiveFilters;
+const list = all.filter((n) => {
+if (tab !== 'all' && n.cat !== tab) return false;
+if (showCarPanel && carSel !== 'all' && n.car !== carSel) return false;
+if (showCarPanel) {
+if (fType === 'done' && n.t !== 'charge') return false;
+if (fType === 'wallet' && n.t !== 'wallet') return false;
+if (fType === 'topup' && n.t !== 'topup') return false;
+if (fLoc === 'ram' && n.body.indexOf('รามคำแหง') < 0) return false;
+if (fLoc === '04' && n.title.indexOf('04') < 0 && n.body.indexOf('04') < 0) return false;
+if (fLoc === '02' && n.title.indexOf('02') < 0 && n.body.indexOf('02') < 0) return false;
+}
+if (fPeriod !== 'all' && n.head !== fPeriod) return false;
+if (fUnread && !isUnread(n)) return false;
+if (qLower) {
+const hay = (n.title + ' ' + n.body + ' ' + (n.car || '') + ' ' + n.head + ' ' + txx(n.title) + ' ' + txx(n.body) + ' ' + txx(n.head)).toLowerCase();
+if (hay.indexOf(qLower) < 0) return false;
+}
+return true;
+});
 let last = null;
 const items = list.map((n, i) => {
 const u = isUnread(n);
 const showHead = n.head !== last; last = n.head;
+const isBk = n.to === '#booking';
 return {
 showHead, head: n.head, icon: n.icon, title: n.title, body: n.body, time: n.time,
-href: pre(n.to), unread: u,
+car: n.car || '', hasCar: !!n.car, meta: n.car ? (n.car + ' · ' + n.time) : n.time,
+href: isBk ? '#booking' : pre(n.to), unread: u, delAria: 'ลบรายการ: ' + n.title,
 tileBg: T[n.t].bg, tileFg: T[n.t].fg,
-read: () => this.setState({ read: Object.assign({}, this.state.read, { [n.id]: true }) }),
-cardStyle: 'position: relative; display: flex; align-items: flex-start; gap: 12px; padding: 14px 30px 14px 14px; border-radius: 18px; text-decoration: none; animation-delay: ' + (i * 0.05).toFixed(2) + 's; background: ' + (u ? '#FFF7F3' : '#FFFFFF') + '; border: 1px solid ' + (u ? '#FDD3C3' : '#EFEFEF')
+read: (e) => {
+const nextRead = Object.assign({}, this.state.read, { [n.id]: true });
+if (isBk) { if (e && e.preventDefault) e.preventDefault(); this.setState({ read: nextRead, tab: 'booking', bookId: n.bkId || null, carOpen: false }); }
+else this.setState({ read: nextRead });
+},
+del: () => {
+const nextDel = Object.assign({}, this.state.deleted, { [n.id]: true });
+try { localStorage.setItem('cx-notify-deleted', JSON.stringify(nextDel)); } catch (e) {}
+this.setState({ deleted: nextDel });
+fireToast('ลบการแจ้งเตือนแล้ว', n.id);
+},
+cardStyle: 'position: relative; display: flex; align-items: flex-start; gap: 10px; padding: 13px 12px 13px 14px; border-radius: 18px; animation-delay: ' + (i * 0.05).toFixed(2) + 's; background: ' + (u ? '#FFF7F3' : '#FFFFFF') + '; border: 1px solid ' + (u ? '#FDD3C3' : '#EFEFEF')
 };
 });
-const unread = all.filter(isUnread).length;
-const tabs = [['all', 'ทั้งหมด'], ['charge', 'การชาร์จ'], ['promo', 'โปรโมชัน'], ['system', 'ระบบ']].map(([id, label]) => {
-const on = tab === id;
-return { label, sel: on ? 'true' : 'false', pick: () => this.setState({ tab: id }),
-style: 'height: 36px; padding: 0 16px; flex: none; border-radius: 18px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; ' + (on ? 'border: 0; background: ' + accent + '; color: #FFFFFF' : 'border: 1px solid #E6E6E6; background: #FFFFFF; color: #3A3A3A') };
+const SEED_BOOK = [
+{ id: 'CX-8421', status: 'upcoming', station: 'มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา', charger: 'DC CCS2 · หัว A', slot: 'วันนี้ · 16:30–17:00', car: 'Chery Q', fee: 'ฟรีค่าจอง', feeDetail: 'ฟรี · ถือสิทธิ์นาน 15 นาที' },
+{ id: 'CX-8390', status: 'done', station: 'มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา', charger: 'DC CCS2 · ช่อง 04', slot: 'วันนี้ · 10:15–10:42', car: 'Chery Q', fee: 'หักเข้าค่าชาร์จ', feeDetail: 'ฟรี · หักเข้าค่าชาร์จอัตโนมัติ' },
+{ id: 'CX-8344', status: 'done', station: 'มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา', charger: 'DC CCS2 · ช่อง 02', slot: 'เมื่อวาน · 18:45–19:20', car: 'BYD Atto 3', fee: 'ฟรีค่าจอง', feeDetail: 'ฟรี · เข้าชาร์จตรงเวลา' },
+{ id: 'CX-8291', status: 'cancel', station: 'เมกา บางนา (ลานจอด P3)', charger: 'AC Type 2 · หัว C', slot: '14 พ.ย. · 13:00–13:30', car: 'Chery Q', fee: 'ยกเลิกก่อนเวลา', feeDetail: 'ไม่มีค่าธรรมเนียมยกเลิก' },
+{ id: 'CX-8210', status: 'done', station: 'ไบเทค บางนา (อาคาร 2)', charger: 'DC CCS2 · หัว B', slot: '11 พ.ย. · 09:30–10:10', car: 'BYD Atto 3', fee: 'ฟรีค่าจอง', feeDetail: 'ฟรี · เข้าชาร์จตรงเวลา' }
+];
+const rawBookings = Array.isArray(this.state.bkList) ? this.state.bkList : (Array.isArray(savedBookings) ? savedBookings : SEED_BOOK);
+const BK_BADGE = { upcoming: 'รอเข้าชาร์จ', done: 'สำเร็จ', cancel: 'ยกเลิก' };
+const BK_STYLE = {
+upcoming: 'flex: none; padding: 3px 9px; border-radius: 999px; font-size: 11.5px; font-weight: 700; background: #FFF1EB; color: #C42D00',
+done: 'flex: none; padding: 3px 9px; border-radius: 999px; font-size: 11.5px; font-weight: 700; background: #E7F6EE; color: #146C3E',
+cancel: 'flex: none; padding: 3px 9px; border-radius: 999px; font-size: 11.5px; font-weight: 700; background: #F4F4F4; color: #6B6B6B'
+};
+const bkTabs = [['all', 'ทั้งหมด'], ['upcoming', 'รอเข้าชาร์จ'], ['done', 'สำเร็จ'], ['cancel', 'ยกเลิก']].map(([id, label]) => {
+const on = bkStatus === id;
+return { label, sel: on ? 'true' : 'false', pick: () => this.setState({ bkStatus: id }),
+style: 'height: 30px; padding: 0 12px; flex: none; border-radius: 999px; font-family: inherit; font-size: 12.5px; cursor: pointer; white-space: nowrap; ' + (on ? 'background: #FFFFFF; color: #1F1F1F; font-weight: 700; border: 1px solid #E0E0E0' : 'background: transparent; color: #6B6B6B; font-weight: 500; border: 1px solid transparent') };
 });
+const bkFiltered = rawBookings.filter((b) => {
+if (carSel !== 'all' && b.car !== carSel) return false;
+if (bkStatus !== 'all' && b.status !== bkStatus) return false;
+if (qLower) {
+const hay = (b.id + ' ' + b.station + ' ' + b.charger + ' ' + b.slot + ' ' + b.car + ' ' + (BK_BADGE[b.status] || '') + ' ' + txx(b.station) + ' ' + txx(b.charger) + ' ' + txx(b.slot)).toLowerCase();
+if (hay.indexOf(qLower) < 0) return false;
+}
+return true;
+});
+const bookings = bkFiltered.map((b, i) => ({
+id: b.id, station: b.station, charger: b.charger, slot: b.slot, car: b.car, fee: b.fee, feeDetail: b.feeDetail,
+badge: BK_BADGE[b.status] || BK_BADGE.done,
+badgeStyle: BK_STYLE[b.status] || BK_STYLE.done,
+when: b.slot + ' · ' + b.charger,
+meta: b.car + ' · #' + b.id,
+open: () => this.setState({ bookId: b.id, carOpen: false }),
+cardStyle: 'width: 100%; flex: none; padding: 13px 14px; border-radius: 16px; background: #FFFFFF; border: 1px solid #EFEFEF; display: flex; flex-direction: column; gap: 6px; cursor: pointer; font-family: inherit; box-sizing: border-box; animation-delay: ' + (i * 0.04).toFixed(2) + 's'
+}));
+const selBk = rawBookings.find((b) => b.id === this.state.bookId) || null;
+const detailBook = selBk ? {
+id: selBk.id, station: selBk.station, charger: selBk.charger, slot: selBk.slot, car: selBk.car, feeDetail: selBk.feeDetail,
+badge: BK_BADGE[selBk.status] || BK_BADGE.done,
+badgeStyle: BK_STYLE[selBk.status] || BK_STYLE.done,
+isUpcoming: selBk.status === 'upcoming',
+notUpcoming: selBk.status !== 'upcoming'
+} : { id: '', station: '', charger: '', slot: '', car: '', feeDetail: '', badge: '', badgeStyle: '', isUpcoming: false, notUpcoming: true };
+const unread = all.filter(isUnread).length;
+const chipStyle = (on) => 'height: 32px; padding: 0 12px; border-radius: 999px; font-family: inherit; font-size: 12.5px; cursor: pointer; white-space: nowrap; ' + (on ? 'background: #FFF7F3; color: #C42D00; font-weight: 700; border: 1px solid #FDD3C3' : 'background: #F6F6F6; color: #3A3A3A; font-weight: 500; border: 1px solid transparent');
+const tabs = [['all', 'ทั้งหมด'], ['charge', 'การชาร์จ'], ['booking', 'การจอง'], ['promo', 'โปรโมชัน'], ['system', 'ระบบ']].map(([id, label]) => {
+const on = tab === id;
+return { label, sel: on ? 'true' : 'false', pick: () => this.setState({ tab: id, bookId: null, carOpen: false }),
+style: chipStyle(on) };
+});
+const fCarTabs = carList.map((id) => ({
+label: id === 'all' ? 'รถทุกคัน' : id,
+pick: () => this.setState({ car: id }),
+style: chipStyle(carSel === id)
+}));
+const fTypeTabs = [['all', 'ทั้งหมด'], ['done', 'สถานะชาร์จ'], ['wallet', 'หักเงินค่าชาร์จ'], ['topup', 'เติมเงิน']].map(([id, label]) => ({
+label, pick: () => this.setState({ fType: id }), style: chipStyle(fType === id)
+}));
+const fPeriodTabs = [['all', 'ทั้งหมด'], ['วันนี้', 'วันนี้'], ['เมื่อวาน', 'เมื่อวาน'], ['ก่อนหน้านี้', 'ก่อนหน้านี้']].map(([id, label]) => ({
+label, pick: () => this.setState({ fPeriod: id }), style: chipStyle(fPeriod === id)
+}));
+const fLocTabs = [['all', 'ทั้งหมด'], ['ram', 'ม.รามคำแหง'], ['04', 'ช่อง 04'], ['02', 'ช่อง 02']].map(([id, label]) => ({
+label, pick: () => this.setState({ fLoc: id }), style: chipStyle(fLoc === id)
+}));
+const fBkTabs = [['all', 'ทั้งหมด'], ['upcoming', 'รอเข้าชาร์จ'], ['done', 'สำเร็จ'], ['cancel', 'ยกเลิก']].map(([id, label]) => ({
+label, pick: () => this.setState({ bkStatus: id }), style: chipStyle(bkStatus === id)
+}));
+const resCount = showBookingView ? bookings.length : items.length;
+const TAB_LBL = { all: 'ทั้งหมด', charge: 'การชาร์จ', booking: 'การจอง', promo: 'โปรโมชัน', system: 'ระบบ' };
 return {
-accent, items, tabs, unread,
+accent, items, tabs, unread, carTabs, carSum, showCarPanel, showNotifList, showBookingView,
+showCarOrBook: showCarPanel || showBookingView,
+qText: this.state.qText || '',
+hasQText: !!qStr,
+setQText: (e) => this.setState({ qText: e && e.target ? e.target.value : '' }),
+clearQText: () => this.setState({ qText: '' }),
+showFilterSheet: !!this.state.filterOpen,
+openFilter: () => this.setState({ filterOpen: true, carOpen: false, bookId: null }),
+closeFilter: () => this.setState({ filterOpen: false }),
+resetFilters: () => this.setState({ tab: 'all', qText: '', fType: 'all', fPeriod: 'all', fLoc: 'all', fUnread: false, car: 'all', bkStatus: 'all' }),
+hasActiveFilters, activeFilterCount, hasAnyFilter,
+filterBtnStyle: 'height: 40px; padding: 0 12px; flex: none; border-radius: 14px; font-family: inherit; font-size: 13px; font-weight: 600; white-space: nowrap; cursor: pointer; display: flex; align-items: center; gap: 5px; ' + (hasActiveFilters ? 'background: #FFF7F3; border: 1px solid #FDD3C3; color: #C42D00' : 'background: #FFFFFF; border: 1px solid #EFEFEF; color: #3A3A3A'),
+filterResultText: tab !== 'all' ? (TAB_LBL[tab] + ' · พบ ' + resCount + ' รายการ') : ('พบ ' + resCount + ' รายการ'),
+applyBtnText: 'ดู ' + resCount + ' รายการ',
+fCarTabs, fTypeTabs, fPeriodTabs, fLocTabs, fBkTabs, fUnread,
+toggleUnreadOnly: () => this.setState({ fUnread: !this.state.fUnread }),
+unreadBtnStyle: 'width: 100%; padding: 10px 12px; border-radius: 12px; background: #F6F6F6; border: 1px solid transparent; font-family: inherit; display: flex; align-items: center; justify-content: space-between; gap: 10px; cursor: pointer; box-sizing: border-box',
+unreadBoxStyle: 'width: 20px; height: 20px; border-radius: 6px; flex: none; display: flex; align-items: center; justify-content: center; ' + (fUnread ? 'background: ' + accent + '; border: 1.5px solid ' + accent : 'background: #FFFFFF; border: 1.5px solid #E0E0E0'),
+emptyTitle: hasAnyFilter ? 'ไม่พบรายการที่ตรงกับตัวกรอง' : 'ยังไม่มีการแจ้งเตือน',
+emptySub: hasAnyFilter ? 'ลองปรับคำค้นหาหรือล้างตัวกรองดูอีกครั้ง' : 'การแจ้งเตือนในหมวดนี้จะแสดงที่นี่',
+bkTabs, bookings, bkEmpty: bookings.length === 0, bkCountText: '(' + bookings.length + ' รายการ)',
+showBookSheet: !!selBk, detailBook,
+closeBookSheet: () => this.setState({ bookId: null }),
+cancelBook: () => {
+if (!selBk) return;
+const next = rawBookings.map((b) => (b.id === selBk.id ? Object.assign({}, b, { status: 'cancel', fee: 'ยกเลิกก่อนเวลา', feeDetail: 'ไม่มีค่าธรรมเนียมยกเลิก' }) : b));
+try { localStorage.setItem('cx-bookings', JSON.stringify(next)); } catch (e) {}
+this.setState({ bkList: next });
+},
+carBtnTitle: carSel === 'all' ? 'รถทุกคัน' : carSel,
+carIsAll: carSel === 'all',
+carCountText: '(' + sessions.length + ' คัน)',
+showCarPicker: (showCarPanel || showBookingView) && !!this.state.carOpen,
+openCarPicker: () => this.setState({ carOpen: true, carQuery: '', bookId: null, filterOpen: false }),
+closeCarPicker: () => this.setState({ carOpen: false, carQuery: '' }),
+showCarSearch,
+carQuery: this.state.carQuery || '',
+setCarQuery: (e) => this.setState({ carQuery: e && e.target ? e.target.value : '' }),
+pickerCars,
+carSearchEmpty: pickerCars.length === 0,
 hasUnread: unread > 0,
 noUnread: unread === 0,
 readAllColor: unread > 0 ? '#C42D00' : '#8A8A8A',
 empty: items.length === 0,
+showToast: !!this.state.toast,
+toastText: this.state.toast || '',
+hasUndoDel: !!this.state.undoId,
+undoDel: () => {
+const uid = this.state.undoId;
+if (!uid) return;
+const nextDel = Object.assign({}, this.state.deleted);
+delete nextDel[uid];
+try { localStorage.setItem('cx-notify-deleted', JSON.stringify(nextDel)); } catch (e) {}
+this.setState({ deleted: nextDel, undoId: '' });
+fireToast('กู้คืนรายการแล้ว', '');
+},
 readAll: () => { const r = {}; all.forEach((n) => { r[n.id] = true; }); this.setState({ read: r }); }
 };
 }
