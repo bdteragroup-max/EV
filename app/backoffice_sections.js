@@ -2,8 +2,8 @@
   globalThis.CX_BO_SECTIONS = {
     renderVals: function () {
       const accent = this.props.accent ?? "#FC3901";
-      const d = this.props.theme === "dark";
       const st = this.state;
+      const d = st.theme ? st.theme === "dark" : this.props.theme === "dark";
       const en = this.cxLang() === "en";
       const fireToast = (msg, withUndo) => {
         clearTimeout(this._toastT);
@@ -3659,6 +3659,27 @@
       };
       return {
         theme: d ? "dark" : "light",
+        isDarkTheme: d,
+        isLightTheme: !d,
+        themeToggleTitle: d ? "สลับเป็นโหมดสว่าง" : "สลับเป็นโหมดมืด",
+        toggleTheme: () => {
+          const nt = d ? "light" : "dark";
+          try {
+            localStorage.setItem("cx-bo-theme", nt);
+          } catch (e) {}
+          try {
+            if (typeof document !== "undefined" && document.body) {
+              document.body.style.background =
+                nt === "dark" ? "#121215" : "#F4F5F7";
+            }
+          } catch (e) {}
+          this.setState({ theme: nt });
+          fireToast(
+            nt === "dark"
+              ? "เปลี่ยนเป็นโหมดมืดเรียบร้อยแล้ว"
+              : "เปลี่ยนเป็นโหมดสว่างเรียบร้อยแล้ว",
+          );
+        },
         accent,
         isLogin: !curUser,
         isDash: !!curUser,
@@ -3697,167 +3718,524 @@
                 : "background: transparent; color: #3A3A3A"),
           };
         }),
-        lUser: st.lUser,
-        lPw: st.lPw,
-        lPwType: st.lShowPw ? "text" : "password",
-        onLUser: setVal("lUser"),
-        onLPw: setVal("lPw"),
-        toggleLPw: () => this.setState({ lShowPw: !st.lShowPw }),
-        fillAdmin: () =>
-          this.setState({ lUser: "superadmin", lPw: "Admin@1234", lErr: "" }),
-        fillOp: () =>
-          this.setState({
-            lUser: "nattapong@chargex.co.th",
-            lPw: "Op@123456",
-            lErr: "",
-          }),
-        lPwRules: pwRules(st.lPw),
-        hasLErr: !!st.lErr,
-        lErr: st.lErr,
-        doLogin: () => {
-          const idRaw = String(st.lUser || "").trim();
-          const idLow = idRaw.toLowerCase();
-          const pw = String(st.lPw || "");
-          if (!idRaw) {
-            this.setState({ lErr: "กรุณากรอก Username หรืออีเมลบริษัท" });
-            return;
-          }
-          if (!pw) {
-            this.setState({ lErr: "กรุณากรอกรหัสผ่าน" });
-            return;
-          }
-          if (!this.checkPw(pw).ok) {
-            const accessLogs = this.recordAccess(
-              idRaw,
-              idRaw,
-              "operator",
-              "เข้าสู่ระบบไม่สำเร็จ (รหัสผ่านไม่ผ่านเกณฑ์)",
-              "denied",
-            );
-            this.setState({
-              lErr: "รหัสผ่านไม่ผ่านเกณฑ์ความปลอดภัย (ต้องยาว 8+ ตัว มี A–Z, a–z, 0–9 และสัญลักษณ์)",
-              accessLogs,
-            });
-            return;
-          }
-          const match = st.users.find(
-            (u) =>
-              u.email.toLowerCase() === idLow ||
-              (u.role === "super_admin" && u.username.toLowerCase() === idLow),
-          );
-          if (!match) {
-            if (idRaw.indexOf("@") >= 0 && !this.isCorpEmail(idRaw)) {
+        ...(() => {
+          const nowD = new Date();
+          const hh = String(nowD.getHours()).padStart(2, "0");
+          const mm = String(nowD.getMinutes()).padStart(2, "0");
+          const roleMode =
+            st.lRoleMode === "operator" ? "operator" : "super_admin";
+          const isOpMode = roleMode === "operator";
+          const idTrim = String(st.lUser || "").trim();
+          const badPublicDomain =
+            idTrim.indexOf("@") >= 0 && !this.isCorpEmail(idTrim);
+          const opMissingDomain =
+            isOpMode && !!idTrim && idTrim.indexOf("@") < 0;
+          const pwRulesArr = pwRules(st.lPw);
+          const pwScore = pwRulesArr.filter((r) => r.mark === "✓").length;
+          const failCnt = st.lFailCount || 0;
+          const nowTs = Date.now();
+          const isLocked =
+            !!(st.lLockUntil && st.lLockUntil > nowTs) || failCnt >= 5;
+          const lockMins =
+            st.lLockUntil && st.lLockUntil > nowTs
+              ? Math.max(1, Math.ceil((st.lLockUntil - nowTs) / 60000))
+              : 15;
+          const idValidForCta =
+            !!idTrim &&
+            !badPublicDomain &&
+            (!isOpMode || this.isCorpEmail(idTrim));
+          const canSubmit = !isLocked && idValidForCta && pwScore === 5;
+          const ftUser = st.lFirstResetUid
+            ? st.users.find((u) => u.id === st.lFirstResetUid) || null
+            : null;
+          const ftRulesArr = pwRules(st.lFtPw);
+          const ftScore = ftRulesArr.filter((r) => r.mark === "✓").length;
+          const ftReady =
+            ftScore === 5 && !!st.lFtPw && st.lFtPw === st.lFtPw2;
+          return {
+            authGatewayTime: hh + ":" + mm + " ICT · TLS 1.3",
+            lLangBtns: [
+              ["th", "TH"],
+              ["en", "EN"],
+            ].map(([code, label]) => {
+              const on = (en ? "en" : "th") === code;
+              return {
+                label,
+                pick: () => {
+                  try {
+                    localStorage.setItem("cx-lang", code);
+                  } catch (e) {}
+                  this.setState({ lang: code, langMenuOpen: false });
+                },
+                style:
+                  "height: 28px; min-width: 38px; padding: 0 10px; border-radius: 8px; border: 0; font-family: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer; transition: all .15s; " +
+                  (on
+                    ? "background: " + accent + "; color: #FFFFFF"
+                    : d
+                      ? "background: transparent; color: #A6A6AD"
+                      : "background: transparent; color: #5C5C5C"),
+              };
+            }),
+            lRoleBtns: [
+              ["super_admin", "ผู้ดูแลหลัก (Super Admin)"],
+              ["operator", "เจ้าหน้าที่ปฏิบัติการ (Operator)"],
+            ].map(([id, label]) => {
+              const on = roleMode === id;
+              return {
+                label,
+                isSuper: id === "super_admin",
+                isOp: id === "operator",
+                active: on,
+                pick: () =>
+                  this.setState({
+                    lRoleMode: id,
+                    lErr: "",
+                    lForgotOpen: false,
+                    lFirstDemo: false,
+                  }),
+                style:
+                  "width: 100%; height: 38px; box-sizing: border-box; padding: 0 10px; border-radius: 10px; font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; transition: all .15s; " +
+                  (on
+                    ? d
+                      ? "border: 1.5px solid #FC3901; background: rgba(252,57,1,0.18); color: #FFFFFF"
+                      : "border: 1.5px solid #FC3901; background: #FFFFFF; color: #C42D00; box-shadow: 0 2px 6px rgba(15,23,42,0.06)"
+                    : "border: 1.5px solid transparent; background: transparent; color: " +
+                      (d ? "#A6A6AD" : "#5C5C5C")),
+              };
+            }),
+            lIsOpMode: isOpMode,
+            lIdLabel: isOpMode
+              ? "อีเมลบริษัท (Company Email)"
+              : "Username / อีเมลผู้ดูแลหลัก",
+            lIdPlaceholder: isOpMode
+              ? "เช่น name@chargex.co.th"
+              : "เช่น superadmin หรือ superadmin@chargex.co.th",
+            lShowDomainChip: opMissingDomain,
+            appendCorpDomain: () =>
+              this.setState({
+                lUser: idTrim + "@chargex.co.th",
+                lErr: "",
+              }),
+            hasLDomainWarn: badPublicDomain,
+            lDomainWarnText:
+              "บัญชี Operator อนุญาตเฉพาะอีเมลบริษัท (@chargex.co.th) เท่านั้น",
+            hasLOpHint: opMissingDomain && !badPublicDomain,
+            lUser: st.lUser,
+            lPw: st.lPw,
+            lPwType: st.lShowPw ? "text" : "password",
+            lShowPw: !!st.lShowPw,
+            onLUser: (e) => {
+              const v = e && e.target ? e.target.value : "";
+              this.setState({ lUser: v, lErr: "", lFirstDemo: false });
+            },
+            onLPw: (e) => {
+              const v = e && e.target ? e.target.value : "";
+              this.setState({ lPw: v, lErr: "" });
+            },
+            toggleLPw: () => this.setState({ lShowPw: !st.lShowPw }),
+            lPwRules: pwRulesArr,
+            lPwMeterBarStyle:
+              "height: 5px; border-radius: 999px; transition: all .2s; width: " +
+              pwScore * 20 +
+              "%; background: " +
+              (pwScore >= 5 ? "#146C3E" : pwScore >= 3 ? "#D97706" : "#DC2626"),
+            lPwMeterText: !st.lPw
+              ? "ต้องครบ 5 เงื่อนไขความปลอดภัย"
+              : pwScore === 5
+                ? "ผ่านครบทั้ง 5 เกณฑ์ความปลอดภัย"
+                : "ผ่านเกณฑ์ " + pwScore + "/5 ข้อ",
+            lPwMeterColor: !st.lPw
+              ? d
+                ? "#9CA3AF"
+                : "#6B6B6B"
+              : pwScore >= 5
+                ? "#146C3E"
+                : pwScore >= 3
+                  ? "#B45309"
+                  : "#B42318",
+            lRemember8h: st.lRemember8h !== false,
+            toggleLRemember8h: () =>
+              this.setState({ lRemember8h: !(st.lRemember8h !== false) }),
+            lRemBoxStyle:
+              "width: 18px; height: 18px; border-radius: 5px; flex: none; display: inline-flex; align-items: center; justify-content: center; transition: all .15s; " +
+              (st.lRemember8h !== false
+                ? "border: 1.5px solid " +
+                  accent +
+                  "; background: " +
+                  accent +
+                  "; color: #FFFFFF"
+                : d
+                  ? "border: 1.5px solid #52525B; background: #18181B; color: transparent"
+                  : "border: 1.5px solid #CBD5E1; background: #FFFFFF; color: transparent"),
+            lCanSubmit: canSubmit,
+            lSubmitDisabled: !canSubmit,
+            lSubmitStyle:
+              "width: 100%; height: 48px; border-radius: 13px; border: 0; font-family: inherit; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all .15s; " +
+              (canSubmit
+                ? "background: " +
+                  accent +
+                  "; color: #FFFFFF; cursor: pointer; box-shadow: 0 8px 20px rgba(252,57,1,0.24)"
+                : d
+                  ? "background: #27272A; color: #71717A; cursor: not-allowed"
+                  : "background: #E4E4E7; color: #71717A; cursor: not-allowed"),
+            hasLFailWarn: !isLocked && failCnt > 0,
+            lFailWarnText:
+              "คำเตือนความปลอดภัย: กรอกรหัสผ่านผิด " +
+              failCnt +
+              "/5 ครั้ง (ล็อกชั่วคราว 15 นาทีเมื่อครบ 5 ครั้ง)",
+            lIsLocked: isLocked,
+            lLockText:
+              "บัญชีถูกล็อกชั่วคราว " +
+              lockMins +
+              " นาที เนื่องจากพยายามเข้าสู่ระบบผิดครบ 5 ครั้ง (แจ้งเตือน Super Admin แล้ว)",
+            resetLLock: () =>
+              this.setState({ lFailCount: 0, lLockUntil: 0, lErr: "" }),
+            lForgotOpen: !!st.lForgotOpen,
+            toggleLForgot: () =>
+              this.setState({
+                lForgotOpen: !st.lForgotOpen,
+                lForgotSent: "",
+                lForgotEmail: st.lForgotEmail || (idTrim.includes("@") ? idTrim : ""),
+              }),
+            lForgotEmail: st.lForgotEmail || "",
+            onLForgotEmail: setVal("lForgotEmail"),
+            hasLForgotSent: !!st.lForgotSent,
+            lForgotSent: st.lForgotSent || "",
+            submitLForgot: () => {
+              const em = String(st.lForgotEmail || "").trim();
+              if (!em || !this.isCorpEmail(em)) {
+                this.setState({
+                  lErr: "กรุณาระบุอีเมลบริษัท (@chargex.co.th) เพื่อส่งคำขอรีเซ็ต",
+                });
+                return;
+              }
               const accessLogs = this.recordAccess(
-                "ผู้ใช้ภายนอกระบบ",
-                idRaw,
+                "คำขอรีเซ็ตรหัสผ่าน",
+                em,
                 "operator",
-                "เข้าสู่ระบบไม่สำเร็จ (ไม่ใช่ @chargex.co.th)",
-                "denied",
+                "ส่งคำขอรีเซ็ตรหัสผ่านถึง Super Admin",
+                "ok",
               );
               this.setState({
-                lErr: "บัญชี Operator ต้องเข้าสู่ระบบด้วยอีเมลบริษัท (@chargex.co.th) เท่านั้น",
+                lForgotSent:
+                  "ส่งคำขอรีเซ็ตรหัสผ่านไปยัง Super Admin สำหรับ " +
+                  em +
+                  " เรียบร้อยแล้ว",
+                lErr: "",
                 accessLogs,
               });
-              return;
-            }
-            const opByLocal = st.users.find(
-              (u) =>
-                u.role === "operator" &&
-                u.email.split("@")[0].toLowerCase() === idLow,
-            );
-            if (opByLocal) {
-              const accessLogs = this.recordAccess(
-                "ผู้ใช้ภายนอกระบบ",
-                idRaw,
-                "operator",
-                "เข้าสู่ระบบไม่สำเร็จ (ไม่ใช่ @chargex.co.th)",
-                "denied",
-              );
+              fireToast("ส่งคำขอรีเซ็ตรหัสผ่านไปยัง Super Admin แล้ว");
+            },
+            lSandboxOpen: !!st.lSandboxOpen,
+            toggleLSandbox: () =>
+              this.setState({ lSandboxOpen: !st.lSandboxOpen }),
+            fillAdmin: () =>
               this.setState({
-                lErr: "บัญชี Operator ต้องเข้าสู่ระบบด้วยอีเมลบริษัท (@chargex.co.th) เท่านั้น",
+                lRoleMode: "super_admin",
+                lUser: "superadmin",
+                lPw: "Admin@1234",
+                lErr: "",
+                lFailCount: 0,
+                lLockUntil: 0,
+                lFirstDemo: false,
+                lFirstResetUid: "",
+                lForgotOpen: false,
+              }),
+            fillOp: () =>
+              this.setState({
+                lRoleMode: "operator",
+                lUser: "nattapong@chargex.co.th",
+                lPw: "Op@123456",
+                lErr: "",
+                lFailCount: 0,
+                lLockUntil: 0,
+                lFirstDemo: false,
+                lFirstResetUid: "",
+                lForgotOpen: false,
+              }),
+            fillOpFirstTime: () =>
+              this.setState({
+                lRoleMode: "operator",
+                lUser: "kanya@chargex.co.th",
+                lPw: "Kanya#2026",
+                lErr: "",
+                lFailCount: 0,
+                lLockUntil: 0,
+                lFirstDemo: true,
+                lFirstResetUid: "",
+                lForgotOpen: false,
+              }),
+            isFirstReset: !!ftUser,
+            isNormalLoginForm: !ftUser,
+            lFtTargetName: ftUser
+              ? ftUser.name + " (" + ftUser.email + ")"
+              : "",
+            lFtPw: st.lFtPw || "",
+            lFtPw2: st.lFtPw2 || "",
+            onLFtPw: setVal("lFtPw"),
+            onLFtPw2: setVal("lFtPw2"),
+            lFtPwRules: ftRulesArr,
+            hasLFtErr: !!st.lFtErr,
+            lFtErr: st.lFtErr || "",
+            lFtBtnStyle:
+              "width: 100%; height: 46px; border-radius: 13px; border: 0; font-family: inherit; font-size: 15.5px; font-weight: 700; cursor: pointer; " +
+              (ftReady
+                ? "background: " + accent + "; color: #FFFFFF"
+                : d
+                  ? "background: #27272A; color: #71717A"
+                  : "background: #E4E4E7; color: #71717A"),
+            cancelFirstReset: () =>
+              this.setState({
+                lFirstResetUid: "",
+                lFirstDemo: false,
+                lFtPw: "",
+                lFtPw2: "",
+                lFtErr: "",
+              }),
+            saveFirstResetPw: () => {
+              if (!ftUser) return;
+              const p1 = String(st.lFtPw || "");
+              const p2 = String(st.lFtPw2 || "");
+              if (!this.checkPw(p1).ok) {
+                this.setState({
+                  lFtErr:
+                    "รหัสผ่านไม่ผ่านเกณฑ์ความปลอดภัย (ต้องยาว 8+ ตัว มี A–Z, a–z, 0–9 และสัญลักษณ์)",
+                });
+                return;
+              }
+              if (p1 !== p2) {
+                this.setState({ lFtErr: "รหัสผ่านทั้งสองช่องไม่ตรงกัน" });
+                return;
+              }
+              if (p1 === ftUser.password) {
+                this.setState({
+                  lFtErr: "รหัสผ่านใหม่ต้องไม่ซ้ำกับรหัสผ่านชั่วคราวเดิม",
+                });
+                return;
+              }
+              const nextU = st.users.map((u) =>
+                u.id === ftUser.id
+                  ? Object.assign({}, u, { password: p1, mustChangePw: false })
+                  : u,
+              );
+              this.saveStore("cx-bo-users", nextU);
+              const accessLogs = this.recordAccess(
+                ftUser.name,
+                ftUser.email,
+                ftUser.role,
+                "ตั้งรหัสผ่านครั้งแรกและเข้าสู่ระบบ Back Office",
+                "ok",
+              );
+              this.saveStore("cx-bo-session", {
+                id: ftUser.id,
+                role: ftUser.role,
+                email: ftUser.email,
+                remember8h: st.lRemember8h !== false,
+                expiresAt:
+                  Date.now() +
+                  (st.lRemember8h !== false ? 8 : 1) * 3600 * 1000,
+              });
+              this.setState({
+                users: nextU,
+                curId: ftUser.id,
+                tab: ftUser.role === "super_admin" ? "dashboard" : "coupons",
+                lFirstResetUid: "",
+                lFirstDemo: false,
+                lFtPw: "",
+                lFtPw2: "",
+                lFtErr: "",
+                lPw: "",
+                lErr: "",
+                lFailCount: 0,
+                lLockUntil: 0,
                 accessLogs,
               });
-              return;
-            }
-            const accessLogs = this.recordAccess(
-              idRaw,
-              idRaw,
-              "operator",
-              "เข้าสู่ระบบไม่สำเร็จ (ข้อมูลไม่ถูกต้อง)",
-              "denied",
-            );
-            this.setState({
-              lErr: "Username / อีเมล หรือรหัสผ่านไม่ถูกต้อง",
-              accessLogs,
-            });
-            return;
-          }
-          if (match.role === "operator" && !this.isCorpEmail(idRaw)) {
-            const accessLogs = this.recordAccess(
-              match.name,
-              idRaw,
-              match.role,
-              "เข้าสู่ระบบไม่สำเร็จ (ไม่ใช่ @chargex.co.th)",
-              "denied",
-            );
-            this.setState({
-              lErr: "บัญชี Operator ต้องเข้าสู่ระบบด้วยอีเมลบริษัท (@chargex.co.th) เท่านั้น",
-              accessLogs,
-            });
-            return;
-          }
-          if (match.status !== "active") {
-            const accessLogs = this.recordAccess(
-              match.name,
-              match.email,
-              match.role,
-              "เข้าสู่ระบบไม่สำเร็จ (บัญชีถูกระงับ)",
-              "denied",
-            );
-            this.setState({
-              lErr: "บัญชีนี้ถูกระงับการใช้งานชั่วคราว",
-              accessLogs,
-            });
-            return;
-          }
-          if (match.password !== pw) {
-            const accessLogs = this.recordAccess(
-              match.name,
-              match.email,
-              match.role,
-              "เข้าสู่ระบบไม่สำเร็จ (ข้อมูลไม่ถูกต้อง)",
-              "denied",
-            );
-            this.setState({
-              lErr: "Username / อีเมล หรือรหัสผ่านไม่ถูกต้อง",
-              accessLogs,
-            });
-            return;
-          }
-          const accessLogs = this.recordAccess(
-            match.name,
-            match.email,
-            match.role,
-            "เข้าสู่ระบบ Back Office",
-            "ok",
-          );
-          this.saveStore("cx-bo-session", {
-            id: match.id,
-            role: match.role,
-            email: match.email,
-          });
-          this.setState({
-            curId: match.id,
-            tab: match.role === "super_admin" ? "dashboard" : "coupons",
-            lErr: "",
-            lPw: "",
-            accessLogs,
-          });
-          fireToast(
-            "เข้าสู่ระบบด้วย " +
-              (match.role === "super_admin" ? "Super Admin" : "Operator"),
-          );
-        },
+              fireToast("ตั้งรหัสผ่านใหม่และเข้าสู่ระบบเรียบร้อยแล้ว");
+            },
+            hasLErr: !!st.lErr,
+            lErr: st.lErr,
+            doLogin: () => {
+              const curNow = Date.now();
+              if (
+                (st.lLockUntil && st.lLockUntil > curNow) ||
+                (st.lFailCount || 0) >= 5
+              ) {
+                const minsLeft =
+                  st.lLockUntil && st.lLockUntil > curNow
+                    ? Math.max(1, Math.ceil((st.lLockUntil - curNow) / 60000))
+                    : 15;
+                this.setState({
+                  lErr:
+                    "บัญชีถูกล็อกชั่วคราว " +
+                    minsLeft +
+                    " นาที เนื่องจากพยายามเข้าสู่ระบบผิดครบ 5 ครั้ง (แจ้งเตือน Super Admin แล้ว)",
+                });
+                return;
+              }
+              const recordFail = (whoName, whoEmail, whoRole, reason, errMsg) => {
+                const nf = (st.lFailCount || 0) + 1;
+                const lockedNow = nf >= 5;
+                const lockUntil = lockedNow ? Date.now() + 15 * 60 * 1000 : 0;
+                const accessLogs = this.recordAccess(
+                  whoName,
+                  whoEmail,
+                  whoRole,
+                  lockedNow
+                    ? "แจ้งเตือน Super Admin: กรอกรหัสผิดครบ 5 ครั้ง (ล็อก 15 นาที)"
+                    : reason,
+                  "denied",
+                );
+                this.setState({
+                  lFailCount: nf,
+                  lLockUntil: lockUntil,
+                  lErr: lockedNow
+                    ? "บัญชีถูกล็อกชั่วคราว 15 นาที เนื่องจากพยายามเข้าสู่ระบบผิดครบ 5 ครั้ง (แจ้งเตือน Super Admin แล้ว)"
+                    : errMsg,
+                  accessLogs,
+                });
+              };
+              const idRaw = String(st.lUser || "").trim();
+              const idLow = idRaw.toLowerCase();
+              const pw = String(st.lPw || "");
+              if (!idRaw) {
+                this.setState({ lErr: "กรุณากรอก Username หรืออีเมลบริษัท" });
+                return;
+              }
+              if (!pw) {
+                this.setState({ lErr: "กรุณากรอกรหัสผ่าน" });
+                return;
+              }
+              if (!this.checkPw(pw).ok) {
+                recordFail(
+                  idRaw,
+                  idRaw,
+                  "operator",
+                  "เข้าสู่ระบบไม่สำเร็จ (รหัสผ่านไม่ผ่านเกณฑ์)",
+                  "รหัสผ่านไม่ผ่านเกณฑ์ความปลอดภัย (ต้องยาว 8+ ตัว มี A–Z, a–z, 0–9 และสัญลักษณ์)",
+                );
+                return;
+              }
+              const match = st.users.find(
+                (u) =>
+                  u.email.toLowerCase() === idLow ||
+                  (u.role === "super_admin" &&
+                    u.username.toLowerCase() === idLow),
+              );
+              if (!match) {
+                if (idRaw.indexOf("@") >= 0 && !this.isCorpEmail(idRaw)) {
+                  recordFail(
+                    "ผู้ใช้ภายนอกระบบ",
+                    idRaw,
+                    "operator",
+                    "เข้าสู่ระบบไม่สำเร็จ (ไม่ใช่ @chargex.co.th)",
+                    "บัญชี Operator ต้องเข้าสู่ระบบด้วยอีเมลบริษัท (@chargex.co.th) เท่านั้น",
+                  );
+                  return;
+                }
+                const opByLocal = st.users.find(
+                  (u) =>
+                    u.role === "operator" &&
+                    u.email.split("@")[0].toLowerCase() === idLow,
+                );
+                if (opByLocal) {
+                  recordFail(
+                    "ผู้ใช้ภายนอกระบบ",
+                    idRaw,
+                    "operator",
+                    "เข้าสู่ระบบไม่สำเร็จ (ไม่ใช่ @chargex.co.th)",
+                    "บัญชี Operator ต้องเข้าสู่ระบบด้วยอีเมลบริษัท (@chargex.co.th) เท่านั้น",
+                  );
+                  return;
+                }
+                recordFail(
+                  idRaw,
+                  idRaw,
+                  "operator",
+                  "เข้าสู่ระบบไม่สำเร็จ (ข้อมูลไม่ถูกต้อง)",
+                  "Username / อีเมล หรือรหัสผ่านไม่ถูกต้อง",
+                );
+                return;
+              }
+              if (match.role === "operator" && !this.isCorpEmail(idRaw)) {
+                recordFail(
+                  match.name,
+                  idRaw,
+                  match.role,
+                  "เข้าสู่ระบบไม่สำเร็จ (ไม่ใช่ @chargex.co.th)",
+                  "บัญชี Operator ต้องเข้าสู่ระบบด้วยอีเมลบริษัท (@chargex.co.th) เท่านั้น",
+                );
+                return;
+              }
+              if (match.status !== "active") {
+                recordFail(
+                  match.name,
+                  match.email,
+                  match.role,
+                  "เข้าสู่ระบบไม่สำเร็จ (บัญชีถูกระงับ)",
+                  "บัญชีนี้ถูกระงับการใช้งานชั่วคราว",
+                );
+                return;
+              }
+              if (match.password !== pw) {
+                recordFail(
+                  match.name,
+                  match.email,
+                  match.role,
+                  "เข้าสู่ระบบไม่สำเร็จ (ข้อมูลไม่ถูกต้อง)",
+                  "Username / อีเมล หรือรหัสผ่านไม่ถูกต้อง",
+                );
+                return;
+              }
+              if (
+                match.mustChangePw ||
+                (st.lFirstDemo && match.role === "operator")
+              ) {
+                this.setState({
+                  lFirstResetUid: match.id,
+                  lFtPw: "",
+                  lFtPw2: "",
+                  lFtErr: "",
+                  lErr: "",
+                  lFailCount: 0,
+                  lLockUntil: 0,
+                });
+                return;
+              }
+              const accessLogs = this.recordAccess(
+                match.name,
+                match.email,
+                match.role,
+                "เข้าสู่ระบบ Back Office",
+                "ok",
+              );
+              this.saveStore("cx-bo-session", {
+                id: match.id,
+                role: match.role,
+                email: match.email,
+                remember8h: st.lRemember8h !== false,
+                expiresAt:
+                  Date.now() +
+                  (st.lRemember8h !== false ? 8 : 1) * 3600 * 1000,
+              });
+              this.setState({
+                curId: match.id,
+                tab: match.role === "super_admin" ? "dashboard" : "coupons",
+                lErr: "",
+                lPw: "",
+                lFailCount: 0,
+                lLockUntil: 0,
+                lFirstDemo: false,
+                lFirstResetUid: "",
+                lForgotOpen: false,
+                accessLogs,
+              });
+              fireToast(
+                "เข้าสู่ระบบด้วย " +
+                  (match.role === "super_admin" ? "Super Admin" : "Operator"),
+              );
+            },
+          };
+        })(),
         doLogout: () => {
           const accessLogs = this.recordAccess(
             curUser ? curUser.name : "Back Office User",

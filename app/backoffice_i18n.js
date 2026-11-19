@@ -2032,6 +2032,67 @@
     "ยังไม่ถูกใช้งาน": "Unused",
     "ชื่อหมวดหมู่ (TH) *": "Category Name (TH) *",
     "ชื่อหมวดหมู่ (EN)": "Category Name (EN)",
+    "ระบบจัดการเครือข่ายสถานีชาร์จ EV": "EV Charging Network Management Portal",
+    "ควบคุมสิทธิ์ผู้ดูแลระบบ คูปอง ข่าวสาร และการตรวจสอบตู้ชาร์จแบบศูนย์กลางภายใต้มาตรฐาน Zero-Trust":
+      "Centralized Zero-Trust access control for EV stations, coupons, news, and charger telemetry",
+    "โครงสร้างสิทธิ์ผู้ดูแลระบบ (2-Tier RBAC)": "Role-Based Access Governance (2-Tier RBAC)",
+    "จำกัด 1 User ID": "1 User ID Only",
+    "เข้าสู่ระบบด้วย Username และรหัสผ่านระดับสูง ควบคุมระบบทั้งหมด รวมถึงสร้าง ระงับ และกำหนดสิทธิ์ให้บัญชี Operator":
+      "Sign in via Username and high-security password with full system control to create, suspend, and govern Operators",
+    "@chargex.co.th เท่านั้น": "@chargex.co.th Only",
+    "เข้าถึงและจัดการเฉพาะ 3 โมดูลที่ได้รับมอบหมาย ได้แก่ คูปอง (Coupons), ข่าวสาร (News) และ Monitor ตู้ชาร์จ":
+      "Restricted access to 3 assigned modules: Coupons, News & Announcements, and Charger Monitor",
+    "เข้าสู่ระบบผู้ดูแล (Back Office Sign In)": "Back Office Sign In",
+    "ยืนยันตัวตนตามระดับสิทธิ์และนโยบายความปลอดภัยองค์กร":
+      "Authenticate according to your role tier and enterprise security policy",
+    "ผู้ดูแลหลัก (Super Admin)": "Super Admin",
+    "เจ้าหน้าที่ปฏิบัติการ (Operator)": "Operator (@chargex)",
+    "อีเมลบริษัท (Company Email)": "Company Email",
+    "Username / อีเมลผู้ดูแลหลัก": "Username / Admin Email",
+    "เช่น name@chargex.co.th": "e.g. name@chargex.co.th",
+    "เช่น superadmin หรือ superadmin@chargex.co.th":
+      "e.g. superadmin or superadmin@chargex.co.th",
+    "บัญชี Operator อนุญาตเฉพาะอีเมลบริษัท (@chargex.co.th) เท่านั้น":
+      "Operator accounts require a corporate email (@chargex.co.th) only",
+    "คลิกปุ่ม @chargex.co.th ด้านขวาเพื่อเติมโดเมนบริษัทอัตโนมัติ":
+      "Click + @chargex.co.th on the right to auto-complete your corporate domain",
+    "ลืมรหัสผ่าน?": "Forgot password?",
+    "รหัสผ่านตามเกณฑ์ความปลอดภัย 5 เงื่อนไข": "Password meeting all 5 security rules",
+    "ส่งคำขอรีเซ็ตรหัสผ่านถึง Super Admin": "Request Password Reset from Super Admin",
+    "ระบุอีเมลบริษัท @chargex.co.th": "Enter @chargex.co.th corporate email",
+    "ส่งคำขอ": "Send Request",
+    "กรุณาระบุอีเมลบริษัท (@chargex.co.th) เพื่อส่งคำขอรีเซ็ต":
+      "Please enter a corporate email (@chargex.co.th) to submit a reset request",
+    "ส่งคำขอรีเซ็ตรหัสผ่านไปยัง Super Admin แล้ว":
+      "Password reset request sent to Super Admin",
+    "ต้องครบ 5 เงื่อนไขความปลอดภัย": "All 5 security rules required",
+    "จดจำเซสชันนี้ไว้ 8 ชั่วโมง": "Remember this session for 8 hours",
+    "จำกัดผิดไม่เกิน 5 ครั้ง": "Max 5 failed attempts",
+    "เข้าสู่ระบบ Charge X Back Office": "Sign in to Charge X Back Office",
+    "ตั้งรหัสผ่านครั้งแรกสำหรับ Operator": "Operator First-Time Password Setup",
+    "บัญชี:": "Account:",
+    "— กรุณากำหนดรหัสผ่านใหม่ให้ครบ 5 เกณฑ์ความปลอดภัยก่อนเข้าใช้งาน":
+      "— Please set a new password meeting all 5 security rules to continue",
+    "รหัสผ่านใหม่ต้องไม่ซ้ำกับรหัสผ่านชั่วคราวเดิม":
+      "New password must differ from your temporary password",
+    "ตั้งรหัสผ่านครั้งแรกและเข้าสู่ระบบ Back Office":
+      "Completed first-time password setup and signed in",
+    "ตั้งรหัสผ่านใหม่และเข้าสู่ระบบเรียบร้อยแล้ว":
+      "New password saved and signed in cleanly",
+    "บันทึกรหัสผ่านใหม่และเข้าสู่ระบบ": "Save New Password & Sign In",
+    "กลับหน้าเข้าสู่ระบบ": "Back to Sign In",
+    "โหมดทดสอบระบบ (Sandbox Quick-Fill)": "Sandbox Mode (Quick-Fill)",
+    "สวมสิทธิ์ Super Admin": "Fill Super Admin",
+    "สวมสิทธิ์ Operator": "Fill Operator",
+    "Operator ล็อกอินครั้งแรก": "First-Time Operator",
+    "รีเซ็ตสถานะล็อกชั่วคราว (Sandbox)": "Reset Temporary Lockout (Sandbox)",
+    "คำขอรีเซ็ตรหัสผ่าน": "Password Reset Request",
+    "แจ้งเตือน Super Admin: กรอกรหัสผิดครบ 5 ครั้ง (ล็อก 15 นาที)":
+      "Super Admin Alert: 5 consecutive failed logins (15m lockout)",
+    "สลับเป็นโหมดมืด": "Switch to Dark Mode",
+    "สลับเป็นโหมดสว่าง": "Switch to Light Mode",
+    "เปลี่ยนเป็นโหมดมืดเรียบร้อยแล้ว": "Switched to Dark Mode",
+    "เปลี่ยนเป็นโหมดสว่างเรียบร้อยแล้ว": "Switched to Light Mode",
   };
   const PT = [
     ["^Active\\ (\\d+)\\ ·\\ Inactive\\ (\\d+)$", "Active {1} · Inactive {2}"],
@@ -2196,6 +2257,18 @@
     [
       "^ไม่สามารถลบหมวดหมู่ที่กำลังใช้งานอยู่ได้\\ \\((\\d+)\\ รายการ\\)\\ กรุณาปิดใช้งานชั่วคราวแทน$",
       "Cannot delete category currently in use ({1} items). Disable it instead.",
+    ],
+    [
+      "^คำเตือนความปลอดภัย:\\ กรอกรหัสผ่านผิด\\ (\\d+)/5\\ ครั้ง\\ \\(ล็อกชั่วคราว\\ 15\\ นาทีเมื่อครบ\\ 5\\ ครั้ง\\)$",
+      "Security Warning: {1}/5 failed attempts (15-min lockout after 5 attempts)",
+    ],
+    [
+      "^บัญชีถูกล็อกชั่วคราว\\ (\\d+)\\ นาที\\ เนื่องจากพยายามเข้าสู่ระบบผิดครบ\\ 5\\ ครั้ง\\ \\(แจ้งเตือน\\ Super\\ Admin\\ แล้ว\\)$",
+      "Account temporarily locked for {1} mins after 5 failed attempts (Super Admin alerted)",
+    ],
+    [
+      "^ส่งคำขอรีเซ็ตรหัสผ่านไปยัง\\ Super\\ Admin\\ สำหรับ\\ (.+?)\\ เรียบร้อยแล้ว$",
+      "Password reset request sent to Super Admin for {1}",
     ],
     ["^สวัสดี,\\ (.+?)!$", "Hello, {1}!"],
     [

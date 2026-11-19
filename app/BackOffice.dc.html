@@ -5,9 +5,9 @@
 <meta charset="utf-8">
 <link rel="icon" href="data:,">
 <title>Charge X — Back Office</title>
-<script src="./backoffice_i18n.js"></script>
-<script src="./backoffice_core.js"></script>
-<script src="./backoffice_sections.js"></script>
+<script src="./backoffice_i18n.js?v=20261119c"></script>
+<script src="./backoffice_core.js?v=20261119c"></script>
+<script src="./backoffice_sections.js?v=20261119c"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -72,72 +72,210 @@ a{color:#C42D00}
 <div data-theme="{{theme}}" ref="{{cxRef}}" style="width: 100%; min-height: 100vh; box-sizing: border-box; background: #F4F5F7; color: #1F1F1F; font-family: Sarabun, 'Segoe UI', sans-serif; display: flex; flex-direction: column; position: relative">
 
 <sc-if value="{{isLogin}}" hint-placeholder-val="{{ true }}">
-<div style="flex: 1; min-height: 100vh; padding: 32px 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center">
-<div style="width: 100%; max-width: 1000px; border-radius: 26px; overflow: hidden; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); box-shadow: 0 24px 60px rgba(15,23,42,0.12); background: #FFFFFF; border: 1px solid #E6E6E6">
+<div style="flex: 1; min-height: 100vh; padding: 28px 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center">
+<div style="width: 100%; max-width: 1080px; border-radius: 26px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 45fr) minmax(0, 55fr); align-items: stretch; box-shadow: 0 24px 64px rgba(15,23,42,0.14); background: #FFFFFF; border: 1px solid #E6E6E6">
 
-<div style="background: #141417; color: #FFFFFF; padding: 36px 36px; display: flex; flex-direction: column; justify-content: space-between; gap: 22px; position: relative; overflow: hidden">
-<svg aria-hidden="true" width="320" height="320" viewBox="0 0 320 320" style="position: absolute; right: -110px; top: -110px; opacity: 0.22"><circle cx="160" cy="160" r="120" fill="none" stroke="#FC3901" stroke-width="24"></circle><circle cx="160" cy="160" r="76" fill="none" stroke="#D4AF37" stroke-width="10"></circle></svg>
-<div style="position: relative; display: flex; align-items: center; gap: 12px; min-height: 48px">
-<span style="width: 44px; height: 44px; flex: none; border-radius: 14px; background: {{accent}}; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg></span>
-<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 20px; font-weight: 700; letter-spacing: 0.2px">Charge X Back Office</span><span style="font-size: 14px; color: #A6A6AD">ระบบจัดการหลังบ้านสถานีชาร์จ EV</span></div>
+<div style="background: #0F172A; color: #FFFFFF; padding: 36px 34px; display: flex; flex-direction: column; justify-content: space-between; gap: 22px; position: relative; overflow: hidden">
+<svg aria-hidden="true" width="340" height="340" viewBox="0 0 340 340" style="position: absolute; right: -120px; top: -120px; opacity: 0.16; pointer-events: none"><circle cx="170" cy="170" r="130" fill="none" stroke="#FC3901" stroke-width="24"></circle><circle cx="170" cy="170" r="82" fill="none" stroke="#38BDF8" stroke-width="10"></circle></svg>
+<div style="position: relative; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="width: 44px; height: 44px; flex: none; border-radius: 14px; background: {{accent}}; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(252,57,1,0.34)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg></span>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 19.5px; font-weight: 700; letter-spacing: 0.2px; color: #FFFFFF">Charge X Enterprise Portal</span>
+<span style="font-size: 13.5px; color: #94A3B8">ระบบจัดการเครือข่ายสถานีชาร์จ EV</span>
 </div>
+</div>
+<div style="display: inline-flex; align-items: center; gap: 7px; align-self: flex-start; padding: 5px 11px; border-radius: 999px; background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.28); font-size: 12px; font-weight: 700; color: #BAE6FD">
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+<span>ISO/IEC 27001 &amp; RBAC Protected</span>
+</div>
+</div>
+
 <div style="position: relative; display: flex; flex-direction: column; gap: 16px">
-<div style="display: flex; flex-direction: column; gap: 8px">
-<h2 style="margin: 0; font-size: 27px; line-height: 1.3; font-weight: 700">การยืนยันตัวตนและการเข้าใช้งาน</h2>
-<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #C7C7CC">จัดการสิทธิ์ผู้ดูแลระบบ คูปองส่วนลด ข่าวสาร และตรวจสอบสถานะตู้ชาร์จแบบศูนย์กลาง</p>
+<div style="display: flex; flex-direction: column; gap: 7px">
+<h2 style="margin: 0; font-size: 25px; line-height: 1.3; font-weight: 700; color: #FFFFFF">การยืนยันตัวตนและการเข้าใช้งาน</h2>
+<p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #CBD5E1">ควบคุมสิทธิ์ผู้ดูแลระบบ คูปอง ข่าวสาร และการตรวจสอบตู้ชาร์จแบบศูนย์กลางภายใต้มาตรฐาน Zero-Trust</p>
 </div>
-<div style="padding: 15px 16px; border-radius: 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 8px">
-<span style="font-size: 14.5px; font-weight: 700; color: #F7D774">ระดับสิทธิ์ผู้ใช้งาน (Role)</span>
-<div style="font-size: 14.5px; line-height: 1.55; color: #E4E4E7">• <strong>Super Admin</strong> — เข้าถึงได้ทุกโมดูล และเพิ่ม / ระงับบัญชี Operator ได้</div>
-<div style="font-size: 14.5px; line-height: 1.55; color: #E4E4E7">• <strong>Operator</strong> — กำหนดคูปอง ข่าวสาร และ Monitor ระบบ (เข้าด้วยอีเมลบริษัท @chargex.co.th เท่านั้น)</div>
+<div style="padding: 16px 18px; border-radius: 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: center; gap: 7px; font-size: 13.5px; font-weight: 700; color: #F8FAFC">
+<svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FDBA74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+<span>โครงสร้างสิทธิ์ผู้ดูแลระบบ (2-Tier RBAC)</span>
 </div>
+<div style="padding: 11px 12px; border-radius: 12px; background: rgba(252,57,1,0.1); border: 1px solid rgba(252,57,1,0.28); display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<span style="font-size: 13.5px; font-weight: 700; color: #FFFFFF">1. Super Admin</span>
+<span style="padding: 2px 8px; border-radius: 999px; background: rgba(252,57,1,0.24); font-size: 11px; font-weight: 700; color: #FDBA9B">จำกัด 1 User ID</span>
 </div>
-<div style="position: relative; padding: 14px 16px; border-radius: 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 10px">
-<span style="font-size: 14px; font-weight: 700; color: #A6A6AD">บัญชีทดสอบด่วน (คลิกเพื่อกรอกข้อมูล)</span>
-<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
-<button type="button" onClick="{{fillAdmin}}" style="height: 38px; padding: 0 10px; border-radius: 10px; border: 1px solid rgba(252,57,1,0.55); background: rgba(252,57,1,0.16); color: #FF9470; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer">Super Admin</button>
-<button type="button" onClick="{{fillOp}}" style="height: 38px; padding: 0 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #F3F3F4; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer">Operator (@chargex)</button>
+<span style="font-size: 12.5px; line-height: 1.5; color: #E2E8F0">เข้าสู่ระบบด้วย Username และรหัสผ่านระดับสูง ควบคุมระบบทั้งหมด รวมถึงสร้าง ระงับ และกำหนดสิทธิ์ให้บัญชี Operator</span>
+</div>
+<div style="padding: 11px 12px; border-radius: 12px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.24); display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<span style="font-size: 13.5px; font-weight: 700; color: #FFFFFF">2. Operator</span>
+<span style="padding: 2px 8px; border-radius: 999px; background: rgba(16,185,129,0.22); font-size: 11px; font-weight: 700; color: #6EE7B7">@chargex.co.th เท่านั้น</span>
+</div>
+<span style="font-size: 12.5px; line-height: 1.5; color: #E2E8F0">เข้าถึงและจัดการเฉพาะ 3 โมดูลที่ได้รับมอบหมาย ได้แก่ คูปอง (Coupons), ข่าวสาร (News) และ Monitor ตู้ชาร์จ</span>
 </div>
 </div>
 </div>
 
-<div style="padding: 36px 36px; display: flex; flex-direction: column; justify-content: space-between; gap: 22px; background: #FFFFFF">
-<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; min-height: 48px">
+<div style="position: relative; padding: 11px 14px; border-radius: 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<div style="display: flex; align-items: center; gap: 8px">
+<span style="width: 8px; height: 8px; border-radius: 999px; background: #10B981; box-shadow: 0 0 0 4px rgba(16,185,129,0.22); flex: none"></span>
+<span style="font-size: 12.5px; font-weight: 700; color: #E2E8F0">Auth Gateway: Operational</span>
+</div>
+<span style="font-size: 12px; font-weight: 600; color: #94A3B8">{{authGatewayTime}}</span>
+</div>
+</div>
+
+<div style="padding: 34px 38px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; background: #FFFFFF">
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px">
 <div style="display: flex; flex-direction: column; gap: 3px">
-<h1 style="margin: 0; font-size: 25px; line-height: 1.25; font-weight: 700; color: #1F1F1F">เข้าสู่ระบบ Back Office</h1>
-<span style="font-size: 14px; color: #6B6B6B">เข้าด้วย Username (Super Admin) หรืออีเมลบริษัท @chargex.co.th</span>
+<h1 style="margin: 0; font-size: 23px; line-height: 1.25; font-weight: 700; color: #1F1F1F">เข้าสู่ระบบผู้ดูแล (Back Office Sign In)</h1>
+<span style="font-size: 13.5px; color: #6B6B6B">ยืนยันตัวตนตามระดับสิทธิ์และนโยบายความปลอดภัยองค์กร</span>
 </div>
-<button type="button" onClick="{{toggleLang}}" style="height: 34px; padding: 0 11px; flex: none; border-radius: 10px; border: 1px solid #E0E0E0; background: #F6F6F6; font-family: inherit; font-size: 13.5px; font-weight: 600; color: #3A3A3A; cursor: pointer">{{langBtn}}</button>
+<div style="display: inline-flex; align-items: center; gap: 6px; flex: none">
+<button type="button" title="{{themeToggleTitle}}" aria-label="{{themeToggleTitle}}" onClick="{{toggleTheme}}" style="width: 36px; height: 36px; flex: none; border-radius: 10px; border: 1px solid #E6E6E6; background: #F4F4F4; color: #1F1F1F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer">
+<sc-if value="{{isLightTheme}}" hint-placeholder-val="{{ true }}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></sc-if>
+<sc-if value="{{isDarkTheme}}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F7D774" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg></sc-if>
+</button>
+<div style="display: inline-flex; align-items: center; gap: 2px; padding: 3px; border-radius: 10px; background: #F4F4F4; border: 1px solid #E6E6E6; flex: none">
+<sc-for list="{{lLangBtns}}" as="llg" hint-placeholder-count="2">
+<button type="button" onClick="{{llg.pick}}" style="{{llg.style}}">{{llg.label}}</button>
+</sc-for>
+</div>
+</div>
 </div>
 
+<sc-if value="{{isNormalLoginForm}}" hint-placeholder-val="{{ true }}">
 <div style="display: flex; flex-direction: column; gap: 14px">
-<label style="display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600; color: #3A3A3A">Username / อีเมลบริษัท
-<input class="cx-in2" value="{{lUser}}" onInput="{{onLUser}}" placeholder="เช่น superadmin หรือ name@chargex.co.th">
-</label>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 4px; border-radius: 13px; background: #F4F4F4; border: 1px solid #EFEFEF">
+<sc-for list="{{lRoleBtns}}" as="lrb" hint-placeholder-count="2">
+<button type="button" onClick="{{lrb.pick}}" style="{{lrb.style}}">
+<sc-if value="{{lrb.isSuper}}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></sc-if>
+<sc-if value="{{lrb.isOp}}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg></sc-if>
+<span>{{lrb.label}}</span>
+</button>
+</sc-for>
+</div>
+
 <div style="display: flex; flex-direction: column; gap: 6px">
-<label for="bo-lpw" style="font-size: 15px; font-weight: 600; color: #3A3A3A">รหัสผ่าน</label>
+<label for="bo-luser" style="font-size: 14px; font-weight: 700; color: #3A3A3A">{{lIdLabel}}</label>
 <div style="position: relative; display: flex; align-items: center">
-<input id="bo-lpw" type="{{lPwType}}" class="cx-in2" value="{{lPw}}" onInput="{{onLPw}}" placeholder="รหัสผ่านตามเกณฑ์ความปลอดภัย" style="padding-right: 46px">
+<input id="bo-luser" class="cx-in2" value="{{lUser}}" onInput="{{onLUser}}" placeholder="{{lIdPlaceholder}}" style="padding-right: 126px">
+<sc-if value="{{lShowDomainChip}}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{appendCorpDomain}}" style="position: absolute; right: 6px; height: 30px; padding: 0 9px; border-radius: 8px; border: 1px solid #FDBA9B; background: #FFF1EB; font-family: inherit; font-size: 12px; font-weight: 700; color: #C42D00; cursor: pointer">+ @chargex.co.th</button>
+</sc-if>
+</div>
+<sc-if value="{{hasLDomainWarn}}" hint-placeholder-val="{{ false }}">
+<div role="alert" style="padding: 9px 12px; border-radius: 11px; background: #FDECEC; border: 1px solid #FECACA; color: #B42318; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px">
+<svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+<span>{{lDomainWarnText}}</span>
+</div>
+</sc-if>
+<sc-if value="{{hasLOpHint}}" hint-placeholder-val="{{ false }}">
+<span style="font-size: 12px; color: #6B6B6B">คลิกปุ่ม @chargex.co.th ด้านขวาเพื่อเติมโดเมนบริษัทอัตโนมัติ</span>
+</sc-if>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<label for="bo-lpw" style="font-size: 14px; font-weight: 700; color: #3A3A3A">รหัสผ่าน</label>
+<button type="button" onClick="{{toggleLForgot}}" style="border: 0; background: transparent; padding: 0; font-family: inherit; font-size: 12.5px; font-weight: 700; color: #C42D00; cursor: pointer">ลืมรหัสผ่าน?</button>
+</div>
+<div style="position: relative; display: flex; align-items: center">
+<input id="bo-lpw" type="{{lPwType}}" class="cx-in2" value="{{lPw}}" onInput="{{onLPw}}" placeholder="รหัสผ่านตามเกณฑ์ความปลอดภัย 5 เงื่อนไข" style="padding-right: 46px">
 <button type="button" onClick="{{toggleLPw}}" aria-label="แสดงหรือซ่อนรหัสผ่าน" style="position: absolute; right: 6px; width: 34px; height: 34px; border: 0; border-radius: 9px; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5C5C5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
 </div>
 </div>
-<div style="padding: 12px; border-radius: 14px; background: #F6F6F6; border: 1px solid #EFEFEF; display: flex; flex-direction: column; gap: 8px">
+
+<sc-if value="{{lForgotOpen}}" hint-placeholder-val="{{ false }}">
+<div style="padding: 12px 14px; border-radius: 13px; background: #FFF7F3; border: 1px solid #FDBA9B; display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 13px; font-weight: 700; color: #C42D00">ส่งคำขอรีเซ็ตรหัสผ่านถึง Super Admin</span>
+<div style="display: flex; gap: 8px">
+<input class="cx-in-sm" style="flex: 1" value="{{lForgotEmail}}" onInput="{{onLForgotEmail}}" placeholder="ระบุอีเมลบริษัท @chargex.co.th">
+<button type="button" onClick="{{submitLForgot}}" style="height: 36px; padding: 0 12px; border-radius: 9px; border: 0; background: {{accent}}; color: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 700; white-space: nowrap; cursor: pointer">ส่งคำขอ</button>
+</div>
+<sc-if value="{{hasLForgotSent}}" hint-placeholder-val="{{ false }}">
+<span style="font-size: 12.5px; font-weight: 600; color: #146C3E">{{lForgotSent}}</span>
+</sc-if>
+</div>
+</sc-if>
+
+<div style="padding: 11px 13px; border-radius: 13px; background: #F6F6F6; border: 1px solid #EFEFEF; display: flex; flex-direction: column; gap: 8px">
 <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
-<span style="font-size: 13.5px; font-weight: 700; color: #3A3A3A">นโยบายความปลอดภัยรหัสผ่าน</span>
-<span style="font-size: 12.5px; font-weight: 600; color: #6B6B6B">ต้องครบ 5 เงื่อนไข</span>
+<span style="font-size: 12.5px; font-weight: 700; color: #3A3A3A">นโยบายความปลอดภัยรหัสผ่าน</span>
+<span style="font-size: 12px; font-weight: 700; color: {{lPwMeterColor}}">{{lPwMeterText}}</span>
+</div>
+<div style="width: 100%; height: 5px; border-radius: 999px; background: #E6E6E6; overflow: hidden">
+<div style="{{lPwMeterBarStyle}}"></div>
 </div>
 <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px">
 <sc-for list="{{lPwRules}}" as="pr" hint-placeholder-count="5"><span style="{{pr.style}}">{{pr.mark}} {{pr.label}}</span></sc-for>
 </div>
 </div>
-<sc-if value="{{hasLErr}}" hint-placeholder-val="{{ false }}">
-<div role="alert" style="padding: 10px 12px; border-radius: 12px; background: #FDECEC; color: #B42318; font-size: 14.5px; font-weight: 600">{{lErr}}</div>
-</sc-if>
-<button type="button" onClick="{{doLogin}}" style="height: 46px; border-radius: 14px; border: 0; background: {{accent}}; color: #FFFFFF; font-family: inherit; font-size: 17.5px; font-weight: 700; cursor: pointer">เข้าสู่ระบบ</button>
+
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px">
+<button type="button" role="checkbox" aria-checked="{{lRemember8h}}" onClick="{{toggleLRemember8h}}" style="border: 0; background: transparent; padding: 2px 0; display: inline-flex; align-items: center; gap: 8px; font-family: inherit; font-size: 13px; font-weight: 600; color: #3A3A3A; cursor: pointer; text-align: left">
+<span style="{{lRemBoxStyle}}"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+<span>จดจำเซสชันนี้ไว้ 8 ชั่วโมง</span>
+</button>
+<span style="font-size: 12px; color: #6B6B6B">จำกัดผิดไม่เกิน 5 ครั้ง</span>
 </div>
-<div style="font-size: 13.5px; color: #6B6B6B; border-top: 1px solid #EFEFEF; padding-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px">
-<span>Charge X Enterprise Auth</span>
-<span>นโยบาย: 8+ ตัว (A–Z, a–z, 0–9, สัญลักษณ์)</span>
+
+<sc-if value="{{lIsLocked}}" hint-placeholder-val="{{ false }}">
+<div role="alert" style="padding: 10px 12px; border-radius: 12px; background: #FDECEC; border: 1px solid #FECACA; color: #B42318; font-size: 13.5px; font-weight: 700; display: flex; align-items: center; gap: 8px">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+<span>{{lLockText}}</span>
+</div>
+</sc-if>
+<sc-if value="{{hasLFailWarn}}" hint-placeholder-val="{{ false }}">
+<div style="padding: 8px 12px; border-radius: 11px; background: #FFF4E0; color: #B86A00; font-size: 12.5px; font-weight: 700">{{lFailWarnText}}</div>
+</sc-if>
+<sc-if value="{{hasLErr}}" hint-placeholder-val="{{ false }}">
+<div role="alert" style="padding: 10px 12px; border-radius: 12px; background: #FDECEC; color: #B42318; font-size: 13.5px; font-weight: 600">{{lErr}}</div>
+</sc-if>
+
+<button type="button" aria-disabled="{{lSubmitDisabled}}" onClick="{{doLogin}}" style="{{lSubmitStyle}}">
+<span>เข้าสู่ระบบ Charge X Back Office</span>
+<svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+</button>
+</div>
+</sc-if>
+
+<sc-if value="{{isFirstReset}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 13px; padding: 16px 18px; border-radius: 16px; background: #FFF7F3; border: 1px solid #FDBA9B">
+<div style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 16px; font-weight: 700; color: #C42D00">ตั้งรหัสผ่านครั้งแรกสำหรับ Operator</span>
+<span style="font-size: 13px; color: #5C5C5C">บัญชี: <strong>{{lFtTargetName}}</strong> — กรุณากำหนดรหัสผ่านใหม่ให้ครบ 5 เกณฑ์ความปลอดภัยก่อนเข้าใช้งาน</span>
+</div>
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; font-weight: 700; color: #3A3A3A">รหัสผ่านใหม่<input type="password" class="cx-in2" value="{{lFtPw}}" onInput="{{onLFtPw}}" placeholder="8+ ตัว: A-Z, a-z, 0-9 และสัญลักษณ์"></label>
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; font-weight: 700; color: #3A3A3A">ยืนยันรหัสผ่านใหม่<input type="password" class="cx-in2" value="{{lFtPw2}}" onInput="{{onLFtPw2}}" placeholder="กรอกรหัสผ่านใหม่อีกครั้ง"></label>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{lFtPwRules}}" as="pr" hint-placeholder-count="5"><span style="{{pr.style}}">{{pr.mark}} {{pr.label}}</span></sc-for>
+</div>
+<sc-if value="{{hasLFtErr}}" hint-placeholder-val="{{ false }}">
+<div role="alert" style="padding: 9px 12px; border-radius: 11px; background: #FDECEC; color: #B42318; font-size: 13.5px; font-weight: 600">{{lFtErr}}</div>
+</sc-if>
+<button type="button" onClick="{{saveFirstResetPw}}" style="{{lFtBtnStyle}}">บันทึกรหัสผ่านใหม่และเข้าสู่ระบบ</button>
+<button type="button" onClick="{{cancelFirstReset}}" style="height: 38px; border-radius: 10px; border: 1px solid #E0E0E0; background: #FFFFFF; font-family: inherit; font-size: 13.5px; font-weight: 600; color: #3A3A3A; cursor: pointer">กลับหน้าเข้าสู่ระบบ</button>
+</div>
+</sc-if>
+
+<div style="border-top: 1px solid #EFEFEF; padding-top: 12px; display: flex; flex-direction: column; gap: 10px">
+<button type="button" onClick="{{toggleLSandbox}}" style="width: 100%; padding: 6px 8px; border-radius: 9px; border: 0; background: transparent; font-family: inherit; font-size: 12.5px; font-weight: 700; color: #6B6B6B; display: flex; align-items: center; justify-content: space-between; gap: 8px; cursor: pointer">
+<span style="display: inline-flex; align-items: center; gap: 6px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>โหมดทดสอบระบบ (Sandbox Quick-Fill)</span>
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</button>
+<sc-if value="{{lSandboxOpen}}" hint-placeholder-val="{{ false }}">
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<button type="button" onClick="{{fillAdmin}}" style="height: 36px; padding: 0 8px; border-radius: 9px; border: 1px solid #FDBA9B; background: #FFF1EB; color: #C42D00; font-family: inherit; font-size: 12.5px; font-weight: 700; white-space: nowrap; cursor: pointer">สวมสิทธิ์ Super Admin</button>
+<button type="button" onClick="{{fillOp}}" style="height: 36px; padding: 0 8px; border-radius: 9px; border: 1px solid #E0E0E0; background: #F6F6F6; color: #3A3A3A; font-family: inherit; font-size: 12.5px; font-weight: 700; white-space: nowrap; cursor: pointer">สวมสิทธิ์ Operator</button>
+<button type="button" onClick="{{fillOpFirstTime}}" style="height: 36px; padding: 0 8px; border-radius: 9px; border: 1px solid #E0E0E0; background: #F6F6F6; color: #3A3A3A; font-family: inherit; font-size: 12.5px; font-weight: 700; white-space: nowrap; cursor: pointer">Operator ล็อกอินครั้งแรก</button>
+</div>
+<sc-if value="{{lIsLocked}}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{resetLLock}}" style="height: 32px; border-radius: 9px; border: 1px dashed #D4D4D4; background: #FFFFFF; font-family: inherit; font-size: 12px; font-weight: 600; color: #5C5C5C; cursor: pointer">รีเซ็ตสถานะล็อกชั่วคราว (Sandbox)</button>
+</sc-if>
+</sc-if>
 </div>
 </div>
 
@@ -194,7 +332,7 @@ a{color:#C42D00}
 <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 0 14px 0 12px">
 <button type="button" onClick="{{openSelfModal}}" style="height: 35px; padding: 0 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.06); color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; text-align: left">แก้ไขบัญชีของฉัน</button>
 <button type="button" onClick="{{openPwModal}}" style="height: 35px; padding: 0 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12); background: transparent; color: #E4E4E7; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; text-align: left">เปลี่ยนรหัสผ่าน</button>
-<button type="button" onClick="{{doLogout}}" style="height: 36px; padding: 0 12px; border-radius: 10px; border: 0; background: rgba(229,72,77,0.18); color: #FF8A80; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"></path></svg>ออกจากระบบ</button>
+<button type="button" onClick="{{doLogout}}" style="height: 36px; padding: 0 12px; border-radius: 10px; border: 0; background: rgba(229,72,77,0.18); color: #FF8A80; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer; text-align: left">ออกจากระบบ</button>
 </div>
 </div>
 </aside>
@@ -227,6 +365,10 @@ a{color:#C42D00}
 </div>
 </sc-if>
 </div>
+<button type="button" title="{{themeToggleTitle}}" aria-label="{{themeToggleTitle}}" onClick="{{toggleTheme}}" style="width: 44px; height: 44px; flex: none; border-radius: 999px; border: 1px solid #E6E6E6; background: #FFFFFF; box-shadow: 0 2px 10px rgba(15,23,42,0.03); color: #1F1F1F; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<sc-if value="{{isLightTheme}}" hint-placeholder-val="{{ true }}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></sc-if>
+<sc-if value="{{isDarkTheme}}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F7D774" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg></sc-if>
+</button>
 <button type="button" title="ไปยังข่าวสารและแจ้งเตือน" aria-label="ไปยังข่าวสารและแจ้งเตือน" onClick="{{goTabNews}}" style="position: relative; width: 44px; height: 44px; flex: none; border-radius: 999px; border: 1px solid #E6E6E6; background: #FFFFFF; box-shadow: 0 2px 10px rgba(15,23,42,0.03); color: #1F1F1F; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg><span style="position: absolute; top: -3px; right: -3px; min-width: 19px; height: 19px; padding: 0 4px; border-radius: 999px; background: {{accent}}; color: #FFFFFF; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center">{{newsUnreadBadge}}</span></button>
 <button type="button" title="แก้ไขโปรไฟล์บัญชีของฉัน" onClick="{{openSelfModal}}" style="height: 44px; flex: none; box-sizing: border-box; display: flex; align-items: center; gap: 9px; padding: 0 12px 0 6px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E6E6E6; box-shadow: 0 2px 10px rgba(15,23,42,0.03); font-family: inherit; cursor: pointer">
 <img sc-camel-src="{{curAvatar}}" alt="{{curName}}" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex: none; background: #F6F6F6">

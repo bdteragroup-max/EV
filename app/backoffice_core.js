@@ -90,6 +90,13 @@
       if (localStorage.getItem("cx-tutorial-replay-enabled") === "0")
         tutReplayEnabled = false;
     } catch (e) {}
+    let initTheme = props.theme === "dark" ? "dark" : "";
+    if (!initTheme) {
+      try {
+        const savedTh = localStorage.getItem("cx-bo-theme");
+        if (savedTh === "dark" || savedTh === "light") initTheme = savedTh;
+      } catch (e) {}
+    }
     const initNw = news.find((n) => n.id === "nw3") ||
       news[0] || {
         id: "",
@@ -103,6 +110,7 @@
       };
     this.state = Object.assign(
       {
+        theme: initTheme,
         users,
         roles,
         teams,
@@ -124,6 +132,19 @@
         lPw: "",
         lShowPw: false,
         lErr: "",
+        lRoleMode: "super_admin",
+        lRemember8h: true,
+        lSandboxOpen: false,
+        lFailCount: 0,
+        lLockUntil: 0,
+        lForgotOpen: false,
+        lForgotEmail: "",
+        lForgotSent: "",
+        lFirstDemo: false,
+        lFirstResetUid: "",
+        lFtPw: "",
+        lFtPw2: "",
+        lFtErr: "",
         modal: "",
         modalErr: "",
         opName: "",
