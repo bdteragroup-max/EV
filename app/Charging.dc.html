@@ -191,29 +191,41 @@ a{color:#C42D00}a:hover{color:#9E2400}
 .db1{animation-delay:-.4s;animation-duration:3.1s}.db2{animation-delay:-1.7s;animation-duration:2.6s}.db3{animation-delay:-2.5s;animation-duration:3.6s}
 .do1{animation-delay:-.3s;animation-duration:3.2s}.do2{animation-delay:-1.9s;animation-duration:3.7s}.do3{animation-delay:-1.1s;animation-duration:2.9s}
 @media (prefers-reduced-motion: reduce){.dw-wave1,.dw-wave2,.dw-bub,.dw-orb{animation:none}}
-.cx-bat-card{background:#FFFFFF;border:1px solid #F0ECEA;box-shadow:0 10px 28px rgba(31,31,31,0.06)}
-.cx-bat-vdiv{background:#E8E2DF}
-.cx-bat-foot{border-top:1px solid #F2EEEC;color:#524A47}
-.cx-bat-frame{fill:none;stroke:#2A221F}
-.cx-bat-cap{fill:#2A221F}
-.cx-bat-cavity{fill:#FFF7F3}
-.cx-bat-ok-pill{background:#FFF1EB;color:#C42D00}
-.cx-bat-ok-dot{background:#FC3901}
+.cx-bat-card{background:#FFFFFF;border:1px solid #E6EFEA;box-shadow:0 10px 28px rgba(20,108,62,0.07)}
+.cx-bat-vdiv{background:#E5ECE8}
+.cx-bat-foot{border-top:1px solid #ECF2EE;color:#4B5550}
+.cx-bat-frame{fill:none;stroke:#1F2924}
+.cx-bat-cap{fill:#1F2924}
+.cx-bat-cavity{fill:#F3FBF7}
+.cx-bat-cav-low{fill:#FFFBF2}
+.cx-chg-live-txt{color:#146C3E}
+.cx-chg-live-dot{background:#1E9E5A}
+.cx-bat-ok-pill{background:#E7F6EE;color:#146C3E}
+.cx-bat-ok-dot{background:#1E9E5A}
+.cx-bat-low-pill{background:#FFF4E0;color:#B86A00}
+.cx-bat-low-dot{background:#F59E0B}
 .cx-bat-full-pill{background:#E7F6EE;color:#146C3E}
 .cx-bat-full-dot{background:#1E9E5A}
-.cx-bat-theme-txt{color:#C42D00}
+.cx-bat-ok-txt{color:#146C3E}
+.cx-bat-low-txt{color:#B86A00}
 .cx-bat-full-txt{color:#146C3E}
 [data-theme="dark"] .cx-bat-card{background-color:#1C1C1E!important;border-color:#2E2E33!important;box-shadow:0 12px 30px rgba(0,0,0,0.45)!important}
 [data-theme="dark"] .cx-bat-vdiv{background-color:#35353B!important}
 [data-theme="dark"] .cx-bat-foot{border-top-color:#2E2E33!important;color:#A6A6AD!important}
 [data-theme="dark"] .cx-bat-frame{stroke:#F3F3F4}
 [data-theme="dark"] .cx-bat-cap{fill:#F3F3F4}
-[data-theme="dark"] .cx-bat-cavity{fill:#140E0C}
-[data-theme="dark"] .cx-bat-ok-pill{background-color:rgba(252,57,1,.18)!important;color:#FF7A4D!important}
-[data-theme="dark"] .cx-bat-ok-dot{background-color:#FC3901!important}
+[data-theme="dark"] .cx-bat-cavity{fill:#0D1812}
+[data-theme="dark"] .cx-bat-cav-low{fill:#18130A}
+[data-theme="dark"] .cx-chg-live-txt{color:#5AD49B!important}
+[data-theme="dark"] .cx-chg-live-dot{background-color:#5AD49B!important}
+[data-theme="dark"] .cx-bat-ok-pill{background-color:rgba(46,180,110,.18)!important;color:#5AD49B!important}
+[data-theme="dark"] .cx-bat-ok-dot{background-color:#5AD49B!important}
+[data-theme="dark"] .cx-bat-low-pill{background-color:rgba(245,158,11,.18)!important;color:#FBBF24!important}
+[data-theme="dark"] .cx-bat-low-dot{background-color:#FBBF24!important}
 [data-theme="dark"] .cx-bat-full-pill{background-color:rgba(46,180,110,.18)!important;color:#5AD49B!important}
 [data-theme="dark"] .cx-bat-full-dot{background-color:#5AD49B!important}
-[data-theme="dark"] .cx-bat-theme-txt{color:#FF7A4D!important}
+[data-theme="dark"] .cx-bat-ok-txt{color:#5AD49B!important}
+[data-theme="dark"] .cx-bat-low-txt{color:#FBBF24!important}
 [data-theme="dark"] .cx-bat-full-txt{color:#5AD49B!important}
 </style>
 </helmet>
@@ -222,7 +234,7 @@ a{color:#C42D00}a:hover{color:#9E2400}
 <a href="{{L.Confirm}}" aria-label="ย้อนกลับ" style="width: 44px; height: 44px; border-radius: 14px; border: 1px solid #E6E6E6; display: flex; align-items: center; justify-content: center; box-sizing: border-box">
 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></a>
 <div style="display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0">
-<span style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #C42D00"><span class="cx-live" style="width: 8px; height: 8px; border-radius: 50%; background: {{accent}}"></span>กำลังชาร์จ</span>
+<span class="cx-chg-live-txt" style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600"><span class="cx-live cx-chg-live-dot" style="width: 8px; height: 8px; border-radius: 50%"></span>กำลังชาร์จ</span>
 <span style="font-family: Sarabun, sans-serif; font-weight: 600; font-size: 16px; line-height: 1.35; text-wrap: balance">มหาวิทยาลัยรามคำแหง วิทยาเขต บางนา · ช่อง 04</span>
 </div>
 <span aria-hidden="true" style="width: 44px; height: 44px"></span>
@@ -237,19 +249,19 @@ a{color:#C42D00}a:hover{color:#9E2400}
 <div style="display: flex; justify-content: center">
 <svg aria-hidden="true" width="96" height="170" viewBox="0 0 96 170" style="display: block">
 <defs>
-<linearGradient id="dwWaveFrontTheme" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFCA99"></stop><stop offset="0.45" stop-color="#FF7338"></stop><stop offset="1" stop-color="{{accent}}"></stop></linearGradient>
-<radialGradient id="dwOrbTheme" cx="0.35" cy="0.3" r="0.7"><stop offset="0" stop-color="#FFF0E2"></stop><stop offset="0.55" stop-color="#FF8C5A"></stop><stop offset="1" stop-color="#D93A06"></stop></radialGradient>
+<linearGradient id="dwWaveFrontTheme" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{{bat.waveTop}}"></stop><stop offset="0.45" stop-color="{{bat.waveMid}}"></stop><stop offset="1" stop-color="{{bat.waveBot}}"></stop></linearGradient>
+<radialGradient id="dwOrbTheme" cx="0.35" cy="0.3" r="0.7"><stop offset="0" stop-color="{{bat.orbHi}}"></stop><stop offset="0.55" stop-color="{{bat.orbMid}}"></stop><stop offset="1" stop-color="{{bat.orbLo}}"></stop></radialGradient>
 <filter id="dwHalo" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="10"></feGaussianBlur></filter>
 <clipPath id="dwInner"><rect x="8" y="24" width="80" height="134" rx="14"></rect></clipPath>
 <clipPath id="dwLiqClip"><rect x="8" y="{{bat.y}}" width="80" height="145"></rect></clipPath>
 </defs>
-<ellipse class="cx-halo2" cx="48" cy="164" rx="34" ry="4.5" fill="{{accent}}" opacity="0.2" filter="url(#dwHalo)"></ellipse>
+<ellipse class="cx-halo2" cx="48" cy="164" rx="34" ry="4.5" fill="{{bat.haloFill}}" opacity="0.22" filter="url(#dwHalo)"></ellipse>
 <rect class="cx-bat-cap" x="31" y="8" width="34" height="7.5" rx="3.75"></rect>
-<rect class="cx-bat-cavity" x="8" y="24" width="80" height="134" rx="14"></rect>
+<rect class="{{bat.cavCls}}" x="8" y="24" width="80" height="134" rx="14"></rect>
 <g clip-path="url(#dwInner)">
 <g class="cx-rise"><g transform="translate(0 {{bat.y}})">
 <g class="dw-wave2">
-<path d="M -72 3 Q -52 8.5 -32 3 T 8 3 T 48 3 T 88 3 T 128 3 T 168 3 V 150 H -72 Z" fill="#FF9D72" fill-opacity="0.58"></path>
+<path d="M -72 3 Q -52 8.5 -32 3 T 8 3 T 48 3 T 88 3 T 128 3 T 168 3 V 150 H -72 Z" fill="{{bat.waveBack}}" fill-opacity="0.55"></path>
 </g>
 <g class="dw-wave1">
 <path d="M 8 0 Q 28 -5.5 48 0 T 88 0 T 128 0 T 168 0 T 208 0 T 248 0 V 150 H 8 Z" fill="url(#dwWaveFrontTheme)"></path>
@@ -412,9 +424,18 @@ const bat = {
 y: fillY,
 orbOpacity: charge > 0 ? '1' : '0',
 shieldStroke: isDark ? '#5AD49B' : '#1E9E5A',
-pillCls: isFull ? 'cx-bat-full-pill' : 'cx-bat-ok-pill',
-dotCls: isFull ? 'cx-bat-full-dot' : 'cx-bat-ok-dot',
-pctCls: isFull ? 'cx-bat-full-txt' : 'cx-bat-theme-txt',
+cavCls: isLow ? 'cx-bat-cav-low' : 'cx-bat-cavity',
+pillCls: isFull ? 'cx-bat-full-pill' : (isLow ? 'cx-bat-low-pill' : 'cx-bat-ok-pill'),
+dotCls: isFull ? 'cx-bat-full-dot' : (isLow ? 'cx-bat-low-dot' : 'cx-bat-ok-dot'),
+pctCls: isFull ? 'cx-bat-full-txt' : (isLow ? 'cx-bat-low-txt' : 'cx-bat-ok-txt'),
+waveTop: isLow ? '#FDE68A' : '#86EFAC',
+waveMid: isLow ? '#F59E0B' : '#22C55E',
+waveBot: isLow ? '#D97706' : '#15803D',
+waveBack: isLow ? '#FBBF24' : '#4ADE80',
+orbHi: isLow ? '#FEF3C7' : '#DCFCE7',
+orbMid: isLow ? '#F59E0B' : '#34D399',
+orbLo: isLow ? '#B45309' : '#0F8A4D',
+haloFill: isLow ? '#F59E0B' : '#1E9E5A',
 status: isFull ? 'ชาร์จเต็ม 100% แล้ว' : (isOver80 ? 'ถึง 80% แล้ว · ถนอมแบต' : (isLow ? 'กำลังชาร์จ · ช่วงเริ่มต้น' : 'กำลังชาร์จปกติ · ปลอดภัย')),
 isFull,
 notFull: !isFull,

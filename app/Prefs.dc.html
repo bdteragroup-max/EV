@@ -207,11 +207,10 @@ P.renderVals = function () { const v = rv.call(this) || {}; const d = this.props
 }
 constructor(props) {
 super(props);
-let saved = null, from = 'Profile', focus = null;
-try { saved = JSON.parse(localStorage.getItem('cx-prefs') || 'null'); from = localStorage.getItem('cx-prefs-from') || 'Profile'; focus = localStorage.getItem('cx-prefs-focus'); localStorage.removeItem('cx-prefs-from'); localStorage.removeItem('cx-prefs-focus'); } catch (e) {}
-if (['Profile', 'Wallet'].indexOf(from) < 0) from = 'Profile';
+let saved = null;
+try { saved = JSON.parse(localStorage.getItem('cx-prefs') || 'null'); localStorage.removeItem('cx-prefs-from'); localStorage.removeItem('cx-prefs-focus'); } catch (e) {}
 const base = Object.assign(this.defaults(), saved || {});
-this.state = { p: base, saved: JSON.stringify(base), from, focus, toast: '' };
+this.state = { p: base, saved: JSON.stringify(base), from: 'Profile', focus: null, toast: '' };
 }
 defaults() { return { mode: 'pct', pct: 80, baht: 300, pay: 'wallet', auto: false, thr: 100, amt: 500, n1: true, n2: true, n3: true, n4: false, type: 'all', kw: 0, fa: false }; }
 componentDidMount() { if (this.state.focus === 'auto') setTimeout(() => { if (this._sc && this._auto) this._sc.scrollTop = this._auto.offsetTop - 8; }, 120); }

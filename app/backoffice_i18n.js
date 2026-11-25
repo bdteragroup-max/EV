@@ -1591,6 +1591,9 @@
     ค้นหาสถานีหรือสแกนชาร์จ: "Find a station or scan to charge",
     "กดค้นหาสถานีเพื่อดูแผนที่จุดชาร์จใกล้คุณ หรือกดสแกนเพื่อเริ่มชาร์จทันที":
       "Tap Find station to see chargers near you on the map, or tap Scan to start charging right away.",
+    ช่องทางติดต่อและช่วยเหลือ: "Contact & support channels",
+    "ติดต่อเจ้าหน้าที่ได้ทันทีผ่านโทร 24 ชม., LINE หรือแชท พร้อมเข้าศูนย์ช่วยเหลือได้จากหน้าหลัก":
+      "Reach support right away via 24/7 phone, LINE, or live chat, or open the Help Center from Home.",
     ปุ่มการชาร์จ: "Charge button",
     "ปุ่มตรงกลางเมนูด้านล่าง กดแล้วเปิดกล้องสแกน QR ที่ตู้ชาร์จได้เลย":
       "The middle button in the bottom bar opens the camera to scan the QR code on the charger.",
@@ -1599,6 +1602,7 @@
       "See charging alerts and switch light/dark mode from the top right.",
     ไฮไลต์โปรโมชัน: "Highlight Promo",
     "ไฮไลต์ค้นหาสถานี / สแกน": "Highlight Find / Scan",
+    ไฮไลต์ช่องทางติดต่อ: "Highlight Contact Channels",
     ไฮไลต์ปุ่มการชาร์จ: "Highlight Charge FAB",
     "ไฮไลต์แจ้งเตือน & โหมดมืด": "Highlight Alerts / Dark",
     "หน้าจอฝั่งผู้ใช้ (Coach Marks)": "User Screen (Coach Marks)",

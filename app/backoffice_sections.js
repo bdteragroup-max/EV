@@ -872,7 +872,7 @@
       });
       const tutImgPresets = [
         ["ไฮไลต์โปรโมชัน", this.tutImg("promo"), "promo"],
-        ["ไฮไลต์ค้นหาสถานี / สแกน", this.tutImg("actions"), "actions"],
+        ["ไฮไลต์ช่องทางติดต่อ", this.tutImg("actions"), "actions"],
         ["ไฮไลต์ปุ่มการชาร์จ", this.tutImg("charge"), "charge"],
         ["ไฮไลต์แจ้งเตือน & โหมดมืด", this.tutImg("topbar"), "topbar"],
         [
